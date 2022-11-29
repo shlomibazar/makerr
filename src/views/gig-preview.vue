@@ -1,18 +1,23 @@
 <template>
     <li class="gig-preview">
-      <custom-card>
+      <custom-card >
         <template #header>
+            <!-- <img class="toy-preview__img" src="@/assets/demo-toy.jpg" alt="" /> -->
+
           <p><span class="fw-bold">Name:</span> {{ gig.name }}</p>
           <!-- <p><span class="fw-bold">In stock:</span> {{ gig.inStock }}</p> -->
           <p><span class="fw-bold">Price:</span> ${{ gig.price }}</p>
         </template>
         <template #main>
+            <!-- mini user - user.img + user.name
+            gig.title -->
           <p><span class="fw-bold">Name:</span> {{ gig.name }}</p>
           <!-- <p><span class="fw-bold">In stock:</span> {{ gig.inStock }}</p> -->
           <p><span class="fw-bold">Price:</span> ${{ gig.price }}</p>
         </template>
 
-        <template #footer>
+        <template #footer >
+            <!-- add to favorite (heart sign) / price  -->
           <div class="btn-group">
             <button @click="goToEdit" class="btn btn-primary">edit</button>
             <button @click="goToDetail" class="btn btn-info">details</button>
