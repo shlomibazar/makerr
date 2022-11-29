@@ -1,6 +1,6 @@
 <template>
     <ul class="gig-list clean-list grid gap-1">
-      <gig-preview @removeGig="removeGig" v-for="gig in gigs" :gig="gig" :key="gig._id" />
+      <gig-preview @removeGig="removeGig" v-for="gig in gigs" :gig="gig" :key="gig._id" class="card"/>
     </ul>
   </template>
   

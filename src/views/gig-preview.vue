@@ -6,7 +6,12 @@
           <!-- <p><span class="fw-bold">In stock:</span> {{ gig.inStock }}</p> -->
           <p><span class="fw-bold">Price:</span> ${{ gig.price }}</p>
         </template>
-  
+        <template #main>
+          <p><span class="fw-bold">Name:</span> {{ gig.name }}</p>
+          <!-- <p><span class="fw-bold">In stock:</span> {{ gig.inStock }}</p> -->
+          <p><span class="fw-bold">Price:</span> ${{ gig.price }}</p>
+        </template>
+
         <template #footer>
           <div class="btn-group">
             <button @click="goToEdit" class="btn btn-primary">edit</button>

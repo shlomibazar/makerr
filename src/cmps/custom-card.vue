@@ -4,8 +4,7 @@
         <slot name="header"></slot>
       </header>
       <main>
-        <!-- <slot name="default"></slot> -->
-        <slot></slot>
+        <slot name="main"></slot>
       </main>
       <footer>
         <slot name="footer"></slot>
@@ -28,6 +27,7 @@
   
   .custom-card main {
     text-align: center;
+    background-color: blue;
   }
   
   .custom-card footer {
