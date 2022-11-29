@@ -1,0 +1,82 @@
+
+.hero-btn-conteiner {
+    // margin-block: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    
+}
+
+// .hero-button {
+//     font-family: google-sans;
+//     // background-color: #1a73e8;
+//     border-radius: 8px;
+//     border: 1px solid blue;
+//     color: white;
+//     /* width: 200px; */
+//     padding-block: 14px;
+//     padding-inline: 33px;
+// }
+body {
+    margin: 0;
+    padding: 0;
+}
+.hero {
+    position: relative;
+    width: 100vw;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: blue;
+    // background: url(../../src/assets/1.png);
+    // background-image: url(../../src/assets/1.png);
+    
+    // background: url(https://www.google.com/imgres?imgurl=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F5%2F59%2F-127wiki.jpg%2F1200px--127wiki.jpg&imgrefurl=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FHello&tbnid=CcMDBquY7EhMFM&vet=12ahUKEwikk_vWodT7AhUE_6QKHUhPDWIQMygAegUIARDnAQ..i&docid=ZW__FDER0tJ4uM&w=1200&h=1500&q=hello&ved=2ahUKEwikk_vWodT7AhUE_6QKHUhPDWIQMygAegUIARDnAQ);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    filter: brightness(60%);
+}
+.hero-content {
+    position: relative; 
+    font-family: "Monserrat", sans-serif;
+    color: white;
+    text-align: center;
+    margin: 0.625rem;
+}
+.hero-title {
+    font-size: 3rem;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+.hero-subtitle {
+    font-size: 2rem;
+    font-weight: 200;
+    margin-top: 1rem;
+}
+
+.hero-button {
+    // background-color: #ae2d59;
+    color: white;
+    border: 1px solid white;
+    border-radius: 12px;
+    // margin-top: 5rem;
+    // padding: 0.9375rem 1.875rem;
+    font-family: "Monserrat", sans-serif;
+    font-size: 1.0rem;
+    font-weight: 200;
+    cursor: pointer;
+}
+.hero-button:hover {
+    background-color: #cb376a;
+    border: 1px solid #db7598;
+}
