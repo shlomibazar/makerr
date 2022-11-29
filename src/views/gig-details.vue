@@ -9,7 +9,7 @@
       <h1>I will code complete web app in nodejs, reactjs, vuejs</h1>
       <!-- <h2>{{ gig.name }}</h2> -->
       <img class="details-user-avatar" src="../assets/example-user.png" />
-      <p>Gig by: {{ owner.fullname }} </p>
+      <!-- <p>Gig by: {{ owner.fullname }} </p> -->
       <img src="../assets/example-gig.png" />
       <h3>About This Gig</h3>
       <p>
