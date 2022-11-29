@@ -21,6 +21,8 @@ function get(entityType, entityId) {
 }
 
 function post(entityType, newEntity) {
+    console.log("🚀 ~ file: async-storage.service.js ~ line 24 ~ post ~ entityType", entityType)
+    
     newEntity = JSON.parse(JSON.stringify(newEntity))    
     newEntity._id = _makeId()
     return query(entityType).then(entities => {
