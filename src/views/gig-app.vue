@@ -10,6 +10,8 @@
         </p>
         <button @click="removeGig(gig._id)">x</button>
         <button @click="updateGig(gig)">Update</button>
+        <router-link :to="'/gig/'+gig._id" >Details</router-link> | 
+
         <hr />
         <button @click="addGigMsg(gig._id)">Add gig msg</button>
         <button @click="printGigToConsole(gig)">Print msgs to console</button>
