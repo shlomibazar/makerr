@@ -60,19 +60,17 @@ async function addGigMsg(gigId, txt) {
     const savedMsg = await httpService.post(`gig/${gigId}/msg`, {txt})
     return savedMsg
 }
-
-
-function getEmptyGig() {
+function getEmptyReview() {
     return {
-        title: 'our new gig' + (Date.now() % 1000),
-        price: utilService.getRandomIntInclusive(1000, 9000),
+        id: utilService.makeId(),
+        txt: '',
+        at: Date.now(),
+        rate: null,
+        by: {
+            fullname: '',
+        }
     }
 }
-
-
-
-
-
 // gigs = 
 //     [
 //       {

@@ -1,10 +1,10 @@
-<template>
-    <ul class="gig-list clean-list grid gap-1">
+<template class="">
+    <ul class="card-grid gig-list grid">
       <gig-preview @removeGig="removeGig" v-for="gig in gigs" :gig="gig" :key="gig._id" class="card"/>
     </ul>
   </template>
   
-  <script>
+  <script lang="ts">
   import gigPreview from './gig-preview.vue'
   
   export default {
