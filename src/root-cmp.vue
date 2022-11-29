@@ -1,7 +1,7 @@
 <template>
   <section>
     <user-msg/>
-    <app-header />
+    <app-header class="main-container full"/>
     <router-view/>
   </section>
 </template>

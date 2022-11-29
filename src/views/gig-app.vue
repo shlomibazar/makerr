@@ -1,5 +1,5 @@
 <template>
-  <div class="container home">
+  <div class="container home main-container">
     <gig-list @removeGig="removeGig" v-if="gigs" :gigs="gigs" />
 <!-- 
     <ul class="gig-list">
