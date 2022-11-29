@@ -1,5 +1,7 @@
 <template>
   <div class="container home">
+    <gig-list @removeGig="removeGig" v-if="gigs" :gigs="gigs" />
+<!-- 
     <ul class="gig-list">
       <li v-for="gig in gigs" :key="gig._id">
         <p>
@@ -17,7 +19,7 @@
         <button @click="printGigToConsole(gig)">Print msgs to console</button>
 
       </li>
-    </ul>
+    </ul> -->
     <hr />
     <form @submit.prevent="addGig()">
       <h2>Add gig</h2>
@@ -31,6 +33,7 @@
 import {showErrorMsg, showSuccessMsg} from '../services/event-bus.service'
 import {gigService} from '../services/gig.service.local'
 import { getActionRemoveGig, getActionUpdateGig, getActionAddGigMsg } from '../store/gig.store'
+import gigList from './gig-list.vue'
 export default {
   data() {
     return {
@@ -93,7 +96,11 @@ export default {
     printGigToConsole(gig) {
       console.log('Gig msgs:', gig.msgs)
     }
-  }
+  },
+    components: {
+    gigList,
+    // toyFilter,
+  },
 
   
 }

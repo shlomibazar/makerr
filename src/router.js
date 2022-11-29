@@ -7,6 +7,8 @@ import reviewApp from './views/review-app.vue'
 import loginSignup from './views/login-signup.vue'
 import userDetails from './views/user-details.vue'
 import gigDetails from './views/gig-details.vue'
+import gigEdit from './views/gig-edit.vue'
+
 
 
 const routes = [
@@ -24,6 +26,11 @@ const routes = [
     path: '/gig/:gigId',
     name: 'gig-details',
     component: gigDetails
+  },
+  {
+    path: '/gig/edit/:gigId?',
+    name: 'gig-edit',
+    component: gigEdit,
   },
   {
     path: '/review',
