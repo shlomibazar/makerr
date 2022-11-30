@@ -1,27 +1,31 @@
-<template class="">
-    <ul class="card-grid gig-list grid">
-      <gig-preview @removeGig="removeGig" v-for="gig in gigs" :gig="gig" :key="gig._id" class="card"/>
-    </ul>
-  </template>
-  
-  <script lang="ts">
-  import gigPreview from './gig-preview.vue'
-  
-  export default {
-    props: {
-      gigs: {
-        type: Array,
-        required: true,
-      },
+<template>
+  <ul class="card-grid gig-list">
+    <gig-preview  v-for="gig in gigs" :gig="gig" :key="gig._id" class="card" />
+  </ul>
+</template>
+
+<script>
+import gigPreview from "../views/gig-preview.vue";
+
+export default {
+  props: {
+    gigs: {
+      type: Array,
+      required: true,
     },
-    components: {
-      gigPreview,
+  },
+  data() {
+    return {
+      // toy:null,
+    };
+  },
+  methods: {
+    removeGig(gigId) {
+      this.$emit("removeGig", gigId);
     },
-    methods: {
-      removeGig(gigId) {
-        this.$emit('removeGig', gigId)
-      },
-    },
-  }
-  </script>
-  
+  },
+  components: {
+    gigPreview,
+  },
+};
+</script>
