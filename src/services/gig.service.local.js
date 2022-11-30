@@ -27,6 +27,13 @@ async function query(filterBy = { txt: '', price: 0 }) {
     }
     return gigs
 }
+// async function query(filterBy, sortBy) {
+//     const query = { filterBy, sortBy }
+//     return await httpService.get('toy', query)
+  
+//     // const res = await axios.get(_getUrl(), { params: query })
+//     // return res.data
+//   }
 
 function getById(gigId) {
     return storageService.get(STORAGE_KEY, gigId)

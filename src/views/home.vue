@@ -50,6 +50,7 @@
                 </p>
               </div>
             </div>
+          </div>
             <div class="animate-fade hero-moon" style="opacity: 0;">
               <div class="main-container seller-name">
                 <p>Moon,
@@ -79,12 +80,6 @@
             </div>
           </div>
         </div>
-
-
-
-
-      </div>
-
 
     </section>
 

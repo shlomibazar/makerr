@@ -8,6 +8,7 @@
           <!-- <span role="img" aria-label="logo">🙏</span> -->
         </router-link>
       </div>
+      
       <div>
         <router-link to="/gig">Explore</router-link>
         <router-link to="/gig">Become a Seller</router-link>
