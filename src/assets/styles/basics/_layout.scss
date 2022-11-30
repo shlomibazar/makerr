@@ -1,9 +1,10 @@
 .container {
-    max-width: 2000px;
-    padding: 10px;
+    // max-width: 2000px;
+    width:100vw;
+    // padding: 10px;
 }
 .main-layout {
-    max-width: 1400px;
+    width: 75%;
     margin-inline-start: auto;
     margin-inline-end: auto;
     padding-left: 32px;
@@ -13,8 +14,8 @@
 
 .main-container {
     display: grid;
-    grid-template-columns: 20px 1fr 20px;
-    // grid-template-columns: minmax(32px,1fr) minmax(auto,1400px) minmax(32px,1fr);
+    // grid-template-columns: 12.8% 1fr 12.8%;
+    grid-template-columns: minmax(32px,1fr) minmax(auto,1400px) minmax(32px,1fr);
 
     > * {
         grid-column: 2;
@@ -42,5 +43,9 @@
             minmax(auto, $normal-breakpoint)
             minmax(20px, 1fr);
     }
+}
+body{
+   width: 100vw;
+   padding:0 12.8% 
 }
 

@@ -7,7 +7,7 @@
       <template #main>
         <section class="card-main-header">
           <img class="card-seller-img" :src="gig.owner.imgUrl">
-          <span class="card-seller-online"></span>
+          <span class="card-seller-online" v-if="gig.owner.isOnline"></span>
 
           <section class="card-seller-name-rating flex column">
             <span class="card-seller-name">{{gig.owner.fullname}}</span>
