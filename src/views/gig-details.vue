@@ -55,7 +55,7 @@
               <h5>
                 {{ review.review }}
                 <br/><br/><br/>
-               <h3>{{ review.reviewedAt }}</h3>
+                <h3>{{ review.reviewedAt }}</h3>
               </h5>
             </div>
           </div>
