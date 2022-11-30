@@ -34,6 +34,33 @@
         <hr />
         <p>{{ gig.owner.about }}</p>
       </div>
+      <div class="seller-reviews">
+        <h1>{{ gig.reviewers.length }} Reviews</h1>
+        <h4 v-for="review in gig.reviewers" :key="review._id" :value="review.reviews">
+          <hr />
+          <div class="review-container">
+            <div class="review-user-details">
+              <h5>
+                <div class="reviewer-name">
+                  <img class="details-user-avatar-about" :src="userAvatar" />
+                  {{ review.name }}
+                </div>
+                <div class="reviewer-country">
+                  <img :src="gigReviewFlag" />
+                  {{ review.country }}
+                </div>
+              </h5>
+            </div>
+            <div class="review-user-comment">
+              <h5>
+                {{ review.review }}
+                <br/><br/><br/>
+               <h3>{{ review.reviewedAt }}</h3>
+              </h5>
+            </div>
+          </div>
+        </h4>
+      </div>
     </div>
 
     <div class="checkout-container">
@@ -107,7 +134,9 @@
         </ul>
       </div>
       <footer>
-        <button class="side-btn">Continue ({{ gig.price }})</button>
+        <button class="side-btn" @click="purchaseGig()">
+          Continue ({{ gig.price }})
+        </button>
       </footer>
     </div>
   </section>
@@ -138,7 +167,8 @@ export default {
     //     this.$store.dispatch(getActionUpdateGig(gigmon))
     // },
     purchaseGig() {
-      router.push("/purchase");
+      router.push(`/purchase/${this.gig._id}`);
+      // console.log('gig id?', this.gig._id);
     },
     loadGig() {
       const id = this.$route.params.gigId;
@@ -166,6 +196,10 @@ export default {
     },
     gigPreview() {
       return `${this.gig.owner.imgUrl}`;
+    },
+    gigReviewFlag() {
+      return "https://fiverr-dev-res.cloudinary.com/general_assets/flags/1f1fa-1f1f8.png";
+      // return `${this.gig.reviewers.flag}`;
     },
   },
   components: {

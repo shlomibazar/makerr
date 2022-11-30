@@ -1,0 +1,27 @@
+.review-container{
+    display: flex;
+    flex-direction: column;
+}
+.review-user-details{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    .details-user-avatar-about{
+        width: 20px;
+        height: 20px;
+        align-content: center;
+    }
+    img{
+        width: 20px;
+        height: 20px;
+    }
+    .reviewer-country{
+        font-weight: lighter;
+    }
+}
+.review-user-comment{
+    h5{
+
+        font-weight: lighter;
+    }
+}

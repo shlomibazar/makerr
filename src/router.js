@@ -8,7 +8,7 @@ import loginSignup from './views/login-signup.vue'
 import userDetails from './views/user-details.vue'
 import gigDetails from './views/gig-details.vue'
 import gigEdit from './views/gig-edit.vue'
-
+import purchaseGig from './views/gig-purchase.vue'
 
 
 const routes = [
@@ -51,7 +51,12 @@ const routes = [
     path: '/user/:id',
     name: 'user-details',
     component: userDetails
-  }
+  },
+  {
+    path: '/purchase/:gigId',
+    name: 'purchaseGig',
+    component: purchaseGig
+  },
 ]
 
 
