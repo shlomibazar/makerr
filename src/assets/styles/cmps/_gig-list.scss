@@ -1,12 +1,31 @@
+// .card{
+//   background-color: #1DBF73;
+//   &:hover{
+    
+//       color: #1DBF73;
+//       background-color: #1DBF73;
+    
+//   }
+//  }
 .gig-list {
     list-style: none;
     display: flex;
     flex-wrap: wrap;
+
     li {
-        background-color: $clr2;
-        color: $clr6;
+        // background-color: $clr2;
+        // color: $clr6;
         // padding: 5px;
         // margin: 5px;
+         background-color: #1d2dbf;
+  &:hover{
+      h4{
+        color: #1DBF73;
+      }
+      color: #1d2bbf;
+      background-color: #1DBF73;
+    
+  }
     }
     a {
         color: $clr1;
@@ -76,6 +95,7 @@
     height: 35.57%;
     color: black;
     padding: 0;
+    
     }
     > footer {
     display: flex;
@@ -87,12 +107,7 @@
     // border: 1px solid #D8D9DB;
 
   }
-  &:hover{
-    
-      color: #1DBF73;
-      background-color: #1DBF73;
-    
-  }
+  
   // .custom-card{
   //   > .card-main-center{
   //     color: #1DBF73;
@@ -230,9 +245,9 @@ align-items: center;
   // font-variant-numeric:
   // font-weight:
 }
-.dollar_sign { font-size: 16px; }
-        .dollars { font-size: 22px; }
-        .cents { font-size: 14px; }
+// .dollar_sign { font-size: 16px; }
+//         .dollars { font-size: 22px; }
+//         .cents { font-size: 14px; }
   
  
  

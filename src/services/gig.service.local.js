@@ -121,6 +121,7 @@ function getEmptyGig() {
 //     })
 // })()
 
+(async () => {
 await storageService.post(STORAGE_KEY, {
     image: "https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/3171448/original/a41a38f3733bb97279a49d1449f7337dece50693.jpg",
     title: "I will design 3 modern minimalist flat logo designs",
@@ -136,65 +137,65 @@ await storageService.post(STORAGE_KEY, {
     memberSince: "Jun 2014",
     avgResponceTime: "2 hours",
 
-    lastDelivery: "about 3 hours",
-    about: "Hello! My name is VD. I am a connoisseur of art and music. I love being around nature and my pets. I have a team of professional graphic designers with an experience of 8+ years. We specialize in logo designing. We're available exclusively on fiverr to rock your world with our designing skills. Come and experience it for yourself!",
-    reviewers: [
-        {
-            name: "airbornesnow",
-            country: "United States",
-            flag: "https://fiverr-dev-res.cloudinary.com/general_assets/flags/1f1fa-1f1f8.png",
-            review: "The seller's communication was EXCELLENT and the service was exactly as described. When I wanted revisions, they did not hesitate to provide me with alterations of the design. Although they were nice and kind when I asked for the revisions, all the revisions were half a**ed and sloppy. Even when I provided a concept drawing for them to TRACE, the results were still not what I expected. Buyers BEWARE: The seller's communication is excellent, friendly, and VERY kind. However, if you ask for any revisions, the revisions you will receive will be sloppy and half-a**ed.",
-            reviewedAt: "Published 4 days ago"
-        },
-        {
-            name: "jacobmnb",
-            country: "United Kingdom",
-            flag: "https://fiverr-dev-res.cloudinary.com/general_assets/flags/1f1ec-1f1e7.png",
-            review: "I thought this service was amazing, I bought the basic option just hoping for a basic logo, but the seller went above my expectations and provided me with a bunch of concepts that were better than I could have imagined, for £7.90 I think this service is a must-buy for anyone needing a professional-looking logo and not wanting to spend a huge amount",
-            reviewedAt: "Published 2 months ago"
-        },
-        {
-            name: "ashtonpeckham",
-            country: "United States",
-            flag: "https://fiverr-dev-res.cloudinary.com/general_assets/flags/1f1fa-1f1f8.png",
-            review: "The seller was very responsive. We had revisions after the initial designs were delivered and the seller made them very quickly. The logo we selected is perfect for our current needs. Recommend including your vision in the initial request so you don't end up with ideas that you don't like. There were only 2 real contenders because the Fiverr site wouldn't allow me to attach my hand drawn idea. The paperclip icon was essentially rendered inactive, even after several attempts. This is no fault of the designers; i should have been even more descriptive with my request when I was unable to attach files.",
-            reviewedAt: "Published 1 week ago"
-        },
-        {
-            name: "borowski10",
-            country: "United States",
-            flag: "https://fiverr-dev-res.cloudinary.com/general_assets/flags/1f1fa-1f1f8.png",
-            review: "Ultimately, I am very happy with the final logo I received. However, the seller's communication could have been better. There were a few times I asked for specific revisions and I was sent the same thing or something else that I didn't ask for. It took about 2 weeks for me to finally get what I was looking for. In the end, I got what I paid for and I am grateful for the service!",
-            reviewedAt: "Published 2 days ago"
-        },
-        {
-            name: "fowlplay_uk",
-            country: "United Kingdom",
-            flag: "https://fiverr-dev-res.cloudinary.com/general_assets/flags/1f1ec-1f1e7.png",
-            review: "VD was great. I had a very specific design in mind already that I needed recreating professionally and they did not disappoint. Even when I started to get picky with the design, nothing I requested was ever too much trouble. We went through many revisions to get it to exactly how I wanted it and every interaction we had was effortless. This is the first project I'd commissioned so wasn't really sure on the correct etiquette, yet VD made things so easy for me. Can't recommend these guys enough for that",
-            reviewedAt: "Published 2 months ago"
-        }
-    ],
-    tags: [
-        {
-            name: "minimalist"
-        },
-        {
-            name: "flat"
-        },
-        {
-            name: "logo design"
-        },
-        {
-            name: "modern"
-        },
-        {
-            name: "unique"
-        },
-        {
-            name: "logo maker"
-        }
-    ]
+//     lastDelivery: "about 3 hours",
+//     about: "Hello! My name is VD. I am a connoisseur of art and music. I love being around nature and my pets. I have a team of professional graphic designers with an experience of 8+ years. We specialize in logo designing. We're available exclusively on fiverr to rock your world with our designing skills. Come and experience it for yourself!",
+//     reviewers: [
+//         {
+//             name: "airbornesnow",
+//             country: "United States",
+//             flag: "https://fiverr-dev-res.cloudinary.com/general_assets/flags/1f1fa-1f1f8.png",
+//             review: "The seller's communication was EXCELLENT and the service was exactly as described. When I wanted revisions, they did not hesitate to provide me with alterations of the design. Although they were nice and kind when I asked for the revisions, all the revisions were half a**ed and sloppy. Even when I provided a concept drawing for them to TRACE, the results were still not what I expected. Buyers BEWARE: The seller's communication is excellent, friendly, and VERY kind. However, if you ask for any revisions, the revisions you will receive will be sloppy and half-a**ed.",
+//             reviewedAt: "Published 4 days ago"
+//         },
+//         {
+//             name: "jacobmnb",
+//             country: "United Kingdom",
+//             flag: "https://fiverr-dev-res.cloudinary.com/general_assets/flags/1f1ec-1f1e7.png",
+//             review: "I thought this service was amazing, I bought the basic option just hoping for a basic logo, but the seller went above my expectations and provided me with a bunch of concepts that were better than I could have imagined, for £7.90 I think this service is a must-buy for anyone needing a professional-looking logo and not wanting to spend a huge amount",
+//             reviewedAt: "Published 2 months ago"
+//         },
+//         {
+//             name: "ashtonpeckham",
+//             country: "United States",
+//             flag: "https://fiverr-dev-res.cloudinary.com/general_assets/flags/1f1fa-1f1f8.png",
+//             review: "The seller was very responsive. We had revisions after the initial designs were delivered and the seller made them very quickly. The logo we selected is perfect for our current needs. Recommend including your vision in the initial request so you don't end up with ideas that you don't like. There were only 2 real contenders because the Fiverr site wouldn't allow me to attach my hand drawn idea. The paperclip icon was essentially rendered inactive, even after several attempts. This is no fault of the designers; i should have been even more descriptive with my request when I was unable to attach files.",
+//             reviewedAt: "Published 1 week ago"
+//         },
+//         {
+//             name: "borowski10",
+//             country: "United States",
+//             flag: "https://fiverr-dev-res.cloudinary.com/general_assets/flags/1f1fa-1f1f8.png",
+//             review: "Ultimately, I am very happy with the final logo I received. However, the seller's communication could have been better. There were a few times I asked for specific revisions and I was sent the same thing or something else that I didn't ask for. It took about 2 weeks for me to finally get what I was looking for. In the end, I got what I paid for and I am grateful for the service!",
+//             reviewedAt: "Published 2 days ago"
+//         },
+//         {
+//             name: "fowlplay_uk",
+//             country: "United Kingdom",
+//             flag: "https://fiverr-dev-res.cloudinary.com/general_assets/flags/1f1ec-1f1e7.png",
+//             review: "VD was great. I had a very specific design in mind already that I needed recreating professionally and they did not disappoint. Even when I started to get picky with the design, nothing I requested was ever too much trouble. We went through many revisions to get it to exactly how I wanted it and every interaction we had was effortless. This is the first project I'd commissioned so wasn't really sure on the correct etiquette, yet VD made things so easy for me. Can't recommend these guys enough for that",
+//             reviewedAt: "Published 2 months ago"
+//         }
+//     ],
+//     tags: [
+//         {
+//             name: "minimalist"
+//         },
+//         {
+//             name: "flat"
+//         },
+//         {
+//             name: "logo design"
+//         },
+//         {
+//             name: "modern"
+//         },
+//         {
+//             name: "unique"
+//         },
+//         {
+//             name: "logo maker"
+//         }
+//     ]
 
 })
 await storageService.post(STORAGE_KEY, {
@@ -412,3 +413,5 @@ await storageService.post(STORAGE_KEY, {
         }
     ]
 })
+})
+()
