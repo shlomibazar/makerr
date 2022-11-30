@@ -66,6 +66,7 @@ function getEmptyReview() {
         txt: '',
         at: Date.now(),
         rate: null,
+        level: 0,
         by: {
             fullname: '',
         }
