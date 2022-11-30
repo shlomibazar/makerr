@@ -1,7 +1,7 @@
 .gig-details-page {
     .user-details-container{
         font-size: 12px;
-        gap: 5px;
+        gap: 8px;
         align-items: center;
         h2{
             font-weight: bold;
@@ -9,7 +9,7 @@
         h3{
             color: rgba(0, 0, 0, 0.926);
             font-weight: lighter;
-            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+            font-family: 'Work Sans', sans-serif;
         }
     }
 
@@ -22,10 +22,15 @@
     .details-content h1{
         color: rgba(0, 0, 0, 0.839);
         font-size: 30px;
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-family: 'Work Sans', sans-serif;
     }
   
     .details-user-avatar{
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+    }
+    .details-user-avatar-about{
         height: 100px;
         width: 100px;
         border-radius: 50%;
@@ -36,7 +41,7 @@
     }
     p{
         font-size: 16px;
-        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        font-family: 'Work Sans', sans-serif;
     }
     .seller-container{
         background-color: rgba(255, 255, 255, 0.809);

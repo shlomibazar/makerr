@@ -4,22 +4,22 @@
         </div> -->
 
 <template>
-  <hr/>
+  <hr />
   <section v-if="gig" class="gig-details-page">
     <div class="details-content">
       <h1>{{ gig.title }}</h1>
-      <div class="user-details-container flex ">
-      <img class="details-user-avatar" :src="userAvatar" />
-      <h2>{{ userDetails }}</h2>
-      <h3>{{ userLevel }}</h3>
-    </div>
+      <div class="user-details-container flex">
+        <img class="details-user-avatar" :src="userAvatar" />
+        <h2>{{ userDetails }}</h2>
+        <h3>{{ userLevel }}</h3>
+      </div>
       <br />
       <img class="details-user-gig" :src="gigPreview" />
       <h3>About This Gig</h3>
       <p>{{ gig.description }}</p>
       <hr />
       <h3>About The Seller</h3>
-      <img class="details-user-avatar" :src="userAvatar" />
+      <img class="details-user-avatar-about" :src="userAvatar" />
       <h4>{{ gig.fullname }}</h4>
       <div class="seller-container">
         <div class="seller-content">
