@@ -45,9 +45,11 @@
   
       <div class="sort flex justify-between items-center m-2">
         <p>Sort:</p>
-        <a class="btn-dark-small m-1" @click="setSort('name')">Name</a>
-        <a class="btn-dark-small m-1" @click="setSort('price')">Price</a>
-        <a class="btn-dark-small m-1" @click="setSort('createdAt')">Date</a>
+        <a class="hero-button" @click="setSort('name')">Name</a>
+        <a class="hero-button" @click="setSort('price')">Price</a>
+        <a class="hero-button" @click="setSort('createdAt')">Date</a>
+        <!-- this way they got another class ? undefined  -->
+        <!-- <a class="btn-dark-small m-1" @click="setSort('createdAt')">Date</a> -->
         <span>{{ desc === -1 ? '↓' : '↑' }}</span>
       </div>
     </section>
