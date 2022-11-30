@@ -1,6 +1,12 @@
 header {
+    padding: 0 12.8%;
+    position: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 80px;
     background-color: $clr6;
-    padding: 10px;
+    justify-content: space-between;
+    // padding: 10px;
     // display: flex;
     // justify-content: space-between;
 
@@ -25,21 +31,35 @@ header {
     nav {
         justify-content: space-between;
         background-color: $clr6;
-        padding: 5px 0;
+        // padding: 5px 0;
+        align-items: right;
         font-family: 'Work Sans', sans-serif;
+        width: 50%;
     }
-    nav a:not(:first-child) {
-        // border-top: 1px solid $clr1;
-        padding: 0 5px;
-        margin: 10px;
-    }
+    // nav a:not(:first-child) {
+    //     // border-top: 1px solid $clr1;
+    //     padding: 0 5px;
+    //     margin: 10px;
+    // }
 
     nav .active {
         color: $clr1;
     }
 
     .logo{
-    margin-left: 10px;
+    // margin-left: 10px;
+    width: 10%;
     }
     
+}
+.header-container{
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    // justify-content: space-around;
+    align-items: center;
+// flex-direction: column;
+// padding: 0;
+// width: 75.6%;
+// margin-top:50%;
 }
