@@ -25,7 +25,7 @@
         <!-- mini user - user.img + user.name
             gig.title -->
         <section class="card-main-footer flex row"><span style="font-size:150%;color:#FFBE5B;">&starf;</span>
-        <span>{{ userRating(gig) }}</span>
+        <span>{{ userRating(gig)}}</span><span  class="ratingProject">(169)</span>
         
         </section>
         <!-- <p><span class="fw-bold">In stock:</span> {{ gig.inStock }}</p> -->
@@ -77,7 +77,7 @@ export default {
     },
     userRating(gig) {
       //need to make a calculated value with avg rate to gigs
-      var gigLevel = gig.owner.rate || `5.0(169)`;
+      var gigLevel = `${gig.owner.rate}` || `5.0`;
       console.log(gig,gigLevel)
       return gigLevel
     }
