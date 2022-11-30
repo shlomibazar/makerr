@@ -2,7 +2,7 @@
   <li class="gig-preview">
     <custom-card>
       <template #card-header>
-        <img class="card-img" :src="gig.image" alt="" />
+        <img class="card-img" :src="gig.imgUrl" alt="" />
       </template>
       <template #main>
         <section class="card-main-header">
