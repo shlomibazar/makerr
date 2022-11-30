@@ -2,15 +2,15 @@
   <li class="gig-preview" @click="goToDetail">
     <custom-card>
       <template #card-header>
-        <img class="card-img" :src="gig.imgUrl" alt="" />
+        <img class="card-img" :src="gig.image" alt="" />
       </template>
       <template #main>
         <section class="card-main-header">
-          <img class="card-seller-img" :src="gig.imgUrl">
+          <img class="card-seller-img" :src="gig.owner.imgUrl">
           <span class="card-seller-online"></span>
 
           <section class="card-seller-name-rating flex column">
-            <span class="card-seller-name">{{gig.fullname}}</span>
+            <span class="card-seller-name">{{gig.owner.fullname}}</span>
             <span class="card-seller-level">{{userLevel(gig)}}</span>
           </section>
           <section class="card-seller-clients">Clients</section>
@@ -25,7 +25,7 @@
         <!-- mini user - user.img + user.name
             gig.title -->
         <section class="card-main-footer flex row"><span style="font-size:150%;color:#FFBE5B;">&starf;</span>
-        <span>{{ userRating(gig) }}</span>
+        <span>{{ userRating(gig)}}</span><span  class="ratingProject">(169)</span>
         
         </section>
         <!-- <p><span class="fw-bold">In stock:</span> {{ gig.inStock }}</p> -->
@@ -72,12 +72,12 @@ export default {
       return `<span class="dollar_sign">$</span><span class="dollars"><?= $part[0] ?></span>.<span class="cents"><?= $part[1] ?></span>`   
     },
     userLevel(gig) {
-      var userLevel= gig.level||1
+      var userLevel= gig.owner.level||1
       return `Level ${userLevel} Seller`
     },
     userRating(gig) {
       //need to make a calculated value with avg rate to gigs
-      var gigLevel = gig.owner || `5.0(169)`;
+      var gigLevel = `${gig.owner.rate}` || `5.0`;
       console.log(gig,gigLevel)
       return gigLevel
     }
