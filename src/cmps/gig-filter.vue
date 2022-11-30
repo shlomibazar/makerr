@@ -12,6 +12,9 @@
         placeholder="Search gig..."
         :prefix-icon="search"
       />
+<!-- 
+      need to add filter by delviry time 
+      filter by price(min/max) -->
   
       <!-- <el-select
         v-model="status"
