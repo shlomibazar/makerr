@@ -26,13 +26,13 @@
 
       <div class="seller-container">
         <div class="seller-content">
-          <h3>From {{ gig.loc }}</h3>
-          <h3>Member Since {{ gig.memberSince }}</h3>
-          <h3>Avg. response time {{ gig.avgResponceTime }}</h3>
-          <h3>Last delivery {{ gig.lastDelivery }}</h3>
+          <h3>From {{ gig.owner.loc }}</h3>
+          <h3>Member Since {{ gig.owner.memberSince }}</h3>
+          <h3>Avg. response time {{ gig.owner.avgResponceTime }}</h3>
+          <h3>Last delivery {{ gig.owner.lastDelivery }}</h3>
         </div>
         <hr />
-        <p>{{ gig.about }}</p>
+        <p>{{ gig.owner.about }}</p>
       </div>
     </div>
 
@@ -156,16 +156,16 @@ export default {
   },
   computed: {
     userDetails() {
-      return `${this.gig.fullname}`;
+      return `${this.gig.owner.fullname}`;
     },
     userLevel() {
-      return `Level: ${this.gig.level} Seller |⭐⭐⭐⭐⭐ 5 (169) 12 Orders in Queue`;
+      return `Level: ${this.gig.owner.level} Seller |⭐⭐⭐⭐⭐ 5 (169) 12 Orders in Queue`;
     },
     userAvatar() {
-      return `${this.gig.imgUrl}`;
+      return `${this.gig.owner.imgUrl}`;
     },
     gigPreview() {
-      return `${this.gig.imgUrl}`;
+      return `${this.gig.owner.imgUrl}`;
     },
   },
   components: {
