@@ -11,7 +11,7 @@
 
           <section class="card-seller-name-rating flex column">
             <span class="card-seller-name">{{gig.fullname}}</span>
-            <span class="card-seller-level">{{gig.daysToMake}}</span>
+            <span class="card-seller-level">{{userLevel(gig)}}</span>
           </section>
           <section class="card-seller-clients">Clients</section>
         <!-- <p><span class="fw-bold">Name:</span> {{ gig.fullname }}</p> -->
@@ -24,8 +24,8 @@
         </section>
         <!-- mini user - user.img + user.name
             gig.title -->
-        <section class="card-main-footer ">
-        <!-- <p><span class="fw-bold">Name:</span> {{ gig.title }}</p> -->
+        <section class="card-main-footer flex row"><span style="font-size:150%;color:#FFBE5B;">&starf;</span>
+        <span>{{ userRating(gig) }}</span>
         
         </section>
         <!-- <p><span class="fw-bold">In stock:</span> {{ gig.inStock }}</p> -->
@@ -70,7 +70,20 @@ export default {
     decimelToLowerSize(price) {
       console.log(arguments)
       return `<span class="dollar_sign">$</span><span class="dollars"><?= $part[0] ?></span>.<span class="cents"><?= $part[1] ?></span>`   
+    },
+    userLevel(gig) {
+      var userLevel= gig.level||1
+      return `Level ${userLevel} Seller`
+    },
+    userRating(gig) {
+      //need to make a calculated value with avg rate to gigs
+      var gigLevel = gig.owner || `5.0(169)`;
+      console.log(gig,gigLevel)
+      return gigLevel
     }
+  },
+  computed: {
+   
   },
 };
 </script>
