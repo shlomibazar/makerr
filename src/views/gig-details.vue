@@ -6,40 +6,34 @@
 <template>
   <section v-if="gig" class="gig-details-page">
     <div class="details-content">
-      <h1>I will code complete web app in nodejs, reactjs, vuejs</h1>
-      <!-- <h2>{{ gig.name }}</h2> -->
-      <img class="details-user-avatar" src="../assets/example-user.png" />
-      <!-- <p>Gig by: {{ owner.fullname }} </p> -->
-      <img src="../assets/example-gig.png" />
+      <h1>{{ gig.title }}</h1>
+      <img class="details-user-avatar" :src="userAvatar" />
+      <h2>{{ userDetails }}</h2>
+      <br />
+      <img class="details-user-gig" :src="gigPreview" />
       <h3>About This Gig</h3>
-      <p>
-        Very important: Please discuss all requirements before placing an order! I am a
-        Full-stack Developer with expert level proficiency in NodeJs technologies & over
-        10 years of web development experience. This Gig is an all-in-one solution for all
-        of your requirements. I have worked on various projects for startups & corporate
-        departments and will deliver you a complete custom coded web app using latest
-        trends and frameworks. NOTE: If you feel none of my packages cater your needs then
-        please share your requirements for custom quote. Top Reasons to Hire Me: ✓ 10
-        Years+ Exp. in Web/Software Development ✓ Fluent in English(7.5 IELTS Band) ✓ Fast
-        Project Communication & Understanding ✓ 100% Guarantee of Refund If I Don't Meet
-        Your Expectations Services I Offer: Custom Portals B2C, C2C, B2B Business
-        Automation Plugin/Extension Development API Integrations(Payment, SMS, CRM etc)
-        REST API Development JAVASCRIPT BACKEND FRAMEWORKS: ExpressJS, NestJs, Serverless
-        JAVASCRIPT FRONEND FRAMEWORKS: Angular, ReactJS, VueJS
-      </p>
+      <p>{{ gig.description }}</p>
+      <hr />
       <h3>About The Seller</h3>
-      <p>
-        <h3>David</h3>
-        <img class="details-user-avatar" src="../assets/example-user.png" />
-        <div class="seller-details">
-            <h2>From: Germany</h2>
-            <h2>Member Since: Year ago</h2>
-            <h2>Avg. response time: 2 hours</h2>
+      <img class="details-user-avatar" :src="userAvatar" />
+      <h4>{{ gig.fullname }}</h4>
+      <div class="seller-container">
+        <div class="seller-content">
+          <h3>From {{ gig.loc }}</h3>
+          <h3>Member Since {{ gig.memberSince }}</h3>
+          <h3>Avg. response time {{ gig.avgResponceTime }}</h3>
+          <h3>Last delivery {{ gig.lastDelivery }}</h3>
         </div>
-      </p>
+        <hr />
+        <p>{{ gig.about }}</p>
+      </div>
     </div>
+
     <div class="details-sidebar">
-      <h3>text text</h3>
+      <h3>🔹Startup Now🔹</h3>
+      <h3>{{ gig.price }}</h3>
+      <h3>{{ gig.title }}</h3>
+      <h3>{{ gig.daysToMake }}</h3>
       <button class="button-purchase" @click="purchaseGig()">Conitnue ⮕</button>
     </div>
   </section>
@@ -48,17 +42,16 @@
 // import chatVue from "./chat.vue"
 import { gigService } from "../services/gig.service.local.js";
 import { getActionRemoveGig, getActionUpdateGig } from "../store/gig.store";
+import { router } from "../router.js";
 
 export default {
   data() {
     return {
       gig: null,
-      owner: userService.getLoggedinUser(),
     };
   },
   created() {
     this.loadGig();
-
     // this.updateMsgs()
   },
   methods: {
@@ -70,9 +63,12 @@ export default {
 
     //     this.$store.dispatch(getActionUpdateGig(gigmon))
     // },
+    purchaseGig() {
+      router.push("/purchase");
+    },
     loadGig() {
       const id = this.$route.params.gigId;
-      console.log("iddddddd", id);
+      //   console.log("iddddddd", id);
       gigService.getById(id).then((gig) => {
         this.gig = gig;
         console.log("loadGig");
@@ -82,6 +78,17 @@ export default {
   watch: {
     "$route.params.gigId"(id) {
       console.log("Changed to", id);
+    },
+  },
+  computed: {
+    userDetails() {
+      return `${this.gig.fullname}`;
+    },
+    userAvatar() {
+      return `${this.gig.imgUrl}`;
+    },
+    gigPreview() {
+      return `${this.gig.image}`;
     },
   },
   components: {
