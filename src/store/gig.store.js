@@ -32,7 +32,7 @@ export const gigStore = {
         gigs: []
     },
     getters: {
-        gigs({gigs}) { return gigs },
+        gigs({ gigs }) { return gigs },
     },
     mutations: {
         setGigs(state, { gigs }) {
@@ -48,7 +48,7 @@ export const gigStore = {
         removeGig(state, { gigId }) {
             state.gigs = state.gigs.filter(gig => gig._id !== gigId)
         },
-        addGigMsg(state, { gigId , msg}) {
+        addGigMsg(state, { gigId, msg }) {
             const gig = state.gigs.find(gig => gig._id === gigId)
             if (!gig.msgs) gig.msgs = []
             gig.msgs.push(msg)
@@ -75,13 +75,30 @@ export const gigStore = {
                 throw err
             }
         },
-        async loadGigs(context) {
+        // async loadGigs(context) {
+        //     try {
+        //         const gigs = await gigService.query()
+        //         context.commit({ type: 'setGigs', gigs })
+        //     } catch (err) {
+        //         console.log('gigStore: Error in loadGigs', err)
+        //         throw err
+        //     }
+        // },
+        loadGigs: async ({ commit }, { filterBy, sortBy }) => {
+            console.log('hey i here')
             try {
-                const gigs = await gigService.query()
-                context.commit({ type: 'setGigs', gigs })
+                console.log('filterBy',filterBy)
+                if (!filterBy) filterBy = { txt: '', status: '', labels: null }
+                if (!sortBy) sortBy = {}
+
+                // const labels = gigService.getLabels()
+                // commit({ type: 'setLabels', labels })
+
+                const gigs = await gigService.query(filterBy, sortBy)
+                commit({ type: 'setGigs', gigs })
             } catch (err) {
-                console.log('gigStore: Error in loadGigs', err)
-                throw err
+                console.log('Could not get gigs')
+                // TODO: throw error to display user
             }
         },
         async removeGig(context, { gigId }) {
@@ -96,7 +113,7 @@ export const gigStore = {
         async addGigMsg(context, { gigId, txt }) {
             try {
                 const msg = await gigService.addGigMsg(gigId, txt)
-                context.commit({type: 'addGigMsg', gigId, msg })
+                context.commit({ type: 'addGigMsg', gigId, msg })
             } catch (err) {
                 console.log('gigStore: Error in addGigMsg', err)
                 throw err
