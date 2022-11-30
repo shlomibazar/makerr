@@ -4,11 +4,15 @@
         </div> -->
 
 <template>
+  <hr/>
   <section v-if="gig" class="gig-details-page">
     <div class="details-content">
       <h1>{{ gig.title }}</h1>
+      <div class="user-details-container flex ">
       <img class="details-user-avatar" :src="userAvatar" />
       <h2>{{ userDetails }}</h2>
+      <h3>{{ userLevel }}</h3>
+    </div>
       <br />
       <img class="details-user-gig" :src="gigPreview" />
       <h3>About This Gig</h3>
@@ -83,6 +87,9 @@ export default {
   computed: {
     userDetails() {
       return `${this.gig.fullname}`;
+    },
+    userLevel() {
+      return `Level: ${this.gig.level} Seller |⭐⭐⭐⭐⭐ 5 (169) 12 Orders in Queue`;
     },
     userAvatar() {
       return `${this.gig.imgUrl}`;

@@ -1,4 +1,18 @@
 .gig-details-page {
+    .user-details-container{
+        font-size: 12px;
+        gap: 5px;
+        align-items: center;
+        h2{
+            font-weight: bold;
+        }
+        h3{
+            color: rgba(0, 0, 0, 0.926);
+            font-weight: lighter;
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+        }
+    }
+
     margin: 0 auto;
     max-width: 1700px;
     padding: 2rem;
@@ -10,6 +24,7 @@
         font-size: 30px;
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     }
+  
     .details-user-avatar{
         height: 100px;
         width: 100px;
