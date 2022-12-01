@@ -36,7 +36,7 @@
         <!-- add to favorite (heart sign) / price  -->
         <div class="btn-group">
           <span class="starting-at">STARTING AT</span>
-          <span class="card-gig-price">{{gig.price}}</span>
+          <span class="card-gig-price">US{{gig.price}}</span>
           <!-- {{this.decimelToLowerSize(gig.price)}} -->
           <!-- <button @click="goToEdit" class="btn btn-primary">edit</button> -->
           <!-- <button @click="goToDetail" class="btn btn-info">details</button> -->
@@ -78,7 +78,7 @@ export default {
     userRating(gig) {
       //need to make a calculated value with avg rate to gigs
       var gigLevel = `${gig.owner.rate}` || `5.0`;
-      console.log(gig,gigLevel)
+      // console.log(gig,gigLevel)
       return gigLevel
     }
   },

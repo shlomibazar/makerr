@@ -29,11 +29,17 @@ export function getActionAddGigMsg(gigId) {
 
 export const gigStore = {
     state: {
-        gigs: []
+        gigs: [],
+        // labels: null,
     },
     getters: {
         gigs({ gigs }) { return gigs },
     },
+    // labels({ labels }) {
+    //     console.log("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh")
+    //     console.log('state.labels',state.labels)
+    //     return labels
+    //   },
     mutations: {
         setGigs(state, { gigs }) {
             state.gigs = gigs
@@ -53,8 +59,14 @@ export const gigStore = {
             if (!gig.msgs) gig.msgs = []
             gig.msgs.push(msg)
         },
+        // setLabels(state, { labels }) {
+        //     state.labels = labels
+        //     // console.log('state.labels',state.labels)
+        //   },
     },
     actions: {
+
+        
         async addGig(context, { gig }) {
             try {
                 gig = await gigService.save(gig)
@@ -84,17 +96,18 @@ export const gigStore = {
         //         throw err
         //     }
         // },
-        loadGigs: async ({ commit }, { filterBy, sortBy }) => {
-            console.log('hey i here')
+        loadGigs: async ({ commit }, { filterBy, sortBy, }) => {
+            // console.log('hey i here')
             try {
-                console.log('filterBy',filterBy)
-                if (!filterBy) filterBy = { txt: '', status: '', labels: null }
+                console.log('filterBy in gig store',filterBy)
+                if (!filterBy) filterBy = { txt: '', status: '', labels: null,price:0, }
                 if (!sortBy) sortBy = {}
-
                 // const labels = gigService.getLabels()
+                // // console.log('labels',labels)
                 // commit({ type: 'setLabels', labels })
 
                 const gigs = await gigService.query(filterBy, sortBy)
+                console.log('gigs',gigs)
                 commit({ type: 'setGigs', gigs })
             } catch (err) {
                 console.log('Could not get gigs')
