@@ -29,6 +29,7 @@ import { getActionRemoveGig, getActionUpdateGig, getActionAddGigMsg } from '../s
 import gigList from './gig-list.vue'
 import gigFilter from '../cmps/gig-filter.vue'
 import _ from 'lodash'
+
 export default {
   data() {
     return {

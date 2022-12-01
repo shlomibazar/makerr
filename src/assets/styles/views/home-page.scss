@@ -1,8 +1,9 @@
 .hero-btn-conteiner {
     // margin-block: 20px;
     display: flex;
-    justify-content: center;
+    // justify-content: center;
     gap: 15px;
+    // align-items: flex-start;
 
 }
 
@@ -23,7 +24,7 @@ body {
 
 .hero {
     position: relative;
-    width: 100vw;
+    // width: 100vw;
     height: 74vh;
     display: flex;
     justify-content: center;
@@ -75,6 +76,112 @@ body {
 //     }
 //   }
 
+.button-search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 6.875rem;
+    color: #fff;
+    font-size: 16px;
+    background-color: #1daf6b;
+    border-radius: 0 .3125rem .3125rem 0;
+    border: none;
+    cursor: pointer;
+    font-family: "Work Sans";
+    &:hover{
+        background-color: #10613b;
+    }
+
+    
+}
+.button-search:hover{
+    // background-color: #10613b;
+}
+
+.home-page .search-input {
+    // margin-top: 3.25rem;
+    // display: flex;
+    // align-items: left;
+    // border-radius: 0.3125rem;
+    // height: 2.9375rem;
+
+    /* font-size: 30px; */
+    /* width: 540px; */
+
+}
+
+.search-input {
+    display: flex;
+    height: 3rem;
+    margin-bottom: 28px;
+    margin-top: 28px;
+    
+
+    input {
+        width: 540px;
+        // border-radius: .3125rem 0  0 .3125rem   ;
+        // border-radius: 2.3125rem 0  0 2.3125rem   ;
+        border: none;
+        button-search {
+            height: 3rem;
+            width: 6rem;
+            margin: 0;
+            padding: 0;
+        }
+    }
+}
+.search{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    // align-self: center;
+    // text-align: center;
+    padding: .875rem;
+    background-color: #fff;
+    color: #62646a;
+    border-radius: .3125rem 0 0 .3125rem;
+    border: none;}
+
+.home-page .search-input .search {
+    // height: 100%;
+    // align-self:flex-start;
+    // text-align: center;
+    // padding: 0.875rem;
+    // background-color: #fff;
+    // color: #62646a;
+    // border-radius: 0.3125rem 0 0 0.3125rem;
+    // border: none;
+
+}
+
+.fa-solid,
+.fas {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+}
+
+// .home-page .search-input .input {
+//     height: 100%;
+//     width: 32.875rem;
+//     border: none;
+//     border-radius: 0;
+//     font-size: 1.25rem;
+//     color: #62646a;
+// }
+
+// .home-page .search-input .button {
+//     height: 100%;
+//     width: 6.875rem;
+//     color: #fff;
+//     font-size: 20px;
+//     background-color: #1daf6b;
+//     border-radius: 0 0.3125rem 0.3125rem 0;
+//     border: none;
+//     cursor: pointer;
+// }
+
 
 
 
@@ -83,37 +190,57 @@ body {
     font-family: "Monserrat", sans-serif;
     color: white;
     text-align: center;
-    margin: 0.625rem;
+    // margin: 0.625rem;
+}
+
+.freelance {
+    font-style: italic;
+    font-family: DomaineDisplay, Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 
 .hero-title {
     font-size: 3rem;
-    font-weight: 600;
+    line-height: 3.5rem;
+    font-weight: 700;
     margin-bottom: 0;
+    text-align: start;
 }
 
 .hero-subtitle {
     font-size: 2rem;
-    font-weight: 200;
+    line-height: 3.5rem;
+    font-weight: 700;
     margin-top: 1rem;
+    text-align: start;
 }
+
+
 
 .hero-button {
-    // background-color: #ae2d59;
-    color: blue;
-    border: 1px solid black;
-    border-radius: 12px;
-    // margin-top: 5rem;
-    // padding: 0.9375rem 1.875rem;
-    font-family: "Monserrat", sans-serif;
-    font-size: 1.0rem;
-    font-weight: 200;
-    cursor: pointer;
+    background-color: transparent;
+    line-height: 24px;
+    font-weight: 600;
+    color: #fff;
+    padding: 1px 12px 0;
+    border: 1px solid #fff;
+    border-radius: 40px;
+    -webkit-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+    z-index: 4;
+
+    a {
+        margin: 0;
+    }
+
+    a:hover {
+        color: #00310e; // need to do same as hero bg
+    }
 }
 
+
 .hero-button:hover {
-    background-color: #cb376a;
-    border: 1px solid #db7598;
+    background-color: white;
 }
 
 
@@ -496,7 +623,7 @@ body {
     color: white;
     top: 4.6%;
     left: 6.4%;
-    font-family: "work sans";
+    font-family: "Work Sans";
     font-weight: 300;
 }
 
@@ -559,13 +686,14 @@ body {
     width: 48px;
     height: 48px;
     margin-left: 70px;
-    
-    
+
+
 }
+
 .swiper-button-prev:after {
     font-size: 15px;
     font-weight: 800;
-    
+
 }
 
 .swiper-button-next {
