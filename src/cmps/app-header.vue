@@ -61,13 +61,13 @@ export default {
 // },
   data() {
     return {
-      scrollPosition: null
+      scrollPosition: 0,
     }
   },
 methods: {
     updateScroll() {
     this.scrollPosition = window.scrollY
-       console.log(scrollPosition)
+       console.log(this.scrollPosition)
     }
 },
   computed: {
