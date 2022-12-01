@@ -5,7 +5,6 @@
   <link rel="stylesheet" href="css/style.css">
 
   <section class="container home text-center">
-
     <!-- <section class="content-container"> -->
     <section class="hero flex main-layout">
 
@@ -87,7 +86,6 @@
       </div>
 
     </section>
-
     <section class="main-container full trusted-by">
       <div class="flex trusted-by-wrapper">
         <span class="trusted-by-text">Trusted by:</span>
@@ -972,8 +970,6 @@
     <!-- <img alt="Vue logo" src="../assets/logo.png"> -->
     <!-- </section> -->
   </section>
-
-
 </template>
 
 <script>

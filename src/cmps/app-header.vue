@@ -1,6 +1,14 @@
+<style scoped>
+   /* .change_color {
+       background-color:white;
+       color:black;
+   } */
+</style>
 <template>
- 
-    <header class="header-container flex ">
+ <section class="header-wrapper main-container fullWidthContainer" :class="{change_color: scrollPosition > 70}">
+ <!-- <section class="header-wrapper main-container fullWidthContainer" :class="{change_color: scrollPosition > 140}">
+ <section class="header-wrapper main-container fullWidthContainer" :class="{change_color: scrollPosition > 200}"> -->
+    <header class="flex">
       <div>
         <router-link to="/" class="logo">
         <svg width="89" height="27" viewBox="0 0 89 27" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -17,16 +25,19 @@
       </div>
       
       <nav class="flex nav-bar-links">
+        <section class="nav-links flex">
         <router-link to="/gig">Explore</router-link>
         <router-link to="/gig">Become a Seller</router-link>
         <router-link to="/gig">Sign In</router-link>
-        <router-link to="/gig">Join</router-link>
+        </section>
+        <router-link to="/gig" class="join-btn flex">Join</router-link>
         <!-- <router-link to="/review">Reviews</router-link>
         <router-link to="/chat">Chat</router-link>
         <router-link to="/login">Login / Signup</router-link> -->
       </nav>
       
     </header>
+</section>
 
     <section class="loggedin-user" v-if="loggedInUser">
       <router-link :to="`/user/${loggedInUser._id}`">
@@ -39,6 +50,26 @@
 </template>
 <script>
 export default {
+  created () {
+    window.addEventListener('scroll', this.updateScroll);
+  },
+  destroyed () {
+    window.removeEventListener('scroll', this.updateScroll);
+  },
+//   mounted() {
+//     window.('scroll', this.updateScroll);
+// },
+  data() {
+    return {
+      scrollPosition: null
+    }
+  },
+methods: {
+    updateScroll() {
+    this.scrollPosition = window.scrollY
+       console.log(scrollPosition)
+    }
+},
   computed: {
     loggedInUser() {
       return this.$store.getters.loggedinUser
@@ -46,3 +77,4 @@ export default {
   }
 }
 </script>
+

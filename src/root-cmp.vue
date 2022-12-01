@@ -1,7 +1,9 @@
 <template>
+  
   <section>
+    
     <user-msg/>
-    <app-header />
+    <app-header/>
     <router-view/>
   </section>
 </template>
