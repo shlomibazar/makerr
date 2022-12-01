@@ -78,7 +78,7 @@ export default {
     userRating(gig) {
       //need to make a calculated value with avg rate to gigs
       var gigLevel = `${gig.owner.rate}` || `5.0`;
-      console.log(gig,gigLevel)
+      // console.log(gig,gigLevel)
       return gigLevel
     }
   },

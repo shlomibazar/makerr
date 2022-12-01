@@ -21,7 +21,11 @@
 
           <div class="search-input">
             <div class="search">
-              <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M15.8906 14.6531L12.0969 10.8594C12.025 10.7875 11.9313 10.75 11.8313 10.75H11.4187C12.4031 9.60938 13 8.125 13 6.5C13 2.90937 10.0906 0 6.5 0C2.90937 0 0 2.90937 0 6.5C0 10.0906 2.90937 13 6.5 13C8.125 13 9.60938 12.4031 10.75 11.4187V11.8313C10.75 11.9313 10.7906 12.025 10.8594 12.0969L14.6531 15.8906C14.8 16.0375 15.0375 16.0375 15.1844 15.8906L15.8906 15.1844C16.0375 15.0375 16.0375 14.8 15.8906 14.6531ZM6.5 11.5C3.7375 11.5 1.5 9.2625 1.5 6.5C1.5 3.7375 3.7375 1.5 6.5 1.5C9.2625 1.5 11.5 3.7375 11.5 6.5C11.5 9.2625 9.2625 11.5 6.5 11.5Z"></path></svg>
+              <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M15.8906 14.6531L12.0969 10.8594C12.025 10.7875 11.9313 10.75 11.8313 10.75H11.4187C12.4031 9.60938 13 8.125 13 6.5C13 2.90937 10.0906 0 6.5 0C2.90937 0 0 2.90937 0 6.5C0 10.0906 2.90937 13 6.5 13C8.125 13 9.60938 12.4031 10.75 11.4187V11.8313C10.75 11.9313 10.7906 12.025 10.8594 12.0969L14.6531 15.8906C14.8 16.0375 15.0375 16.0375 15.1844 15.8906L15.8906 15.1844C16.0375 15.0375 16.0375 14.8 15.8906 14.6531ZM6.5 11.5C3.7375 11.5 1.5 9.2625 1.5 6.5C1.5 3.7375 3.7375 1.5 6.5 1.5C9.2625 1.5 11.5 3.7375 11.5 6.5C11.5 9.2625 9.2625 11.5 6.5 11.5Z">
+                </path>
+              </svg>
             </div>
             <input class="input" type="text" placeholder="Try &quot;building mobile app&quot;">
             <button-search class="button-search">Search</button-search>
@@ -53,7 +57,7 @@
           </div>
         </div>
       </section>
-      <div class="hero-image" >
+      <div class="hero-image">
         <div class="hero-backgrounds">
           <div class="hero-img">
             <div class="animate-fade hero-andrea" style="opacity: 1;">
@@ -130,37 +134,48 @@
     <div class="main-container">
 
       <h1>Popular professional services</h1>
-      <swiper  :slidesPerView="4" :spaceBetween="35" :slidesPerGroup="4" :loop="true" :loopFillGroupWithBlank="true"
-        :pagination="{
-          clickable: true,
-        }" :navigation="true" :modules="modules" class="mySwiper main-layout ">
+      <div class="lunchbox">
 
-        <swiper-slide class="swiper-slide1">
-          <h2 class="popular-title-text">Build your brand</h2>
-          <h2 class="popular-subtitle-text"> Logo Design</h2>
-          <img
-            src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_550,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741678/logo-design-2x.png"
-            alt="">
-        </swiper-slide>
-        <swiper-slide>
-          <img
-            src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_550,dpr_1.0/v1/attachments/generic_asset/asset/ae11e2d45410b0eded7fba0e46b09dbd-1598561917003/wordpress-2x.png">
-        </swiper-slide>
-        <swiper-slide>
-          <img
-            src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_305,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741669/voiceover-2x.png">
-        </swiper-slide>
-        <swiper-slide>
-          <img
-            src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_550,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741663/animated-explainer-2x.png"
-            alt="">
-        </swiper-slide>
-        <swiper-slide>Slide 5</swiper-slide>
-        <swiper-slide>Slide 6</swiper-slide>
-        <swiper-slide>Slide 7</swiper-slide>
-        <swiper-slide>Slide 8</swiper-slide>
+        <swiper :slidesPerView="4" :spaceBetween="35" :slidesPerGroup="5" :loop="true" :loopFillGroupWithBlank="true"
+          :pagination="{
+            clickable: true,
+          }" :navigation="true" :modules="modules"  :breakpoints="swiperOptions.breakpoints" class="mySwiper main-layout ">
 
-      </swiper>
+          <swiper-slide class="swiper-slide1">
+            <h2 class="popular-title-text">Build your brand</h2>
+            <h2 class="popular-subtitle-text"> Logo Design</h2>
+            <img
+              src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_550,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741678/logo-design-2x.png"
+              alt="">
+          </swiper-slide>
+          <swiper-slide>
+            <img
+              src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_550,dpr_1.0/v1/attachments/generic_asset/asset/ae11e2d45410b0eded7fba0e46b09dbd-1598561917003/wordpress-2x.png">
+          </swiper-slide>
+          <swiper-slide>
+            <img
+              src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_305,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741669/voiceover-2x.png">
+          </swiper-slide>
+          <swiper-slide>
+            <img
+              src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_550,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741663/animated-explainer-2x.png">
+          </swiper-slide>
+          <swiper-slide>
+            <img
+              src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_305,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741667/social-2x.png">
+          </swiper-slide>
+
+          <swiper-slide>Slide 6</swiper-slide>
+          <swiper-slide>Slide 7</swiper-slide>
+          <swiper-slide>Slide 8</swiper-slide>
+          <swiper-slide>Slide 9</swiper-slide>
+          <swiper-slide>Slide 10</swiper-slide>
+          
+        </swiper>
+        <!-- <div class="swiper-button-next">Next</div>
+        <div class="swiper-button-prev">Prev</div> -->
+      </div>
+
     </div>
     <h5 class="text-center">
       <!-- Powered up Frontend -->
@@ -185,10 +200,32 @@ import "swiper/scss/navigation";
 // import required modules
 import { Pagination, Navigation } from "swiper";
 
+
 export default {
   name: 'home',
   data() {
-    return {
+    return { // Retourn the API Dates
+      APIData: [],
+      swiperOptions: {
+        breakpoints: {
+          900: {
+            slidesPerView: 3,
+            slidesPerGroup:3,
+            spaceBetween: 10
+          },
+          1400: {
+            slidesPerView: 4,
+            slidesPerGroup:4,
+            spaceBetween:20
+          },
+
+          1500: {
+            slidesPerView: 5,
+            slidesPerGroup:5,
+            spaceBetween: 30
+          }
+        }
+      }
     }
   },
   computed: {

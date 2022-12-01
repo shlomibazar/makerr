@@ -1,17 +1,20 @@
 <template>
   <div class="container home main-container">
-
+    
+    <gig-list @removeGig="removeGig" v-if="gigs" :gigs="gigs" />
     <gig-filter 
      @filteredTxt="debounceHandler" 
-    />
+     @filteredPrice="setFilterByPrice"
+     
+     />
+     <!-- @filteredLabel="setFilterByLabel" -->
+     <!-- @sorted="setSortBy" -->
+     <!-- @filteredStatus="setFilterByStatus" -->
     <!-- {{filterBy.txt}} -->
 
-    <!-- @filteredStatus="setFilterByStatus" -->
-    <!-- @filteredLabel="setFilterByLabel" -->
-    <!-- @sorted="setSortBy" -->
 
 
-    <gig-list @removeGig="removeGig" v-if="gigs" :gigs="gigs" />
+
 
     <hr />
     <form @submit.prevent="addGig()">
@@ -38,6 +41,7 @@ export default {
         txt: '',
         status: '',
         labels: null,
+        price:0,
       },
       sortBy: {},
     }
@@ -55,11 +59,13 @@ export default {
   created() {
     this.$store.dispatch({ type: 'loadGigs' })
     this.debounceHandler = _.debounce(this.setFilterByTxt, 500)
+    this.debounceHandler = _.debounce(this.setFilterByLabel, 500)
 
   },
   methods: {
     loadGigs() {
       const filterBy = JSON.parse(JSON.stringify(this.filterBy))
+      console.log("🚀 ~ file: gig-app.vue ~ line 68 ~ loadGigs ~ filterBy", filterBy)
       const sortBy = JSON.parse(JSON.stringify(this.sortBy))
       this.$store.dispatch({ type: 'loadGigs', filterBy, sortBy })
     },
@@ -117,6 +123,12 @@ export default {
     },
     setFilterByLabel(labels) {
       this.filterBy.labels = labels
+      console.log('this.filterBy.labels',this.filterBy.labels)
+      this.loadGigs()
+    },
+    setFilterByPrice(price) {
+      this.filterBy.price = price
+      console.log('this.filterBy.price',this.filterBy.price)
       this.loadGigs()
     },
     setSortBy(sortBy) {

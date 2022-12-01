@@ -34,6 +34,7 @@ export default {
         if (_id) {
             gigService.getById(_id).then((gig) => {
                 this.gigToEdit = gig
+                this.selectedLabels = gig.labels.map(label => label.title)
             })
         } else this.gigToEdit = gigService.getEmptyGig()
     },
