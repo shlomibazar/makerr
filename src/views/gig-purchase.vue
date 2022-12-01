@@ -5,6 +5,10 @@
       {{ gig.title }}
       <img class="purchase-left-sidebar-avatar" :src="gigPreview" />
       <h1>Order Details:</h1>
+      <p>{{this.gig.owner.id}}</p>
+      <p>{{this.gig.owner.rate}}</p>
+      <p>{{this.gig.owner.fullname}}</p>
+      <p>{{this.gig.owner.loc}}</p>
     </div>
 
     <div class="gig-purchase-right-container flex">
@@ -114,8 +118,9 @@ export default {
         },
         status: "pending",
       };
-      console.log("Order to add ", orderToAdd);
-      router.push("/order-list");
+      console.log("Order to add ", orderToAdd)
+      router.push(`/dashboard`)
+      // router.push(`/order-list/${this.gig._id}`)
       //  const gigSeller = userService.getById(this.gig.owner.id);
       //   gigSeller.seller.orders.push(orderToAdd);
       //   console.log('Gig Seller ', gigSeller);
