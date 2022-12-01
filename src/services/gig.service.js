@@ -7,6 +7,21 @@ import { userService } from './user.service.js'
 
 const STORAGE_KEY = 'gig'
 
+const labels = [
+    { title: 'On wheels', color: '#dc2626' },
+    { title: 'Board', color: '#f59e0b' },
+    { title: 'Art', color: '#047857' },
+    { title: 'Baby', color: '#2563eb' },
+    { title: 'Puzzle', color: '#4338ca' },
+    { title: 'Outdoor', color: '#be185d' },
+    { title: 'Battery Powered', color: '#71717a' },
+    { title: 'Doll', color: '#6d28d9' },
+    { title: 'Anime', color: '#fbbf24' },
+    { title: 'Lego', color: '#6366f1' },
+    { title: 'Superhero', color: '#ef4444' },
+    { title: 'Strategy', color: '#34d399' },
+  ]
+
 export const gigService = {
     query,
     getById,
