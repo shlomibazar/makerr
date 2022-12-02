@@ -56,7 +56,89 @@
       <!-- <a class="btn-dark-small m-1" @click="setSort('createdAt')">Date</a> -->
       <span>{{ desc === -1 ? '↓' : '↑' }}</span>
     </div>
+
+
+    <div class="dropdown">
+      <button class="filter-button">Budget</button>
+      <div class="minMax flex">
+        <div class="flex column">
+          <label for="minPrice">MIN.</label>
+          <input type="number" id="minPrice" name="minPrice" min="0" class="inputPrice">
+        </div>
+        <div class="flex column">
+          <label for="maxPrice">MAX.</label>
+          <input type="number" id="maxPrice" name="maxPrice" min="0" class="inputPrice">
+        </div>
+      </div>
+      <div>
+        <div class="filter-approve flex">
+          <span>Clear All</span>
+          <span class="apply-button">Apply</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <button class="filter-button">Delivery Time</button>
+
+        <input type="radio" id="express" name="express" value="HTML">
+        <label for="express">Express 24H</label><br>
+
+        <input type="radio" id="3days" name="3days" value="HTML">
+        <label for="3days">Up to 3 days</label><br>
+
+        <input type="radio" id="7days" name="7days" value="HTML">
+        <label for="7days">up to 7 days</label><br>
+
+        <input type="radio" id="anytime" name="anytime" value="HTML">
+        <label for="anytime">Anytime</label><br>
+
+      <div class="filter-approve flex">
+        <span>Clear All</span>
+        <span class="apply-button">Apply</span>
+      </div>
+    </div>
+
+
+
+
+    <!-- <el-dropdown trigger="click" hide-on-click=false size="large" v-if:tabindex="-1">
+      <span class="el-dropdown-link">
+        Dropdown List<el-icon class="el-icon--right">
+          <arrow-down />
+        </el-icon>
+      </span>
+
+      <template #dropdown>
+        <el-dropdown-menu>
+          <el-dropdown-item class="minMax ">
+            <div  class="flex ">
+              <div class="flex column">
+                <label for="minPrice">MIN.</label>
+                <input type="number" id="minPrice" name="minPrice" min="0" class="inputPrice">
+              </div>
+              <div class="flex column" >
+                <label for="maxPrice">MAX.</label>
+                <input type="number" id="maxPrice" name="maxPrice" min="0" class="inputPrice">
+              </div>
+            </div>
+            <div>
+              <div class="filter-approve">
+                <span>Clear All</span>
+                <span class="apply-button">Apply</span>
+              </div>
+            </div>
+              
+          </el-dropdown-item>
+
+        </el-dropdown-menu>
+      </template>
+    </el-dropdown> -->
+
+
   </section>
+
+
 </template>
   
 <script>
@@ -85,7 +167,7 @@ export default {
       this.$emit('filteredTxt', this.txt)
     },
     setFilterPrice() {
-      console.log('this.minPrice',this.minPrice)
+      console.log('this.minPrice', this.minPrice)
       this.$emit('filteredPrice', this.minPrice)
     },
     // setFilterLabel() {
