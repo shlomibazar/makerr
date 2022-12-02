@@ -6,12 +6,12 @@
      <gig-filter 
      @filteredTxt="debounceHandler" 
      @filteredPrice="setFilterByPrice"
+     @sorted="setSortBy"
      
      />
     <gig-list @removeGig="removeGig" v-if="gigs" :gigs="gigs" />
    
      <!-- @filteredLabel="setFilterByLabel" -->
-     <!-- @sorted="setSortBy" -->
      <!-- @filteredStatus="setFilterByStatus" -->
     <!-- {{filterBy.txt}} -->
 

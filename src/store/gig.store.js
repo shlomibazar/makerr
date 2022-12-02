@@ -101,13 +101,13 @@ export const gigStore = {
             try {
                 console.log('filterBy in gig store',filterBy)
                 if (!filterBy) filterBy = { txt: '', status: '', labels: null,price:0, }
-                if (!sortBy) sortBy = {}
+                if (!sortBy) sortBy = null
                 // const labels = gigService.getLabels()
-                // // console.log('labels',labels)
+                // console.log('sortBysssssssssssssssssssssss',sortBy)
                 // commit({ type: 'setLabels', labels })
 
-                const gigs = await gigService.query(filterBy, sortBy)
-                console.log('gigs',gigs)
+                const gigs = await gigService.query(filterBy,sortBy)
+                // console.log('gigs',gigs)
                 commit({ type: 'setGigs', gigs })
             } catch (err) {
                 console.log('Could not get gigs')
