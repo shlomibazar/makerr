@@ -1,9 +1,19 @@
 .header-wrapper{
 // border: 3px solid red;
-position: fixed;
+// position: fixed;
 z-index: 20;
 height: 81px;
+&.sticky{
+    position: fixed;
+    
+}
+&.not-sticky{
+    border-bottom: 1px solid #D8D9DB;
+
+
+}
 transition: background-color .5s;}
+
 header {
     position: flex;
     width: 100%;
@@ -57,7 +67,16 @@ header {
             font-weight: bold;
         // font-family: 'Work Sans', sans-serif;
         font-size: 15.5px;
+        
+        &.not-sticky{
+            background-color: black;
+            
+            router-link{
+             color: black;
+            }
         }
+    }
+        
         .join-btn{
         border: 1px solid white;
         border-radius: 4px;
@@ -72,11 +91,23 @@ header {
         font-weight: bold;
         background-color: none;
         transition: background-color .3s, color .3s,border .3s;
+        &.not-sticky{
+            border-color: #19A463;
+            color: #19A463;
+             height: 38px;
+             width:78px;
+          
+        }
         
     }
     .join-btn:hover{
         background-color: #19A463;
         border-color: #19A463;
+         &.not-sticky{
+            background-color: #19A463;
+            color: #f7fffb;
+          
+        }
 
     }
     }
@@ -133,3 +164,4 @@ header {
 
     }
 }
+

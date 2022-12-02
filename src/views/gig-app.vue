@@ -1,12 +1,15 @@
 <template>
   <div class="container home main-container">
-    
-    <gig-list @removeGig="removeGig" v-if="gigs" :gigs="gigs" />
-    <gig-filter 
+    <section class="sub-header-labels" >
+      <h4 v-for="lable in lables" :key="lable" @click="setFilterByLabel(lable)">{{ lable }}</h4>
+    </section>
+     <gig-filter 
      @filteredTxt="debounceHandler" 
      @filteredPrice="setFilterByPrice"
      
      />
+    <gig-list @removeGig="removeGig" v-if="gigs" :gigs="gigs" />
+   
      <!-- @filteredLabel="setFilterByLabel" -->
      <!-- @sorted="setSortBy" -->
      <!-- @filteredStatus="setFilterByStatus" -->
@@ -36,6 +39,17 @@ import _ from 'lodash'
 export default {
   data() {
     return {
+        lables:[
+        'grphics & design',
+        'digital marketing',
+        'writing & translation',
+        'video & animation',
+        'music & audio',
+        'programming & tech',
+        'business',
+        'lifestyle',
+        'trending'
+      ],
       gigToAdd: gigService.getEmptyGig(),
       filterBy: {
         txt: '',
@@ -54,6 +68,9 @@ export default {
     gigs() {
       return this.$store.getters.gigs
     },
+    lables() {
+      return this.lables
+    }
 
   },
   created() {
@@ -63,6 +80,9 @@ export default {
 
   },
   methods: {
+    getLables() {
+      return this.lables
+    },
     loadGigs() {
       const filterBy = JSON.parse(JSON.stringify(this.filterBy))
       console.log("🚀 ~ file: gig-app.vue ~ line 68 ~ loadGigs ~ filterBy", filterBy)
