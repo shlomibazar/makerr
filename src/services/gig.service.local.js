@@ -32,23 +32,43 @@ export const gigService = {
 window.cs = gigService
 
 
-async function query(filterBy = { txt: '', price,labels }) {
+async function query(filterBy = { txt: '', price,labels },sortBy) {
 
-    
+   
+    // console.log('filterBy sortBy  in query in storage service',sortBy)
     var gigs = await storageService.query(STORAGE_KEY)
-    console.log('filterBy price  in query in storage service',filterBy.price)
+    // console.log('gigs in service',gigs)
+    // console.log('sortBy in service',sortBy)
     if (filterBy.txt) {
         const regex = new RegExp(filterBy.txt, 'i')
         gigs = gigs.filter(gig => regex.test(gig.title) || regex.test(gig.description))
     }
     if (filterBy.price) {
-        console.log("🚀 ~ file: gig.service.local.js ~ line 42 ~ query ~ price", filterBy.price)
+        // console.log("🚀 ~ file: gig.service.local.js ~ line 42 ~ query ~ price", filterBy.price)
         
         gigs = gigs.filter(gig => gig.price >= filterBy.price)
     }
-    if (filterBy.labels) {
-        gigs = gigs.filter(gig => gig.labels <= filterBy.labels)
+    // if (filterBy.labels) {
+    //     gigs = gigs.filter(gig => gig.labels <= filterBy.labels)
+    // }
+    if (!sortBy) return gigs
+
+    else
+    if(sortBy.price){
+        var sortedBy = Object.keys(sortBy)[0]
+        gigs.sort((a,b) => (a.price > b.price) ? 1 : ((b.price > a.price) ? -1 : 0))
     }
+    if(sortBy.rate){
+        var sortedBy = Object.keys(sortBy)[0]
+        gigs.sort((a,b) => (a.owner.rate > b.owner.rate) ? 1 : ((b.owner.rate > a.owner.rate) ? -1 : 0))
+    }
+    if(sortBy.createdAt){
+        var sortedBy = Object.keys(sortBy)[0]
+        console.log('sorteeed',gigs[0].daysToMake.charAt(1))
+        gigs.sort((a,b) => (a.daysToMake.charAt(0) > b.daysToMake.charAt(0)) ? 1 : ((b.daysToMake.charAt(0) > a.daysToMake.charAt(0)) ? -1 : 0))
+    }
+
+    
     return gigs
 }
 // async function query(filterBy, sortBy) {

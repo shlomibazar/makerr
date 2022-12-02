@@ -46,9 +46,10 @@
       </el-select> -->
 
 
+
     <div class="sort flex justify-between items-center m-2">
       <p>Sort:</p>
-      <a class="sort-button" @click="setSort('name')">Name</a>
+      <a class="sort-button" @click="setSort('rate')">Rate</a>
       <a class="sort-button" @click="setSort('price')">Price</a>
       <a class="sort-button" @click="setSort('createdAt')">Date</a>
       <!-- this way they got another class ? undefined  -->
