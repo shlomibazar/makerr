@@ -12,7 +12,7 @@
       <hr />
       <!-- <img class="details-user-gig" :src="gigPreview" /> -->
       <h3>About This Gig</h3>
-      <vueper-slides fade :touchable="true">
+      <vueper-slides fade :touchable="true" fixed-height="500px">
         <vueper-slide
           v-for="(slide, i) in slides"
           :key="i"
