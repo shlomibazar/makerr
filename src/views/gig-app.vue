@@ -5,10 +5,10 @@
     <gig-filter 
      @filteredTxt="debounceHandler" 
      @filteredPrice="setFilterByPrice"
+     @sorted="setSortBy"
      
      />
      <!-- @filteredLabel="setFilterByLabel" -->
-     <!-- @sorted="setSortBy" -->
      <!-- @filteredStatus="setFilterByStatus" -->
     <!-- {{filterBy.txt}} -->
 
