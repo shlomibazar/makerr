@@ -24,8 +24,8 @@
         </section>
         <!-- mini user - user.img + user.name
             gig.title -->
-        <section class="card-main-footer flex row"><span style="font-size:150%;color:#FFBE5B;">&starf;</span>
-        <span>{{ userRating(gig)}}</span><span  class="ratingProject">(169)</span>
+        <section class="card-main-footer flex row"><span class="card-mid-footer-star" style="font-size:150%;color:#FFBE5B;">&starf;</span>
+        <span class="user-rating">{{ userRating(gig)}}</span><span  class="ratingProject">(169)</span>
         
         </section>
         <!-- <p><span class="fw-bold">In stock:</span> {{ gig.inStock }}</p> -->
@@ -36,7 +36,7 @@
         <!-- add to favorite (heart sign) / price  -->
         <div class="btn-group">
           <span class="starting-at">STARTING AT</span>
-          <span class="card-gig-price">US{{gig.price}}</span>
+          <span class="card-gig-price">US${{gig.price}}</span>
           <!-- {{this.decimelToLowerSize(gig.price)}} -->
           <!-- <button @click="goToEdit" class="btn btn-primary">edit</button> -->
           <!-- <button @click="goToDetail" class="btn btn-info">details</button> -->

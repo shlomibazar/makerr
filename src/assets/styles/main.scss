@@ -16,12 +16,15 @@
 
 // Components
 @import "cmps/app-header";
+@import "cmps/app-footer";
 @import "cmps/user-msg";
 @import "cmps/review-list";
 @import "cmps/gig-list";
 
 // Views
+@import "views/gig-app";
 @import "views/gig-details";
 @import "views/gig-purchase";
 @import "views/home-page";
 @import "views/gig-reviews";
+@import "views/dashboard";
