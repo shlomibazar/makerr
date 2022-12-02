@@ -27,32 +27,32 @@
                 </path>
               </svg>
             </div>
-            <input class="input" type="text" placeholder="Try &quot;building mobile app&quot;">
-            <button-search class="button-search">Search</button-search>
+            <input class="input" v-model="searchInfo" type="text" placeholder="Try &quot;building mobile app&quot;" >
+            <button-search class="button-search"  @click="setFilterByTitle">Search</button-search>
           </div>
 
 
           <div class="hero-btn-conteiner">
             Popular:
             <span class="hero-button">
-              <router-link to="">
+              <div @click="setLabel('graphics & design')">
                 Website Design
-              </router-link>
+              </div>
             </span>
             <span class="hero-button">
-              <router-link to="">
+              <div @click="setLabel('digital marketing')">
                 WordPress
-              </router-link>
+              </div>
             </span>
             <span class="hero-button">
-              <router-link to="">
+              <div @click="setLabel('Logo')">
                 Logo design
-              </router-link>
+              </div>
             </span>
             <span class="hero-button">
-              <router-link to="">
+              <div @click="setLabel('writing & translation')">
                 Video Editing
-              </router-link>
+              </div>
             </span>
           </div>
         </div>
@@ -239,6 +239,7 @@ export default {
   data() {
     return { // Retourn the API Dates
       APIData: [],
+      searchInfo: '',
       swiperOptions: {
         breakpoints: {
           900: {
@@ -266,7 +267,13 @@ export default {
   created() {
   },
   methods: {
-
+   setLabel(labelTxt){
+    this.$router.push({path:'/gig', query: {label: labelTxt } })
+  },
+  setFilterByTitle(ev){
+      const pathToRoute = this.$route.path.split('/')
+      this.$router.push({path:'/gig', query: {title: this.searchInfo } })
+    },
   },
   components: {
     Swiper,

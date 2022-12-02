@@ -32,7 +32,7 @@ export const gigService = {
 window.cs = gigService
 
 
-async function query(filterBy = { txt: '', price,labels },sortBy) {
+async function query(filterBy = { txt: '', price,label },sortBy) {
 
    
     // console.log('filterBy sortBy  in query in storage service',sortBy)
@@ -43,14 +43,23 @@ async function query(filterBy = { txt: '', price,labels },sortBy) {
         const regex = new RegExp(filterBy.txt, 'i')
         gigs = gigs.filter(gig => regex.test(gig.title) || regex.test(gig.description))
     }
-    if (filterBy.price) {
+    if (filterBy.budget) {
         // console.log("🚀 ~ file: gig.service.local.js ~ line 42 ~ query ~ price", filterBy.price)
         
-        gigs = gigs.filter(gig => gig.price >= filterBy.price)
+        gigs = gigs.filter(gig =>
+             (gig.price >= filterBy.budget.minPrice )&& 
+             (gig.price <= filterBy.budget.maxPrice )
+             )
     }
-    // if (filterBy.labels) {
-    //     gigs = gigs.filter(gig => gig.labels <= filterBy.labels)
-    // }
+    if (filterBy.label) {
+        gigs = gigs.filter(gig => 
+            gig.labels.includes(filterBy.label)  )
+    }
+    if(filterBy.delTime){
+        gigs = gigs.filter(gig => 
+            gig.daysToMake <= filterBy.delTime)
+      
+    }
     if (!sortBy) return gigs
 
     else
@@ -180,6 +189,7 @@ function getEmptyGig() {
 
 // TEST DATA
 
+
 (async () => {
     await storageService.post(STORAGE_KEY, {
     image: "https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/3171448/original/a41a38f3733bb97279a49d1449f7337dece50693.jpg",
@@ -188,8 +198,8 @@ function getEmptyGig() {
     subCategory: "Logo Design",
     description: "Hi there ! Thanks for stopping by !!\nA Team of Talented Graphic Designer with 8+ years of experience in Graphic Industry, expertise as Logo Maker, You'll get creative & AWESOME logo design for your business.\nMy portfolio : https://www.fiverr.com/users/design_desk/portfolio/NjFiYjE4NmMwZTgwMDUwMDAxZTMzMjJh\n★ Why Us? ★\nTalented Logo Maker Team\nFully custom made, creative, original, UNIQUE and AWESOME designs\nProfessional customer support 24/7\nHigh Quality work\n100% money back policy if not satisfied\n★ WHAT DO YOU GET? ★\n✔ Highly Professional, UNIQUE & High Quality designs\n✔ UNLIMITED revisions until u r 100% satisfied\n✔ Fast turn around time 24 to 48 hours only.\n✔ 100% original & unique vector design from Adobe Illustrator\n✔ Vector Source Files (scalable without any quality loss) (AI, EPS, PDF) for the final design ✔ PROFESSIONAL Communication & Outstanding Customer Support ✔ Guaranteed High Quality work\nIf you have any question,\nFeel free to★ Contact Me! ★I'll be happy to help !\nLet's get started!\n-Your Logo Maker",
     price: 33,
-    daysToMake: "3 Days Delivery",
-    labels:["doll"],
+    daysToMake:9,
+    labels:["graphics & design"],
    owner: {
             id: "u101",
             fullname: "design_desk",
@@ -268,8 +278,8 @@ await storageService.post(STORAGE_KEY, {
     title: "I will create modern unique and creative logo design",
     description: "Hi esteemed buyer!\nLooking for modern unique and creative 2d or 3d logo design? Yes, you're at the right place.\nHaving a vast experience with hundreds of satisfied customers across the globe, I extend my services to design modern unique and creative logo design to represent your brand idea in a befitting manner.\nWhat proves my individuality over others?\nQuick delivery, quality work and transforming your brain idea into a 3d creative unique and modern logo design are my attributes.\nMY GIG OFFERINGS ARE:\nBest customer care\nRevisions within 24 Hours\n100% satisfaction guaranteed\nModern unique and creative designing ideas\nLogically and aesthetically hypnotizing logos\n1 free revision after completion of order\nEditable and re-sizeable vector files\nFont download link included\nHigh resolution final files in zip\nNote: For Complex Illustrations and Mascots, please discuss in inbox before placing order! It is also not included in our packages.\nHave queries? Contact us in inbox anytime!\n★Hearing from you would be an absolute pleasure, Go ahead and ORDER NOW!★",
     price: 84,
-    daysToMake: "2 Days Delivery",
-    labels:["doll"],
+    daysToMake: 6,
+    labels:["digital marketing"],
    owner: {
             id: "u102",
             fullname: "soduzai_gfx1",
@@ -345,8 +355,8 @@ await storageService.post(STORAGE_KEY, {
     title: "I will design 3 modern minimalist logo design",
     description: "ModernMarvel heartily welcomes you to Minimalist Modern Logo Design gig.\nWe are Brand Creators and professional business consultants. Each business has his own story to tell and having high recall value is prime purpose behind getting a LOGO. Thus, We believe in creating simple yet effective masterpiece which blown away your customers mind.\nYour idea of getting Modern memorable and attractive logo design is just one step away. So, Lets discuss and choose a best design for your business.\nOur recommendation BRANDING PACK @ $65 ONLY:\n5 BRANDED logos with minimal designs + vector source files\nAttractive Social media covers (FB + Twitter)\nProfessional stationery design (B card + letterhead)\nUnlimited revision rounds\nExclusive customer support\nRefund & Package selection guidelines:\nIf the designs are as per your initial shared brief, refund wont be a possible option. You can ask for revision if i missed out anything.\nMy samples are from my premium / standard package.\nWe are closed on Sunday.\nMy key skills:\nMinimalist Modern Logo Design | Minimal | Modern | Typography | Line art | Custom logo | Vintage |\nKeen to Get Started!",
     price: 50,
-    daysToMake: "1 Day Delivery",
-    labels:["doll"],
+    daysToMake: 2,
+    labels:["writing & translation"],
    owner: {
             id: "u103",
             fullname: "modernmarvel",
@@ -429,8 +439,8 @@ await storageService.post(STORAGE_KEY, {
         level: 3,
         description: "Greetings!! Welcome to Budding Solutions.\n\"Your one-stop-shop for all your graphic needs\"\nIf you are looking for a Modern and Professional Business logo design, then you are at the right place. We focus on creating simple yet effective designs that elevate your business outlook and leave an everlasting impression.\nWe stand out from our competition due to our best-in-class Customer Support and Quality Designs.\nWhy Us?\n✔ Combination of experience and creativity\n✔ Unique and original designs\n✔ Superior customer care and satisfaction\n✔ Transparent and High-resolution image types\n✔ Different types of source files (AI, EPS, PDF and SVG)\n✔ Complete Branding Guide\n✔ Unlimited revisions until you are 100% satisfied\n✔ Full Copyrights\nMASCOT DESIGNS ARE NOT INCLUDED IN BASIC OR STANDARD GIGS.\nTHE DESIGNS SHOWN ON THE PORTFOLIO ARE FROM STANDARD OR PREMIUM PACKS.\nLogo Design | Professional Logo | Modern Logo | Badge | Hand drawn | Feminine | Signature | Business Logo\nWe look forward to working with you. Please don't hesitate to reach out at any time with any questions.\nPlease review the FAQ section for further clarification.",
         price: 151,
-        daysToMake: "2 Days Delivery",
-        labels:[""],
+        daysToMake: 1,
+        labels:["graphics & design","digital marketing","Logo",],
         owner: {
             id: "u103",
             fullname: "modernmarvel",

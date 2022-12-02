@@ -1,18 +1,16 @@
 <template>
   <div class="container home main-container">
-    <section class="sub-header-labels" >
-      <h4 v-for="lable in lables" :key="lable" @click="setFilterByLabel(lable)">{{ lable }}</h4>
+    <section class="sub-header-labels">
+      <h4 v-for="label in labels" :key="label" @click="setLabelToQuery(label)">{{ label }}</h4>
     </section>
-     <gig-filter 
-     @filteredTxt="debounceHandler" 
-     @filteredPrice="setFilterByPrice"
-     @sorted="setSortBy"
-     
-     />
+    <h1 class="catagory-header"> All </h1>
+    <h2 class="catagory-subheader"> Find the perfect freelance services for your business</h2>
+    <gig-filter @filteredTxt="debounceHandler" @filteredBudget="setFilterByBudget" @sorted="setSortBy"
+      @filteredDel="setFilterByDel" />
     <gig-list @removeGig="removeGig" v-if="gigs" :gigs="gigs" />
-   
-     <!-- @filteredLabel="setFilterByLabel" -->
-     <!-- @filteredStatus="setFilterByStatus" -->
+
+    <!-- @filteredLabel="setFilterByLabel" -->
+    <!-- @filteredStatus="setFilterByStatus" -->
     <!-- {{filterBy.txt}} -->
 
 
@@ -39,8 +37,8 @@ import _ from 'lodash'
 export default {
   data() {
     return {
-        lables:[
-        'grphics & design',
+      labels: [
+        'graphics & design',
         'digital marketing',
         'writing & translation',
         'video & animation',
@@ -54,8 +52,10 @@ export default {
       filterBy: {
         txt: '',
         status: '',
-        labels: null,
-        price:0,
+        label: null,
+        price: 0,
+        delTime: 0,
+        budget: 0,
       },
       sortBy: {},
     }
@@ -68,20 +68,60 @@ export default {
     gigs() {
       return this.$store.getters.gigs
     },
-    lables() {
-      return this.lables
-    }
+    labels() {
+      return this.labels
+    },
+    updateParams() {
+      this.toParams = this.$route.query
+      return this.toParams
+    },
 
   },
   created() {
-    this.$store.dispatch({ type: 'loadGigs' })
+    if(!this.$route.query){
+      this.$store.dispatch({ type: 'loadGigs' })
+    }
     this.debounceHandler = _.debounce(this.setFilterByTxt, 500)
     this.debounceHandler = _.debounce(this.setFilterByLabel, 500)
+    console.log('this.$route.params', this.$route.query)
+    this.previousParams = this.$route.query
+    if(this.$route.query.title){
+      this.setFilterByTxt(this.$route.query.title)
+    }
+    if(this.$route.query.label){
+      this.setFilterByLabel(this.$route.query.label)
+    }
 
+    this.$watch(
+
+      () => this.$route.query,
+
+      (toParams, previousParams) => {
+        if (this.$route.query) {
+          
+          console.log('this.$route.query',this.$route.query)
+          if (previousParams.label !== toParams.label) {
+            console.log('toParams label', toParams.label)
+            this.setFilterByLabel(toParams.label)
+          }
+          if (previousParams.title !== toParams.title) {
+            console.log('toParams tttt', toParams.title)
+            this.setFilterByTxt(toParams.title)
+          }
+        }
+      }
+    )
   },
   methods: {
-    getLables() {
-      return this.lables
+    setLabelToQuery(labelTitle) {
+      console.log('example', this.searchInfo)
+      const pathToRoute = this.$route.path.split('/')
+      console.log('pathToRoute', pathToRoute);
+      this.$router.push({ path: '/gig', query: { label: labelTitle } })
+    },
+
+    getLabels() {
+      return this.label
     },
     loadGigs() {
       const filterBy = JSON.parse(JSON.stringify(this.filterBy))
@@ -134,7 +174,14 @@ export default {
       console.log('Gig msgs:', gig.msgs)
     },
     setFilterByTxt(txt) {
+      console.log('hey i in set filter by text')
       this.filterBy.txt = txt
+      this.loadGigs()
+    },
+    setFilterByDel(delTime) {
+      this.filterBy.delTime = delTime
+      console.log('hey i in set filter by del')
+      console.log('delTime', delTime)
       this.loadGigs()
     },
     setFilterByStatus(status) {
@@ -142,13 +189,13 @@ export default {
       this.loadGigs()
     },
     setFilterByLabel(labels) {
-      this.filterBy.labels = labels
-      console.log('this.filterBy.labels',this.filterBy.labels)
+      this.filterBy.label = labels
+      console.log('this.filterBy.labels', this.filterBy.labels)
       this.loadGigs()
     },
-    setFilterByPrice(price) {
-      this.filterBy.price = price
-      console.log('this.filterBy.price',this.filterBy.price)
+    setFilterByBudget(budget) {
+      this.filterBy.budget = budget
+      console.log('this.filterBy.budget', this.filterBy.budget)
       this.loadGigs()
     },
     setSortBy(sortBy) {
@@ -156,6 +203,9 @@ export default {
       this.loadGigs()
     },
   },
+
+
+
   components: {
     gigList,
     gigFilter,

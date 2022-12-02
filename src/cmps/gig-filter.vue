@@ -3,35 +3,21 @@
     <!-- <input type="text" placeholder="Search.." style="width:100px
         height:100px"> -->
 
-    <el-input
-      v-model="txt"
-      @input="setFilterTxt"
-      style="width: 250px"
-      placeholder="Search gig..."
-      :prefix-icon="search"
-    />
+    <!-- <el-input v-model="txt" @input="setFilterTxt" style="width: 250px" placeholder="Search gig..."
+      :prefix-icon="search" /> -->
 
-    <label>
+    <!-- <label>
       Min price:
-      <input
-        type="range"
-        @input="setFilterPrice"
-        v-model.number="minPrice"
-        min="0"
-        max="1000"
-      />
+      <input type="range" @input="setFilterPrice" v-model.number="minPrice" min="0" max="1000" />
       <span>{{ minPrice }}</span>
-    </label>
+    </label> -->
 
-    <div class="sort flex justify-between items-center m-2">
+    <!-- <div class="sort flex justify-between items-center m-2">
       <p>Sort:</p>
       <a class="sort-button" @click="setSort('rate')">Rate</a>
       <a class="sort-button" @click="setSort('price')">Price</a>
       <a class="sort-button" @click="setSort('createdAt')">Date</a>
-      <!-- this way they got another class ? undefined  -->
-      <!-- <a class="btn-dark-small m-1" @click="setSort('createdAt')">Date</a> -->
-      <span>{{ desc === -1 ? "↓" : "↑" }}</span>
-    </div>
+    </div> -->
 
     <!-- BUDGET MODAL -->
     <div class="dropdown">
@@ -40,29 +26,17 @@
         <div class="minMax flex">
           <div class="flex column">
             <label for="minPrice">MIN.</label>
-            <input
-              type="number"
-              id="minPrice"
-              name="minPrice"
-              min="0"
-              class="inputPrice"
-            />
+            <input type="number" id="minPrice" name="minPrice" min="0" class="inputPrice" v-model="budget.minPrice" />
           </div>
           <div class="flex column">
             <label for="maxPrice">MAX.</label>
-            <input
-              type="number"
-              id="maxPrice"
-              name="maxPrice"
-              min="0"
-              class="inputPrice"
-            />
+            <input type="number" id="maxPrice" name="maxPrice" min="0" class="inputPrice" v-model="budget.maxPrice" />
           </div>
         </div>
         <div>
           <div class="filter-approve flex">
-            <span>Clear All</span>
-            <span class="apply-button">Apply</span>
+            <button class="clear-button" @click="clearAllBudget">Clear All</button>
+            <button class="apply-button" @click="setFilterBudget">Apply</button>
           </div>
         </div>
       </div>
@@ -72,21 +46,38 @@
     <div class="dropdown">
       <button class="filter-button" @click="deliveryTimeModal()">Delivery Time</button>
       <div class="delivery-time-modal" v-if="this.isDeliveryModal">
-        <br />
-        <input type="radio" id="express" name="express" value="HTML" />
-          <label for="express">Express 24H</label><br />
+        <!-- <div>
 
-          <input type="radio" id="3days" name="3days" value="HTML" />  
-        <label for="3days">Up to 3 days</label><br />
+          <p>Tutorials:{{ tutorials }}</p>
+          <input v-model="tutorials" type="radio" value="Data Structures" name="ds" />
+          <label for="ds">Data Structures</label>
+          <input v-model="tutorials" type="radio" value="Algorithms" name="al" />
+          <label for="al">Algorithms</label>
+          <input v-model="tutorials" type="radio" value="Machine Learning" name="ml" />
+          <label for="ml">Machine Learning</label>
+        </div> -->
 
-          <input type="radio" id="7days" name="7days" value="HTML" />  
-        <label for="7days">up to 7 days</label><br />
+        <div class="flex">
+          <input type="radio" id="express" name="express" value="1" v-model="buttonChoose" />
+          <label for="express">Express 24H</label><br />
+        </div>
+        <div class="flex">
+          <input type="radio" id="3days" name="express" value="3" v-model="buttonChoose" />  
+          <label for="3days">Up to 3 days</label><br />
+        </div>
+        <div class="flex">
+          <input type="radio" id="7days" name="express" value="7" v-model="buttonChoose" />  
+          <label for="7days">up to 7 days</label><br />
+        </div>
+        <div class="flex">
+          <input type="radio" id="anytime" name="express" value="999" v-model="buttonChoose" />  
+          <label for="anytime">Anytime</label><br />
+        </div>
 
-          <input type="radio" id="anytime" name="anytime" value="HTML" />  
-        <label for="anytime">Anytime</label><br />
+
         <div class="filter-approve flex">
-          <span>Clear All</span>
-          <span class="apply-button">Apply</span>
+          <button class="clear-button" @click="clearAllDellTime">Clear All</button>
+          <button class="apply-button" @click="setFilterDelTime(buttonChoose)">Apply</button>
         </div>
       </div>
     </div>
@@ -109,19 +100,46 @@ export default {
       desc: -1,
       isDeliveryModal: false,
       isBudgetModal: false,
+      selected: '',
+      buttonChoose: '',
+      budget: {
+        minPrice: 0,
+        maxPrice: 9999,
+      },
     };
   },
-  created() {},
+  created() { },
   methods: {
+    clearAllBudget() {
+      this.budget.minPrice = 0
+      this.budget.maxPrice = 9999
+      this.isBudgetModal = false
+      this.$emit("filteredBudget", this.budget);
+    },
+    clearAllDellTime() {
+      this.buttonChoose = ''
+      this.isDeliveryModal = false
+      this.$emit("filteredDel", this.buttonChoose);
+      
+    },
     setFilterTxt() {
       console.log("this.$store.getters.labels", this.$store.getters.labels);
-
       this.$emit("filteredTxt", this.txt);
     },
     setFilterPrice() {
       console.log("this.minPrice", this.minPrice);
       this.$emit("filteredPrice", this.minPrice);
     },
+    setFilterDelTime() {
+      this.isDeliveryModal = false
+      this.$emit("filteredDel", this.buttonChoose);
+    },
+    setFilterBudget() {
+      console.log('this.budgetttttttttttttt', this.budget)
+      this.isBudgetModal = false
+      this.$emit("filteredBudget", this.budget);
+    },
+
     // setFilterLabel() {
     //   this.$emit('filteredLabel', this.selectedLabels)
     // },
