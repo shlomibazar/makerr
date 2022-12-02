@@ -42,8 +42,8 @@
       
     </header>
 </section>
-<section class="header-labels"  v-if="scrollPosition > 140"></section>
- <section v-if="!isInHomePage()" class="header-wrapper main-container fullWidthContainer not-sticky">
+<!-- <section class="header-labels"  v-if="scrollPosition > 140"></section> -->
+<section v-if="!isInHomePage()" class="header-wrapper main-container fullWidthContainer not-sticky">
     <header class="flex">
       <div>
         <router-link to="/" class="logo">
@@ -94,12 +94,14 @@
 export default {
   created () {
     window.addEventListener('scroll', this.updateScroll);
+    // this.isInHomePage()
   },
   destroyed () {
     window.removeEventListener('scroll', this.updateScroll);
   },
   data() {
     return {
+      isInHome:true,
       scrollPosition: 0,
       labels:["All",
    "Logo",
@@ -112,7 +114,8 @@ export default {
   },
   methods: {
     isInHomePage() {
-      return this.$router.currentRoute._value.path === "/";
+      return this.$router.currentRoute._value.path === "/"
+        // ? this.isInHome = true : this.isInHome = false
     },
     updateScroll() {
     this.scrollPosition = window.scrollY
@@ -122,6 +125,9 @@ export default {
     loggedInUser() {
       return this.$store.getters.loggedinUser
     },
+    //     isInHomePage() {
+    //   return this.$router.currentRoute._value.path === "/";
+    // },
   }
 }
 </script>
