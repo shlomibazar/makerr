@@ -133,7 +133,7 @@
     </section>
     <div class="main-container">
 
-      <h1>Popular professional services</h1>
+      <h1 class="flex">Popular professional services</h1>
       <div class="lunchbox">
 
         <swiper :slidesPerView="4" :spaceBetween="35" :slidesPerGroup="5" :loop="true" :loopFillGroupWithBlank="true"
@@ -149,27 +149,60 @@
               alt="">
           </swiper-slide>
           <swiper-slide>
+            <h2 class="popular-title-text">Customize your site</h2>
+            <h2 class="popular-subtitle-text"> WordPress</h2>
             <img
               src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_550,dpr_1.0/v1/attachments/generic_asset/asset/ae11e2d45410b0eded7fba0e46b09dbd-1598561917003/wordpress-2x.png">
           </swiper-slide>
           <swiper-slide>
+            <h2 class="popular-title-text">Share your message</h2>
+            <h2 class="popular-subtitle-text"> Voice Over</h2>
             <img
               src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_305,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741669/voiceover-2x.png">
           </swiper-slide>
           <swiper-slide>
+            <h2 class="popular-title-text">Engage your audience</h2>
+            <h2 class="popular-subtitle-text"> Video Explainer</h2>
             <img
               src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_550,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741663/animated-explainer-2x.png">
           </swiper-slide>
           <swiper-slide>
+            <h2 class="popular-title-text">Reach more customers</h2>
+            <h2 class="popular-subtitle-text"> Social <Media></Media></h2>
+            <img
+              src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_255,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741668/seo-2x.png">
+          </swiper-slide>
+          <swiper-slide>
+            <h2 class="popular-title-text">Unlock growth online</h2>
+            <h2 class="popular-subtitle-text"> SEO</h2>
+            <img
+              src=https://fiverr-res.cloudinary.com/q_auto,f_auto,w_255,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741668/seo-2x.png>
+          </swiper-slide>
+          <swiper-slide>
+            <h2 class="popular-title-text">Color your dreams</h2>
+            <h2 class="popular-subtitle-text"> Illustration</h2>
+            <img
+              src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_255,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741674/translation-2x.png">
+          </swiper-slide>
+          <swiper-slide>
+            <h2 class="popular-title-text">Go global</h2>
+            <h2 class="popular-subtitle-text"> Translation</h2>
+            <img
+              src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_255,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741664/data-entry-2x.png">
+          </swiper-slide>
+          <swiper-slide>
+            <h2 class="popular-title-text">Learn your business</h2>
+            <h2 class="popular-subtitle-text"> Data Entry</h2>
+            <img
+              src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_255,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741678/book-covers-2x.png">
+          </swiper-slide>
+          <swiper-slide>
+            <h2 class="popular-title-text">Showcase your story</h2>
+            <h2 class="popular-subtitle-text"> Book Covers</h2>
             <img
               src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_305,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741667/social-2x.png">
           </swiper-slide>
 
-          <swiper-slide>Slide 6</swiper-slide>
-          <swiper-slide>Slide 7</swiper-slide>
-          <swiper-slide>Slide 8</swiper-slide>
-          <swiper-slide>Slide 9</swiper-slide>
-          <swiper-slide>Slide 10</swiper-slide>
           
         </swiper>
         <!-- <div class="swiper-button-next">Next</div>
