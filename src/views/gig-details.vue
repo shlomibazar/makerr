@@ -3,7 +3,6 @@
   <section v-if="gig" class="gig-details-page">
     <div class="details-content">
       <h1>{{ gig.title }}</h1>
-
       <div class="user-details-container flex">
         <img class="details-user-avatar" :src="userAvatar" />
         <h2>{{ userDetails }}</h2>
@@ -11,8 +10,17 @@
       </div>
       <br />
       <hr />
-      <img class="details-user-gig" :src="gigPreview" />
+      <!-- <img class="details-user-gig" :src="gigPreview" /> -->
       <h3>About This Gig</h3>
+      <vueper-slides fade :touchable="true">
+        <vueper-slide
+          v-for="(slide, i) in slides"
+          :key="i"
+          :image="slide.image"
+          :title="slide.title"
+          :content="slide.content"
+        />
+      </vueper-slides>
       <p>{{ gig.description }}</p>
 
       <h3>About The Seller</h3>
@@ -161,12 +169,24 @@
 // import chatVue from "./chat.vue"
 import { gigService } from "../services/gig.service.local.js";
 import { getActionRemoveGig, getActionUpdateGig } from "../store/gig.store";
+import { VueperSlides, VueperSlide } from "vueperslides";
+import "vueperslides/dist/vueperslides.css";
 import { router } from "../router.js";
 
 export default {
   data() {
     return {
       gig: null,
+      slides: [
+        {
+          title: 'Gig #1',
+          image: `https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs/50702949/original/c3d23447f3f4d88a5be38e8265781aa02628c45a/design-a-stunning-fiverr-gig-image.png`,
+        },
+        {
+          title: "Gig #2",
+          image: `https://fiverr-res.cloudinary.com/t_main1,q_auto,f_auto/gigs/285127404/original/2bba09b921cb2b62b5cd9f26c5b5ac499e795d23.png`,
+        },
+      ],
     };
   },
   created() {
@@ -188,7 +208,6 @@ export default {
     },
     loadGig() {
       const id = this.$route.params.gigId;
-      //   console.log("iddddddd", id);
       gigService.getById(id).then((gig) => {
         this.gig = gig;
         console.log("loadGig");
@@ -219,7 +238,8 @@ export default {
     },
   },
   components: {
-    // chatVue,
+    VueperSlides,
+    VueperSlide,
   },
 };
 </script>
