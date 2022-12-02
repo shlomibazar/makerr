@@ -9,6 +9,9 @@ import userDetails from './views/user-details.vue'
 import gigDetails from './views/gig-details.vue'
 import gigEdit from './views/gig-edit.vue'
 import purchaseGig from './views/gig-purchase.vue'
+import orderList from './views/order-list.vue'
+import dashboard from './views/dashboard.vue'
+
 
 
 const routes = [
@@ -56,6 +59,16 @@ const routes = [
     path: '/purchase/:gigId',
     name: 'purchaseGig',
     component: purchaseGig
+  },
+  {
+    path: '/order-list/:gigId',
+    name: 'orderList',
+    component: orderList
+  },
+  {
+    path: '/dashboard',
+    name: 'dashboard',
+    component: dashboard
   },
 ]
 

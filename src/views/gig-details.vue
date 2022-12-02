@@ -14,26 +14,41 @@
       <img class="details-user-gig" :src="gigPreview" />
       <h3>About This Gig</h3>
       <p>{{ gig.description }}</p>
-      <hr />
 
       <h3>About The Seller</h3>
-      <div class="details-about-seller">
+      <div class="about-seller">
         <img class="details-user-avatar-about" :src="userAvatar" />
-        <div class="details-about-seller"></div>
-        <h4>{{ gig.owner.fullname }}</h4>
-        <button>Contact me</button>
+        <div class="owner-details">
+          <div class="owner-fullname">{{ gig.owner.fullname }}</div>
+          <div class="stars"><span>★★★★★ 4.9</span> (456)</div>
+          <button
+            class="el-button is-plain btn-contact"
+            aria-disabled="false"
+            type="button"
+          >
+            <span class="">Contact Me</span>
+          </button>
+        </div>
+      </div>
+      <div class="extended-owner-details">
+        <ul class="user-state flex clean-list">
+          <li>
+            From <br /><strong>{{ gig.owner.loc }}</strong>
+          </li>
+          <li>
+            Avg. response time <br /><strong>{{ gig.owner.avgResponceTime }}</strong>
+          </li>
+          <li>
+            Member since <br /><strong>{{ gig.owner.memberSince }}</strong>
+          </li>
+          <li>
+            Last delivery <br /><strong>{{ gig.owner.lastDelivery }}</strong>
+          </li>
+        </ul>
+        <hr />
+        <pre>{{ gig.owner.about }}</pre>
       </div>
 
-      <div class="seller-container">
-        <div class="seller-content">
-          <h3>From {{ gig.owner.loc }}</h3>
-          <h3>Member Since {{ gig.owner.memberSince }}</h3>
-          <h3>Avg. response time {{ gig.owner.avgResponceTime }}</h3>
-          <h3>Last delivery {{ gig.owner.lastDelivery }}</h3>
-        </div>
-        <hr />
-        <p>{{ gig.owner.about }}</p>
-      </div>
       <div class="seller-reviews">
         <h1>{{ gig.reviewers.length }} Reviews</h1>
         <h4 v-for="review in gig.reviewers" :key="review._id" :value="review.reviews">
@@ -44,6 +59,7 @@
                 <div class="reviewer-name">
                   <img class="details-user-avatar-about" :src="userAvatar" />
                   {{ review.name }}
+                  <div class="stars">★★★★★ <span class="rate-num">5</span></div>
                 </div>
                 <div class="reviewer-country">
                   <img :src="gigReviewFlag" />
@@ -54,7 +70,7 @@
             <div class="review-user-comment">
               <h5>
                 {{ review.review }}
-                <br/><br/><br/>
+                <br /><br /><br />
                 <h3>{{ review.reviewedAt }}</h3>
               </h5>
             </div>
