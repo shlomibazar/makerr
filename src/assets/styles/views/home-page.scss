@@ -865,11 +865,11 @@ body {
 
 .filter-approve {
     border-top: 1px solid grey;
-    width: 314px;
+    width: 200px;
     height: 63px;
     display: flex;
     margin-top: 10px;
-
+    justify-content: space-between;
 }
 
 .apply-button {
@@ -882,10 +882,6 @@ body {
     border-radius: 4px;
 }
 
-.filter-approve {
-    justify-content: space-between;
-
-}
 
 .dropdown {
     button {
