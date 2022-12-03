@@ -165,6 +165,7 @@
       </footer>
     </div>
   </section>
+  
 </template>
 <script>
 // import chatVue from "./chat.vue"
