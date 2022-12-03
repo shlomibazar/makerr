@@ -17,8 +17,6 @@
             services for your business
           </h1>
 
-
-
           <div class="search-input">
             <div class="search">
               <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
@@ -30,8 +28,6 @@
             <input class="input" v-model="searchInfo" type="text" placeholder="Try &quot;building mobile app&quot;" >
             <button-search class="button-search"  @click="setFilterByTitle">Search</button-search>
           </div>
-
-
           <div class="hero-btn-conteiner">
             Popular:
             <span class="hero-button">

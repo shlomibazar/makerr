@@ -78,7 +78,7 @@ export default {
 
   },
   created() {
-    if(!this.$route.query){
+    if(!this.$route.query.title||!this.$route.query.label){
       this.$store.dispatch({ type: 'loadGigs' })
     }
     this.debounceHandler = _.debounce(this.setFilterByTxt, 500)
