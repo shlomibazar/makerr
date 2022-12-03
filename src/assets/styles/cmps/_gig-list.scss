@@ -312,7 +312,7 @@
 //grandfather of arrows
 .vueperslides__inner {
   overflow: hidden;
-
+  
   &:hover {
     .vueperslides__arrows {
 
@@ -327,7 +327,37 @@
 
 }
 
-.vueperslides__bullets{
+.vueperslides__bullets,.active{
+  background-color: #1d2bbf;
+  &.default{
+  // height: 150px;
+  &.active{
+  background-color: #1d2bbf;
+  // height: 150px;
+  }
+  }  
+  // height: 20px;
 z-index: 1;
-background-color: rgba(0, 0, 0, 0.055);
+background-color: rgba(0, 0, 0, 0.015);
+display: flex;
+justify-content: center;
+align-items: center;
+.default{
+  height: 5px;
+  width: 5px;
+  background-color: #ffffff;
+  &.active{
+height: 70px;
+  }
+}
+}
+.vueperslides__parallax-wrapper{
+  ::after{
+background-color: #1d2bbf;
+box-shadow: none;
+  }
+  ::before{
+background-color: #1d2bbf;
+box-shadow: none;
+  }
 }
