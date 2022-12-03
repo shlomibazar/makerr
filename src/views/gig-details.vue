@@ -12,7 +12,8 @@
       <hr />
       <!-- <img class="details-user-gig" :src="gigPreview" /> -->
       <h3>About This Gig</h3>
-      <vueper-slides fade :touchable="true" fixed-height="500px">
+      <!-- class is in gig list.scss = to get specific view for each slider -->
+      <vueper-slides fade :touchable="true" fixed-height="500px" class="details-slider">
         <vueper-slide
           v-for="(slide, i) in slides"
           :key="i"

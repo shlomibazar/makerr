@@ -2,12 +2,9 @@
   <li class="gig-preview" >
     <custom-card>
       <template #card-header>
-        <!-- <img class="card-img" :src="gig.image" alt="" /> -->
-        <!-- <vueper-slides>
-  <vueper-slide v-for="i in 5" :key="i" :title="i.toString()" />
-</vueper-slides> -->
 
-      <vueper-slides  :touchable="false" fixed-height="194px">
+
+      <vueper-slides  :touchable="false" fixed-height="194px" class="preview-slider">
         <vueper-slide
         v-for="(slide, i) in gig.images"
         :key="i"

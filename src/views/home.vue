@@ -25,8 +25,8 @@
                 </path>
               </svg>
             </div>
-            <input class="input" v-model="searchInfo" type="text" placeholder="Try &quot;building mobile app&quot;" >
-            <button-search class="button-search"  @click="setFilterByTitle">Search</button-search>
+            <input class="input" v-model="searchInfo" type="text" placeholder="Try &quot;building mobile app&quot;">
+            <button-search class="button-search" @click="setFilterByTitle">Search</button-search>
           </div>
           <div class="hero-btn-conteiner">
             Popular:
@@ -131,7 +131,7 @@
 
       <h1 class="flex">Popular professional services</h1>
       <div class="lunchbox">
-
+        <!-- 
         <swiper :slidesPerView="4" :spaceBetween="35" :slidesPerGroup="5" :loop="true" :loopFillGroupWithBlank="true"
           :pagination="{
             clickable: true,
@@ -200,9 +200,23 @@
           </swiper-slide>
 
           
-        </swiper>
-        <!-- <div class="swiper-button-next">Next</div>
-        <div class="swiper-button-prev">Prev</div> -->
+        </swiper> -->
+
+        <vueper-slides class="homepage-slider"
+         :visible-slides="5" 
+         :slide-ratio="1 / 4"
+         slide-multiple :gap="3" 
+          :dragging-distance="200" 
+          :breakpoints="{ 800: { visibleSlides: 2, slideMultiple: 2 } }">
+          <vueper-slide
+          v-for="(slide, i) in slides"
+          :key="i"
+          :image="slide.image"
+          :title="slide.title"
+          :content="slide.content"
+        />
+      </vueper-slides>
+
       </div>
 
     </div>
@@ -229,29 +243,84 @@ import "swiper/scss/navigation";
 // import required modules
 import { Pagination, Navigation } from "swiper";
 
+import { VueperSlides, VueperSlide } from 'vueperslides'
+import 'vueperslides/dist/vueperslides.css'
 
 export default {
   name: 'home',
   data() {
     return { // Retourn the API Dates
+      slides: [
+      {
+        title: 'Build your brand',
+        content: 'Logo Design',
+        image: 'https://fiverr-res.cloudinary.com/q_auto,f_auto,w_550,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741678/logo-design-2x.png'
+      },
+      {
+        title: 'Customize your site',
+        content: 'WordPress',
+        image: 'https://fiverr-res.cloudinary.com/q_auto,f_auto,w_550,dpr_1.0/v1/attachments/generic_asset/asset/ae11e2d45410b0eded7fba0e46b09dbd-1598561917003/wordpress-2x.png'
+      },
+      {
+        title: 'Share your message',
+        content: 'Voice Over',
+        image: 'https://fiverr-res.cloudinary.com/q_auto,f_auto,w_305,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741669/voiceover-2x.png'
+      },
+      {
+        title: 'Engage your audience',
+        content: 'Video Explainer',
+        image: 'https://fiverr-res.cloudinary.com/q_auto,f_auto,w_550,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741663/animated-explainer-2x.png'
+      },
+      {
+        title: 'Reach more customers',
+        content: 'Social',
+        image: 'https://fiverr-res.cloudinary.com/q_auto,f_auto,w_255,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741668/seo-2x.png'
+      },
+      {
+        title: 'Unlock growth online',
+        content: 'SEO',
+        image: 'https://fiverr-res.cloudinary.com/q_auto,f_auto,w_255,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741668/seo-2x.png'
+      },
+      {
+        title: 'Color your dreams',
+        content: 'Illustration',
+        image: 'https://fiverr-res.cloudinary.com/q_auto,f_auto,w_255,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741674/translation-2x.png'
+      },
+      {
+        title: 'Go global',
+        content: 'Translation',
+        image: 'https://fiverr-res.cloudinary.com/q_auto,f_auto,w_255,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741664/data-entry-2x.png'
+      },
+      {
+        title: 'Learn your business',
+        content: 'Data Entry',
+        image: 'https://fiverr-res.cloudinary.com/q_auto,f_auto,w_255,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741678/book-covers-2x.png'
+      },
+      {
+        title: 'Showcase your story',
+        content: 'Book Covers',
+        image: 'https://fiverr-res.cloudinary.com/q_auto,f_auto,w_305,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741667/social-2x.png'
+      },
+      
+      ],
       APIData: [],
       searchInfo: '',
       swiperOptions: {
         breakpoints: {
           900: {
             slidesPerView: 3,
-            slidesPerGroup:3,
+            slidesPerGroup: 3,
             spaceBetween: 10
           },
           1400: {
             slidesPerView: 4,
-            slidesPerGroup:4,
-            spaceBetween:20
+            slidesPerGroup: 4,
+            spaceBetween: 20
           },
 
           1500: {
             slidesPerView: 5,
-            slidesPerGroup:5,
+            slidesPerGroup: 5,
             spaceBetween: 30
           }
         }
@@ -263,17 +332,19 @@ export default {
   created() {
   },
   methods: {
-   setLabel(labelTxt){
-    this.$router.push({path:'/gig', query: {label: labelTxt } })
-  },
-  setFilterByTitle(ev){
+    setLabel(labelTxt) {
+      this.$router.push({ path: '/gig', query: { label: labelTxt } })
+    },
+    setFilterByTitle(ev) {
       const pathToRoute = this.$route.path.split('/')
-      this.$router.push({path:'/gig', query: {title: this.searchInfo } })
+      this.$router.push({ path: '/gig', query: { title: this.searchInfo } })
     },
   },
   components: {
     Swiper,
     SwiperSlide,
+    VueperSlides,
+    VueperSlide,
   },
   setup() {
     return {
