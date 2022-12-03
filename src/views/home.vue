@@ -208,8 +208,8 @@
          :slide-ratio="1 / 4"
          slide-multiple :gap="3" 
           :dragging-distance="200" 
+          :touchable="false"
           :breakpoints="{ 800: { visibleSlides: 2, slideMultiple: 2 } }">
-          
           <vueper-slide
           v-for="(slide, i) in slides"
           :key="i"
