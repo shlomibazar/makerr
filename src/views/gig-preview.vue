@@ -26,7 +26,11 @@
             <span class="card-seller-level">{{userLevel(gig)}}</span>
           </section>
           <section class="card-seller-clients">Clients</section>
+          <section class="client-logo-wraper">
+          <img class="clients-logo" v-for="client in gig.owner.clients"  :src="client" >
+          </section>
         <!-- <p><span class="fw-bold">Name:</span> {{ gig.fullname }}</p> -->
+
         <!-- <p><span class="fw-bold">In stock:</span> {{ gig.inStock }}</p> -->
         <!-- <p><span class="fw-bold">Price:</span> ${{ gig.price }}</p> -->
         </section>

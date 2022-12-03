@@ -83,13 +83,17 @@ header {
             align-items: center;
             // border: 1px solid yellow;
             font-weight: bold;
+            
         // font-family: 'Work Sans', sans-serif;
         font-size: 15.5px;
         
         &.not-sticky{
             // background-color: black;
             a{
-                color: black;
+                color: #62646A;
+                &:hover{
+                    color: #1dbf73;
+                }
             }
             router-link{
              color: black;
@@ -114,8 +118,8 @@ header {
         &.not-sticky{
             border-color: #19A463;
             color: #19A463;
-             height: 38px;
-             width:78px;
+             height: 30px;
+             width:90px;
           
         }
         
@@ -144,6 +148,9 @@ header {
     .logo{
     margin-left: 0%;
     width: 10%;
+    &.logo-fixed{
+        color: #404145;
+    }
 
     }
     
@@ -153,7 +160,9 @@ header {
     height: 41px;
    display: flex;
    align-items: center;
+   
     &.homePage{
+         
     // align-items: center;
     // margin-top: 36px;
     background-color:#ffffff;
@@ -167,13 +176,24 @@ header {
      display: flex;
      width: 1400px;
      justify-content: space-between;
+     
 
     }
      h4{
+        border-bottom:3px solid transparent;
+        height: 31px;
+        margin-top: 9px;
+        &:hover{
+                    border-color:#1dbf73;
+                //    border-style: inset;
+                    // border-inline-color: red;
+                    // writing-mode: horizontal-tb;
+                }
     color: #717173;
     font-family: 'Work Sans', sans-serif;
     font-size: 17px;
     font-weight: 400;
+    // margin-top:10px;
     text-transform:capitalize;
     cursor: pointer;
      
@@ -204,6 +224,7 @@ header {
         .join-btn{
         border: 1px solid #19A463 ;
         color: #19A463;
+        
 
          }
          .join-btn:hover{

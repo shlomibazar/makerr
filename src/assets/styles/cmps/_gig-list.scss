@@ -7,7 +7,17 @@
 
 //   }
 //  }
+.clients-logo{
+  width: 24px;
+  height: 24px;
 
+}
+.client-logo-wraper{
+  display: flex;
+  justify-content: space-evenly;
+  width: 32%;
+
+}
 .gig-list {
   list-style: none;
   display: flex;
@@ -204,7 +214,7 @@
 
   >.card-seller-name-rating {
     // border: 1px solid #D8D9DB;
-    width: 50%;
+    width: 39%;
     text-align: left;
     padding-bottom: 3%;
 
@@ -230,8 +240,8 @@
     font-size: 12px;
     font-family: 'Work Sans', sans-serif;
     font-weight: bolder;
-    width: 43%;
-    text-align: left;
+    width: 18%;
+    text-align: right;
   }
 }
 
