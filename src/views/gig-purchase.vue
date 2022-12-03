@@ -13,7 +13,7 @@
 
     <div class="gig-purchase-right-container flex">
       <h1>Price summary</h1>
-      <h5>Subtotal {{ gig.price }}</h5>
+      <h5>Subtotal ${{ gig.price }}</h5>
       <h5>Service Fee $9.00</h5>
       <div class="purchase-right-delivery flex">
         <img src="../assets/clock.png" />
@@ -76,7 +76,7 @@
         </ul>
       </div>
       <footer>
-        <button class="side-btn" @click="orderGig()">Checkout ({{ gig.price }})</button>
+        <button class="side-btn" @click="orderGig()">Checkout (${{ gig.price }})</button>
       </footer>
     </div>
   </div>

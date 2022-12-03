@@ -14,7 +14,7 @@
         }
     }
     margin: 0 auto;
-    max-width: 1200px;
+    max-width: 1300px;
     padding: 2rem;
     display: flex;
     flex-direction: row;
@@ -285,3 +285,21 @@
 .seller-reviews{
     margin-top: 30px;
 }
+.thumbnails {
+    margin: auto;
+    max-width: 300px;
+  }
+  
+  .thumbnails .vueperslide {
+    box-sizing: border-box;
+    border: 1px solid #fff;
+    transition: 0.3s ease-in-out;
+    opacity: 0.7;
+    cursor: pointer;
+  }
+  
+  .thumbnails .vueperslide--active {
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+    opacity: 1;
+    border-color: #000;
+  }
