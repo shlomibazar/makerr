@@ -11,13 +11,13 @@
       <br />
       <hr />
       <h3>About This Gig</h3>
-      <vueper-slides
+      <vueper-slides class="details-slider"
         ref="vueperslides1"
         :touchable="false"
         :autoplay="false"
         :bullets="false"
         @slide="$refs.vueperslides2.goToSlide($event.currentSlide.index, { emit: false })"
-        fixed-height="380px"
+        fixed-height="400px"
       >
         <vueper-slide v-for="(slide, i) in gig.images" :key="i" :image="slide">
         </vueper-slide>
@@ -27,10 +27,10 @@
         class="no-shadow thumbnails"
         ref="vueperslides2"
         @slide="$refs.vueperslides1.goToSlide($event.currentSlide.index, { emit: false })"
-        :visible-slides="5"
+        :visible-slides="4"
         fixed-height="75px"
-        :bullets="true"
-        :touchable="true"
+        :bullets="false"
+        :touchable="false"
         :gap="2.5"
         :arrows="true"
       >

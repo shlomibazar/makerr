@@ -7,6 +7,7 @@
 
 //   }
 //  }
+
 .gig-list {
   list-style: none;
   display: flex;
@@ -275,22 +276,6 @@
   margin-right: 7px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //////////////////vuper
 
 .homepage-slider {
@@ -352,7 +337,36 @@
 
 }
 
-.details-slider {}
+.details-slider {
+
+  .vueperslides__arrow--prev,
+  .vueperslides__arrow--next {
+    background-color: #fff;
+    background: #fff;
+    color: black;
+    border: 0;
+    border-radius: 28px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .15);
+    font-size: 5px;
+    height: 48px;
+    line-height: 100%;
+    margin-top: -24px;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    transform: translateY(0%);
+    opacity: 1;
+    width: 48px;
+  }
+
+  .vueperslides__arrow--next {
+    right: -30px;
+  }
+
+  .vueperslides__arrow--prev {
+    left: -30px;
+  }
+}
 
 .preview-slider {
 
@@ -442,4 +456,4 @@
   }
 
 
-}
+} 
