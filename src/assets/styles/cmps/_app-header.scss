@@ -3,11 +3,17 @@
 // position: fixed;
 z-index: 20;
 height: 81px;
+  
+    width: 99vw;
+    
+
 &.sticky{
-    position: fixed;  
+    position: fixed; 
+    
 }
 &.not-sticky{
-    border-bottom: 1px solid #D8D9DB;
+        border-bottom: 1px solid #D8D9DB;
+
 }
 transition: background-color .5s;}
 
@@ -144,7 +150,6 @@ header {
 }
 
 .sub-header-labels{
- 
     height: 41px;
    display: flex;
    align-items: center;
@@ -187,6 +192,7 @@ header {
 //             }
 
 .change_color {
+    border-bottom: 1px solid #D8D9DB;
        background-color:white;
        color:black;
        a{

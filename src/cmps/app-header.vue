@@ -157,6 +157,14 @@ export default {
     //   return this.$router.currentRoute._value.path === "/"
     //     // ? this.isInHome = true : this.isInHome = false
     // },
+     setLabelToQuery(labelTitle) {
+      console.log('example', this.searchInfo)
+      const pathToRoute = this.$route.path.split('/')
+      console.log('pathToRoute', pathToRoute);
+      this.displayLabel=labelTitle
+      this.$router.push({ path: '/gig', query: { label: labelTitle } })
+      
+    },
     updateScroll() {
       this.scrollPosition = window.scrollY
     },
