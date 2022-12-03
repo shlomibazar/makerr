@@ -48,7 +48,7 @@
   </section>
   <section v-if="isInHome&&(scrollPosition > 165)"  class="sub-header-labels homePage main-container fullWidthContainer ">
  
-    <section class="fixed-lables ">
+    <section class="fixed-lables main-container">
   <h4 v-for="label in labelsSub" :key="label" @click="setLabelToQuery(label)">{{ label }}</h4>
   </section>
     </section>

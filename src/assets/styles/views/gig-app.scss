@@ -86,7 +86,10 @@
 //     }
 // }
 .sub-header-labels{
+    &.gig-list{
     width: 1400px;
+    }
+    
    height: 41px;
    display: flex;
    align-items: center;
