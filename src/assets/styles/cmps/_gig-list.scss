@@ -293,11 +293,69 @@
 
 //////////////////vuper
 
-.homepage-slider {}
+.homepage-slider {
+
+  .vueperslides__arrow--prev,
+  .vueperslides__arrow--next {
+    background-color: #fff;
+    background: #fff;
+    border: 0;
+    border-radius: 28px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .15);
+    font-size: 5px;
+    height: 48px;
+    line-height: 100%;
+    margin-top: -24px;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    transform: translateY(0%);
+    opacity: 1;
+    width: 48px;
+  }
+
+  .vueperslides__arrow--next {
+    right: -30px;
+  }
+
+  .vueperslides__arrow--prev {
+    left: -30px;
+  }
+
+  .vueperslide__title {
+    position: absolute;
+    top: 1.0em;
+    left: 1em;
+    font-size: 0.875em;
+    font-weight: bold;
+    color: white;
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .vueperslide__content {
+    position: absolute;
+    top: 1.5em;
+    left: 0.65em;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: white;
+    display: flex;
+  }
+
+  .vueperslide__content-wrapper {
+    position: relative;
+  }
+  .vueperslides__bullets{
+  display: none;
+  }
+
+}
 
 .details-slider {}
 
 .preview-slider {
+
 
   .vueperslides__arrow--prev,
   .vueperslides__arrow--next {
@@ -308,31 +366,20 @@
     opacity: 1;
     top: 70px;
     border: 1px solid #B5BCD0;
-    // transform: translateX(-50%);
-    // transition: .3s ease-in-out;
-    // cursor: pointer;
   }
 
   .vueperslides__arrow--next {
     right: -12px;
-
     border-radius: 15px 0px 0px 15px;
     transform: translateX(+100%);
-    // background-color: #1d2bbf;
 
   }
 
   .vueperslides__arrow--prev {
     border-radius: 0px 15px 15px 0px;
     left: -12px;
-
     transform: translateX(-100%);
-    // background-color: #1d2bbf;
-
-
   }
-
-
   //grandfather of arrows
   .vueperslides__inner {
     overflow: hidden;
@@ -388,9 +435,9 @@
       box-shadow: none;
     }
 
-    ::before {
-      background-color: #1d2bbf;
-      box-shadow: none;
+    &:before {
+      background-color: #39a80d;
+      box-shadow: transparent
     }
   }
 
