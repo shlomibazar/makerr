@@ -209,7 +209,8 @@
           slide-multiple :gap="3" :dragging-distance="200" :touchable="false"
           :breakpoints=sliderBreakpoints>
           <vueper-slide v-for="(slide, i) in slides" :key="i" :image="slide.image" :title="slide.title"
-            :content="slide.content" />
+            :content="slide.content" @click="setLabel(slide.label)"/>
+            
         </vueper-slides>
 
     </div>
@@ -242,56 +243,66 @@ import 'vueperslides/dist/vueperslides.css'
 export default {
   name: 'home',
   data() {
-    return { // Retourn the API Dates
+    return { 
       slides: [
         {
           title: 'Build your brand',
           content: 'Logo Design',
+          label: 'graphics & design',
           image: 'https://fiverr-res.cloudinary.com/q_auto,f_auto,w_550,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741678/logo-design-2x.png'
         },
         {
           title: 'Customize your site',
           content: 'WordPress',
+          label: 'digital marketing',
           image: 'https://fiverr-res.cloudinary.com/q_auto,f_auto,w_550,dpr_1.0/v1/attachments/generic_asset/asset/ae11e2d45410b0eded7fba0e46b09dbd-1598561917003/wordpress-2x.png'
         },
         {
           title: 'Share your message',
           content: 'Voice Over',
+          label: 'music & audio',
           image: 'https://fiverr-res.cloudinary.com/q_auto,f_auto,w_305,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741669/voiceover-2x.png'
         },
         {
           title: 'Engage your audience',
           content: 'Video Explainer',
+          label: 'video & animation',
           image: 'https://fiverr-res.cloudinary.com/q_auto,f_auto,w_550,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741663/animated-explainer-2x.png'
         },
         {
           title: 'Reach more customers',
           content: 'Social',
+          label: 'trending',
           image: 'https://fiverr-res.cloudinary.com/q_auto,f_auto,w_255,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741668/seo-2x.png'
         },
         {
           title: 'Unlock growth online',
           content: 'SEO',
+          label: 'digital marketing',
           image: 'https://fiverr-res.cloudinary.com/q_auto,f_auto,w_255,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741668/seo-2x.png'
         },
         {
           title: 'Color your dreams',
           content: 'Illustration',
+          label: 'graphics & design',
           image: 'https://fiverr-res.cloudinary.com/q_auto,f_auto,w_255,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741674/translation-2x.png'
         },
         {
           title: 'Go global',
           content: 'Translation',
+          label: 'writing & translation',
           image: 'https://fiverr-res.cloudinary.com/q_auto,f_auto,w_255,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741664/data-entry-2x.png'
         },
         {
           title: 'Learn your business',
           content: 'Data Entry',
+          label: 'programming & tech',
           image: 'https://fiverr-res.cloudinary.com/q_auto,f_auto,w_255,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741678/book-covers-2x.png'
         },
         {
           title: 'Showcase your story',
           content: 'Book Covers',
+          label: 'writing & translation',
           image: 'https://fiverr-res.cloudinary.com/q_auto,f_auto,w_305,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741667/social-2x.png'
         },
 

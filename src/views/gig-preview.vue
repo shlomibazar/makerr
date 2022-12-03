@@ -10,6 +10,7 @@
         :key="i"
         :image="slide"
         :content="slide.content"
+        @click="goToDetail"
   
         />
       </vueper-slides>

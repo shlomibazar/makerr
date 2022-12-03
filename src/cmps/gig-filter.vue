@@ -1,5 +1,5 @@
 <template>
-  <section class="gig-filter flex items-center">
+  <section class="gig-filter flex items-center filter-conteiner ">
     <!-- <input type="text" placeholder="Search.." style="width:100px
         height:100px"> -->
 
@@ -19,35 +19,36 @@
       <a class="sort-button" @click="setSort('createdAt')">Date</a>
     </div> -->
 
-    <!-- BUDGET MODAL -->
-    <div class="dropdown">
-      <button class="filter-button" @click="budgetModal()">Budget</button>
-      <div class="budget-modal-container" v-if="isBudgetModal">
-        <div class="minMax flex">
-          <div class="flex column">
-            <label for="minPrice">MIN.</label>
-            <input type="number" id="minPrice" name="minPrice" min="0" class="inputPrice" v-model="budget.minPrice" />
+    <div class="flex">
+      <!-- BUDGET MODAL -->
+      <div class="dropdown">
+        <button class="filter-button" @click="budgetModal()">Budget</button>
+        <div class="budget-modal-container" v-if="isBudgetModal">
+          <div class="minMax flex">
+            <div class="flex column">
+              <label for="minPrice">MIN.</label>
+              <input type="number" id="minPrice" name="minPrice" min="0" class="inputPrice" v-model="budget.minPrice" />
+            </div>
+            <div class="flex column">
+              <label for="maxPrice">MAX.</label>
+              <input type="number" id="maxPrice" name="maxPrice" min="0" class="inputPrice" v-model="budget.maxPrice" />
+            </div>
           </div>
-          <div class="flex column">
-            <label for="maxPrice">MAX.</label>
-            <input type="number" id="maxPrice" name="maxPrice" min="0" class="inputPrice" v-model="budget.maxPrice" />
-          </div>
-        </div>
-        <div>
-          <div class="filter-approve flex">
-            <button class="clear-button" @click="clearAllBudget">Clear All</button>
-            <button class="apply-button" @click="setFilterBudget">Apply</button>
+          <div>
+            <div class="filter-approve flex">
+              <button class="clear-button" @click="clearAllBudget">Clear All</button>
+              <button class="apply-button" @click="setFilterBudget">Apply</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- DELIVERY TIME MODAL -->
-    <div class="dropdown">
-      <button class="filter-button" @click="deliveryTimeModal()">Delivery Time</button>
-      <div class="delivery-time-modal" v-if="this.isDeliveryModal">
-        <section class="delivery-time-radio flex">
-        <!-- <div>
+      <!-- DELIVERY TIME MODAL -->
+      <div class="dropdown">
+        <button class="filter-button" @click="deliveryTimeModal()">Delivery Time</button>
+        <div class="delivery-time-modal" v-if="this.isDeliveryModal">
+          <section class="delivery-time-radio flex">
+            <!-- <div>
 
           <p>Tutorials:{{ tutorials }}</p>
           <input v-model="tutorials" type="radio" value="Data Structures" name="ds" />
@@ -58,30 +59,39 @@
           <label for="ml">Machine Learning</label>
         </div> -->
 
-        <div class="flex">
-          <input class="radio-btn" type="radio" id="express" name="express" value="1" v-model="buttonChoose" />
-          <label class="radio-label" for="express">Express 24H</label><br />
-        </div>
-        <div class="flex">
-          <input type="radio" id="3days" name="express" value="3" v-model="buttonChoose" />  
-          <label class="radio-label" for="3days">Up to 3 days</label><br />
-        </div>
-        <div class="flex">
-          <input type="radio" id="7days" name="express" value="7" v-model="buttonChoose" />  
-          <label class="radio-label" for="7days">up to 7 days</label><br />
-        </div>
-        <div class="flex">
-          <input type="radio" id="anytime" name="express" value="999" v-model="buttonChoose" />  
-          <label class="radio-label" for="anytime">Anytime</label><br />
-        </div>
-        </section>
+            <div class="flex">
+              <input class="radio-btn" type="radio" id="express" name="express" value="1" v-model="buttonChoose" />
+              <label class="radio-label" for="express">Express 24H</label><br />
+            </div>
+            <div class="flex">
+              <input type="radio" id="3days" name="express" value="3" v-model="buttonChoose" />  
+              <label class="radio-label" for="3days">Up to 3 days</label><br />
+            </div>
+            <div class="flex">
+              <input type="radio" id="7days" name="express" value="7" v-model="buttonChoose" />  
+              <label class="radio-label" for="7days">up to 7 days</label><br />
+            </div>
+            <div class="flex">
+              <input type="radio" id="anytime" name="express" value="999" v-model="buttonChoose" />  
+              <label class="radio-label" for="anytime">Anytime</label><br />
+            </div>
+          </section>
 
-        <div class="filter-approve flex">
-          <div class="clear-button" @click="clearAllDellTime">Clear All</div>
-          <button class="apply-button" @click="setFilterDelTime(buttonChoose)">Apply</button>
+          <div class="filter-approve flex">
+            <div class="clear-button" @click="clearAllDellTime">Clear All</div>
+            <button class="apply-button" @click="setFilterDelTime(buttonChoose)">Apply</button>
+          </div>
         </div>
       </div>
     </div>
+    <div class="sort-button">
+      
+      Sort By:
+      <b>
+       <a  @click="setSort('rate')">Rate</a>
+      </b>
+    </div>
+
   </section>
 </template>
 
@@ -121,7 +131,7 @@ export default {
       this.buttonChoose = ''
       this.isDeliveryModal = false
       this.$emit("filteredDel", this.buttonChoose);
-      
+
     },
     setFilterTxt() {
       console.log("this.$store.getters.labels", this.$store.getters.labels);
