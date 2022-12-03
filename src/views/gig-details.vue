@@ -10,17 +10,37 @@
       </div>
       <br />
       <hr />
-      <!-- <img class="details-user-gig" :src="gigPreview" /> -->
       <h3>About This Gig</h3>
-      <!-- class is in gig list.scss = to get specific view for each slider -->
-      <vueper-slides fade :touchable="true" fixed-height="500px" class="details-slider">
+      <vueper-slides class="details-slider"
+        ref="vueperslides1"
+        :touchable="false"
+        :autoplay="false"
+        :bullets="false"
+        @slide="$refs.vueperslides2.goToSlide($event.currentSlide.index, { emit: false })"
+        fixed-height="400px"
+      >
+        <vueper-slide v-for="(slide, i) in gig.images" :key="i" :image="slide">
+        </vueper-slide>
+      </vueper-slides>
+
+      <vueper-slides
+        class="no-shadow thumbnails"
+        ref="vueperslides2"
+        @slide="$refs.vueperslides1.goToSlide($event.currentSlide.index, { emit: false })"
+        :visible-slides="4"
+        fixed-height="75px"
+        :bullets="false"
+        :touchable="false"
+        :gap="2.5"
+        :arrows="true"
+      >
         <vueper-slide
-          v-for="(slide, i) in slides"
+          v-for="(slide, i) in gig.images"
           :key="i"
-          :image="slide.image"
-          :title="slide.title"
-          :content="slide.content"
-        />
+          :image="slide"
+          @click.native="$refs.vueperslides2.goToSlide(i)"
+        >
+        </vueper-slide>
       </vueper-slides>
       <p>{{ gig.description }}</p>
 
@@ -90,7 +110,7 @@
 
     <div class="checkout-container">
       <div class="checkout-price">
-        <span>{{ gig.price }}</span>
+        <span>${{ gig.price }}</span>
       </div>
       <div class="checkout-title">
         <span>Order Details</span>
@@ -160,7 +180,7 @@
       </div>
       <footer>
         <button class="side-btn" @click="purchaseGig()">
-          Continue ({{ gig.price }})
+          Continue (${{ gig.price }})
         </button>
       </footer>
     </div>
@@ -179,16 +199,11 @@ export default {
   data() {
     return {
       gig: null,
-      slides: [
-        {
-          title: 'Gig #1',
-          image: `https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs/50702949/original/c3d23447f3f4d88a5be38e8265781aa02628c45a/design-a-stunning-fiverr-gig-image.png`,
-        },
-        {
-          title: "Gig #2",
-          image: `https://fiverr-res.cloudinary.com/t_main1,q_auto,f_auto/gigs/285127404/original/2bba09b921cb2b62b5cd9f26c5b5ac499e795d23.png`,
-        },
-      ],
+      // slides: [
+      //   {
+      //     image: this.gig.image,
+      //   },
+      // ],
     };
   },
   created() {

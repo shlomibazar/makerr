@@ -46,6 +46,7 @@
     <div class="dropdown">
       <button class="filter-button" @click="deliveryTimeModal()">Delivery Time</button>
       <div class="delivery-time-modal" v-if="this.isDeliveryModal">
+        <section class="delivery-time-radio flex">
         <!-- <div>
 
           <p>Tutorials:{{ tutorials }}</p>
@@ -58,25 +59,25 @@
         </div> -->
 
         <div class="flex">
-          <input type="radio" id="express" name="express" value="1" v-model="buttonChoose" />
-          <label for="express">Express 24H</label><br />
+          <input class="radio-btn" type="radio" id="express" name="express" value="1" v-model="buttonChoose" />
+          <label class="radio-label" for="express">Express 24H</label><br />
         </div>
         <div class="flex">
           <input type="radio" id="3days" name="express" value="3" v-model="buttonChoose" />  
-          <label for="3days">Up to 3 days</label><br />
+          <label class="radio-label" for="3days">Up to 3 days</label><br />
         </div>
         <div class="flex">
           <input type="radio" id="7days" name="express" value="7" v-model="buttonChoose" />  
-          <label for="7days">up to 7 days</label><br />
+          <label class="radio-label" for="7days">up to 7 days</label><br />
         </div>
         <div class="flex">
           <input type="radio" id="anytime" name="express" value="999" v-model="buttonChoose" />  
-          <label for="anytime">Anytime</label><br />
+          <label class="radio-label" for="anytime">Anytime</label><br />
         </div>
-
+        </section>
 
         <div class="filter-approve flex">
-          <button class="clear-button" @click="clearAllDellTime">Clear All</button>
+          <div class="clear-button" @click="clearAllDellTime">Clear All</div>
           <button class="apply-button" @click="setFilterDelTime(buttonChoose)">Apply</button>
         </div>
       </div>
