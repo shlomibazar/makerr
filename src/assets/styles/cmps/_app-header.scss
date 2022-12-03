@@ -66,8 +66,10 @@ header {
         font-size: 15.5px;
         
         &.not-sticky{
-            background-color: black;
-            
+            // background-color: black;
+            a{
+                color: black;
+            }
             router-link{
              color: black;
             }

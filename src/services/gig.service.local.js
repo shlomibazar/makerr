@@ -193,6 +193,13 @@ function getEmptyGig() {
 (async () => {
     await storageService.post(STORAGE_KEY, {
     image: "https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/3171448/original/a41a38f3733bb97279a49d1449f7337dece50693.jpg",
+    images:[
+        "https://res.cloudinary.com/djyj6l7de/image/upload/v1670054167/gigs%20images/gig%201/f672898aa2f4756e249b9c2edb27d3339860de8d_bgjfwr.webp",
+        "https://res.cloudinary.com/djyj6l7de/image/upload/v1670054167/gigs%20images/gig%201/design-a-professional-business-flyer-or-poster_frbudj.jpg",
+        "https://res.cloudinary.com/djyj6l7de/image/upload/v1670054167/gigs%20images/gig%201/final_logo_dnmfrp.webp",
+        "https://res.cloudinary.com/djyj6l7de/image/upload/v1670054167/gigs%20images/gig%201/design-a-professional-business-flyer-or-poster_1_vq55mr.jpg",
+        "https://res.cloudinary.com/djyj6l7de/image/upload/v1670054167/gigs%20images/gig%201/final_logo1_emcful.webp",
+        ],
     title: "I will design 3 modern minimalist flat logo designs",
     category: "Graphics & Design",
     subCategory: "Logo Design",
@@ -275,6 +282,13 @@ function getEmptyGig() {
 })
 await storageService.post(STORAGE_KEY, {
     image: "https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/103152154/original/b89645456b7f6906afa872771737e980b6f57cfb.jpg",
+    images:[
+        "https://res.cloudinary.com/djyj6l7de/image/upload/v1670054419/gigs%20images/gig%202/a4ff245eb7e96dc919d551211a923904ca6dfb1c_zskpqe.webp",
+        "https://res.cloudinary.com/djyj6l7de/image/upload/v1670054419/gigs%20images/gig%202/2c07ba9a9f60bd2f92913e40bc5119c318b80ea7_thdeup.webp",
+        "https://res.cloudinary.com/djyj6l7de/image/upload/v1670054419/gigs%20images/gig%202/Sample-01_bppf8s.webp",
+        "https://res.cloudinary.com/djyj6l7de/image/upload/v1670054419/gigs%20images/gig%202/6f92226a5d483a44920142d6fd1186748c0ebf36_idsf4r.webp",
+        "https://res.cloudinary.com/djyj6l7de/image/upload/v1670054419/gigs%20images/gig%202/Rev8-01_h8dw8d.webp",
+        ],
     title: "I will create modern unique and creative logo design",
     description: "Hi esteemed buyer!\nLooking for modern unique and creative 2d or 3d logo design? Yes, you're at the right place.\nHaving a vast experience with hundreds of satisfied customers across the globe, I extend my services to design modern unique and creative logo design to represent your brand idea in a befitting manner.\nWhat proves my individuality over others?\nQuick delivery, quality work and transforming your brain idea into a 3d creative unique and modern logo design are my attributes.\nMY GIG OFFERINGS ARE:\nBest customer care\nRevisions within 24 Hours\n100% satisfaction guaranteed\nModern unique and creative designing ideas\nLogically and aesthetically hypnotizing logos\n1 free revision after completion of order\nEditable and re-sizeable vector files\nFont download link included\nHigh resolution final files in zip\nNote: For Complex Illustrations and Mascots, please discuss in inbox before placing order! It is also not included in our packages.\nHave queries? Contact us in inbox anytime!\n★Hearing from you would be an absolute pleasure, Go ahead and ORDER NOW!★",
     price: 84,
@@ -352,7 +366,14 @@ await storageService.post(STORAGE_KEY, {
 })
 await storageService.post(STORAGE_KEY, {
     image: "https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/125798593/original/fea4f6af37e201fa9cb71a85583fedc171da2a26.jpg",
-    title: "I will design 3 modern minimalist logo design",
+    images:[
+        "https://res.cloudinary.com/djyj6l7de/image/upload/v1670054750/gigs%20images/gig%204/resume-cover-letter-and-linkedin_psvgfc_zwmpvy.jpg",
+        "https://res.cloudinary.com/djyj6l7de/image/upload/v1670054749/gigs%20images/gig%204/write-professional-resume-cover-letter-and-linkedin_ov8lwv_oeztsi.jpg",
+        "https://res.cloudinary.com/djyj6l7de/image/upload/v1670054749/gigs%20images/gig%204/c72a07b6be3e3cb3c01fe336c4cf558a83ff7526_rdmauy.webp",
+        "https://res.cloudinary.com/djyj6l7de/image/upload/v1670054749/gigs%20images/gig%204/c557a20a42380ad26cc5055d33206eadc4c72542_r8mgkh.webp",
+        "https://res.cloudinary.com/djyj6l7de/image/upload/v1670054749/gigs%20images/gig%204/9345effa1d9e0d5f3a2fc0cdeb46440786e48f45_lzvm2s.webp",
+        ],
+    title: "I will write professional resume cover letter and linkedin",
     description: "ModernMarvel heartily welcomes you to Minimalist Modern Logo Design gig.\nWe are Brand Creators and professional business consultants. Each business has his own story to tell and having high recall value is prime purpose behind getting a LOGO. Thus, We believe in creating simple yet effective masterpiece which blown away your customers mind.\nYour idea of getting Modern memorable and attractive logo design is just one step away. So, Lets discuss and choose a best design for your business.\nOur recommendation BRANDING PACK @ $65 ONLY:\n5 BRANDED logos with minimal designs + vector source files\nAttractive Social media covers (FB + Twitter)\nProfessional stationery design (B card + letterhead)\nUnlimited revision rounds\nExclusive customer support\nRefund & Package selection guidelines:\nIf the designs are as per your initial shared brief, refund wont be a possible option. You can ask for revision if i missed out anything.\nMy samples are from my premium / standard package.\nWe are closed on Sunday.\nMy key skills:\nMinimalist Modern Logo Design | Minimal | Modern | Typography | Line art | Custom logo | Vintage |\nKeen to Get Started!",
     price: 50,
     daysToMake: 2,
@@ -433,6 +454,13 @@ await storageService.post(STORAGE_KEY, {
 })
     await storageService.post(STORAGE_KEY, {
         image: "https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/142024147/original/25c0cb214ccc1e1458cb975cddec0e3e348f75ee.jpg",
+        images:[
+        "https://res.cloudinary.com/djyj6l7de/image/upload/v1670054588/gigs%20images/gig%203/vector-logo-design_fvyxms.jpg",
+        "https://res.cloudinary.com/djyj6l7de/image/upload/v1670054588/gigs%20images/gig%203/vector-logo-design_2_ihbwus.jpg",
+        "https://res.cloudinary.com/djyj6l7de/image/upload/v1670054588/gigs%20images/gig%203/vector-logo-design_1_ga6mmu.jpg",
+        "https://res.cloudinary.com/djyj6l7de/image/upload/v1670054588/gigs%20images/gig%203/1_ul6ubj_mjjndl.jpg",
+        "https://res.cloudinary.com/djyj6l7de/image/upload/v1670054588/gigs%20images/gig%203/Juiceys_logo_vwmero.webp",
+        ],
         title: "I will do professional modern business logo design with copyrights",
         category: "Graphics & Design",
         subCategory: "Logo Design",

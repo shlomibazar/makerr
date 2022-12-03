@@ -1,9 +1,12 @@
 <template>
   <div class="container home main-container">
-    <section class="sub-header-labels">
+    <section class="lable-container-list full fullWidthContainer flex">
+    <section class="sub-header-labels main-container">
       <h4 v-for="label in labels" :key="label" @click="setLabelToQuery(label)">{{ label }}</h4>
+      
     </section>
-    <h1 class="catagory-header"> All </h1>
+  </section>
+    <h1 class="catagory-header"> {{displayLabel}} </h1>
     <h2 class="catagory-subheader"> Find the perfect freelance services for your business</h2>
     <gig-filter @filteredTxt="debounceHandler" @filteredBudget="setFilterByBudget" @sorted="setSortBy"
       @filteredDel="setFilterByDel" />
@@ -34,6 +37,7 @@ import gigList from './gig-list.vue'
 import gigFilter from '../cmps/gig-filter.vue'
 import _ from 'lodash'
 
+
 export default {
   data() {
     return {
@@ -48,6 +52,7 @@ export default {
         'lifestyle',
         'trending'
       ],
+      displayLabel:"All",
       gigToAdd: gigService.getEmptyGig(),
       filterBy: {
         txt: '',
@@ -78,17 +83,19 @@ export default {
 
   },
   created() {
-    if(!this.$route.query.title||!this.$route.query.label){
+    if (!this.$route.query.title || !this.$route.query.label) {
+      
       this.$store.dispatch({ type: 'loadGigs' })
     }
     this.debounceHandler = _.debounce(this.setFilterByTxt, 500)
     this.debounceHandler = _.debounce(this.setFilterByLabel, 500)
     console.log('this.$route.params', this.$route.query)
     this.previousParams = this.$route.query
-    if(this.$route.query.title){
+    if (this.$route.query.title) {
       this.setFilterByTxt(this.$route.query.title)
     }
-    if(this.$route.query.label){
+    if (this.$route.query.label) {
+      this.displayLabel=this.$route.query.label
       this.setFilterByLabel(this.$route.query.label)
     }
 
@@ -98,8 +105,8 @@ export default {
 
       (toParams, previousParams) => {
         if (this.$route.query) {
-          
-          console.log('this.$route.query',this.$route.query)
+
+          console.log('this.$route.query', this.$route.query)
           if (previousParams.label !== toParams.label) {
             console.log('toParams label', toParams.label)
             this.setFilterByLabel(toParams.label)
@@ -117,7 +124,9 @@ export default {
       console.log('example', this.searchInfo)
       const pathToRoute = this.$route.path.split('/')
       console.log('pathToRoute', pathToRoute);
+      this.displayLabel=labelTitle
       this.$router.push({ path: '/gig', query: { label: labelTitle } })
+      
     },
 
     getLabels() {
@@ -207,6 +216,7 @@ export default {
 
 
   components: {
+
     gigList,
     gigFilter,
   },

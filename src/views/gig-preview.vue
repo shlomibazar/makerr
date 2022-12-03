@@ -1,11 +1,25 @@
 <template>
-  <li class="gig-preview" @click="goToDetail">
+  <li class="gig-preview" >
     <custom-card>
       <template #card-header>
-        <img class="card-img" :src="gig.image" alt="" />
+        <!-- <img class="card-img" :src="gig.image" alt="" /> -->
+        <!-- <vueper-slides>
+  <vueper-slide v-for="i in 5" :key="i" :title="i.toString()" />
+</vueper-slides> -->
+
+      <vueper-slides  :touchable="false" fixed-height="194px">
+        <vueper-slide
+        v-for="(slide, i) in gig.images"
+        :key="i"
+        :image="slide"
+        :content="slide.content"
+  
+        />
+      </vueper-slides>
+
       </template>
       <template #main>
-        <section class="card-main-header">
+        <section class="card-main-header" @click="goToDetail">
           <img class="card-seller-img" :src="gig.owner.imgUrl">
           <span class="card-seller-online" v-if="gig.owner.isOnline"></span>
 
@@ -19,7 +33,7 @@
         <!-- <p><span class="fw-bold">Price:</span> ${{ gig.price }}</p> -->
         </section>
         <div class="card-main-header-gap"></div>
-        <section class="card-main-center">
+        <section class="card-main-center" >
           <h4>{{ gig.title }}</h4>
         </section>
         <!-- mini user - user.img + user.name
@@ -48,6 +62,8 @@
 </template>
 <script>
 import customCard from "../cmps/custom-card.vue";
+import { VueperSlides, VueperSlide } from "vueperslides";
+import "vueperslides/dist/vueperslides.css";
 
 export default {
   name: "gig-preview",
@@ -56,6 +72,8 @@ export default {
   },
   components: {
     customCard,
+    VueperSlides,
+    VueperSlide,
   },
   methods: {
     goToDetail() {
