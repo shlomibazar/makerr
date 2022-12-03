@@ -1,13 +1,10 @@
 <template>
   <li class="gig-preview" >
     <custom-card>
-      <template #card-header>
-        <!-- <img class="card-img" :src="gig.image" alt="" /> -->
-        <!-- <vueper-slides>
-  <vueper-slide v-for="i in 5" :key="i" :title="i.toString()" />
-</vueper-slides> -->
+      <template #card-header  >
 
-      <vueper-slides  :touchable="false" fixed-height="194px">
+
+      <vueper-slides  box-shadow: none :touchable="false" fixed-height="194px"  class="preview-slider">
         <vueper-slide
         v-for="(slide, i) in gig.images"
         :key="i"
@@ -19,8 +16,8 @@
 
       </template>
       <template #main>
-        <section class="card-main-header" @click="goToDetail">
-          <img class="card-seller-img" :src="gig.owner.imgUrl">
+        <section class="card-main-header">
+          <img class="card-seller-img" :src="gig.owner.imgUrl" >
           <span class="card-seller-online" v-if="gig.owner.isOnline"></span>
 
           <section class="card-seller-name-rating flex column">
@@ -34,7 +31,7 @@
         </section>
         <div class="card-main-header-gap"></div>
         <section class="card-main-center" >
-          <h4>{{ gig.title }}</h4>
+          <h4 @click="goToDetail">{{ gig.title }}</h4>
         </section>
         <!-- mini user - user.img + user.name
             gig.title -->
