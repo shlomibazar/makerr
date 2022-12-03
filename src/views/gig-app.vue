@@ -20,12 +20,12 @@
 
 
 
-    <hr />
+    <!-- <hr />
     <form @submit.prevent="addGig()">
       <h2>Add gig</h2>
       <input type="text" v-model="gigToAdd.name" />
       <button>Save</button>
-    </form>
+    </form> -->
   </div>
 </template>
 
