@@ -11,6 +11,8 @@ height: 81px;
 }
 transition: background-color .5s;}
 
+
+
 header {
     position: flex;
     width: 100%;
@@ -26,6 +28,19 @@ header {
     // padding: 10px;
     // display: flex;
     // justify-content: space-between;
+    .top-logo {
+        align-self: center;
+        letter-spacing: -3.5px;
+        font-family: Helvetica,sans-serif;
+        font-size: 2.25rem;
+        font-weight: bolder;
+        padding-bottom: 12px;
+    }
+    span {
+        font-size: 1.5em;
+        color: #1dbf73;
+        font-family: Times New Roman,Times,serif;
+    }
     
     .loggedin-user {
         background-color: $clr1;
