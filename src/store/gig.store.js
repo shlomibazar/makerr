@@ -99,7 +99,7 @@ export const gigStore = {
         loadGigs: async ({ commit }, { filterBy, sortBy, }) => {
             // console.log('hey i here')
             try {
-                console.log('filterBy in gig store',filterBy)
+                // console.log('filterBy in gig store',filterBy)
                 if (!filterBy) filterBy = { txt: '', status: '', labels: null,price:0, }
                 if (!sortBy) sortBy = null
                 // const labels = gigService.getLabels()

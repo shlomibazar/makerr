@@ -63,7 +63,7 @@
   </li>
 </template>
 <script>
-import customCard from "../cmps/custom-card.vue";
+import customCard from "./custom-card.vue";
 import { VueperSlides, VueperSlide } from "vueperslides";
 import "vueperslides/dist/vueperslides.css";
 

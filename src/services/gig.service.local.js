@@ -5,20 +5,6 @@ import { userService } from './user.service.js'
 
 const STORAGE_KEY = 'gig'
 
-const labels = [
-    { title: 'On wheels', color: '#dc2626' },
-    { title: 'Board', color: '#f59e0b' },
-    { title: 'Art', color: '#047857' },
-    { title: 'Baby', color: '#2563eb' },
-    { title: 'Puzzle', color: '#4338ca' },
-    { title: 'Outdoor', color: '#be185d' },
-    { title: 'Battery Powered', color: '#71717a' },
-    { title: 'Doll', color: '#6d28d9' },
-    { title: 'Anime', color: '#fbbf24' },
-    { title: 'Lego', color: '#6366f1' },
-    { title: 'Superhero', color: '#ef4444' },
-    { title: 'Strategy', color: '#34d399' },
-]
 
 export const gigService = {
     query,
@@ -35,17 +21,13 @@ window.cs = gigService
 async function query(filterBy = { txt: '', price, label }, sortBy) {
 
 
-    // console.log('filterBy sortBy  in query in storage service',sortBy)
     var gigs = await storageService.query(STORAGE_KEY)
-    // console.log('gigs in service',gigs)
-    // console.log('sortBy in service',sortBy)
+
     if (filterBy.txt) {
         const regex = new RegExp(filterBy.txt, 'i')
         gigs = gigs.filter(gig => regex.test(gig.title) || regex.test(gig.description))
     }
     if (filterBy.budget) {
-        // console.log("🚀 ~ file: gig.service.local.js ~ line 42 ~ query ~ price", filterBy.price)
-
         gigs = gigs.filter(gig =>
             (gig.price >= filterBy.budget.minPrice) &&
             (gig.price <= filterBy.budget.maxPrice)
@@ -61,7 +43,6 @@ async function query(filterBy = { txt: '', price, label }, sortBy) {
 
     }
     if (!sortBy) return gigs
-
     else
         if (sortBy.price) {
             var sortedBy = Object.keys(sortBy)[0]
@@ -78,21 +59,9 @@ async function query(filterBy = { txt: '', price, label }, sortBy) {
         gigs.sort((a, b) => (a.daysToMake.charAt(0) > b.daysToMake.charAt(0)) ? 1 : ((b.daysToMake.charAt(0) > a.daysToMake.charAt(0)) ? -1 : 0))
     }
 
-
     return gigs
 }
-// async function query(filterBy, sortBy) {
-//     const query = { filterBy, sortBy }
-//     return await httpService.get('toy', query)
 
-//     // const res = await axios.get(_getUrl(), { params: query })
-//     // return res.data
-//   }
-// function getLabels() {
-
-//     console.log("🚀 ~ file: gig.service.local.js ~ line 60 ~ getLabels ~ labels", labels)
-//     return labels
-//   }
 
 function getById(gigId) {
     return storageService.get(STORAGE_KEY, gigId)
@@ -136,55 +105,6 @@ function getEmptyGig() {
         price: utilService.getRandomIntInclusive(1000, 9000),
     }
 }
-
-// console.log('i in gig service');
-
-//  (async () => {
-//     console.log('i in gig test');
-//     await storageService.post(STORAGE_KEY, {
-//         title: 'I will design your logo',
-//         price: "$180",
-//         owner: {
-//             id: "u101",
-//             fullname: "Dudu",
-//             imgUrl: 1,
-//             level: "basic",
-//             rate: 4,
-//         },
-//         daysToMake: 3,
-//         description: "make unique logo..",
-//         imgUrl: 1,
-//         tags: [
-//             "logo-design",
-//             "artisitic",
-//             "proffesional",
-//             "accessible",
-//         ],
-//         "likedByUsers": ['mini-user'] // for user-wishlist : use $in
-//     })
-//     await storageService.post(STORAGE_KEY, {
-//         title: 'I will sing your song',
-//         price: 180,
-
-//         owner: {
-//             id: "u102",
-//             fullname: "yossi",
-//             imgUrl: 1,
-//             level: "basic",
-//             rate: 4,
-//         },
-//         daysToMake: 3,
-//         description: "make unique song..",
-//         imgUrl: 1,
-//         tags: [
-//             "logo-design",
-//             "artisitic",
-//             "proffesional",
-//             "accessible",
-//         ],
-//         "likedByUsers": ['mini-user'] // for user-wishlist : use $in
-//     })
-// })()
 
 
 
@@ -466,8 +386,6 @@ function getEmptyGig() {
             }
         ]
     })
-
-
     await storageService.post(STORAGE_KEY, {
         image: "https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/142024147/original/25c0cb214ccc1e1458cb975cddec0e3e348f75ee.jpg",
         images: [
