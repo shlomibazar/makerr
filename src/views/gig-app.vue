@@ -8,10 +8,15 @@
   </section>
     <h1 class="catagory-header"> {{displayLabel}} </h1>
     <h2 class="catagory-subheader"> Find the perfect freelance services for your business</h2>
+    <section class="filter"  ref="filterEl" >
+      <!-- <section v-if="isInHome" class="header-wrapper main-container fullWidthContainer sticky"
+    :class="{ change_color: scrollPosition > 1 }"> -->
+
     <gig-filter @filteredTxt="debounceHandler" @filteredBudget="setFilterByBudget" @sorted="setSortBy"
       @filteredDel="setFilterByDel" />
+    </section>
     <gig-list @removeGig="removeGig" v-if="gigs" :gigs="gigs" />
-
+  
     <!-- @filteredLabel="setFilterByLabel" -->
     <!-- @filteredStatus="setFilterByStatus" -->
     <!-- {{filterBy.txt}} -->
@@ -33,7 +38,7 @@
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { gigService } from '../services/gig.service.local'
 import { getActionRemoveGig, getActionUpdateGig, getActionAddGigMsg } from '../store/gig.store'
-import gigList from './gig-list.vue'
+import gigList from '../cmps/gig-list.vue'
 import gigFilter from '../cmps/gig-filter.vue'
 import _ from 'lodash'
 
@@ -56,6 +61,7 @@ export default {
       gigToAdd: gigService.getEmptyGig(),
       filterBy: {
         txt: '',
+        scrollPosition:0,
         status: '',
         label: null,
         price: 0,
@@ -66,22 +72,7 @@ export default {
     }
 
   },
-  computed: {
-    loggedInUser() {
-      return this.$store.getters.loggedinUser
-    },
-    gigs() {
-      return this.$store.getters.gigs
-    },
-    labels() {
-      return this.labels
-    },
-    updateParams() {
-      this.toParams = this.$route.query
-      return this.toParams
-    },
-
-  },
+ 
   created() {
     if (!this.$route.query.title || !this.$route.query.label) {
       
@@ -89,7 +80,7 @@ export default {
     }
     this.debounceHandler = _.debounce(this.setFilterByTxt, 500)
     this.debounceHandler = _.debounce(this.setFilterByLabel, 500)
-    console.log('this.$route.params', this.$route.query)
+    // console.log('this.$route.params', this.$route.query)
     this.previousParams = this.$route.query
     if (this.$route.query.title) {
       this.setFilterByTxt(this.$route.query.title)
@@ -102,7 +93,7 @@ export default {
     this.$watch(
 
       () => this.$route.query,
-
+      
       (toParams, previousParams) => {
         if (this.$route.query) {
 
@@ -117,16 +108,40 @@ export default {
           }
         }
       }
+      
     )
+    window.addEventListener('scroll', this.updateScroll); 
+    // this.isInHomePage()
   },
+  mounted(){
+    this.elFilter = this.$refs.filterEl
+  },
+ 
   methods: {
     setLabelToQuery(labelTitle) {
-      console.log('example', this.searchInfo)
+      // console.log('example', this.searchInfo)
       const pathToRoute = this.$route.path.split('/')
-      console.log('pathToRoute', pathToRoute);
+      // console.log('pathToRoute', pathToRoute);
       this.displayLabel=labelTitle
       this.$router.push({ path: '/gig', query: { label: labelTitle } })
       
+    },
+    updateScroll() {
+      // console.log('y',window.scrollY)
+      // console.log('helllo',this.scrollPosition)
+      this.scrollPosition = window.scrollY
+      if(this.scrollPosition > 190){
+        console.log('runing')
+      this.elFilter.classList.add('change-position')
+      this.elFilter.classList.add('fullWidthContainer')
+    }
+    if(this.scrollPosition < 100){
+        console.log('runing')
+      this.elFilter.classList.remove('change-position')
+      this.elFilter.classList.remove('fullWidthContainer')
+    }
+      console.log('this in update scroll',this.scrollPosition)
+
     },
 
     getLabels() {
@@ -134,7 +149,7 @@ export default {
     },
     loadGigs() {
       const filterBy = JSON.parse(JSON.stringify(this.filterBy))
-      console.log("🚀 ~ file: gig-app.vue ~ line 68 ~ loadGigs ~ filterBy", filterBy)
+      // console.log("🚀 ~ file: gig-app.vue ~ line 68 ~ loadGigs ~ filterBy", filterBy)
       const sortBy = JSON.parse(JSON.stringify(this.sortBy))
       this.$store.dispatch({ type: 'loadGigs', filterBy, sortBy })
     },
@@ -144,7 +159,7 @@ export default {
         showSuccessMsg('Gig added')
         this.gigToAdd = gigService.getEmptyGig()
       } catch (err) {
-        console.log(err)
+        // console.log(err)
         showErrorMsg('Cannot add gig')
       }
     },
@@ -212,15 +227,39 @@ export default {
       this.loadGigs()
     },
   },
+  computed: {
+    loggedInUser() {
+      return this.$store.getters.loggedinUser
+    },
+    gigs() {
+      return this.$store.getters.gigs
+    },
+    labels() {
+      return this.labels
+    },
+    updateParams() {
+      this.toParams = this.$route.query
+      return this.toParams
+    },
+    // updatePositionFixed() {
+    //   console.log('hi scroll',this.scrollPosition)
+    //   // console.log('y',window.scrollY)
+    //   // console.log('helllo',this.scrollPosition)
+    //   // { 'change-position': scrollPosition > 20 }
+    //   return  'change-position'
+    //   // console.log('this',this.scrollPosition)
+    // },
 
-
+  },
 
   components: {
 
     gigList,
     gigFilter,
   },
-
+  unmounted() {
+    window.removeEventListener('scroll', this.updateScroll);
+  },
 
 }
 </script>

@@ -1,8 +1,5 @@
 <template>
-  <!-- Swiper CSS -->
-  <link rel="stylesheet" href="css/swiper-bundle.min.css">
-  <!-- CSS -->
-  <link rel="stylesheet" href="css/style.css">
+
 
   <section class="container home text-center">
     <!-- <section class="content-container"> -->
@@ -29,7 +26,7 @@
             <button-search class="button-search" @click="setFilterByTitle">Search</button-search>
           </div>
           <div class="hero-btn-conteiner">
-           <h1>Popular:</h1>
+            <h1>Popular:</h1>
             <span class="hero-button">
               <div @click="setLabel('graphics & design')">
                 Website Design
@@ -64,6 +61,7 @@
               </div>
             </div>
           </div>
+
           <!-- <div class="animate-fade hero-moon" style="opacity: 0;">
             <div class="main-container seller-name">
               <p>Moon,
@@ -130,112 +128,22 @@
     <div class="main-container">
 
       <h1 class="flex popular-title">Popular professional services</h1>
-        <!-- 
-        <swiper :slidesPerView="4" :spaceBetween="35" :slidesPerGroup="5" :loop="true" :loopFillGroupWithBlank="true"
-          :pagination="{
-            clickable: true,
-          }" :navigation="true" :modules="modules"  :breakpoints="swiperOptions.breakpoints" class="mySwiper main-layout ">
 
-          <swiper-slide class="swiper-slide1">
-            <h2 class="popular-title-text">Build your brand</h2>
-            <h2 class="popular-subtitle-text"> Logo Design</h2>
-            <img
-              src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_550,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741678/logo-design-2x.png"
-              alt="">
-          </swiper-slide>
-          <swiper-slide>
-            <h2 class="popular-title-text">Customize your site</h2>
-            <h2 class="popular-subtitle-text"> WordPress</h2>
-            <img
-              src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_550,dpr_1.0/v1/attachments/generic_asset/asset/ae11e2d45410b0eded7fba0e46b09dbd-1598561917003/wordpress-2x.png">
-          </swiper-slide>
-          <swiper-slide>
-            <h2 class="popular-title-text">Share your message</h2>
-            <h2 class="popular-subtitle-text"> Voice Over</h2>
-            <img
-              src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_305,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741669/voiceover-2x.png">
-          </swiper-slide>
-          <swiper-slide>
-            <h2 class="popular-title-text">Engage your audience</h2>
-            <h2 class="popular-subtitle-text"> Video Explainer</h2>
-            <img
-              src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_550,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741663/animated-explainer-2x.png">
-          </swiper-slide>
-          <swiper-slide>
-            <h2 class="popular-title-text">Reach more customers</h2>
-            <h2 class="popular-subtitle-text"> Social <Media></Media></h2>
-            <img
-              src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_255,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741668/seo-2x.png">
-          </swiper-slide>
-          <swiper-slide>
-            <h2 class="popular-title-text">Unlock growth online</h2>
-            <h2 class="popular-subtitle-text"> SEO</h2>
-            <img
-              src=https://fiverr-res.cloudinary.com/q_auto,f_auto,w_255,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741668/seo-2x.png>
-          </swiper-slide>
-          <swiper-slide>
-            <h2 class="popular-title-text">Color your dreams</h2>
-            <h2 class="popular-subtitle-text"> Illustration</h2>
-            <img
-              src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_255,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741674/translation-2x.png">
-          </swiper-slide>
-          <swiper-slide>
-            <h2 class="popular-title-text">Go global</h2>
-            <h2 class="popular-subtitle-text"> Translation</h2>
-            <img
-              src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_255,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741664/data-entry-2x.png">
-          </swiper-slide>
-          <swiper-slide>
-            <h2 class="popular-title-text">Learn your business</h2>
-            <h2 class="popular-subtitle-text"> Data Entry</h2>
-            <img
-              src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_255,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741678/book-covers-2x.png">
-          </swiper-slide>
-          <swiper-slide>
-            <h2 class="popular-title-text">Showcase your story</h2>
-            <h2 class="popular-subtitle-text"> Book Covers</h2>
-            <img
-              src="https://fiverr-res.cloudinary.com/q_auto,f_auto,w_305,dpr_1.0/v1/attachments/generic_asset/asset/055f758c1f5b3a1ab38c047dce553860-1598561741667/social-2x.png">
-          </swiper-slide>
+      <vueper-slides class="homepage-slider" fixed-height="345px" :visible-slides="5" :slide-ratio="1 / 4"
+        slide-multiple :gap="3" :dragging-distance="200" :touchable="false" :breakpoints=sliderBreakpoints>
+        <vueper-slide v-for="(slide, i) in slides" :key="i" :image="slide.image" :title="slide.title"
+          :content="slide.content" @click="setLabel(slide.label)" />
 
-          
-        </swiper> -->
-        <!-- :breakpoints="{ 
-            // 1200: { visibleSlides: 4, slideMultiple: 4 } ,
-            // 900: { visibleSlides: 3, slideMultiple: 3 } ,
-            // 600: { visibleSlides: 2, slideMultiple: 2 } ,
-            }"> -->
-        <vueper-slides class="homepage-slider" fixed-height="345px" :visible-slides="5" :slide-ratio="1 / 4"
-          slide-multiple :gap="3" :dragging-distance="200" :touchable="false"
-          :breakpoints=sliderBreakpoints>
-          <vueper-slide v-for="(slide, i) in slides" :key="i" :image="slide.image" :title="slide.title"
-            :content="slide.content" @click="setLabel(slide.label)"/>
-            
-        </vueper-slides>
+      </vueper-slides>
 
     </div>
-    <h5 class="text-center">
-      <!-- Powered up Frontend -->
-    </h5>
-    <!-- <img alt="Vue logo" src="../assets/logo.png"> -->
-    <!-- </section> -->
+
+
   </section>
 </template>
 
 <script>
-// Import Swiper Vue.js components
-import { Swiper, SwiperSlide } from "swiper/vue";
 
-// Import Swiper styles
-import "swiper/scss";
-
-import "swiper/scss/pagination";
-import "swiper/scss/navigation";
-
-// import "./style.css";
-
-// import required modules
-import { Pagination, Navigation } from "swiper";
 
 import { VueperSlides, VueperSlide } from 'vueperslides'
 import 'vueperslides/dist/vueperslides.css'
@@ -243,7 +151,9 @@ import 'vueperslides/dist/vueperslides.css'
 export default {
   name: 'home',
   data() {
-    return { 
+    return {
+
+
       slides: [
         {
           title: 'Build your brand',
@@ -310,17 +220,17 @@ export default {
       APIData: [],
       searchInfo: '',
 
-        sliderBreakpoints: {
-          600: {
-            visibleSlides: 2, slideMultiple: 2
-          },
-          900: {
-            visibleSlides: 3, slideMultiple: 3
-          },
+      sliderBreakpoints: {
+        600: {
+          visibleSlides: 2, slideMultiple: 2
+        },
+        900: {
+          visibleSlides: 3, slideMultiple: 3
+        },
 
-          1200: {
-            visibleSlides: 4, slideMultiple: 4
-          
+        1200: {
+          visibleSlides: 4, slideMultiple: 4
+
         }
       }
     }
@@ -330,6 +240,7 @@ export default {
   created() {
   },
   methods: {
+
     setLabel(labelTxt) {
       this.$router.push({ path: '/gig', query: { label: labelTxt } })
     },
@@ -339,16 +250,10 @@ export default {
     },
   },
   components: {
-    Swiper,
-    SwiperSlide,
     VueperSlides,
     VueperSlide,
   },
-  setup() {
-    return {
-      modules: [Pagination, Navigation],
-    };
-  },
+
 
 
 }

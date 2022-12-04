@@ -1,10 +1,7 @@
 <template>
   <section class="gig-filter flex items-center filter-conteiner ">
-    <!-- <input type="text" placeholder="Search.." style="width:100px
-        height:100px"> -->
 
-    <!-- <el-input v-model="txt" @input="setFilterTxt" style="width: 250px" placeholder="Search gig..."
-      :prefix-icon="search" /> -->
+
 
     <!-- <label>
       Min price:
@@ -27,11 +24,13 @@
           <div class="minMax flex">
             <div class="flex column">
               <label for="minPrice">MIN.</label>
-              <input type="number" id="minPrice" name="minPrice" min="0" class="inputPrice" v-model="budget.minPrice" />
+              <!-- <input type="number" id="minPrice" name="minPrice" min="0" class="inputPrice" v-bind:budget.minPrice="value" placeholder="Any              $"/> -->
+              <input type="number" id="minPrice" name="minPrice" min="0" class="inputPrice" v-model="budget.minPrice" placeholder="Any              $"/>
             </div>
             <div class="flex column">
               <label for="maxPrice">MAX.</label>
-              <input type="number" id="maxPrice" name="maxPrice" min="0" class="inputPrice" v-model="budget.maxPrice" />
+              <!-- <input type="number" id="maxPrice" name="maxPrice" min="0" class="inputPrice" v-bind:budget.maxPrice="value" placeholder="Any              $"/> -->
+              <input type="number" id="maxPrice" name="maxPrice" min="0" class="inputPrice" v-model="budget.maxPrice" placeholder="Any              $" />
             </div>
           </div>
           <div>
@@ -114,18 +113,23 @@ export default {
       selected: '',
       buttonChoose: '',
       budget: {
-        minPrice: 0,
-        maxPrice: 9999,
+        minPrice: 'Any',
+        maxPrice: 'Any',
       },
     };
   },
-  created() { },
+  created() { 
+
+  },
   methods: {
     clearAllBudget() {
       this.budget.minPrice = 0
       this.budget.maxPrice = 9999
       this.isBudgetModal = false
       this.$emit("filteredBudget", this.budget);
+    },
+    updateScroll() {
+      this.scrollPosition = window.scrollY
     },
     clearAllDellTime() {
       this.buttonChoose = ''
@@ -147,6 +151,13 @@ export default {
     },
     setFilterBudget() {
       console.log('this.budgetttttttttttttt', this.budget)
+      
+      if (!this.budget.minPrice || typeof this.budget.minPrice === 'string' ){
+        this.budget.minPrice = 0
+      }
+      if (!this.budget.maxPrice || typeof this.budget.maxPrice === 'string'  ){ 
+        this.budget.maxPrice = 9999
+      }
       this.isBudgetModal = false
       this.$emit("filteredBudget", this.budget);
     },

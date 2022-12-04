@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import gigPreview from "../views/gig-preview.vue";
+import gigPreview from "./gig-preview.vue";
 
 export default {
   props: {
