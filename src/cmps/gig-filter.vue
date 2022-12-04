@@ -36,7 +36,7 @@
           </div>
           <div>
             <div class="filter-approve flex">
-              <button class="clear-button" @click="clearAllBudget">Clear All</button>
+              <div class="clear-button" @click="clearAllBudget">Clear All</div>
               <button class="apply-button" @click="setFilterBudget">Apply</button>
             </div>
           </div>

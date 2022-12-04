@@ -29,7 +29,7 @@
             <button-search class="button-search" @click="setFilterByTitle">Search</button-search>
           </div>
           <div class="hero-btn-conteiner">
-            Popular:
+           <h1>Popular:</h1>
             <span class="hero-button">
               <div @click="setLabel('graphics & design')">
                 Website Design

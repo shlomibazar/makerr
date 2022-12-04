@@ -1,7 +1,7 @@
 <template>
   <footer class="footer">
     <div class="flex">
-      <div class="bottom-logo main-logo">Makerr<span class="green">.</span></div>
+      <div class="bottom-logo main-logo">Makerr<span class="green">©</span></div>
       <div class="footer-text">© Makerr International Ltd. 2022</div>
     </div>
     <div class="social-links flex align-center">

@@ -16,10 +16,11 @@
         font-size: 2.25rem;
         font-weight: bolder;
         padding-bottom: 12px;
+        font-size: 30px;
     }
     span {
-        font-size: 1.5em;
-        color: #1dbf73;
+        font-size: 0.5em;
+        // color: #1dbf73;
         font-family: Times New Roman,Times,serif;
     }
     .footer-text {
@@ -45,5 +46,9 @@
             height: 100%;
             object-fit: contain;
         }
+    }
+    div{
+        justify-content: center;
+        align-items: center;
     }
 }
