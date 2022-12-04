@@ -303,3 +303,93 @@
     opacity: 1;
     border-color: #000;
   }
+
+/* MEDIA QUERIES */
+/* TABLET */ 
+@media (min-width: 570px) and (max-width: 1199px){
+    .gig-details-page{
+        flex-direction: column;
+    }
+    .hamburger-menu{
+        display: none;
+    }
+    .checkout-container{
+        display: flex;
+        flex-direction: column;
+
+        margin-left: 1rem;
+        color: #404145;
+        width: 32.5rem;
+        border: 1px solid #e4e5e7;
+        padding: 2em 1.5em;
+        font-family: Helvetica,sans-serif;
+        height: fit-content;
+    }    
+    .details-modal{
+        button, hr{
+            display: none;
+        }
+    }
+}
+
+/* MOBILE */ 
+@media (max-width: 569px) {
+    .gig-details-page{
+        // background-color: tomato;
+        flex-direction: column;
+        max-width: 400px;
+    }
+    .checkout-container{
+        display: flex;
+        flex-direction: column;
+        margin-left: 1px;
+        color: #404145;
+        width: 22.5rem;
+        border: 1px solid #e4e5e7;
+        padding: 2em 1.5em;
+        font-family: Helvetica,sans-serif;
+        
+    }    
+    .header-wrapper{
+        display: none;
+    }
+    .hamburger-menu{
+        display: block;
+        background-color: transparent;
+        padding: 10px;
+        color: black;
+        font-size: 30px;
+        cursor: pointer;
+    }
+    .details-modal{
+        position: absolute;
+        background-color: black;
+        border-radius: 2px;
+        color: white;
+        width: 200px;
+        height: 130px;
+        margin-left: 15px;
+        margin-top: -20px;
+        button{
+            background-color: transparent;
+            cursor: pointer;
+            &:hover{
+                background-color: rgba(255, 255, 255, 0.818);
+                color: black;
+                transition: .4s;
+                border-radius: 5px;
+            }
+        }
+    }
+}
+/* DESKTOP */ 
+@media (min-width: 1200px) {
+    .hamburger-menu{
+        display: none;
+    }
+    .details-modal{
+        button, hr{
+            display: none;
+        }
+    }
+}

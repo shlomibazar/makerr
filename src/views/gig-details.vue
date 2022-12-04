@@ -1,5 +1,13 @@
 <template>
   <hr />
+  <button class="hamburger-menu" @click="toggleModal()">≡</button>
+  <div class="details-modal" v-if="isModalToggled">
+    <button>Explore</button>
+    <hr />
+    <button>Become a Seller</button>
+    <hr />
+    <button>Join</button>
+  </div>
   <section v-if="gig" class="gig-details-page">
     <div class="details-content">
       <h1>{{ gig.title }}</h1>
@@ -11,7 +19,8 @@
       <br />
       <hr />
       <h3>About This Gig</h3>
-      <vueper-slides class="details-slider"
+      <vueper-slides
+        class="details-slider"
         ref="vueperslides1"
         :touchable="false"
         :autoplay="false"
@@ -144,8 +153,8 @@
 
         <ul class="order-features clean-list">
           <li>
-            <i class="checkMark">
-              <svg
+            <i class="checkMark"
+              ><svg
                 width="16"
                 height="16"
                 viewBox="0 0 11 9"
@@ -185,7 +194,6 @@
       </footer>
     </div>
   </section>
-  
 </template>
 <script>
 // import chatVue from "./chat.vue"
@@ -199,11 +207,7 @@ export default {
   data() {
     return {
       gig: null,
-      // slides: [
-      //   {
-      //     image: this.gig.image,
-      //   },
-      // ],
+      isModalToggled: false,
     };
   },
   created() {
@@ -211,14 +215,9 @@ export default {
     // this.updateMsgs()
   },
   methods: {
-    // updateMsgs(msgs) {
-    //     var gigmon = this.gig
-    //     // console.log("🚀 ~ file: gig-details.vue ~ line 41 ~ updateMsgs ~ gig", gig)
-    //     gigmon.msgs.push(msgs)
-    //     // console.log('this.gig', this.gig)
-
-    //     this.$store.dispatch(getActionUpdateGig(gigmon))
-    // },
+    toggleModal() {
+      this.isModalToggled = !this.isModalToggled;
+    },
     purchaseGig() {
       router.push(`/purchase/${this.gig._id}`);
       // console.log('gig id?', this.gig._id);
