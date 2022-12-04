@@ -23,8 +23,19 @@
     justify-content: space-around;
     border-bottom: 1px solid #D8D9DB;
 }
+.filter{
+    transition: background-color 0.3s,box-shadow 0.7s;
+}
 .change-position{
-position: fixed;}
+position: fixed;
+background-color: white;
+height: 54px;
+z-index: 7;
+top:0;
+padding:6px 250px 0 250px;
+box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+}
 .user-rating{
     margin-top: 2px;
 }

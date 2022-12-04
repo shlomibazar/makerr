@@ -130,13 +130,15 @@ export default {
       // console.log('y',window.scrollY)
       // console.log('helllo',this.scrollPosition)
       this.scrollPosition = window.scrollY
-      if(this.scrollPosition > 100){
+      if(this.scrollPosition > 190){
         console.log('runing')
       this.elFilter.classList.add('change-position')
+      this.elFilter.classList.add('fullWidthContainer')
     }
     if(this.scrollPosition < 100){
         console.log('runing')
       this.elFilter.classList.remove('change-position')
+      this.elFilter.classList.remove('fullWidthContainer')
     }
       console.log('this in update scroll',this.scrollPosition)
 
