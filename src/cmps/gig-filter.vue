@@ -141,6 +141,7 @@ export default {
       console.log("this.$store.getters.labels", this.$store.getters.labels);
       this.$emit("filteredTxt", this.txt);
     },
+
     setFilterPrice() {
       console.log("this.minPrice", this.minPrice);
       this.$emit("filteredPrice", this.minPrice);

@@ -51,6 +51,11 @@ const routes = [
     component: loginSignup
   },
   {
+    path: '/join',
+    name: 'loginSignup',
+    component: loginSignup
+  },
+  {
     path: '/user/:id',
     name: 'user-details',
     component: userDetails
