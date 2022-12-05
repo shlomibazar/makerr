@@ -1,27 +1,103 @@
 .review-container{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    .review-avatar-img{
+    .avatar-img{
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        align-content: center;
+        margin-right: 16px;
+    }
 }
-.review-user-details{
+.review-right-info{
+    display: flex;
+    flex-direction: column;
+    .review-user-details{
     display: flex;
     flex-direction: row;
     gap: 10px;
-    .details-user-avatar-about{
-        width: 20px;
-        height: 20px;
-        align-content: center;
-    }
-    img{
-        width: 20px;
-        height: 20px;
-    }
-    .reviewer-country{
+    margin-bottom: 14px;
+    h5{
+        
+        .reviewer-name{
+            display: flex;
+        font-size: 15px;
+        align-items: center;
+        margin-bottom: 14px;
+        height: 16px;
+
+        }
+        .reviewer-country{
         font-weight: lighter;
+        display: flex;
+        font-size: 12px;
+        font-weight: 300;
+        margin-bottom: 20px;
+        .reviewer-flag{
+            width: 20px;
+            height: 15px;
+            margin-right: 7px;
+        }
+        }
+        .stars-and-published{
+         height: 21px;
+         display: flex;
+         flex-direction: row;
+         justify-content: center;
+         align-items: center;
+         .stars{
+          font-size: 21px;
+          letter-spacing: 1.2px;
+          color: #FFB33E;
+          .rate-num{
+        font-size: 14px;
+        margin-left: 2px;
+         }
+         }
+         .rate-reviewedAt-border{
+            height: 80%;
+            border-right: 1px solid rgb(235, 235, 235);
+            margin: 0 6px;
+            // margin-bottom: 12px;
+
+         }
+         .review-user-review{
+         display: flex;
+         align-items: center;
+         font-size: 14px;
+         font-weight:300;
+         padding-top:5px;
+         }
+        }
+    
     }
 }
 .review-user-comment{
+    margin-bottom:16px ;
     h5{
-
-        font-weight: lighter;
+        font-size: 16px;
+        font-weight: 400;
     }
 }
+.review-helpful-selector{
+
+}
+
+    .review-user-comment{
+        h5{
+
+        }
+    }
+    .review-helpful-selector{
+    font-size: 14px;
+    font-weight: 400;
+    span{
+        margin-right:6px;
+    }
+    }
+}
+}
+
+
+
