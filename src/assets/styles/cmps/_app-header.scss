@@ -96,6 +96,7 @@ header {
             router-link{
              color: black;
             }
+            
         }
     }
         
@@ -209,32 +210,7 @@ header {
 //             color: green;
 //             }
 
-.change_color {
-    border-bottom: 1px solid #D8D9DB;
-       background-color:white;
-       color:black;
-       a{
-            color:#404145;;
-            text-decoration-color: aliceblue;
-            font-family: 'Work Sans', sans-serif;
-            margin-left: 20px;
-        }
-        .join-btn{
-        border: 1px solid #19A463 ;
-        color: #19A463;
-        
 
-         }
-         .join-btn:hover{
-        color: #ffffff;
-
-    }
-.logo{
-    margin-left: 0%;
-    width: 10%;
-
-    }
-}
 
 .nav-bar-links{
 
@@ -297,5 +273,41 @@ header {
         &:hover{
             cursor: pointer;
         }
+    }
+}
+.change_color {
+    border-bottom: 1px solid #D8D9DB;
+       background-color:white;
+    //    color:black;
+       a{
+            color:#404145;;
+            text-decoration-color: aliceblue;
+            font-family: 'Work Sans', sans-serif;
+            margin-left: 20px;
+        }
+        button{
+             color: black;
+            }
+        .join-btn{
+        border: 1px solid #19A463 ;
+        color: #19A463;
+        
+
+         }
+    //     header{
+    //         .nav-bar-links{
+    //             .nav-links{
+    //      .join-btn:hover{
+        
+    //     color: #ffffff;
+       
+    //     }
+    // }
+    // }
+    // }
+.logo{
+    margin-left: 0%;
+    width: 10%;
+
     }
 }

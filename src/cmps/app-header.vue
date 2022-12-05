@@ -2,8 +2,7 @@
   <section
     v-if="isInHome" 
     class="header-wrapper main-container fullWidthContainer sticky"
-    :class="{ change_color: scrollPosition > 1 }"
-  >
+    :class="{ change_color: scrollPosition > 1 }">
     <header class="flex">
       <div>
         <router-link to="/" @click="headerScroll(true)" class="logo">
@@ -98,7 +97,7 @@
         <section class="nav-links flex not-sticky">
           <router-link to="/gig">Explore</router-link>
           <router-link to="/gig">Become a Seller</router-link>
-          <!-- <router-link to="/gig">Sign In</router-link> -->
+          <router-link to="/gig">Sign In</router-link>
         </section>
         <router-link to="/gig" class="join-btn flex not-sticky">Join</router-link>
         <!-- <router-link to="/chat">Chat</router-link>
