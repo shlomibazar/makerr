@@ -63,6 +63,7 @@
         >
         </vueper-slide>
       </vueper-slides>
+      <h3 class="about-gig-title">About This Gig</h3>
       <p>{{ gig.description }}</p>
 
       <h3>About The Seller</h3>
