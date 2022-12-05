@@ -61,7 +61,7 @@ const routes = [
     component: userDetails
   },
   {
-    path: '/purchase/:gigId',
+    path: '/order/:gigId',
     name: 'purchaseGig',
     component: purchaseGig
   },

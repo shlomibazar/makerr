@@ -310,3 +310,30 @@ header {
     width: 50px;
     cursor: pointer;
 }
+.user-modal-opts{
+    position: absolute;
+    display: flex;
+    z-index: 11;
+    padding: 10px;
+    background-color: rgba(253, 253, 253, 0.929);
+    color: black;
+    border-radius: 3px;
+    border-color: rgb(222, 222, 222);
+    border-style: solid;
+    border-width: 1px;
+    right: 3px;
+    margin-top: 40px;
+    flex-direction: column;
+    a{
+        background-color: #f0f0f08e;
+        border-radius: 6px;
+        font-size: 18px;
+        color: black;
+        margin: 2px;
+        cursor:pointer;
+        
+        &:hover{
+            background-color: #ffffff;
+        }
+    }
+}
