@@ -1,3 +1,4 @@
+
 <template>
   <!-- <center><h1>Purchase Page!</h1></center> -->
   <div class="main-purchase-page-ctn flex">

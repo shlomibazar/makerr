@@ -324,6 +324,17 @@ header {
     right: 3px;
     margin-top: 40px;
     flex-direction: column;
+    button{
+        background-color: #f0f0f08e;
+        border-radius: 6px;
+        font-size: 15.5px;
+        color: black;
+        margin: 2px;
+        cursor:pointer; 
+        &:hover{
+            background-color: #ffffff;
+        }
+    }
     a{
         background-color: #f0f0f08e;
         border-radius: 6px;
@@ -331,6 +342,7 @@ header {
         color: black;
         margin: 2px;
         cursor:pointer;
+        text-align: center;
         
         &:hover{
             background-color: #ffffff;

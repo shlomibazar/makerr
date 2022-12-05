@@ -11,7 +11,7 @@ import gigEdit from './views/gig-edit.vue'
 import purchaseGig from './views/gig-purchase.vue'
 import orderList from './cmps/order-list.vue'
 import dashboard from './views/dashboard.vue'
-
+import profile from './views/profile.vue'
 
 
 const routes = [
@@ -74,6 +74,11 @@ const routes = [
     path: '/dashboard',
     name: 'dashboard',
     component: dashboard
+  },
+  {
+    path: '/profile',
+    name: 'profile',
+    component: profile
   },
 ]
 
