@@ -3,7 +3,7 @@
   <!-- <center><h1>Purchase Page!</h1></center> -->
   <div class="main-purchase-page-ctn flex">
     <div class="purchase-left-sidebar flex">
-      {{ gig.title }}
+      {{ this.gig.title }}
       <img class="purchase-left-sidebar-avatar" :src="gigPreview" />
       <h1>Order Details:</h1>
       <p>{{ this.gig.owner.id }}</p>
@@ -128,6 +128,11 @@ export default {
           userId: user.id,
           userImg: user.imgUrl,
           userName: user.fullname,
+        },
+        seller: {
+          sellerId: this.gig.owner._id,
+          sellerImg: this.gig.owner.imgUrl,
+          sellerName: this.gig.owner.fullname,
         },
         price: this.gig.price,
         createdAt: new Date(),

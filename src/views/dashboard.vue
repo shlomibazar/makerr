@@ -108,4 +108,20 @@
   </div>
 </template>
 
-<script></script>
+<script>
+import { orderService } from "../services/order.service";
+export default {
+  name: "dashboard",
+  components: {},
+  data() {
+    return {};
+  },
+  async created() {
+    var orders = await orderService.query();
+    console.log("orders", orders);
+  },
+  methods: {},
+  computed: {},
+  unmounted() {},
+};
+</script>
