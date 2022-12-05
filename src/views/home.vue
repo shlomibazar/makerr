@@ -152,8 +152,6 @@ export default {
   name: 'home',
   data() {
     return {
-
-
       slides: [
         {
           title: 'Build your brand',

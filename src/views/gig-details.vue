@@ -1,5 +1,10 @@
 <template>
-  <hr />
+  <section class="lable-container-list full fullWidthContainer flex">
+    <section class="sub-header-labels main-container gig-list">
+      <h4 v-for="label in labels" :key="label" @click="setLabelToQuery(label)">{{ label }}</h4>
+      
+    </section>
+  </section>
   <button class="hamburger-menu" @click="toggleModal()">≡</button>
   <div class="details-modal" v-if="isModalToggled">
     <button>Explore</button>
@@ -13,12 +18,19 @@
       <h1>{{ gig.title }}</h1>
       <div class="user-details-container flex">
         <img class="details-user-avatar" :src="userAvatar" />
-        <h2>{{ userDetails }}</h2>
-        <h3>{{ userLevel }}</h3>
+        <section class="user-rating">
+           <h2>{{ userDetails }}</h2>
+           <h3>Level: {{ gig.owner.level }} Seller</h3>
+           <h1 class="br"></h1>
+           <div class="stars">
+            <span class="rating-stars">★★★★★</span> 
+            <span class="rating-avg">4.9</span>
+            <a1 class="rating-amount">(456)</a1>
+            </div>
+         </section>
       </div>
-      <br />
-      <hr />
-      <h3>About This Gig</h3>
+      <h3 class="repeat-buyesr-title">People keep coming back! logoflow has an exceptional number of repeat buyers.
+</h3>
       <vueper-slides
         class="details-slider"
         ref="vueperslides1"
@@ -26,7 +38,7 @@
         :autoplay="false"
         :bullets="false"
         @slide="$refs.vueperslides2.goToSlide($event.currentSlide.index, { emit: false })"
-        fixed-height="400px"
+        fixed-height="427px"
       >
         <vueper-slide v-for="(slide, i) in gig.images" :key="i" :image="slide">
         </vueper-slide>
@@ -92,31 +104,37 @@
         <h4 v-for="review in gig.reviewers" :key="review._id" :value="review.reviews">
           <hr />
           <div class="review-container">
+            <section class="review-avatar-img">
+              <img class="avatar-img" :src="userAvatar" />
+            </section>
+          <section class="review-right-info">
             <div class="review-user-details">
-              <h5>
-                <div class="reviewer-name">
-                  <img class="details-user-avatar-about" :src="userAvatar" />
-                  {{ review.name }}
-                  <div class="stars">★★★★★ <span class="rate-num">5</span></div>
-                </div>
+              <h5><section class="reviewer-name">{{ review.name }}</section>
+                <!-- </div> -->
                 <div class="reviewer-country">
-                  <img :src="gigReviewFlag" />
+                  <img class="reviewer-flag" :src="gigReviewFlag" />
                   {{ review.country }}
                 </div>
-              </h5>
+                 <section class="stars-and-published">
+                <div class="stars">★★★★★<span class="rate-num">5</span></div>
+                <span class="rate-reviewedAt-border"></span>
+                <h3 class="review-user-review">{{ review.reviewedAt }}</h3>
+                </section>             
+             </h5>
             </div>
             <div class="review-user-comment">
-              <h5>
-                {{ review.review }}
-                <br /><br /><br />
-                <h3>{{ review.reviewedAt }}</h3>
+              <h5>{{ review.review }}
+                <!-- <br /><br /><br /> -->
               </h5>
             </div>
+             <section class="review-helpful-selector">
+                  <span>Helpful? </span><span> 👍 Yes </span><span> 👎 No </span>
+             </section>
+          </section>
           </div>
         </h4>
       </div>
     </div>
-
     <div class="checkout-container">
       <div class="checkout-price">
         <span>${{ gig.price }}</span>
@@ -208,6 +226,17 @@ export default {
     return {
       gig: null,
       isModalToggled: false,
+       labels: [
+        'graphics & design',
+        'digital marketing',
+        'writing & translation',
+        'video & animation',
+        'music & audio',
+        'programming & tech',
+        'business',
+        'lifestyle',
+        'trending'
+      ],
     };
   },
   created() {
@@ -228,6 +257,14 @@ export default {
         this.gig = gig;
         console.log("loadGig");
       });
+    },
+     setLabelToQuery(labelTitle) {
+      // console.log('example', this.searchInfo)
+      const pathToRoute = this.$route.path.split('/')
+      // console.log('pathToRoute', pathToRoute);
+      this.displayLabel=labelTitle
+      this.$router.push({ path: '/gig', query: { label: labelTitle } })
+      
     },
   },
   watch: {
