@@ -1,8 +1,9 @@
 <template>
   <section class="lable-container-list full fullWidthContainer flex">
     <section class="sub-header-labels main-container gig-list">
-      <h4 v-for="label in labels" :key="label" @click="setLabelToQuery(label)">{{ label }}</h4>
-      
+      <h4 v-for="label in labels" :key="label" @click="setLabelToQuery(label)">
+        {{ label }}
+      </h4>
     </section>
   </section>
   <button class="hamburger-menu" @click="toggleModal()">≡</button>
@@ -13,24 +14,44 @@
     <hr />
     <button>Join</button>
   </div>
+
+  <!-- CHECKOUT MODAL -->
+  <!-- <div class="checkout-modal" v-if="isCheckOutModal">
+    <div class="order-options">
+      <span class="options-title">Order Options</span>
+      <button class="close-modal-btn">X</button>
+    </div>
+    <div class="checkout-details-ctn">
+      <div class="checkout-gig-price">{{ gig.price }}</div>
+      <span>Single Order</span>
+      <hr />
+      <span>TEXT</span>
+      <span>TEXT</span>
+      <span>TEXT</span>
+    </div>
+    <button class="checkout-btn" @click="finishOrder()">Continue</button>
+    <h6>You won’t be charged yet</h6>
+  </div> -->
+
   <section v-if="gig" class="gig-details-page">
     <div class="details-content">
       <h1>{{ gig.title }}</h1>
       <div class="user-details-container flex">
         <img class="details-user-avatar" :src="userAvatar" />
         <section class="user-rating">
-           <h2>{{ userDetails }}</h2>
-           <h3>Level: {{ gig.owner.level }} Seller</h3>
-           <h1 class="br"></h1>
-           <div class="stars">
-            <span class="rating-stars">★★★★★</span> 
+          <h2>{{ userDetails }}</h2>
+          <h3>Level: {{ gig.owner.level }} Seller</h3>
+          <h1 class="br"></h1>
+          <div class="stars">
+            <span class="rating-stars">★★★★★</span>
             <span class="rating-avg">4.9</span>
             <a1 class="rating-amount">(456)</a1>
-            </div>
-         </section>
+          </div>
+        </section>
       </div>
-      <h3 class="repeat-buyesr-title">People keep coming back! logoflow has an exceptional number of repeat buyers.
-</h3>
+      <h3 class="repeat-buyesr-title">
+        People keep coming back! logoflow has an exceptional number of repeat buyers.
+      </h3>
       <vueper-slides
         class="details-slider"
         ref="vueperslides1"
@@ -108,30 +129,32 @@
             <section class="review-avatar-img">
               <img class="avatar-img" :src="userAvatar" />
             </section>
-          <section class="review-right-info">
-            <div class="review-user-details">
-              <h5><section class="reviewer-name">{{ review.name }}</section>
-                <!-- </div> -->
-                <div class="reviewer-country">
-                  <img class="reviewer-flag" :src="gigReviewFlag" />
-                  {{ review.country }}
-                </div>
-                 <section class="stars-and-published">
-                <div class="stars">★★★★★<span class="rate-num">5</span></div>
-                <span class="rate-reviewedAt-border"></span>
-                <h3 class="review-user-review">{{ review.reviewedAt }}</h3>
-                </section>             
-             </h5>
-            </div>
-            <div class="review-user-comment">
-              <h5>{{ review.review }}
-                <!-- <br /><br /><br /> -->
-              </h5>
-            </div>
-             <section class="review-helpful-selector">
-                  <span>Helpful? </span><span> 👍 Yes </span><span> 👎 No </span>
-             </section>
-          </section>
+            <section class="review-right-info">
+              <div class="review-user-details">
+                <h5>
+                  <section class="reviewer-name">{{ review.name }}</section>
+                  <!-- </div> -->
+                  <div class="reviewer-country">
+                    <img class="reviewer-flag" :src="gigReviewFlag" />
+                    {{ review.country }}
+                  </div>
+                  <section class="stars-and-published">
+                    <div class="stars">★★★★★<span class="rate-num">5</span></div>
+                    <span class="rate-reviewedAt-border"></span>
+                    <h3 class="review-user-review">{{ review.reviewedAt }}</h3>
+                  </section>
+                </h5>
+              </div>
+              <div class="review-user-comment">
+                <h5>
+                  {{ review.review }}
+                  <!-- <br /><br /><br /> -->
+                </h5>
+              </div>
+              <section class="review-helpful-selector">
+                <span>Helpful? </span><span> 👍 Yes </span><span> 👎 No </span>
+              </section>
+            </section>
           </div>
         </h4>
       </div>
@@ -207,7 +230,7 @@
         </ul>
       </div>
       <footer>
-        <button class="side-btn" @click="purchaseGig()">
+        <button class="side-btn" @click="checkOutModal()">
           Continue (${{ gig.price }})
         </button>
       </footer>
@@ -227,16 +250,17 @@ export default {
     return {
       gig: null,
       isModalToggled: false,
-       labels: [
-        'graphics & design',
-        'digital marketing',
-        'writing & translation',
-        'video & animation',
-        'music & audio',
-        'programming & tech',
-        'business',
-        'lifestyle',
-        'trending'
+      isCheckOutModal: false,
+      labels: [
+        "graphics & design",
+        "digital marketing",
+        "writing & translation",
+        "video & animation",
+        "music & audio",
+        "programming & tech",
+        "business",
+        "lifestyle",
+        "trending",
       ],
     };
   },
@@ -245,12 +269,15 @@ export default {
     // this.updateMsgs()
   },
   methods: {
+    // checkOutModal() {
+    //   this.isCheckOutModal = !this.isCheckOutModal;
+    //   console.log("isCheckOutModal", isCheckOutModal);
+    // },
+    checkOutModal() {
+      this.$router.push(`/order/${this.gig._id}`);
+    },
     toggleModal() {
       this.isModalToggled = !this.isModalToggled;
-    },
-    purchaseGig() {
-      router.push(`/purchase/${this.gig._id}`);
-      // console.log('gig id?', this.gig._id);
     },
     loadGig() {
       const id = this.$route.params.gigId;
@@ -259,13 +286,12 @@ export default {
         console.log("loadGig");
       });
     },
-     setLabelToQuery(labelTitle) {
+    setLabelToQuery(labelTitle) {
       // console.log('example', this.searchInfo)
-      const pathToRoute = this.$route.path.split('/')
+      const pathToRoute = this.$route.path.split("/");
       // console.log('pathToRoute', pathToRoute);
-      this.displayLabel=labelTitle
-      this.$router.push({ path: '/gig', query: { label: labelTitle } })
-      
+      this.displayLabel = labelTitle;
+      this.$router.push({ path: "/gig", query: { label: labelTitle } });
     },
   },
   watch: {

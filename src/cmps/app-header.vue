@@ -1,6 +1,6 @@
 <template>
   <section
-    v-if="isInHome" 
+    v-if="isInHome"
     class="header-wrapper main-container fullWidthContainer sticky"
     :class="{ change_color: scrollPosition > 1 }"
   >
@@ -32,13 +32,13 @@
         </button-search>
       </div>
       <nav class="flex nav-bar-links">
-        <section class="nav-links flex" >
+        <section class="nav-links flex">
           <router-link to="/gig">Explore</router-link>
           <router-link to="/gig">Become a Seller</router-link>
           <!-- <router-link to="/login">Sign In</router-link> -->
           <button class="navbar-signin-btn" @click="toggleSignInModal">Sign In</button>
           <div class="show-login-modal" v-if="this.isSignModalOpened">
-            <login-signup @closeModal="toggleSignInModal"/>
+            <login-signup @closeModal="toggleSignInModal" />
           </div>
         </section>
         <!-- <router-link to="/join" class="join-btn flex">Join</router-link> -->
@@ -106,14 +106,26 @@
     <router-link :to="`/user/${loggedInUser._id}`">
       {{ loggedInUser.fullname }}
     </router-link>
-    <span class="logged-in-user-name">{{loggedInUser.fullname}}</span>
-    <img class="logged-in-user-avatar" :src="loggedInUser.imgUrl" /> 
+    <span class="logged-in-user-name">{{ loggedInUser.fullname }}</span>
+    <img
+      class="logged-in-user-avatar"
+      :src="loggedInUser.imgUrl"
+      @click="toggleUserModal()"
+    />
+    <div class="user-modal-opts" v-if="isUserModalOn">
+      <router-link to="/profile">Profile</router-link>
+      <router-link to="/dashboard">Dashboard</router-link>
+      <router-link to="/logout">Logout</router-link>
+      <!-- <button class="user-modal-profile-btn" @click="">Profile</button>
+      <button class="user-modal-dashboard-btn">Dashboard</button>
+      <button class="user-modal-logout-btn">Logout</button> -->
+    </div>
     <!-- <span>{{ loggedInUser.score.toLocaleString() }}</span>
     <img :src="loggedInUser.imgUrl" /> -->
   </section>
 </template>
 <script>
-import loginSignup from '../views/login-signup.vue'
+import loginSignup from "../views/login-signup.vue";
 export default {
   created() {
     this.$watch(
@@ -135,6 +147,7 @@ export default {
   data() {
     return {
       isSignModalOpened: false,
+      isUserModalOn: false,
       isInHome: "",
       previousParams: "4564",
       toParams: "456",
@@ -162,13 +175,16 @@ export default {
       ],
     };
   },
-  components:{
+  components: {
     loginSignup,
   },
   methods: {
+    toggleUserModal(){
+      this.isUserModalOn = !this.isUserModalOn;
+    },
     toggleSignInModal() {
-      this.isSignModalOpened = !this.isSignModalOpened
-      console.log('Sign in modal status: ', this.isSignModalOpened);
+      this.isSignModalOpened = !this.isSignModalOpened;
+      console.log("Sign in modal status: ", this.isSignModalOpened);
     },
     setLabelToQuery(labelTitle) {
       console.log("example", this.searchInfo);
@@ -189,7 +205,6 @@ export default {
     loggedInUser() {
       return this.$store.getters.loggedinUser;
     },
-
   },
 };
 </script>
