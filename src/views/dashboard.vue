@@ -7,8 +7,16 @@
           <hr />
           <div class="member-Since">
             <div class="member">
-              <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-vubbuv" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="PersonIcon">
-                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path>
+              <svg
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-vubbuv"
+                focusable="false"
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                data-testid="PersonIcon"
+              >
+                <path
+                  d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+                ></path>
               </svg>
               <h4 class="since">Member since</h4>
             </div>
@@ -101,4 +109,19 @@
 </template>
 
 <script>
+import { orderService } from "../services/order.service";
+export default {
+  name: "dashboard",
+  components: {},
+  data() {
+    return {};
+  },
+  async created() {
+    var orders = await orderService.query();
+    console.log("orders", orders);
+  },
+  methods: {},
+  computed: {},
+  unmounted() {},
+};
 </script>

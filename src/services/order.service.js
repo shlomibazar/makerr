@@ -1,78 +1,70 @@
 
-// import { storageService } from './async-storage.service.js'
+import { storageService } from './async-storage.service.js'
 import { httpService } from './http.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
 
 
-const STORAGE_KEY = 'gig'
+const STORAGE_KEY = 'order'
 
-const labels = [
-    { title: 'On wheels', color: '#dc2626' },
-    { title: 'Board', color: '#f59e0b' },
-    { title: 'Art', color: '#047857' },
-    { title: 'Baby', color: '#2563eb' },
-    { title: 'Puzzle', color: '#4338ca' },
-    { title: 'Outdoor', color: '#be185d' },
-    { title: 'Battery Powered', color: '#71717a' },
-    { title: 'Doll', color: '#6d28d9' },
-    { title: 'Anime', color: '#fbbf24' },
-    { title: 'Lego', color: '#6366f1' },
-    { title: 'Superhero', color: '#ef4444' },
-    { title: 'Strategy', color: '#34d399' },
-  ]
 
-export const gigService = {
+
+export const orderService = {
     query,
     getById,
     save,
     remove,
-    getEmptyGig,
-    addGigMsg
+    // setOrder,
+    addOrderMsg
 }
-window.cs = gigService
+window.cs = orderService
 
+// function setOrder(order) {
+//     console.log('order',order);
+//     return httpService.post(STORAGE_KEY, order)
+// }
 
-async function query(filterBy = { txt: '', price: 0 }) {
-    return httpService.get(STORAGE_KEY, filterBy)
+async function query(filterBy = { txt: '' }) {
+    // return httpService.get(STORAGE_KEY, filterBy)
 
-    // var gigs = await storageService.query(STORAGE_KEY)
-    // if (filterBy.txt) {
-    //     const regex = new RegExp(filterBy.txt, 'i')
-    //     gigs = gigs.filter(gig => regex.test(gig.vendor) || regex.test(gig.description))
-    // }
-    // if (filterBy.price) {
-    //     gigs = gigs.filter(gig => gig.price <= filterBy.price)
-    // }
-    // return gigs
-
-}
-function getById(gigId) {
-    // return storageService.get(STORAGE_KEY, gigId)
-    return httpService.get(`gig/${gigId}`)
-}
-
-async function remove(gigId) {
-    // await storageService.remove(STORAGE_KEY, gigId)
-    return httpService.delete(`gig/${gigId}`)
-}
-async function save(gig) {
-    var savedGig
-    if (gig._id) {
-        // savedGig = await storageService.put(STORAGE_KEY, gig)
-        savedGig = await httpService.put(`gig/${gig._id}`, gig)
-
-    } else {
-        // Later, owner is set by the backend
-        gig.owner = userService.getLoggedinUser()
-        // savedGig = await storageService.post(STORAGE_KEY, gig)
-        savedGig = await httpService.post('gig', gig)
+    var orders = await storageService.query(STORAGE_KEY)
+    if (filterBy.txt) {
+        const regex = new RegExp(filterBy.txt, 'i')
+        orders = orders.filter(order => regex.test(order.vendor) || regex.test(order.description))
     }
-    return savedGig
+    if (filterBy.price) {
+        orders = orders.filter(order => order.price <= filterBy.price)
+    }
+    return orders
+
+}
+function getById(orderId) {
+    return storageService.get(STORAGE_KEY, orderId)
+    // return httpService.get(`order/${orderId}`)
 }
 
-async function addGigMsg(gigId, txt) {
-    const savedMsg = await httpService.post(`gig/${gigId}/msg`, {txt})
+async function remove(orderId) {
+    await storageService.remove(STORAGE_KEY, orderId)
+    // return httpService.delete(`order/${orderId}`)
+}
+async function save(order) {
+    var savedOrder
+    if (order._id) {
+        savedOrder = await storageService.put(STORAGE_KEY, order)
+        // savedOrder = await httpService.put(`order/${order._id}`, order)
+        
+    } else {
+        console.log('orderrrr',order)
+        // Later, owner is set by the backend
+        order.owner = userService.getLoggedinUser()
+        savedOrder = await storageService.post(STORAGE_KEY, order)
+        // savedOrder = await httpService.post('order', order)
+    }
+    return savedOrder
+}
+
+async function addOrderMsg(orderId, txt) {
+    const savedMsg = await httpService.post(`order/${orderId}/msg`, {txt})
     return savedMsg
 }
 function getEmptyReview() {
@@ -87,101 +79,7 @@ function getEmptyReview() {
         }
     }            
 }
-function getEmptyGig(){
-    return {
-        image: "https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/3171448/original/a41a38f3733bb97279a49d1449f7337dece50693.jpg",
-        images: [
-            "https://res.cloudinary.com/djyj6l7de/image/upload/v1670054167/gigs%20images/gig%201/f672898aa2f4756e249b9c2edb27d3339860de8d_bgjfwr.webp",
-            "https://res.cloudinary.com/djyj6l7de/image/upload/v1670054167/gigs%20images/gig%201/design-a-professional-business-flyer-or-poster_frbudj.jpg",
-            "https://res.cloudinary.com/djyj6l7de/image/upload/v1670054167/gigs%20images/gig%201/final_logo_dnmfrp.webp",
-            "https://res.cloudinary.com/djyj6l7de/image/upload/v1670054167/gigs%20images/gig%201/design-a-professional-business-flyer-or-poster_1_vq55mr.jpg",
-            "https://res.cloudinary.com/djyj6l7de/image/upload/v1670054167/gigs%20images/gig%201/final_logo1_emcful.webp",
-        ],
-        title: "",
-        category: "Graphics & Design",
-        subCategory: "Logo Design",
-        description: "Hi there ! Thanks for stopping by !!\nA Team of Talented Graphic Designer with 8+ years of experience in Graphic Industry, expertise as Logo Maker, You'll get creative & AWESOME logo design for your business.\nMy portfolio : https://www.fiverr.com/users/design_desk/portfolio/NjFiYjE4NmMwZTgwMDUwMDAxZTMzMjJh\n★ Why Us? ★\nTalented Logo Maker Team\nFully custom made, creative, original, UNIQUE and AWESOME designs\nProfessional customer support 24/7\nHigh Quality work\n100% money back policy if not satisfied\n★ WHAT DO YOU GET? ★\n✔ Highly Professional, UNIQUE & High Quality designs\n✔ UNLIMITED revisions until u r 100% satisfied\n✔ Fast turn around time 24 to 48 hours only.\n✔ 100% original & unique vector design from Adobe Illustrator\n✔ Vector Source Files (scalable without any quality loss) (AI, EPS, PDF) for the final design ✔ PROFESSIONAL Communication & Outstanding Customer Support ✔ Guaranteed High Quality work\nIf you have any question,\nFeel free to★ Contact Me! ★I'll be happy to help !\nLet's get started!\n-Your Logo Maker",
-        price: '',
-        daysToMake: 9,
-        labels: ["graphics & design"],
-        owner: {
-            id: "",
-            fullname: "",
-            rate: 3,
-            level: 3,
-            isOnline: false,
-            clients: 
-            ["https://res.cloudinary.com/djyj6l7de/image/upload/v1670100587/logos/logo3_tuit0t.png",
-            "https://res.cloudinary.com/djyj6l7de/image/upload/v1670100586/logos/61a87e99f3085f4291c4b980_cn1wzl.webp",
-            ],
-            imgUrl: "https://fiverr-res.cloudinary.com/t_profile_original,q_auto,f_auto/attachments/profile/photo/044fb5914a845a4eb59fc2b69f7f7b32-1634120039750/4dbc2acb-7322-4cd0-9afb-e5190e8e8a0d.jpg",
-            loc: "India",
-            memberSince: "Jun 2014",
-            avgResponceTime: "2 hours",
-            about: "Hello! My name is VD. I am a connoisseur of art and music. I love being around nature and my pets. I have a team of professional graphic designers with an experience of 8+ years. We specialize in logo designing. We're available exclusively on fiverr to rock your world with our designing skills. Come and experience it for yourself!",
-        },
-
-        lastDelivery: "about 3 hours",
-        reviewers: [
-            {
-                name: "airbornesnow",
-                country: "United States",
-                flag: "https://fiverr-dev-res.cloudinary.com/general_assets/flags/1f1fa-1f1f8.png",
-                review: "The seller's communication was EXCELLENT and the service was exactly as described. When I wanted revisions, they did not hesitate to provide me with alterations of the design. Although they were nice and kind when I asked for the revisions, all the revisions were half a**ed and sloppy. Even when I provided a concept drawing for them to TRACE, the results were still not what I expected. Buyers BEWARE: The seller's communication is excellent, friendly, and VERY kind. However, if you ask for any revisions, the revisions you will receive will be sloppy and half-a**ed.",
-                reviewedAt: "Published 4 days ago"
-            },
-            {
-                name: "jacobmnb",
-                country: "United Kingdom",
-                flag: "https://fiverr-dev-res.cloudinary.com/general_assets/flags/1f1ec-1f1e7.png",
-                review: "I thought this service was amazing, I bought the basic option just hoping for a basic logo, but the seller went above my expectations and provided me with a bunch of concepts that were better than I could have imagined, for £7.90 I think this service is a must-buy for anyone needing a professional-looking logo and not wanting to spend a huge amount",
-                reviewedAt: "Published 2 months ago"
-            },
-            {
-                name: "ashtonpeckham",
-                country: "United States",
-                flag: "https://fiverr-dev-res.cloudinary.com/general_assets/flags/1f1fa-1f1f8.png",
-                review: "The seller was very responsive. We had revisions after the initial designs were delivered and the seller made them very quickly. The logo we selected is perfect for our current needs. Recommend including your vision in the initial request so you don't end up with ideas that you don't like. There were only 2 real contenders because the Fiverr site wouldn't allow me to attach my hand drawn idea. The paperclip icon was essentially rendered inactive, even after several attempts. This is no fault of the designers; i should have been even more descriptive with my request when I was unable to attach files.",
-                reviewedAt: "Published 1 week ago"
-            },
-            {
-                name: "borowski10",
-                country: "United States",
-                flag: "https://fiverr-dev-res.cloudinary.com/general_assets/flags/1f1fa-1f1f8.png",
-                review: "Ultimately, I am very happy with the final logo I received. However, the seller's communication could have been better. There were a few times I asked for specific revisions and I was sent the same thing or something else that I didn't ask for. It took about 2 weeks for me to finally get what I was looking for. In the end, I got what I paid for and I am grateful for the service!",
-                reviewedAt: "Published 2 days ago"
-            },
-            {
-                name: "fowlplay_uk",
-                country: "United Kingdom",
-                flag: "https://fiverr-dev-res.cloudinary.com/general_assets/flags/1f1ec-1f1e7.png",
-                review: "VD was great. I had a very specific design in mind already that I needed recreating professionally and they did not disappoint. Even when I started to get picky with the design, nothing I requested was ever too much trouble. We went through many revisions to get it to exactly how I wanted it and every interaction we had was effortless. This is the first project I'd commissioned so wasn't really sure on the correct etiquette, yet VD made things so easy for me. Can't recommend these guys enough for that",
-                reviewedAt: "Published 2 months ago"
-            }
-        ],
-        tags: [
-            {
-                name: "minimalist"
-            },
-            {
-                name: "flat"
-            },
-            {
-                name: "logo design"
-            },
-            {
-                name: "modern"
-            },
-            {
-                name: "unique"
-            },
-            {
-                name: "logo maker"
-            }
-        ]
-    }
-}
-// gigs = 
+// orders = 
 //     [
 //       {
 //         _id: 'i101',
@@ -213,16 +111,16 @@ function getEmptyGig(){
 //         },
 //         daysToMake: 3,
 //         imgs: [
-//           "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/22527722/original/d9de303ea2f07efe1e75e1a67f657e33e6aa9b4f/do-professional-and-unique-logo-design.jpg",
-//           "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs3/22527722/original/a752a1defa71007d53fb312b2e6235234253e642/do-professional-and-unique-logo-design.jpg",
-//           "https://fiverr-res.cloudinary.com/image/upload/t_gig_pdf_gallery_view_ver4,f_jpg/20220614/modern%20minimalist%20logo%20design%202_mto2tc.jpg",
+//           "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/orders/22527722/original/d9de303ea2f07efe1e75e1a67f657e33e6aa9b4f/do-professional-and-unique-logo-design.jpg",
+//           "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/orders3/22527722/original/a752a1defa71007d53fb312b2e6235234253e642/do-professional-and-unique-logo-design.jpg",
+//           "https://fiverr-res.cloudinary.com/image/upload/t_order_pdf_gallery_view_ver4,f_jpg/20220614/modern%20minimalist%20logo%20design%202_mto2tc.jpg",
 //           "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/attachments/delivery/asset/0387ac33f43c1a4ecd87e4b66e33f7b9-1658399601/80126_MattDash%20Gaming_FLat_HP_06%20(1)/do-professional-and-unique-logo-design.jpg",
 //           "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/attachments/delivery/asset/7b8e491028240edd8e6759fae7407f0b-1657963284/79944_COBRA%20FENCING%20LLC_Flat_H_02/do-professional-and-unique-logo-design.jpg"
 //         ],
 //         description: `
-//         This Gig assures you for the logo designs with minimalism and smoothness
+//         This Order assures you for the logo designs with minimalism and smoothness
 
-//         This Gig is of one of many design kinds we offer. Flat design concepts are one of our 
+//         This Order is of one of many design kinds we offer. Flat design concepts are one of our 
 //         fortes. For the logo to be timeless it doesn\'t need to be with complex structures or 
 //         patterns. It just needs to be simple, memorable and which gives a distinctive essence 
 //         to your business
@@ -284,9 +182,9 @@ function getEmptyGig(){
 //         },
 //         daysToMake: 2,
 //         imgs: [
-//           'https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/1094285/original/30f75e896954dc0ea9e28a87209a28053bcccc18/design-2-outstanding-logo.png',
-//           'https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs3/1094285/original/0149d53275d914f681e8685b9e6c263dcc4309ab/design-2-outstanding-logo.png',
-//           'https://fiverr-res.cloudinary.com/image/upload/t_gig_pdf_gallery_view_ver4,f_jpg/20211214/logo-04_nxxckf.jpg',
+//           'https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/orders/1094285/original/30f75e896954dc0ea9e28a87209a28053bcccc18/design-2-outstanding-logo.png',
+//           'https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/orders3/1094285/original/0149d53275d914f681e8685b9e6c263dcc4309ab/design-2-outstanding-logo.png',
+//           'https://fiverr-res.cloudinary.com/image/upload/t_order_pdf_gallery_view_ver4,f_jpg/20211214/logo-04_nxxckf.jpg',
 //           'https://fiverr-res.cloudinary.com/images/t_smartwm/t_main1,q_auto,f_auto,q_auto,f_auto/attachments/delivery/asset/819a431f0c9f551ac9173310d0b8788c-1657824243/preview%20203/design-2-outstanding-logo.jpg',
 //         ],
 //         description: `
@@ -367,7 +265,7 @@ function getEmptyGig(){
 //         },
 //         daysToMake: 1,
 //         imgs: [
-//           'https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/205043129/original/3e1b7b521d2ac2bdd0e839888e1095fe3c3f4d66/do-creative-unique-modern-versatile-minimalist-and-business-logo-design.jpg',
+//           'https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/orders/205043129/original/3e1b7b521d2ac2bdd0e839888e1095fe3c3f4d66/do-creative-unique-modern-versatile-minimalist-and-business-logo-design.jpg',
 //           'https://fiverr-res.cloudinary.com/images/t_smartwm/t_main1,q_auto,f_auto,q_auto,f_auto/attachments/delivery/asset/4f9605173bed9a21001954d0113d914a-1658647699/logo1/do-creative-unique-modern-versatile-minimalist-and-business-logo-design.jpg',
 //           'https://fiverr-res.cloudinary.com/images/t_smartwm/t_main1,q_auto,f_auto,q_auto,f_auto/attachments/delivery/asset/36df9fbe656de3e335698cee5606c360-1658401602/logo1/do-creative-unique-modern-versatile-minimalist-and-business-logo-design.jpg',
 //           'https://fiverr-res.cloudinary.com/images/t_smartwm/t_main1,q_auto,f_auto,q_auto,f_auto/attachments/delivery/asset/c6523fd4ae08dc7df9d4f340885816b2-1658405876/logo1/do-creative-unique-modern-versatile-minimalist-and-business-logo-design.jpg',
@@ -430,16 +328,16 @@ function getEmptyGig(){
 //         },
 //         daysToMake: 1,
 //         imgs: [
-//           'https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs/143801307/original/182ae507354f6fe0fa021e403461e9b6e40f3a03/design-a-flat-modern-luxury-elegant-minimalist-logo.jpg',
-//           'https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs3/143801307/original/8164c9f9c0fff64be3842996cabe58ceee7cb9e1/design-a-flat-modern-luxury-elegant-minimalist-logo.jpg',
-//           'https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs2/143801307/original/3ff3a9d66bd1f9ff6f5a5c4bf770b8b7957cca58/design-a-flat-modern-luxury-elegant-minimalist-logo.jpg',
+//           'https://fiverr-res.cloudinary.com/images/q_auto,f_auto/orders/143801307/original/182ae507354f6fe0fa021e403461e9b6e40f3a03/design-a-flat-modern-luxury-elegant-minimalist-logo.jpg',
+//           'https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/orders3/143801307/original/8164c9f9c0fff64be3842996cabe58ceee7cb9e1/design-a-flat-modern-luxury-elegant-minimalist-logo.jpg',
+//           'https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/orders2/143801307/original/3ff3a9d66bd1f9ff6f5a5c4bf770b8b7957cca58/design-a-flat-modern-luxury-elegant-minimalist-logo.jpg',
 //           'https://fiverr-res.cloudinary.com/images/t_smartwm/t_main1,q_auto,f_auto,q_auto,f_auto/attachments/delivery/asset/e9f0e0b70347b7de2934b68bada4a8e3-1658276904/Mortgage%20by%20Matranga%2002/design-a-flat-modern-luxury-elegant-minimalist-logo.jpg',
 //           'https://fiverr-res.cloudinary.com/images/t_smartwm/t_main1,q_auto,f_auto,q_auto,f_auto/attachments/delivery/asset/c4cd6e4322e21031559f7ab5c899a8c1-1658280635/01/design-a-flat-modern-luxury-elegant-minimalist-logo.jpg',
 //         ],
 //         description: `
 //         IMPORTANT : PLEASE CONTACT ME BEFORE PLACING THE ORDER
 
-//         Welcome to my Fiverr's gig "I will fix complex WordPress issues, fix WordPress errors, 
+//         Welcome to my Fiverr's order "I will fix complex WordPress issues, fix WordPress errors, 
 //         fix bug". If you are having problems with your WordPress website and want to fix 
 //         WordPress errors, issues and bug or customize some features, than you are at the right 
 //         place. You don't look any further!
@@ -507,9 +405,9 @@ function getEmptyGig(){
 //         },
 //         daysToMake: 3,
 //         imgs: [
-//           'https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/177849864/original/1b52406ee038703a5b3f3fb1ae6a4cccbddfb75a/remove-malware-and-viruses.png',
-//           'https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs2/177849864/original/c13b7c3ff4b5bb62e1baffa9f4d6f20fe2e13094/remove-malware-and-viruses.png',
-//           'https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs3/177849864/original/ae0018bb76e4e4e42d9973c93861fbc29e246990/remove-malware-and-viruses.png',
+//           'https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/orders/177849864/original/1b52406ee038703a5b3f3fb1ae6a4cccbddfb75a/remove-malware-and-viruses.png',
+//           'https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/orders2/177849864/original/c13b7c3ff4b5bb62e1baffa9f4d6f20fe2e13094/remove-malware-and-viruses.png',
+//           'https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/orders3/177849864/original/ae0018bb76e4e4e42d9973c93861fbc29e246990/remove-malware-and-viruses.png',
 //           'https://fiverr-res.cloudinary.com/images/t_smartwm/t_main1,q_auto,f_auto,q_auto,f_auto/attachments/delivery/asset/4f38f7e55c01be0df8ab7df3eb182972-1657921024/12/remove-malware-and-viruses.PNG',
 //         ],
 //         description: `
@@ -578,8 +476,8 @@ function getEmptyGig(){
 //         },
 //         daysToMake: 3,
 //         imgs: [
-//           "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/18513109/original/f0d744d79af6fb281ffb4a10d417a300ecb5a37f/create-fix-customize-your-wordpress-website.png",
-//           "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs3/18513109/original/0193afd6928f9a6f0fec3ff19f235252049e0937/create-fix-customize-your-wordpress-website.jpg",
+//           "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/orders/18513109/original/f0d744d79af6fb281ffb4a10d417a300ecb5a37f/create-fix-customize-your-wordpress-website.png",
+//           "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/orders3/18513109/original/0193afd6928f9a6f0fec3ff19f235252049e0937/create-fix-customize-your-wordpress-website.jpg",
 //           "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/attachments/delivery/asset/b7f8ae533a2d4d50f7387359c8c4d8ae-1655063814/Screenshot%202022-06-13%20at%2012.55.40%20AM/create-fix-customize-your-wordpress-website.png",
 //           "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/attachments/delivery/asset/f6e8341cb2281b4ee518dad3ff68b0c5-1654650318/Screenshot%202022-06-08%20at%206.04.06%20AM/create-fix-customize-your-wordpress-website.png",
 //           "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/attachments/delivery/asset/ee3cbf05e749490a6b934ccab9ec4281-1654467102/Screenshot%202022-06-06%20at%203.11.14%20AM/create-fix-customize-your-wordpress-website.png"
@@ -628,7 +526,7 @@ function getEmptyGig(){
 //         `,
 //         tags: ['logo-design', 'artisitic', 'proffesional', 'accessible'],
 //         likedByUsers: ['mini-user'],
-//         more: 'In this basic gig i will fix one small issue of your website.',
+//         more: 'In this basic order i will fix one small issue of your website.',
 //         orderFeats: [
 //           '10 pages',
 //           'Design customization',
@@ -661,13 +559,13 @@ function getEmptyGig(){
 //           channels.`,
 //         },
 //         daysToMake: 3,
-//         imgs: ["https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/261617738/original/a503705250e3085c24e54bae5e879336b9112734/do-c-python-java-web-programming-assignments.png",
-//         "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/160699189/original/ff977a2d2ea2e5a179d1e265f69f06033c1035f2/do-programming-on-java-c-python.png",
-//         "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs2/258866947/original/93bac81fbc824b4d7903a6db07600005e16f20a2/do-c-cpp-c-sharp-python-java-gui-programming-for-you.jpeg",
-//         "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs2/263493183/original/67127841c404937de1c4bb5de71e7116b5a5ad8a/do-c-cpp-java-and-python-programming-projects-and-games.png",
+//         imgs: ["https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/orders/261617738/original/a503705250e3085c24e54bae5e879336b9112734/do-c-python-java-web-programming-assignments.png",
+//         "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/orders/160699189/original/ff977a2d2ea2e5a179d1e265f69f06033c1035f2/do-programming-on-java-c-python.png",
+//         "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/orders2/258866947/original/93bac81fbc824b4d7903a6db07600005e16f20a2/do-c-cpp-c-sharp-python-java-gui-programming-for-you.jpeg",
+//         "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/orders2/263493183/original/67127841c404937de1c4bb5de71e7116b5a5ad8a/do-c-cpp-java-and-python-programming-projects-and-games.png",
 //         ],
 //         description: `
-//         Welcome to my Premium gig!
+//         Welcome to my Premium order!
 
 //         If you are looking for yt promotions and want to complete youtube partner program
 //         requirements you are at the right place.
@@ -683,7 +581,7 @@ function getEmptyGig(){
 //         your channel doesn't violate any of You Tube policy and your content is unique and not
 //         taken from other channels, it must get monetized.
 
-//         Benefits of this Gig!
+//         Benefits of this Order!
 
 //         Real traffic from Social Media and Groups, no bots.
 //         No worries about Blocks / Bans, our service is 100% legit.
@@ -691,7 +589,7 @@ function getEmptyGig(){
 //         Subscribers and Watch hours.
 
 
-//         Also check my other gigs for viral video marketing and guest posts. Feel free to ask
+//         Also check my other orders for viral video marketing and guest posts. Feel free to ask
 //         any questions. Thanks
 //         `,
 //         tags: ['logo-design', 'artisitic', 'proffesional', 'accessible'],
@@ -730,9 +628,9 @@ function getEmptyGig(){
 //           any project`,
 //         },
 //         daysToMake: 7,
-//         imgs: ["https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/149329567/original/c3565f08f5fcc68aca80b4ac414203bfba2907dd/do-any-python-programming-task-and-design-your-algorithms.jpg",
-//         "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs2/149329567/original/0fb9fe175f9d55c219bb64c8ace818a51133cde9/do-any-python-programming-task-and-design-your-algorithms.jpg",
-//         "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs3/149329567/original/352e8fd9a84a035052b08ad48e36bfadb09de41c/do-any-python-programming-task-and-design-your-algorithms.png"
+//         imgs: ["https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/orders/149329567/original/c3565f08f5fcc68aca80b4ac414203bfba2907dd/do-any-python-programming-task-and-design-your-algorithms.jpg",
+//         "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/orders2/149329567/original/0fb9fe175f9d55c219bb64c8ace818a51133cde9/do-any-python-programming-task-and-design-your-algorithms.jpg",
+//         "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/orders3/149329567/original/352e8fd9a84a035052b08ad48e36bfadb09de41c/do-any-python-programming-task-and-design-your-algorithms.png"
 //         ],
 //         description: `
 //         Welcome to my GIG for Python solutions!
@@ -803,9 +701,9 @@ function getEmptyGig(){
 //           Looking forward to working with you!`,
 //         },
 //         daysToMake: 5,
-//         imgs: ["https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/220481465/original/8c8603e647a5821a79cd156691fe62d8949fdcc1/analyse-your-data-in-r.png",
-//         "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs2/220481465/original/e09b19d9c6b5e6a176fca640c4613c2117c5c653/analyse-your-data-in-r.jpg",
-//         "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs3/220481465/original/caa8fb43fcfe4ce3778dad2f3a271391bcf7a024/analyse-your-data-in-r.png"
+//         imgs: ["https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/orders/220481465/original/8c8603e647a5821a79cd156691fe62d8949fdcc1/analyse-your-data-in-r.png",
+//         "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/orders2/220481465/original/e09b19d9c6b5e6a176fca640c4613c2117c5c653/analyse-your-data-in-r.jpg",
+//         "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/orders3/220481465/original/caa8fb43fcfe4ce3778dad2f3a271391bcf7a024/analyse-your-data-in-r.png"
 //         ],
 //         description: `
 //         Hello there,
@@ -833,7 +731,7 @@ function getEmptyGig(){
 //         - Text Analysis and Visualisation (Word Clouds, Sentiment Analysis)
 //         - R Studio Tutoring
 
-//         The final price of the gig will depend on the complexity and scope of the project (my 
+//         The final price of the order will depend on the complexity and scope of the project (my 
 //         hourly rate is 40$).
 
 //         Kind regards
@@ -882,16 +780,16 @@ function getEmptyGig(){
 //         },
 //         daysToMake: 3,
 //         imgs: [
-//           'https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/210774935/original/0c53947928aedeab18802ea9586985d6a43e3de4/create-digital-illustration-for-web.jpg',
-//           'https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs2/210774935/original/783966fb7560b58c2ed8e9cc2cfab3ad35a95246/create-digital-illustration-for-web.jpg',
-//           'https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs3/210774935/original/759c920bcde8222581109e71b22c8b571cf5c0c5/create-digital-illustration-for-web.jpg',
+//           'https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/orders/210774935/original/0c53947928aedeab18802ea9586985d6a43e3de4/create-digital-illustration-for-web.jpg',
+//           'https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/orders2/210774935/original/783966fb7560b58c2ed8e9cc2cfab3ad35a95246/create-digital-illustration-for-web.jpg',
+//           'https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/orders3/210774935/original/759c920bcde8222581109e71b22c8b571cf5c0c5/create-digital-illustration-for-web.jpg',
 //           'https://fiverr-res.cloudinary.com/images/t_smartwm/t_main1,q_auto,f_auto,q_auto,f_auto/attachments/delivery/asset/a2df864ea81f6613751a560dc4ee196a-1652254601/house%20cover/create-digital-illustration-for-web.jpg',
 //         ],
 //         description: `
-//         Welcome To My Professional Gig:
+//         Welcome To My Professional Order:
 
 //         Do you want to Create YouTube Channel or Already Have A Channel created and Want to
-//         Grow and Make your Channel professional,so you are at the right place. In this gig, I 
+//         Grow and Make your Channel professional,so you are at the right place. In this order, I 
 //         will create, setup your channel. I will also give you tips n tricks because you must 
 //         know all about channel growth. It will help you in the future and also give you the 
 //         lifetime support.
@@ -949,9 +847,9 @@ function getEmptyGig(){
 //           merchandise etc.) and album covers`,
 //         },
 //         daysToMake: 4,
-//         imgs: ['https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/166653988/original/a0c877a8aa136e92ae209ed51d483ab38b4677ea/create-creative-tshirt-designs-using-adobe-photoshop.jpeg',
-//         'https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs2/166653988/original/db946f8383f06254d23282c6705477eb31c4a548/create-creative-tshirt-designs-using-adobe-photoshop.jpeg',
-//         'https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs3/166653988/original/42fb3f9aa830f64208d93bc16b234822642cbe9b/create-creative-tshirt-designs-using-adobe-photoshop.jpeg',
+//         imgs: ['https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/orders/166653988/original/a0c877a8aa136e92ae209ed51d483ab38b4677ea/create-creative-tshirt-designs-using-adobe-photoshop.jpeg',
+//         'https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/orders2/166653988/original/db946f8383f06254d23282c6705477eb31c4a548/create-creative-tshirt-designs-using-adobe-photoshop.jpeg',
+//         'https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/orders3/166653988/original/42fb3f9aa830f64208d93bc16b234822642cbe9b/create-creative-tshirt-designs-using-adobe-photoshop.jpeg',
 //         'https://fiverr-res.cloudinary.com/images/t_smartwm/t_main1,q_auto,f_auto,q_auto,f_auto/attachments/delivery/asset/e3b5689582874affff114948e60513c9-1656988348/Logo%201/create-creative-tshirt-designs-using-adobe-photoshop.png',
 //         
 //         ],
@@ -1013,8 +911,8 @@ function getEmptyGig(){
 //           have any inquiries! Have a great day!`,
 //         },
 //         daysToMake: 7,
-//         imgs: ['https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs2/72157391/original/c5381a78cacdd5d810716d64a78096a0c0dd38da/create-digital-concept-art-to-illustrate-your-idea.jpg',
-//         'https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/72157391/original/19835b216140b571ee4a888a1e7b682519f5a7b3/create-digital-concept-art-to-illustrate-your-idea.jpg',
+//         imgs: ['https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/orders2/72157391/original/c5381a78cacdd5d810716d64a78096a0c0dd38da/create-digital-concept-art-to-illustrate-your-idea.jpg',
+//         'https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/orders/72157391/original/19835b216140b571ee4a888a1e7b682519f5a7b3/create-digital-concept-art-to-illustrate-your-idea.jpg',
 //         'https://fiverr-res.cloudinary.com/images/t_smartwm/t_main1,q_auto,f_auto,q_auto,f_auto/attachments/delivery/asset/8543973f5d53596ca8bbe1ce5935f313-1653985542/illustration2_rev2/create-digital-concept-art-to-illustrate-your-idea.jpg',
 //         'https://fiverr-res.cloudinary.com/images/t_smartwm/t_main1,q_auto,f_auto,q_auto,f_auto/attachments/delivery/asset/52eae5d966765c8e123e3ddddeb2cc25-1653631398/logo/create-digital-concept-art-to-illustrate-your-idea.png',
 //         'https://fiverr-res.cloudinary.com/images/t_smartwm/t_main1,q_auto,f_auto,q_auto,f_auto/attachments/delivery/asset/5318f95d6d16ed332a67a19c40d4222f-1651473772/illustration1_rev1/create-digital-concept-art-to-illustrate-your-idea.jpg'
@@ -1074,9 +972,9 @@ function getEmptyGig(){
 //         },
 //         daysToMake: 3,
 //         imgs: ['https://fiverr-res.cloudinary.com/videos/t_main1,q_auto,f_auto/uytgkqlsdlndnklrfnv1/record-a-youthful-american-male-voice-over.png',
-//         'https://fiverr-res.cloudinary.com/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/97253631/original/7851fa65081dc3eeec0858a9ee98de34d6b31e3d.jpg',
-//         'https://fiverr-res.cloudinary.com/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/97253631/original/7851fa65081dc3eeec0858a9ee98de34d6b31e3d.jpg',
-//         'https://fiverr-res.cloudinary.com/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/97253631/original/7851fa65081dc3eeec0858a9ee98de34d6b31e3d.jpg'
+//         'https://fiverr-res.cloudinary.com/t_main1,q_auto,f_auto,q_auto,f_auto/orders/97253631/original/7851fa65081dc3eeec0858a9ee98de34d6b31e3d.jpg',
+//         'https://fiverr-res.cloudinary.com/t_main1,q_auto,f_auto,q_auto,f_auto/orders/97253631/original/7851fa65081dc3eeec0858a9ee98de34d6b31e3d.jpg',
+//         'https://fiverr-res.cloudinary.com/t_main1,q_auto,f_auto,q_auto,f_auto/orders/97253631/original/7851fa65081dc3eeec0858a9ee98de34d6b31e3d.jpg'
 
 //         ],
 //         description: `
@@ -1142,10 +1040,10 @@ function getEmptyGig(){
 //           `,
 //         },
 //         daysToMake: 2,
-//         imgs: ['https://fiverr-res.cloudinary.com/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/201748988/original/3340f5ce07c7931733a9e42e5702d444679defd1.png',
-//         'https://fiverr-res.cloudinary.com/image/upload/t_gig_pdf_gallery_view_ver4,f_jpg/20220716/voice%20over,%20female%20voice%20over,%20voice%20over%20female,%20american%20female%20voice%20over,%20female%20voice%20over%20american%20CRI_wz95yk.jpg',
-//         'https://fiverr-res.cloudinary.com/t_main1,q_auto,f_auto,q_auto,f_auto/gigs3/201748988/original/eeb09cd9136fc5b94ff3dedd55a880cbffc675f9.png',
-//         'https://fiverr-res.cloudinary.com/image/upload/t_gig_pdf_gallery_view_ver4,f_jpg/20220716/female%20voice%20over,%20voice%20over,%20voice%20over%20female,%20star_xkvv7l.jpg'
+//         imgs: ['https://fiverr-res.cloudinary.com/t_main1,q_auto,f_auto,q_auto,f_auto/orders/201748988/original/3340f5ce07c7931733a9e42e5702d444679defd1.png',
+//         'https://fiverr-res.cloudinary.com/image/upload/t_order_pdf_gallery_view_ver4,f_jpg/20220716/voice%20over,%20female%20voice%20over,%20voice%20over%20female,%20american%20female%20voice%20over,%20female%20voice%20over%20american%20CRI_wz95yk.jpg',
+//         'https://fiverr-res.cloudinary.com/t_main1,q_auto,f_auto,q_auto,f_auto/orders3/201748988/original/eeb09cd9136fc5b94ff3dedd55a880cbffc675f9.png',
+//         'https://fiverr-res.cloudinary.com/image/upload/t_order_pdf_gallery_view_ver4,f_jpg/20220716/female%20voice%20over,%20voice%20over,%20voice%20over%20female,%20star_xkvv7l.jpg'
 
 //         ],
 //         description: `
@@ -1210,9 +1108,9 @@ function getEmptyGig(){
 //         },
 //         daysToMake: 3,
 //         imgs: ['https://fiverr-res.cloudinary.com/videos/t_main1,q_auto,f_auto/q7py1zmo0sytodimunny/record-a-sultry-female-voice-over-for-you.png',
-//         'https://fiverr-res.cloudinary.com/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/263097326/original/1a426754dd506c05f4b8321fc31edbf89fc62fce.jpg',
-//         'https://fiverr-res.cloudinary.com/t_main1,q_auto,f_auto,q_auto,f_auto/gigs2/263097326/original/29be4cc19a1446f2196a781052dc4b15dddda155.jpg',
-//         'https://fiverr-res.cloudinary.com/q_auto,f_auto,dpr_2.0/general_assets/gig_gallery_package/assets/audio-delivery-bg.png'
+//         'https://fiverr-res.cloudinary.com/t_main1,q_auto,f_auto,q_auto,f_auto/orders/263097326/original/1a426754dd506c05f4b8321fc31edbf89fc62fce.jpg',
+//         'https://fiverr-res.cloudinary.com/t_main1,q_auto,f_auto,q_auto,f_auto/orders2/263097326/original/29be4cc19a1446f2196a781052dc4b15dddda155.jpg',
+//         'https://fiverr-res.cloudinary.com/q_auto,f_auto,dpr_2.0/general_assets/order_gallery_package/assets/audio-delivery-bg.png'
 
 //         ],
 //         description: `
@@ -1264,8 +1162,8 @@ function getEmptyGig(){
 //         },
 //         daysToMake: 7,
 //         imgs: ['https://fiverr-res.cloudinary.com/videos/so_13.510427,t_main1,q_auto,f_auto/vvpt5jlotafd8mn0jslg/create-professional-live-action-explainer-video.png',
-//         'https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/113419065/original/006fa4e224a3a4913bf3a55824922b2e2f7d704d/create-professional-live-action-explainer-video.jpg',
-//         'https://fiverr-res.cloudinary.com/image/upload/t_gig_pdf_gallery_view_ver4,f_jpg/20181027/Revision_policy_-_live_action_xwb6um.jpg',
+//         'https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/orders/113419065/original/006fa4e224a3a4913bf3a55824922b2e2f7d704d/create-professional-live-action-explainer-video.jpg',
+//         'https://fiverr-res.cloudinary.com/image/upload/t_order_pdf_gallery_view_ver4,f_jpg/20181027/Revision_policy_-_live_action_xwb6um.jpg',
 //         'https://fiverr-res.cloudinary.com/videos/t_smartwm/t_main1,q_auto,f_auto/tivlihe6dih4x63bjvig/create-professional-live-action-explainer-video.png'
 
 //         ],
@@ -1432,13 +1330,13 @@ function getEmptyGig(){
 //         },
 //         daysToMake: 3,
 //         imgs: ['https://fiverr-res.cloudinary.com/videos/t_main1,q_auto,f_auto/p4ted6v7oabxb917ezmy/create-a-professional-2d-animated-explainer-video.png',
-//         'https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/148207065/original/35ea25c11ed9d97f674fe821416f7cce6adfbc0c/create-a-professional-2d-animated-explainer-video.png',
-//         'https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/98530437/original/fceb97e45fe34ed78bc3599730f4d4577b183769/here-is-our-reel.png',
+//         'https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/orders/148207065/original/35ea25c11ed9d97f674fe821416f7cce6adfbc0c/create-a-professional-2d-animated-explainer-video.png',
+//         'https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/orders/98530437/original/fceb97e45fe34ed78bc3599730f4d4577b183769/here-is-our-reel.png',
 //         'https://fiverr-res.cloudinary.com/videos/t_smartwm/t_main1,q_auto,f_auto/k9mgueawfrtfgkm3emso/here-is-our-reel.png'
 
 //         ],
 //         description: `
-//         Looking for something spectacular? then you are in the right gig.
+//         Looking for something spectacular? then you are in the right order.
 
 //         I'm Joy Solomon CEO of Jay Studios,
 //         We are full time Fiverr professional sellers, We have completed hundreds of projects both 
@@ -1446,7 +1344,7 @@ function getEmptyGig(){
 //         Our videos have been featured on CBS, TIME, FORBES, CHEDDAR and numerous animated 
 //         youtube channels.
 
-//         Your satisfaction is my priority- We give unlimited revisions in all of our gigs.
+//         Your satisfaction is my priority- We give unlimited revisions in all of our orders.
 //         Your order is only completed when you are satisfied with the service(s) you have received.
 
 //         The Follow Up Plan-  Not only will you get a killer animated explainer video but we 

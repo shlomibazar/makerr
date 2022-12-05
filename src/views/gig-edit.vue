@@ -50,8 +50,12 @@ export default {
         //       })
         //   },
         saveGig() {
+            var currUser = this.$store.getters.loggedinUser
+
+            this.gigToEdit.owner._id = currUser._id
             gigService.save(this.gigToEdit) 
             this.$router.push('/gig')
+
         }
     },
 }

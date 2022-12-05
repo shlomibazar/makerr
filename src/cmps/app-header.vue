@@ -1,6 +1,6 @@
 <template>
   <section
-    v-if="isInHome" 
+    v-if="isInHome"
     class="header-wrapper main-container fullWidthContainer sticky"
     :class="{ change_color: scrollPosition > 1 }">
     <header class="flex">
@@ -31,21 +31,16 @@
         </button-search>
       </div>
       <nav class="flex nav-bar-links">
-        <section class="nav-links flex" >
+        <section class="nav-links flex">
           <router-link to="/gig">Explore</router-link>
           <router-link to="/gig">Become a Seller</router-link>
-          <!-- <router-link to="/gig">Sign In</router-link> -->
-          <button class="navbar-signin-btn" @click="toggleSignInModal()">Sign In</button>
-          <div class="login-modal" v-if="this.isSignModalOpened">
-            <h1>Sign In to Makerr</h1>
-            <input type="text" placeholder="Email / Username"/>
-            <input type="password" placeholder="Password"/>
-            <button class="login-modal-btn">Continue</button>
-            <hr/>
-            <p>Not a member yet? Join now</p>
+          <!-- <router-link to="/login">Sign In</router-link> -->
+          <button class="navbar-signin-btn" @click="toggleSignInModal">Sign In</button>
+          <div class="show-login-modal" v-if="this.isSignModalOpened">
+            <login-signup @closeModal="toggleSignInModal" />
           </div>
         </section>
-        <router-link to="/gig" class="join-btn flex">Join</router-link>
+        <!-- <router-link to="/join" class="join-btn flex">Join</router-link> -->
 
         <!-- <router-link to="/chat">Chat</router-link>
         <router-link to="/login">Login / Signup</router-link> -->
@@ -110,11 +105,23 @@
     <router-link :to="`/user/${loggedInUser._id}`">
       {{ loggedInUser.fullname }}
     </router-link>
-    <span>{{ loggedInUser.score.toLocaleString() }}</span>
-    <img :src="loggedInUser.imgUrl" />
+    <span class="logged-in-user-name">{{ loggedInUser.fullname }}</span>
+    <img
+      class="logged-in-user-avatar"
+      :src="loggedInUser.imgUrl"
+      @click="toggleUserModal()"
+    />
+    <div class="user-modal-opts" v-if="isUserModalOn">
+      <router-link to="/profile">Profile</router-link>
+      <router-link to="/dashboard">Dashboard</router-link>
+      <button class="user-modal-logout-btn" @click="doLogout">Logout</button>
+    </div>
+    <!-- <span>{{ loggedInUser.score.toLocaleString() }}</span>
+    <img :src="loggedInUser.imgUrl" /> -->
   </section>
 </template>
 <script>
+import loginSignup from "../views/login-signup.vue";
 export default {
   created() {
     this.$watch(
@@ -136,6 +143,7 @@ export default {
   data() {
     return {
       isSignModalOpened: false,
+      isUserModalOn: false,
       isInHome: "",
       previousParams: "4564",
       toParams: "456",
@@ -163,10 +171,22 @@ export default {
       ],
     };
   },
+  components: {
+    loginSignup,
+  },
   methods: {
+    logOutUser(){
+    this.$emit("userLogOut");
+  },
+  doLogout() {
+      this.$store.dispatch({ type: 'logout' })
+    },
+    toggleUserModal(){
+      this.isUserModalOn = !this.isUserModalOn;
+    },
     toggleSignInModal() {
-      this.isSignModalOpened = !this.isSignModalOpened
-      console.log('Sign in modal status: ', this.isSignModalOpened);
+      this.isSignModalOpened = !this.isSignModalOpened;
+      console.log("Sign in modal status: ", this.isSignModalOpened);
     },
     setLabelToQuery(labelTitle) {
       console.log("example", this.searchInfo);

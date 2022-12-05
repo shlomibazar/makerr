@@ -1,14 +1,15 @@
+
 <template>
   <!-- <center><h1>Purchase Page!</h1></center> -->
   <div class="main-purchase-page-ctn flex">
     <div class="purchase-left-sidebar flex">
-      {{ gig.title }}
+      {{ this.gig.title }}
       <img class="purchase-left-sidebar-avatar" :src="gigPreview" />
       <h1>Order Details:</h1>
-      <p>{{this.gig.owner.id}}</p>
-      <p>{{this.gig.owner.rate}}</p>
-      <p>{{this.gig.owner.fullname}}</p>
-      <p>{{this.gig.owner.loc}}</p>
+      <p>{{ this.gig.owner.id }}</p>
+      <p>{{ this.gig.owner.rate }}</p>
+      <p>{{ this.gig.owner.fullname }}</p>
+      <p>{{ this.gig.owner.loc }}</p>
     </div>
 
     <div class="gig-purchase-right-container flex">
@@ -86,7 +87,7 @@
 import { router } from "../router";
 import { gigService } from "../services/gig.service.local.js";
 import { utilService } from "../services/util.service";
-// import {userService} from '../services/user.service'
+import { userService } from "../services/user.service";
 
 export default {
   data() {
@@ -96,6 +97,7 @@ export default {
   },
   created() {
     this.loadGig();
+    console.log("this.$route.params", this.$route.params);
     console.log("purchase gig ID:", this.gig);
   },
   computed: {
@@ -103,11 +105,35 @@ export default {
       return `${this.gig.owner.imgUrl}`;
     },
   },
+
+  //       {
+  //           "_id": "o1225",
+  //           "createdAt": new Date(),
+  //           "buyer": "mini-user",
+  //           "seller": "mini-user",
+  //           "gig": {
+  //             "_id": "i101",
+  //             "name": "Design Logo",
+  //             "price": 20
+
+  //        :IMAGE:GIG.IMAGE   },
+  //           "status": "pending"
+  //         }
+
   methods: {
     orderGig() {
+      const user = userService.getLoggedinUser();
       const orderToAdd = {
-        id: utilService.makeId(),
-        buyer: "Puki",
+        buyer: {
+          userId: user.id,
+          userImg: user.imgUrl,
+          userName: user.fullname,
+        },
+        seller: {
+          sellerId: this.gig.owner._id,
+          sellerImg: this.gig.owner.imgUrl,
+          sellerName: this.gig.owner.fullname,
+        },
         price: this.gig.price,
         createdAt: new Date(),
         gig: {
@@ -118,8 +144,8 @@ export default {
         },
         status: "pending",
       };
-      console.log("Order to add ", orderToAdd)
-      router.push(`/dashboard`)
+      console.log("Order to add ", orderToAdd);
+      router.push(`/dashboard`);
       // router.push(`/order-list/${this.gig._id}`)
       //  const gigSeller = userService.getById(this.gig.owner.id);
       //   gigSeller.seller.orders.push(orderToAdd);
