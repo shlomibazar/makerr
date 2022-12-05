@@ -35,7 +35,8 @@
         <section class="nav-links flex" >
           <router-link to="/gig">Explore</router-link>
           <router-link to="/gig">Become a Seller</router-link>
-          <!-- <router-link to="/gig">Sign In</router-link> -->
+          <router-link to="/login">Sign In</router-link>
+          
           <button class="navbar-signin-btn" @click="toggleSignInModal()">Sign In</button>
           <div class="login-modal" v-if="this.isSignModalOpened">
             <h1>Sign In to Makerr</h1>
