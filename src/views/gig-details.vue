@@ -18,7 +18,6 @@
       </div>
       <br />
       <hr />
-      <h3>About This Gig</h3>
       <vueper-slides
         class="details-slider"
         ref="vueperslides1"
@@ -51,6 +50,7 @@
         >
         </vueper-slide>
       </vueper-slides>
+      <h3 class="about-gig-title">About This Gig</h3>
       <p>{{ gig.description }}</p>
 
       <h3>About The Seller</h3>
