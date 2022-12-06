@@ -1,23 +1,12 @@
 .header-wrapper{
-    
-    //  color: #404145;
-    
 z-index: 20;
 height: 81px;
-// background-color: transparent;
-//     width: 99vw;
-// background-color: transparent;
-
 &.change_color{
     position: fixed; 
      color: #404145;
   // background-color: white;
     
 }
-// &.not-sticky{
-//         border-bottom: 1px solid #D8D9DB;
-
-// }
 transition: background-color .5s;
 }
 header {
@@ -28,33 +17,92 @@ header {
         align-self: center;
         letter-spacing: -3.5px;
         font-family: Helvetica,sans-serif;
-        font-size: 2.25rem;
+        font-size: 2.1rem;
         font-weight: bolder;
         padding-bottom: 12px;
+        .green{
+        color: #1dbf73;
+        margin-left: 3px;
+        font-size: 45px;
+        }
     }
-    span {
+    .loggedin-user {
+        flex-direction: column;
+        margin-left: 15px;
+        margin-top: 2px;
+        display: flex;
+        width: 50px;
+        height: 50px;
+        color: whitesmoke;
+        // span{
+        //     background-color: $clr2;
+        //     padding: 4px;
+        //     margin: 10px;
+        //     border-radius: 50%;
+        // }
+        // img {
+        //     width: 1em;
+        //     height: 1em;
+        //     border-radius: 50%;
+        // }
+        span {
+        display: none;
         font-size: 1.5em;
         color: #1dbf73;
         font-family: Times New Roman,Times,serif;
+        // margin-top: 42px;
+        right: 30px;
+        z-index: 5;
+        }
+        .logged-in-user-avatar{
+            height: 50px;
+            width: 50px;
+            cursor: pointer;
+        }
+        .user-modal-opts{
+            // position: absolute;
+            a{
+            background-color: #f0f0f08e;
+            border-radius: 6px;
+            font-size: 18px;
+            color: black;
+            margin: 2px;
+            cursor:pointer;
+            text-align: center;
+            }
+            display: flex;
+            width: 150px;
+            z-index: 11;
+            padding: 10px;
+            background-color: rgba(253, 253, 253, 0.929);
+            color: black;
+            border-radius: 3px;
+            border-color: rgb(222, 222, 222);
+            border-style: solid;
+            border-width: 1px;
+            right: 3px;
+            margin-top: 18px;
+            flex-direction: column;
+            transform: translateX(-33%);
+            
+            &:hover{
+            background-color: #ffffff;
+            button{
+            background-color: #d7d7d78e;
+            border-radius: 6px;
+            font-size: 15px;
+            color: black;
+            margin: 2px;
+            cursor:pointer;
+            &:hover{
+            background-color: #ffffff;
+            
+            }
+            
+            }
+            
+}
     }
-    
-    .loggedin-user {
-        background-color: $clr1;
-        padding: 2px 8px;
-        border-radius: 1em;
-        align-self: flex-end;
-        color: whitesmoke;
-        span{
-            background-color: $clr2;
-            padding: 4px;
-            margin: 10px;
-            border-radius: 50%;
-        }
-        img {
-            width: 1em;
-            height: 1em;
-            border-radius: 50%;
-        }
         
     }
     nav {
@@ -88,6 +136,7 @@ header {
             router-link{
              color: black;
             }
+            
             
         }
     }
@@ -127,11 +176,6 @@ header {
 
     }
     }
-    // nav a:not(:first-child) {
-    //     // border-top: 1px solid $clr1;
-    //     padding: 0 5px;
-    //     margin: 10px;
-    // }
     nav .active {
     color: $clr1;
     }
@@ -184,7 +228,8 @@ header {
      
    }
 }
-a,button{
+
+.nav-btn{
 margin-left: 20px;
     color: black;
     text-decoration-color: aliceblue;
@@ -193,9 +238,6 @@ margin-left: 20px;
     font-weight: 600;
     // margin-left: 20px;    
 }
-// a:visited {
-//             color: green;
-//             }
 .join-btn:hover{
         color: #ffffff;
 }
@@ -204,10 +246,11 @@ margin-left: 20px;
     width: 10%;
 }
 .login-modal{
-    display: flex;
+    
+    display: fixed;
     flex-direction: column;
     z-index: 100;
-    margin-top: 20%;
+    // margin-top: 20%;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .15);
     background-color: white;
     position:absolute;
@@ -268,65 +311,12 @@ margin-left: 20px;
         cursor: pointer;
     }
 }
-.logged-in-user-name{
-    margin-top: 40px;
-    right: 30px;
-    position: absolute;
-    z-index: 5;
-}
-.logged-in-user-avatar{
-    margin-top: 10px;
-    right: 20px;
-    position: absolute;
-    height: 50px;
-    width: 50px;
-    cursor: pointer;
-}
-.user-modal-opts{
-    position: absolute;
-    display: flex;
-    z-index: 11;
-    padding: 10px;
-    background-color: rgba(253, 253, 253, 0.929);
-    color: black;
-    border-radius: 3px;
-    border-color: rgb(222, 222, 222);
-    border-style: solid;
-    border-width: 1px;
-    right: 3px;
-    margin-top: 40px;
-    flex-direction: column;
-    button{
-        background-color: #d7d7d78e;
-        border-radius: 6px;
-        font-size: 15px;
-        color: black;
-        margin: 2px;
-        cursor:pointer;
-        &:hover{
-            background-color: #ffffff;
-        }
-    }
-    a{
-    background-color: #f0f0f08e;
-    border-radius: 6px;
-    font-size: 18px;
-    color: black;
-    margin: 2px;
-    cursor:pointer;
-    text-align: center;
-    &:hover{
-    background-color: #ffffff;
-        }
-}
-}
 .header-wrapper{
 &.main-container{
 &.fullWidthContainer{
 background-color: transparent;
 a{
 color: #f7fffb;
-// margin-left: 10px;
 }
 &.white_BG{
 a{
@@ -349,14 +339,21 @@ background-color: white;
 }
 
 }
-.v-enter-active,
-.v-leave-active {
+.v-enter-active,.v-leave-active {
   transition: opacity 0.5s ease;
 }
-.v-enter-from,
-.v-leave-to {
+.v-enter-from,.v-leave-to {
   opacity: 0;
 }
 .nav-bar-links{
 padding-bottom: 3px;
+}
+// a:visited {
+//   color: green;
+//  }
+.show-login-modal{
+    position: fixed;
+    margin-left: 50%;
+    margin-top:23%;
+    z-index: 50;
 }
