@@ -106,9 +106,6 @@
   </section>
 
   <section class="loggedin-user" v-if="loggedInUser">
-    <router-link :to="`/user/${loggedInUser._id}`">
-      {{ loggedInUser.fullname }}
-    </router-link>
     <span class="logged-in-user-name">{{ loggedInUser.fullname }}</span>
     <img
       class="logged-in-user-avatar"
