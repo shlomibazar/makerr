@@ -407,7 +407,7 @@ border-radius: 5px;
   }
 
   .vueperslides__arrow--next {
-    right: -12px;
+    // right: -12px;
     border-radius: 15px 0px 0px 15px;
     transform: translateX(+100%);
 
@@ -415,7 +415,7 @@ border-radius: 5px;
 
   .vueperslides__arrow--prev {
     border-radius: 0px 15px 15px 0px;
-    left: -12px;
+    // left: -12px;
     transform: translateX(-100%);
   }
   //grandfather of arrows
