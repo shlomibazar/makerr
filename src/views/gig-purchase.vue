@@ -1,7 +1,7 @@
 
 <template>
   <!-- <center><h1>Purchase Page!</h1></center> -->
-  <div class="main-purchase-page-ctn flex">
+  <div class="main-purchase-page-ctn flex" v-if="gig">
     <div class="purchase-left-sidebar flex">
       {{ this.gig.title }}
       <img class="purchase-left-sidebar-avatar" :src="gigPreview" />
@@ -133,6 +133,7 @@ export default {
         },
         status: "pending",
       };
+      console.log('orderToAdd',orderToAdd)
       orderService.save(orderToAdd)
       router.push(`/dashboard`);
     },
