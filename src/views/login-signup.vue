@@ -1,10 +1,9 @@
 <template>
   <div class="login-modal">
-    <h1>Sign In to Makerr</h1>
-    <p class="mute">user1 or admin, pass:123 </p>
+    <h1>Sign up to Makerr</h1>
+    <!-- <p class="mute">user1 or admin, pass:123 </p> -->
     
     <form @submit.prevent="doSignup">
-      <h2>Sign up</h2>
       <input type="text" v-model="signupCred.fullname" placeholder="Your full name" />
       <input type="password" v-model="signupCred.password" placeholder="Password" />
       <input type="text" v-model="signupCred.username" placeholder="Username" />

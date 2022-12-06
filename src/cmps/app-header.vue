@@ -38,7 +38,7 @@
           <router-link to="/gig">Become a Seller</router-link>
           <!-- <router-link to="/login">Sign In</router-link> -->
           <a class="navbar-signin-btn" @click="toggleSignInModal">Sign In</a>
-          <div class="show-login-modal" v-if="this.isSignModalOpened">
+          <div class="show-login-modal" v-if="this.isSignModalOpened" v-click-outside="toggleSignInModal">
             <login-signup @closeModal="toggleSignInModal" />
           </div>
         </section>
