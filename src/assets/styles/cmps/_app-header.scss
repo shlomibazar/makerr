@@ -325,25 +325,24 @@ header {
     margin-top: 40px;
     flex-direction: column;
     button{
-        background-color: #f0f0f08e;
+        background-color: #d7d7d78e;
         border-radius: 6px;
-        font-size: 15.5px;
+        font-size: 15px;
         color: black;
         margin: 2px;
-        cursor:pointer; 
+        cursor:pointer;
         &:hover{
             background-color: #ffffff;
         }
     }
     a{
-        background-color: #f0f0f08e;
+        background-color: #d7d7d78e;
         border-radius: 6px;
         font-size: 18px;
         color: black;
         margin: 2px;
-        cursor:pointer;
         text-align: center;
-        
+        cursor:pointer;
         &:hover{
             background-color: #ffffff;
         }

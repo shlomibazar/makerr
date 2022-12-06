@@ -113,12 +113,10 @@
       @click="toggleUserModal()"
     />
     <div class="user-modal-opts" v-if="isUserModalOn">
-      <router-link to="/profile">Profile</router-link>
+      <router-link :to="`/user/${loggedInUser._id}`">Profile</router-link>
       <router-link to="/dashboard">Dashboard</router-link>
-      <button class="user-modal-logout-btn" @click="doLogout">Logout</button>
+      <button class="user-logout-btn" @click="doLogOut()">Logout</button>
     </div>
-    <!-- <span>{{ loggedInUser.score.toLocaleString() }}</span>
-    <img :src="loggedInUser.imgUrl" /> -->
   </section>
 </template>
 <script>
@@ -176,13 +174,13 @@ export default {
     loginSignup,
   },
   methods: {
-    logOutUser(){
-    this.$emit("userLogOut");
-  },
-  doLogout() {
-      this.$store.dispatch({ type: 'logout' })
+    logOutUser() {
+      this.$emit("userLogOut");
     },
-    toggleUserModal(){
+    doLogout() {
+      this.$store.dispatch({ type: "logout" });
+    },
+    toggleUserModal() {
       this.isUserModalOn = !this.isUserModalOn;
     },
     toggleSignInModal() {
