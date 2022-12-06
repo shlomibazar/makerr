@@ -126,6 +126,7 @@ export default {
         createdAt: new Date(),
         gig: {
           _id: this.gig._id,
+          image: this.gig.images[0],
           price: this.gig.price,
           name: this.gig.title,
           deliveryTime: this.gig.deliveryTime,

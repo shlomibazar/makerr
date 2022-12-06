@@ -31,7 +31,7 @@
             <div class="order-info">
               <img
                 class="gig-img"
-                :src=order.imgUrl
+                :src=order.gig.image
                 alt=""
               />
               <div class="seller">
