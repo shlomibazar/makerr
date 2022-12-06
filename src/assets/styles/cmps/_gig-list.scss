@@ -409,14 +409,14 @@ border-radius: 5px;
   .vueperslides__arrow--next {
     // right: -12px;
     border-radius: 15px 0px 0px 15px;
-    transform: translateX(+100%);
+    transform: translateX(+120%);
 
   }
 
   .vueperslides__arrow--prev {
     border-radius: 0px 15px 15px 0px;
     // left: -12px;
-    transform: translateX(-100%);
+    transform: translateX(-120%);
   }
   //grandfather of arrows
   .vueperslides__inner {
@@ -425,10 +425,14 @@ border-radius: 5px;
     &:hover {
       .vueperslides__arrows {
 
-        .vueperslides__arrow--prev,
+        .vueperslides__arrow--prev{
+        transform: translateX(-48%);
+
+          
+        }
         .vueperslides__arrow--next {
           // background-color: #1d2bbf;
-          transform: translateX(0%);
+          transform: translateX(+48%);
         }
       }
 
