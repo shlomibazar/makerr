@@ -85,7 +85,7 @@
 
 <script>
 import { router } from "../router";
-import { gigService } from "../services/gig.service.local.js";
+import { gigService } from "../services/gig.service.js";
 import { utilService } from "../services/util.service";
 import { userService } from "../services/user.service";
 import {orderService} from "../services/order.service"

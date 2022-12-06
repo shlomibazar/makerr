@@ -31,13 +31,14 @@
             <div class="order-info">
               <img
                 class="gig-img"
-                src="{{order.imgUrl}}"
+                :src=order.imgUrl
                 alt=""
               />
               <div class="seller">
                 <img
                   class="seller-img"
-                  src="{{order.seller.sellerImg}}"
+                  :src=order.seller.sellerImg
+                  
                   alt=""
                 />
                 <div class="name">{{ order.seller.sellerName }}</div>
