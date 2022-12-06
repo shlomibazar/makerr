@@ -98,14 +98,10 @@ export default {
       if (!currConnUser.isSeller) {
         this.orders = this.orders.filter((order) =>
           order.buyer.userId === currConnUserId
-            ? this.orders.push(order)
-            : console.log("not")
         );
       } else {
         this.orders = this.orders.filter((order) =>
-          order.seller.userId === currConnUserId
-            ? this.orders.push(order)
-            : console.log("not")
+          order.seller.sellerId === currConnUserId
         );
       }
     },
