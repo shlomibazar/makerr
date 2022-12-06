@@ -48,11 +48,13 @@ function remove(userId) {
 }
 
 async function update(user) {
+    console.log('use0r update',user)
     // await storageService.put('user', user)
-    user = await httpService.put(`user/${user._id}`, user)
+    const updatedUser = await httpService.put(`user/${user._id}`, user)
+    console.log('updatedUser' , updatedUser);
     // Handle case in which admin updates other user's details
-    if (getLoggedinUser()._id === user._id) saveLocalUser(user)
-    return user
+    if (getLoggedinUser()._id === user._id) saveLocalUser(updatedUser)
+    return updatedUser
 }
 
 async function login(userCred) {
@@ -73,7 +75,7 @@ async function signup(userCred) {
     return saveLocalUser(user)
 }
 async function logout() {
-    // sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
+    sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
     socketService.logout()
     return await httpService.post('auth/logout')
 }
@@ -88,7 +90,7 @@ async function changeScore(by) {
 
 
 function saveLocalUser(user) {
-    user = {_id: user._id, fullname: user.fullname, imgUrl: user.imgUrl, score: user.score ,isSeller:false}
+    user = {_id: user._id, fullname: user.fullname, imgUrl: user.imgUrl, score: user.score ,isSeller:user.isSeller}
     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
     return user
 }
