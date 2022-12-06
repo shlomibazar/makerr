@@ -1,14 +1,15 @@
 <template>
   <section
     v-if="isInHome"
-    class="header-wrapper main-container fullWidthContainer sticky"
-    :class="{ change_color: scrollPosition > 1 }">
+    class="header-wrapper main-container fullWidthContainer change_color"
+    :class="{ white_BG: scrollPosition > 1 }">
     <header class="flex">
       <div>
         <router-link to="/" @click="headerScroll(true)" class="logo">
           <div class="top-logo main-logo">Makerr<span class="green">.</span></div>
         </router-link>
       </div>
+      <Transition>
       <div v-if="scrollPosition > 165" class="search-input not-sticky">
         <input
           class="input not-sticky"
@@ -30,23 +31,25 @@
           </svg>
         </button-search>
       </div>
+      </Transition>
       <nav class="flex nav-bar-links">
         <section class="nav-links flex">
           <router-link to="/gig">Explore</router-link>
           <router-link to="/gig">Become a Seller</router-link>
           <!-- <router-link to="/login">Sign In</router-link> -->
-          <button class="navbar-signin-btn" @click="toggleSignInModal">Sign In</button>
+          <a class="navbar-signin-btn" @click="toggleSignInModal">Sign In</a>
           <div class="show-login-modal" v-if="this.isSignModalOpened">
             <login-signup @closeModal="toggleSignInModal" />
           </div>
         </section>
-        <!-- <router-link to="/join" class="join-btn flex">Join</router-link> -->
+        <router-link to="/join" class="join-btn flex">Join</router-link>
 
         <!-- <router-link to="/chat">Chat</router-link>
         <router-link to="/login">Login / Signup</router-link> -->
       </nav>
     </header>
   </section>
+  <Transition>
   <section
     v-if="isInHome && scrollPosition > 165"
     class="sub-header-labels homePage main-container fullWidthContainer"
@@ -57,9 +60,10 @@
       </h4>
     </section>
   </section>
+  </Transition>
   <section
     v-if="!isInHome"
-    class="header-wrapper main-container fullWidthContainer not-sticky"
+    class="header-wrapper main-container fullWidthContainer not-sticky white_BG"
   >
     <header class="flex">
       <div>
@@ -92,7 +96,7 @@
         <section class="nav-links flex not-sticky">
           <router-link to="/gig">Explore</router-link>
           <router-link to="/gig">Become a Seller</router-link>
-          <router-link to="/gig">Sign In</router-link>
+          <a @click="toggleSignInModal" to="/gig">Sign In</a>
         </section>
         <router-link to="/gig" class="join-btn flex not-sticky">Join</router-link>
         <!-- <router-link to="/chat">Chat</router-link>
