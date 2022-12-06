@@ -3,7 +3,7 @@
         <form @submit.prevent="saveGig" class="form">
             <div class="form-control">
                 <label for="txt" class="form-label">Gig Name</label>
-                <input required v-model="gigToEdit.name" id="txt" type="text" class="form-input"
+                <input required v-model="gigToEdit.title" id="txt" type="text" class="form-input"
                     placeholder="Enter your gig name here..." />
             </div>
             <div class="form-control">
@@ -52,12 +52,15 @@ export default {
         //   },
         saveGig() {
             var currUser =  {...this.$store.getters.loggedinUser}
+            console.log('this.gigToEdit before',this.gigToEdit)
             this.gigToEdit.owner._id = currUser._id
+            
             console.log('currUser',currUser)
             if(!currUser.isSeller){
                 currUser.isSeller = true
                 userService.update(currUser)
             }
+            console.log('this.gigToEdit after',this.gigToEdit)
             gigService.save(this.gigToEdit) 
             this.$router.push('/gig')
 

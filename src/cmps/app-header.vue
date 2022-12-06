@@ -48,7 +48,7 @@
             <span class="logged-in-user-name">{{ loggedInUser.fullname }}</span>
              <Transition>
             <div class="user-modal-opts" v-if="isUserModalOn">
-              <router-link :to="`/profile`">Profile</router-link>
+              <router-link :to="`profile/?${loggedInUser._id}`">Profile</router-link>
               <router-link to="/dashboard">Dashboard</router-link>
               <button class="user-logout-btn" @click="doLogout()">Logout222</button>
             </div>

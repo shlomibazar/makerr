@@ -26,6 +26,7 @@
       </div>
       <div class="orders-container">
         <div>
+          <button @click="toggleMode"> {{switchMode}}</button> 
           <ul v-for="order in orders">
           <div class="order">
             <div class="order-info">
@@ -76,6 +77,8 @@
 </template>
 
 <script>
+import { create } from "lodash";
+import { RouterLink } from "vue-router";
 import { orderService } from "../services/order.service";
 // import {userService} from "../services/user.service.js"
 
@@ -85,6 +88,8 @@ export default {
   components: {},
   data() {
     return {
+      i:0,
+      switchMode:'',
       orders: null,
       user:null
     };
@@ -94,6 +99,7 @@ export default {
     this.orders = await orderService.query();
     console.log("orders", this.orders);
     this.filterdOrders();
+    this.user.isSeller ? this.switchMode="Switch to buyer" : this.switchMode="Switch to seller"
   },
   methods: {
     filterdOrders() {
@@ -111,6 +117,25 @@ export default {
         );
       }
     },
+    toggleMode(){
+      
+      var currConnUser = userService.getLoggedinUser();
+      currConnUser.isSeller = !currConnUser.isSeller
+
+      console.log('currConnUser',currConnUser)
+      userService.saveLocalUser(currConnUser)
+      
+      currConnUser.isSeller ? this.switchMode="Switch to buyer" : this.switchMode="Switch to seller"
+      // this.create()
+      this.$router.go()
+      // this.$route.go()
+
+      
+
+      
+    },
+
+
    async changeStatus(orderId){
       let updatedOrder = JSON.parse(JSON.stringify(this.orders.find(order => order._id === orderId)) )
       console.log('updatedOrder front ',updatedOrder)
