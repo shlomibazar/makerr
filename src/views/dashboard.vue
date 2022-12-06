@@ -58,9 +58,13 @@
             </div>
             <div class="status-container">
               <hr />
-              <div class="status">
+              <div v-if="!user.isSeller" class="status">
                 <h1 class="status-title">Order status:</h1>
                 <h1 class="status-info">{{ order.status }}</h1>
+              </div>
+              <div v-else  class="status">
+                <h1 class="status-title">Order status:</h1>
+                <button class="status-info" @click="changeStatus(order._id)">{{ order.status }}</button>
               </div>
             </div>
           </div>
@@ -82,9 +86,11 @@ export default {
   data() {
     return {
       orders: null,
+      user:null
     };
   },
   async created() {
+    this.user = userService.getLoggedinUser();
     this.orders = await orderService.query();
     console.log("orders", this.orders);
     this.filterdOrders();
@@ -105,6 +111,19 @@ export default {
         );
       }
     },
+   async changeStatus(orderId){
+      let updatedOrder = JSON.parse(JSON.stringify(this.orders.find(order => order._id === orderId)) )
+      console.log('updatedOrder front ',updatedOrder)
+      if(updatedOrder.status === 'pending'){
+        updatedOrder.status = 'approved'
+
+      }else if(updatedOrder.status === 'approved'){
+        updatedOrder.status = 'completed'
+      }
+      orderService.save(updatedOrder)
+      // this.orders = await orderService.query();
+        // orderService.update()
+    }
   },
   computed: {
     sellerImg(){

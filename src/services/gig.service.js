@@ -105,7 +105,7 @@ function getEmptyGig(){
         daysToMake: 9,
         labels: ["graphics & design"],
         owner: {
-            id: "",
+            _id: "",
             fullname: "",
             rate: 3,
             level: 3,

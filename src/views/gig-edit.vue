@@ -52,7 +52,6 @@ export default {
         //   },
         saveGig() {
             var currUser =  {...this.$store.getters.loggedinUser}
-
             this.gigToEdit.owner._id = currUser._id
             console.log('currUser',currUser)
             if(!currUser.isSeller){
