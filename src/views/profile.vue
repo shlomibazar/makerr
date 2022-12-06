@@ -2,14 +2,18 @@
   <div class="profile-main-container">
     <div class="leftside-mini-profile">
       <div class="profile-user-avatar">
-        <img
-          src="https://pngroyale.com/wp-content/uploads/2022/05/User-Avatar-PNG-Free-Download.png"
-        />
+        <img :src="user.imgUrl" />
       </div>
-      <div class="profile-user-details">
-        <span class="profile-user-details-from">From: Israel</span>
-        <span class="profile-user-details-since">Member Since: Last Week</span>
-        <span class="profile-user-details-response">Avg Time Response: 5 days</span>
+      <div class="profile-user-details" v-if="user">
+        <span class="profile-user-details-from"
+          ><strong>Name:</strong> {{ user.fullname }}</span
+        >
+        <span class="profile-user-details-since"
+          ><strong>Member Since:</strong> Last Week</span
+        >
+        <span class="profile-user-details-response"
+          ><strong>Avg Time Response:</strong> 5 days</span
+        >
       </div>
     </div>
     <div class="rightside-gigs-profile">
@@ -18,7 +22,10 @@
         <button>Paused Gigs</button>
       </div>
       <div class="addgig-section">
-        <button @click="addGigPage()">Add Gig</button>
+        <img
+          @click="addGigPage()"
+          src="https://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/sign-add-icon.png"
+        />
       </div>
     </div>
   </div>
@@ -26,15 +33,39 @@
 
 <script>
 // import imgUploader from "../cmps/img-uploader.vue";
+// import {userService} from '../services/user.service'
 
 export default {
-  name: "profile",
   data() {
-    return {};
+    return {
+      // user: null
+    };
+  },
+  async created() {
+    // const user = await userService.getById(id)
+    // this.user = user
+  },
+  watch: {
+    userId: {
+      handler() {
+        if (this.userId) {
+          this.$store.dispatch({ type: "loadAndWatchUser", userId: this.userId });
+        }
+      },
+      immediate: true,
+    },
   },
   methods: {
     addGigPage() {
       this.$router.push("/gig/edit");
+    },
+  },
+  computed: {
+    user() {
+      return this.$store.getters.watchedUser;
+    },
+    userId() {
+      return this.$route.params.id;
     },
   },
 };

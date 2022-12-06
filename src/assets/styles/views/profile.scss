@@ -15,6 +15,15 @@
         border-radius: 2px;
         border-width: 1px;
     }
+    .addgig-section{
+        img{
+            position:absolute;
+            height: 150px;
+            top: 250px;
+            cursor: pointer;
+            margin-left: 50px;
+        }
+    }
     .profile-user-details{
         display: flex;
         flex-direction: column;
