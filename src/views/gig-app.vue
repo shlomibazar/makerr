@@ -1,7 +1,7 @@
 <template>
   <div class="container home main-container">
     <section class="lable-container-list full fullWidthContainer flex">
-      <section class="sub-header-labels main-container gig-list">
+      <section class="sub-header-labels-gig-list main-container gig-list">
         <h4 v-for="label in labels" :key="label" @click="setLabelToQuery(label)">
           {{ label }}
         </h4>

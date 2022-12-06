@@ -1,7 +1,8 @@
 
-.sub-header-labels{
+.sub-header-labels-gig-list{
     &.gig-list{
     width: 1400px;
+    // border-top: 1px solid gray;
     }
     
    height: 41px;
@@ -21,7 +22,8 @@
 }
 .lable-container-list{
     justify-content: space-around;
-    border-bottom: 1px solid #D8D9DB;
+    border-bottom: 1px solid #E4E5E7;
+     border-top: 1px solid #E4E5E7;
 }
 .filter{
     transition: background-color 0.3s,box-shadow 0.7s;
