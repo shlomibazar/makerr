@@ -75,7 +75,7 @@ const routes = [
     component: dashboard
   },
   {
-    path: '/profile',
+    path: '/profile/:id',
     name: 'profile',
     component: profile
   },
