@@ -10,7 +10,7 @@
         </router-link>
       </div>
       <Transition>
-      <div v-if="scrollPosition > 165" class="search-input not-sticky">
+      <div v-if="(scrollPosition > 200)" class="search-input not-sticky">
         <input
           class="input not-sticky"
           type="text"
@@ -51,7 +51,7 @@
   </section>
   <Transition>
   <section
-    v-if="isInHome && scrollPosition > 165"
+    v-if="(isInHome && scrollPosition > 200)"
     class="sub-header-labels homePage main-container fullWidthContainer"
   >
     <section class="fixed-lables main-container">
