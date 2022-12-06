@@ -37,12 +37,17 @@
           <router-link to="/gig">Explore</router-link>
           <router-link to="/gig">Become a Seller</router-link>
           <!-- <router-link to="/login">Sign In</router-link> -->
-          <a class="navbar-signin-btn" @click="toggleSignInModal">Sign In</a>
-          <div class="show-login-modal" v-if="this.isSignModalOpened" v-click-outside="toggleSignInModal">
-            <login-signup @closeModal="toggleSignInModal" />
+          <a class="navbar-signin-btn" @click="toggleSignInModal(false)">Sign In</a>
+          <!-- <div class="show-login-modal" v-if="this.isSignModalOpened" v-click-outside="toggleSignInModal"> -->
+          <div class="show-login-modal" v-if="this.isSignModalOpened" >
+            <login-signup :loginOrSignUp="loginOrSignUp" @closeModal="toggleSignInModal" />
           </div>
         </section>
-        <router-link to="/join" class="join-btn flex">Join</router-link>
+        <a class="join-btn flex" @click="toggleSignInModal(true)">Join</a>
+        <!-- <login-signup :loginOrSignUp="loginOrSignUp" @closeModal="toggleSignInModal(`signup`)" class="join-btn flex"/> -->
+
+
+        <!-- <router-link to="/join" class="join-btn flex">Join</router-link> -->
 
         <!-- <router-link to="/chat">Chat</router-link>
         <router-link to="/login">Login / Signup</router-link> -->
@@ -96,9 +101,11 @@
         <section class="nav-links flex not-sticky">
           <router-link to="/gig">Explore</router-link>
           <router-link to="/gig">Become a Seller</router-link>
-          <a @click="toggleSignInModal" to="/gig">Sign In</a>
+          <a @click="toggleSignInModal,logOrSign=true" to="/gig">Sign In</a>
         </section>
-        <router-link to="/gig" class="join-btn flex not-sticky">Join</router-link>
+        <a @click="toggleSignInModal,logOrSign=false" to="/gig" class="join-btn flex not-sticky">join</a>
+
+        <!-- <router-link to="/gig" class="join-btn flex not-sticky">Join</router-link> -->
         <!-- <router-link to="/chat">Chat</router-link>
         <router-link to="/login">Login / Signup</router-link> -->
       </nav>
@@ -106,7 +113,7 @@
   </section>
 
   <section class="loggedin-user" v-if="loggedInUser">
-    <router-link :to="`/user/${loggedInUser._id}`">
+    <router-link :to="`/profile`">
       {{ loggedInUser.fullname }}
     </router-link>
     <span class="logged-in-user-name">{{ loggedInUser.fullname }}</span>
@@ -116,9 +123,9 @@
       @click="toggleUserModal()"
     />
     <div class="user-modal-opts" v-if="isUserModalOn">
-      <router-link :to="`/user/${loggedInUser._id}`">Profile</router-link>
+      <router-link :to="`/profile`">Profile</router-link>
       <router-link to="/dashboard">Dashboard</router-link>
-      <button class="user-logout-btn" @click="doLogOut()">Logout</button>
+      <button class="user-logout-btn" @click="doLogout()">Logout222</button>
     </div>
   </section>
 </template>
@@ -144,6 +151,8 @@ export default {
   },
   data() {
     return {
+      loginOrSignUp :  null,
+      logOrSign:true,
       isSignModalOpened: false,
       isUserModalOn: false,
       isInHome: "",
@@ -181,14 +190,23 @@ export default {
       this.$emit("userLogOut");
     },
     doLogout() {
+      console.log('hey i in logout')
       this.$store.dispatch({ type: "logout" });
     },
     toggleUserModal() {
       this.isUserModalOn = !this.isUserModalOn;
     },
-    toggleSignInModal() {
+    toggleSignInModal(logOrSign) {
+      logOrSign?this.loginOrSignUp = "signup":this.loginOrSignUp = "login"
+      // this.loginOrSignUp = logOrSign
+      console.log(this.loginOrSignUp )
       this.isSignModalOpened = !this.isSignModalOpened;
       console.log("Sign in modal status: ", this.isSignModalOpened);
+    },
+    toggleLoginModal() {
+      this.loginOrSignUp = "login"
+      this.isSignModalOpened = !this.isSignModalOpened;
+      // console.log("Sign in modal status: ", this.isSignModalOpened);
     },
     setLabelToQuery(labelTitle) {
       console.log("example", this.searchInfo);

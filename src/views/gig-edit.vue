@@ -21,6 +21,7 @@
   
 <script>
 import { gigService } from '../services/gig.service.js'
+import { userService } from '../services/user.service'
 
 export default {
     name: 'gig-edit',
@@ -50,9 +51,14 @@ export default {
         //       })
         //   },
         saveGig() {
-            var currUser = this.$store.getters.loggedinUser
+            var currUser =  {...this.$store.getters.loggedinUser}
 
             this.gigToEdit.owner._id = currUser._id
+            console.log('currUser',currUser)
+            if(!currUser.isSeller){
+                currUser.isSeller = true
+                userService.update(currUser)
+            }
             gigService.save(this.gigToEdit) 
             this.$router.push('/gig')
 
