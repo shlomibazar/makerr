@@ -34,6 +34,7 @@ window.cs = gigService
 
 
 async function query(filterBy = { txt: '', price: 0 }) {
+    console.log('filterBy in gig service query',filterBy)
     return httpService.get(STORAGE_KEY, filterBy)
 
     // var gigs = await storageService.query(STORAGE_KEY)

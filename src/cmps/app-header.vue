@@ -116,7 +116,7 @@
               :src="loggedInUser.imgUrl"
               @click="toggleUserModal()"
             />
-            <div class="user-modal-opts" v-if="isUserModalOn">
+            <div class="user-modal-opts" v-if="isUserModalOn" >
               <router-link @click="toggleUserModal" class="user-modal-links" to="`/profile`">Profile</router-link>
               <router-link @click="toggleUserModal" class="user-modal-links" to="/dashboard">Dashboard</router-link>
               <button      @click="toggleUserModal,doLogout()" class="user-logout-btn" >Logout222</button>
@@ -127,7 +127,8 @@
   </section>
   <Transition>
   <div v-if="this.isSignModalOpened" class="show-login-modal" >
-            <login-signup :loginOrSignUp="loginOrSignUp" @closeModal="toggleSignInModal"/>
+            <!-- <login-signup :loginOrSignUp="loginOrSignUp" v-click-outside="toggleSignInModal" /> -->
+            <login-signup :loginOrSignUp="loginOrSignUp" @closeModal="toggleSignInModal" v-click-outside="toggleSignInModal"/>
     </div>
 </Transition>
   

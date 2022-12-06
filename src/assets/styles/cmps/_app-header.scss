@@ -193,8 +193,11 @@ header {
     height: 41px;
    display: flex;
    align-items: center;
+   &.gig-details{
+}   border:none;
     &.homePage{
-         
+    border-top: 1px solid #E4E5E7;
+
     // align-items: center;
     // margin-top: 36px;
     background-color:#ffffff;
@@ -252,7 +255,7 @@ margin-left: 20px;
     flex-direction: column;
     z-index: 100;
     // margin-top: 20%;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .15);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;    
     background-color: white;
     position:absolute;
     left: 50%;

@@ -295,7 +295,7 @@ box-shadow: none !important;
 
 //////////////////vuper
 .vueperslide--visible{
-border-radius: 5px;
+// border-radius: 5px;
 }
 
 
@@ -303,7 +303,9 @@ border-radius: 5px;
 
 
 .homepage-slider {
-
+  .vueperslide--visible{
+    border-radius: 5px;
+    }
   .vueperslides__arrow--prev,
   .vueperslides__arrow--next {
     background-color: #fff;
