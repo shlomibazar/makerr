@@ -30,10 +30,14 @@ export function getActionAddGigMsg(gigId) {
 export const gigStore = {
     state: {
         gigs: [],
+        isLoading:false,
         // labels: null,
     },
     getters: {
         gigs({ gigs }) { return gigs },
+        isLoading({isLoading}){
+        return isLoading
+        }
     },
     // labels({ labels }) {
     //     console.log("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh")
@@ -59,6 +63,9 @@ export const gigStore = {
             if (!gig.msgs) gig.msgs = []
             gig.msgs.push(msg)
         },
+        setIsLoading(state,{isLoading}){
+            state.isLoading = isLoading
+        }
         // setLabels(state, { labels }) {
         //     state.labels = labels
         //     // console.log('state.labels',state.labels)
@@ -96,7 +103,8 @@ export const gigStore = {
         //         throw err
         //     }
         // },
-        loadGigs: async ({ commit }, { filterBy, sortBy, }) => {
+        loadGigs: async ({ commit }, { filterBy, sortBy,isLoading }) => {
+            commit({type:'setIsLoading', isLoading: true})
             // console.log('hey i here')
             try {
                 // console.log('filterBy in gig store',filterBy)
@@ -112,6 +120,11 @@ export const gigStore = {
             } catch (err) {
                 console.log('Could not get gigs')
                 // TODO: throw error to display user
+            }
+            finally{
+            setTimeout(()=> {
+                commit({type:'setIsLoading', isLoading: false})
+            }, 500)
             }
         },
         async removeGig(context, { gigId }) {

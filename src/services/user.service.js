@@ -75,10 +75,12 @@ async function signup(userCred) {
     return saveLocalUser(user)
 }
 async function logout() {
-    sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
+    // sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
     socketService.logout()
     return await httpService.post('auth/logout')
 }
+
+
 
 async function changeScore(by) {
     const user = getLoggedinUser()
