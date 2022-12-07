@@ -17,7 +17,7 @@
             v-model="searchInfo"
             placeholder="What service are you looking for today?"
           />
-          <button-search class="button-search not-sticky" @click="setFilterByTitle()">
+          <button-search class="button-search not-sticky" @click="setFilterByTitle">
             <svg
               fill="white"
               width="17"
@@ -88,7 +88,7 @@
           v-model="searchInfo"
           placeholder="What service are you looking for today?"
         />
-        <button-search class="button-search not-sticky" @click="setFilterByTitle()">
+        <button-search class="button-search not-sticky" @click="setFilterByTitle">
           <svg
             fill="white"
             width="17"

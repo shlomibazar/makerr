@@ -60,7 +60,7 @@
             </div>
           </div>
 
-          <!-- <div class="animate-fade hero-moon" style="opacity: 0;">
+          <div class="animate-fade hero-moon" style="opacity: 0;">
             <div class="main-container seller-name">
               <p>Moon,
                 <b>Marketing Expert</b>
@@ -80,13 +80,13 @@
               </p>
             </div>
           </div>
-          <div class="animate-fade hero-gabrielle" style="opacity: 0;">
+          <div class="animate-fade hero-gabrielle ac" style="opacity: 0;">
             <div class="main-container seller-name">
               <p>Gabrielle,
                 <b>Video Editor</b>
               </p>
             </div>
-          </div> -->
+          </div>
         </div>
       </div>
 
@@ -231,6 +231,7 @@ export default {
   computed: {
   },
   created() {
+    
   },
   methods: {
     setLabel(labelTxt) {
