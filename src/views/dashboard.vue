@@ -135,10 +135,7 @@ export default {
   async created() {
     this.user = userService.getLoggedinUser();
     this.currConnUser = userService.getLoggedinUser()
-    // this.orders = await orderService.query();
     this.$store.dispatch({type:'loadOrders'})
-    // console.log("orders", this.orders);
-    // this.filterdOrders();
     this.user.isSeller
       ? (this.switchMode = "Switch to buyer")
       : (this.switchMode = "Switch to seller");
@@ -160,19 +157,14 @@ export default {
       }
     },
     toggleMode() {
-      // var currConnUser = userService.getLoggedinUser();
-      // this.currConnUser = JSON.parse(JSON.stringify(this.currConnUser))
+
       this.currConnUser.isSeller = !this.currConnUser.isSeller;
       console.log("this.currConnUser", this.currConnUser);
-      // userService.saveLocalUser(currConnUser);
 
       this.currConnUser.isSeller
         ? (this.switchMode = "Switch to buyer")
         : (this.switchMode = "Switch to seller");
-      // this.create()
-      // this.ordersToShow
-      // this.$router.go();
-      // this.$route.go()
+
     },
 
     async changeStatus(orderId) {
@@ -186,9 +178,7 @@ export default {
         updatedOrder.status = "completed";
       }
       this.$store.dispatch({type:'addOrder',newOrder:updatedOrder})
-      // orderService.save(updatedOrder);
-      // this.orders = await orderService.query();
-      // orderService.update()
+
     },
   },
   computed: {
