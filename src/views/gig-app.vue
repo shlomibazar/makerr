@@ -24,60 +24,9 @@
     </section>
 <!-- <div class="flex " style="gap:32px" v-if="!gigsSkelton"> -->
   <gig-list @removeGig="removeGig" v-if="!isLoading" :gigs="gigs" />
-<div class="flex column" style="gap:32px" v-else>
 
-  <section class="flex">
 
-    <div class="flex column" style="gap:15px">
-      <Skeletor height="190" width="326"/>
-      <Skeletor circle size="50"/>
-      <Skeletor height="45" width="326"/>
-    </div>
-    <div class="flex column" style="gap:15px">
-    <Skeletor height="190" width="326"/>
-    <Skeletor circle size="50"/>
-    <Skeletor height="45" width="326"/>
-  </div>
-  <div class="flex column" style="gap:15px">
-    <Skeletor height="190" width="326"/>
-    <Skeletor circle size="50"/>
-    <Skeletor height="45" width="326"/>
-  </div>
-  <div class="flex column" style="gap:15px">
-    <Skeletor height="190" width="326"/>
-    <Skeletor circle size="50"/>
-    <Skeletor height="45" width="326"/>
-  </div>
-</section>
-<section class="flex">
-
-<div class="flex column" style="gap:15px">
-  <Skeletor height="190" width="326"/>
-  <Skeletor circle size="50"/>
-  <Skeletor height="45" width="326"/>
-</div>
-<div class="flex column" style="gap:15px">
-<Skeletor height="190" width="326"/>
-<Skeletor circle size="50"/>
-<Skeletor height="45" width="326"/>
-</div>
-<div class="flex column" style="gap:15px">
-<Skeletor height="190" width="326"/>
-<Skeletor circle size="50"/>
-<Skeletor height="45" width="326"/>
-</div>
-<div class="flex column" style="gap:15px">
-<Skeletor height="190" width="326"/>
-<Skeletor circle size="50"/>
-<Skeletor height="45" width="326"/>
-</div>
-</section>
-
-</div>
-
-    <!-- @filteredLabel="setFilterByLabel" -->
-    <!-- @filteredStatus="setFilterByStatus" -->
-    <!-- {{filterBy.txt}} -->
+<skeleton v-else/>
 
     <!-- <hr />
     <form @submit.prevent="addGig()">
@@ -99,6 +48,7 @@ import {
 import gigList from "../cmps/gig-list.vue";
 import gigFilter from "../cmps/gig-filter.vue";
 import _ from "lodash";
+import skeleton from "./skeleton.vue";
 // import VueSkeletonLoader from 'skeleton-loader-vue';
 
 
@@ -332,6 +282,7 @@ export default {
   components: {
     gigList,
     gigFilter,
+    skeleton,
     //  VueSkeletonLoader ,
   },
   unmounted() {
