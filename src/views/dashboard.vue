@@ -69,7 +69,7 @@
       <div class="orders-container">
         <div>
           <button @click="toggleMode">{{ switchMode }}</button>
-          <ul v-for="order in orders">
+          <ul v-for="order in ordersToShow">
             <div class="order">
               <div class="order-info">
                 <img class="gig-img" :src="order.gig.image" alt="" />
@@ -93,7 +93,8 @@
               </div>
               <div class="status-container">
                 <hr />
-                <div v-if="!user.isSeller" class="status">
+                <!-- <div v-if="!user.isSeller" class="status"> -->
+                <div v-if="(order.seller.sellerId !== this.user._id)" class="status">
                   <h1 class="status-title">Order status:</h1>
                   <h1 class="status-info">{{ order.status }}</h1>
                 </div>
@@ -124,17 +125,20 @@ export default {
   components: {},
   data() {
     return {
-      i: 0,
+      
       switchMode: "",
-      orders: null,
+      // orders: null,
       user: null,
+      currConnUser: null
     };
   },
   async created() {
     this.user = userService.getLoggedinUser();
-    this.orders = await orderService.query();
-    console.log("orders", this.orders);
-    this.filterdOrders();
+    this.currConnUser = userService.getLoggedinUser()
+    // this.orders = await orderService.query();
+    this.$store.dispatch({type:'loadOrders'})
+    // console.log("orders", this.orders);
+    // this.filterdOrders();
     this.user.isSeller
       ? (this.switchMode = "Switch to buyer")
       : (this.switchMode = "Switch to seller");
@@ -156,17 +160,18 @@ export default {
       }
     },
     toggleMode() {
-      var currConnUser = userService.getLoggedinUser();
-      currConnUser.isSeller = !currConnUser.isSeller;
+      // var currConnUser = userService.getLoggedinUser();
+      // this.currConnUser = JSON.parse(JSON.stringify(this.currConnUser))
+      this.currConnUser.isSeller = !this.currConnUser.isSeller;
+      console.log("this.currConnUser", this.currConnUser);
+      // userService.saveLocalUser(currConnUser);
 
-      console.log("currConnUser", currConnUser);
-      userService.saveLocalUser(currConnUser);
-
-      currConnUser.isSeller
+      this.currConnUser.isSeller
         ? (this.switchMode = "Switch to buyer")
         : (this.switchMode = "Switch to seller");
       // this.create()
-      this.$router.go();
+      // this.ordersToShow
+      // this.$router.go();
       // this.$route.go()
     },
 
@@ -180,7 +185,8 @@ export default {
       } else if (updatedOrder.status === "approved") {
         updatedOrder.status = "completed";
       }
-      orderService.save(updatedOrder);
+      this.$store.dispatch({type:'addOrder',newOrder:updatedOrder})
+      // orderService.save(updatedOrder);
       // this.orders = await orderService.query();
       // orderService.update()
     },
@@ -189,6 +195,23 @@ export default {
     sellerImg() {
       return `${order.seller.sellerImg}`;
     },
+    orders(){
+    return this.$store.getters.orders
+    },
+    ordersToShow(){
+      console.log('ordersToshow')
+      var currConnUserId = this.user._id
+        return this.currConnUser.isSeller ? 
+        this.orders.filter(
+          (order) => order.seller.sellerId === currConnUserId
+        ) :  this.orders.filter(
+          (order) => order.buyer.userId === currConnUserId
+        ) 
+    },
+    currUser(){
+      console.log('run user')
+      return this.currConnUser
+    }
   },
   unmounted() {},
 };

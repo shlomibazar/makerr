@@ -66,21 +66,21 @@
                 <b>Marketing Expert</b>
               </p>
             </div>
-          </div>
-          <div class="animate-fade hero-ritika" style="opacity: 0;">
+          </div> -->
+          <!-- <div class="animate-fade hero-ritika" style="opacity: 0;">
             <div class="main-container seller-name">
               <p>Rikita,
                 <b>Shoemaker and Designer</b>
               </p>
             </div>
-          </div>
-          <div class="animate-fade hero-zach" style="opacity: 0;">
+          </div> -->
+          <!-- <div class="animate-fade hero-zach" style="opacity: 0;">
             <div class="main-container seller-name">
               <p>Zach, <b>Bar Owner</b>
               </p>
             </div>
-          </div>
-          <div class="animate-fade hero-gabrielle" style="opacity: 0;">
+          </div> -->
+          <!-- <div class="animate-fade hero-gabrielle ac" style="opacity: 0;">
             <div class="main-container seller-name">
               <p>Gabrielle,
                 <b>Video Editor</b>
@@ -91,38 +91,8 @@
       </div>
 
     </section>
-    <section class="main-container full trusted-by">
-      <div class="flex trusted-by-wrapper">
-        <span class="trusted-by-text">Trusted by:</span>
-        <ul class="flex clean-list trusted-by-list">
-          <li class="flex trusted-by-icon">
-            <img
-              src="https://res.cloudinary.com/dalkffrhf/image/upload/v1663191175/Fiverr-Sprint-4/imgs/brands/facebook_varmxu.png"
-              alt="Facebook">
-          </li>
-          <li class="flex trusted-by-icon">
-            <img
-              src="https://res.cloudinary.com/dalkffrhf/image/upload/v1663191175/Fiverr-Sprint-4/imgs/brands/google_i2tr0b.png"
-              alt="Google">
-          </li>
-          <li class="flex trusted-by-icon">
-            <img
-              src="https://res.cloudinary.com/dalkffrhf/image/upload/v1663191175/Fiverr-Sprint-4/imgs/brands/netflix_x1twh7.png"
-              alt="Netflix">
-          </li>
-          <li class="flex trusted-by-icon">
-            <img
-              src="https://res.cloudinary.com/dalkffrhf/image/upload/v1663338217/Fiverr-Sprint-4/imgs/brands/pandg_ee6ugp.png"
-              alt="P&amp;G">
-          </li>
-          <li class="flex trusted-by-icon">
-            <img
-              src="https://res.cloudinary.com/dalkffrhf/image/upload/v1663191175/Fiverr-Sprint-4/imgs/brands/paypal_hdmgej.png"
-              alt="PayPal">
-          </li>
-        </ul>
-      </div>
-    </section>
+    <trustedby/>
+
     <div class="main-container">
 
       <h1 class="flex popular-title">Popular professional services</h1>
@@ -141,6 +111,7 @@
 </template>
 
 <script>
+import trustedby from "../cmps/trusted-by.vue"
 import { VueperSlides, VueperSlide } from 'vueperslides'
 import 'vueperslides/dist/vueperslides.css'
 
@@ -231,6 +202,7 @@ export default {
   computed: {
   },
   created() {
+    
   },
   methods: {
     setLabel(labelTxt) {
@@ -242,6 +214,7 @@ export default {
     },
   },
   components: {
+    trustedby,
     VueperSlides,
     VueperSlide,
   },

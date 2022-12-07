@@ -14,6 +14,12 @@
       <a class="sort-button" @click="setSort('rate')">Rate</a>
       <a class="sort-button" @click="setSort('price')">Price</a>
       <a class="sort-button" @click="setSort('createdAt')">Date</a>
+      
+    </div> -->
+
+    <!-- <div>
+
+      <input type="text" placeholder="search" v-model="filter.txt" @input="setFilterTxt" />
     </div> -->
 
     <div class="flex">

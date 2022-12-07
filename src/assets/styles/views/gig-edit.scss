@@ -1,0 +1,59 @@
+.addgig-main-container{
+    background-color: #f7f7f7;
+    height: 800px;
+    display: flex;
+    justify-content: center;
+
+    .addgig-price-ctn{
+        
+    }
+    .addgig-forms-container{
+        width: 1000px;
+        height: 600px;
+        margin-top: 50px;
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 5px;
+        border-style: solid;
+        border-color: rgba(0, 0, 0, 0.121);
+        border-width: 1px;
+        text-align: center;
+
+        input{
+            position: relative;
+            border-radius: 8px;
+            padding: 10px;
+            height: 80px;
+            width: 600px;
+            margin-top: 10px;
+            margin-left: 180px;
+            text-align: center;
+            align-content: center;
+        }
+        .gig-add-img-picture{
+            height: 100px;
+            width: 100px;
+            cursor: pointer;
+  
+        }
+        .gig-image-title{
+            display: flex;
+            justify-content: left;
+            margin-left: 20px;
+        }
+    }
+    .addgig-buttons button{
+        background-color: #1dbf73;
+        
+        color: white;
+        font-size: 16px;    
+        text-transform: uppercase;
+        border-radius: 6px;
+        margin-top: 30px;
+     
+        &:hover{
+            background-color: #20d380;
+            cursor: pointer;
+        }
+    }
+}

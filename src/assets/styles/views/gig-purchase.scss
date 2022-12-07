@@ -1,8 +1,11 @@
 .main-purchase-page-ctn{
-    margin-top: 15px;
+    margin-top: 100px;
     flex-direction: row;
     gap: 10px;
     justify-content: space-evenly;
+    margin-bottom: 300px;
+    
+
 }
 .gig-purchase-right-container{
     flex-direction: column;
@@ -61,8 +64,11 @@
 .purchase-left-sidebar{
     display: flex;
     flex-direction: column;
+    margin: 10px;
     .purchase-left-sidebar-avatar{
         height: 150px;
-        width: 250px; 
+        border-radius: 50%;
+        width: 150px; 
     }
+
 }

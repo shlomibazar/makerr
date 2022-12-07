@@ -24,60 +24,9 @@
     </section>
 <!-- <div class="flex " style="gap:32px" v-if="!gigsSkelton"> -->
   <gig-list @removeGig="removeGig" v-if="!isLoading" :gigs="gigs" />
-<div class="flex column" style="gap:32px" v-else>
 
-  <section class="flex">
 
-    <div class="flex column" style="gap:15px">
-      <Skeletor height="190" width="326"/>
-      <Skeletor circle size="50"/>
-      <Skeletor height="45" width="326"/>
-    </div>
-    <div class="flex column" style="gap:15px">
-    <Skeletor height="190" width="326"/>
-    <Skeletor circle size="50"/>
-    <Skeletor height="45" width="326"/>
-  </div>
-  <div class="flex column" style="gap:15px">
-    <Skeletor height="190" width="326"/>
-    <Skeletor circle size="50"/>
-    <Skeletor height="45" width="326"/>
-  </div>
-  <div class="flex column" style="gap:15px">
-    <Skeletor height="190" width="326"/>
-    <Skeletor circle size="50"/>
-    <Skeletor height="45" width="326"/>
-  </div>
-</section>
-<section class="flex">
-
-<div class="flex column" style="gap:15px">
-  <Skeletor height="190" width="326"/>
-  <Skeletor circle size="50"/>
-  <Skeletor height="45" width="326"/>
-</div>
-<div class="flex column" style="gap:15px">
-<Skeletor height="190" width="326"/>
-<Skeletor circle size="50"/>
-<Skeletor height="45" width="326"/>
-</div>
-<div class="flex column" style="gap:15px">
-<Skeletor height="190" width="326"/>
-<Skeletor circle size="50"/>
-<Skeletor height="45" width="326"/>
-</div>
-<div class="flex column" style="gap:15px">
-<Skeletor height="190" width="326"/>
-<Skeletor circle size="50"/>
-<Skeletor height="45" width="326"/>
-</div>
-</section>
-
-</div>
-
-    <!-- @filteredLabel="setFilterByLabel" -->
-    <!-- @filteredStatus="setFilterByStatus" -->
-    <!-- {{filterBy.txt}} -->
+<skeleton v-else/>
 
     <!-- <hr />
     <form @submit.prevent="addGig()">
@@ -99,6 +48,7 @@ import {
 import gigList from "../cmps/gig-list.vue";
 import gigFilter from "../cmps/gig-filter.vue";
 import _ from "lodash";
+import skeleton from "./skeleton.vue";
 // import VueSkeletonLoader from 'skeleton-loader-vue';
 
 
@@ -133,20 +83,31 @@ export default {
   },
 
   created() {
+
+  //  var origin=this.$route
+  //  console.log('example',this.$route)
+
+  //  this.$router.push({ path: "/gig" });
+
+  //  console.log('this.$route.fullpath=',this.$route.fullpath)
+  //  this.setFilterByTxt(this.$route.query.title)
+  //  console.log('example',example)
     if (!this.$route.query.title || !this.$route.query.label) {
       this.$store.dispatch({ type: "loadGigs" });
 
     }
-    // this.setFilterByTxt(this.$route.query.title);
-    this.debounceHandler = _.debounce(this.setFilterByTxt, 500);
-    this.debounceHandler = _.debounce(this.setFilterByLabel, 500);
-    // console.log('this.$route.params', this.$route.query)
-    this.previousParams = this.$route.query;
     if (this.$route.query.title) {
-      console.log('this.$route.query.title',this.$route.query.title)
-      this.setFilterByTxt(this.$route.query.title);
-      
+      this.$store.dispatch({ type: "loadGigs", filterBy: {txt: this.$route.query.title, status:'',labels:null, price:0} });
     }
+    // this.debounceHandler = _.debounce(this.setFilterByTxt, 500);
+    // this.debounceHandler = _.debounce(this.setFilterByLabel, 500);
+    // console.log('this.$route.params', this.$route.query)
+    this.previousParams = "/gig"
+    
+    // if (this.$route.query.title) {
+    //   this.setFilterByTxt(this.$route.query.title);
+      
+    // }
     if (this.$route.query.label) {
       this.displayLabel = this.$route.query.label;
       this.setFilterByLabel(this.$route.query.label);
@@ -156,6 +117,8 @@ export default {
       () => this.$route.query,
 
       (toParams, previousParams) => {
+        console.log('toParams',toParams)
+        console.log('previousParams',previousParams)
         if (this.$route.query) {
           console.log("this.$route.query", this.$route.query);
           if (previousParams.label !== toParams.label) {
@@ -170,12 +133,22 @@ export default {
       }
     );
     window.addEventListener("scroll", this.updateScroll);
+    // this.$router.push(origin);
     // this.isInHomePage()
   },
   mounted() {
     this.elFilter = this.$refs.filterEl;
   },
-
+// watch:{
+//   '$route.query':{
+//     handler(val){
+//       const q = this.$route.query
+//       console.log('val',val)
+//       console.log('q',q)
+//             this.setFilterByTxt(q);
+//           },immediate:true,
+//   }
+// },
   methods: {
     setLabelToQuery(labelTitle) {
       // console.log('example', this.searchInfo)
@@ -253,7 +226,7 @@ export default {
       console.log("Gig msgs:", gig.msgs);
     },
     setFilterByTxt(txt) {
-      console.log("hey i in set filter by text");
+      console.log("hey i in set filter by text",txt);
       this.filterBy.txt = txt;
       this.loadGigs();
     },
@@ -312,6 +285,7 @@ export default {
   components: {
     gigList,
     gigFilter,
+    skeleton,
     //  VueSkeletonLoader ,
   },
   unmounted() {
