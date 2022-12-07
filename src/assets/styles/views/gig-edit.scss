@@ -1,0 +1,47 @@
+.addgig-main-container{
+    background-color: #f7f7f7;
+    height: 800px;
+    display: flex;
+    justify-content: center;
+    
+    .addgig-forms-container{
+        width: 300px;
+        margin-top: 50px;
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 5px;
+        text-align: center;
+        label{
+            margin-left: 28px;
+        }
+        input{
+            position: relative;
+            border-radius: 8px;
+            padding: 10px;
+            margin-top: 10px;
+            margin-left: 28px;
+            text-align: center;
+        }
+        .gig-add-img-picture{
+            height: 100px;
+            width: 100px;
+            cursor: pointer;
+        }
+        .gig-image-title{
+            display: flex;
+            justify-content: center;
+        }
+    }
+    .addgig-buttons button{
+        background-color: #1dbf73;
+        color: white;
+        font-size: 16px;    
+        text-transform: uppercase;
+        border-radius: 6px;
+        align-content: center;
+        &:hover{
+            background-color: #20d380;
+            cursor: pointer;
+        }
+    }
+}
