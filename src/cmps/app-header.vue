@@ -39,15 +39,15 @@
           <a v-if="!loggedInUser" class="navbar-signin-btn nav-btn" @click="toggleSignInModal(false)">Sign In</a>
           </section>
           <a v-if="!loggedInUser" class="join-btn flex nav-btn" @click="toggleSignInModal(true)">Join</a>
-          <section v-if="loggedInUser" class="loggedin-user flex" >
-            <img
+          <section v-if="loggedInUser" class="loggedin-user flex" @click="toggleUserModal()" >
+            <!-- <img
               class="logged-in-user-avatar"
               :src="loggedInUser.imgUrl"
               @click="toggleUserModal()"
-            />
-            <span class="logged-in-user-name">{{ loggedInUser.fullname }}</span>
+            /> -->
+            <span class="logged-in-user-name">{{ usersFirstLetter(loggedInUser.fullname)}}</span>
              <Transition>
-            <div class="user-modal-opts" v-if="isUserModalOn">
+            <div class="user-modal-opts" v-if="isUserModalOn" v-click-outside="toggleUserModal">
               <router-link @click="toggleUserModal" class="user-modal-links" :to="`/profile/${loggedInUser._id}`">Profile</router-link>
               <router-link @click="toggleUserModal" class="user-modal-links" to="/dashboard">Dashboard</router-link>
               <router-link @click="toggleUserModal,doLogout()" class="user-modal-links" to="/">Logout</router-link>
@@ -57,7 +57,6 @@
        
       </nav>
     </header>
-
   </section>
   <Transition>
   <section
@@ -109,14 +108,14 @@
            <a v-if="!loggedInUser" class="nav-btn" @click="toggleSignInModal(false)">Sign In</a>
         </section>
         <a v-if="!loggedInUser" class="join-btn flex not-sticky" @click="toggleSignInModal(true)">Join</a>
-        <section v-if="loggedInUser" class="loggedin-user" >
-            <span class="logged-in-user-name">{{ loggedInUser.fullname }}</span>
-            <img
+        <section v-if="loggedInUser" class="loggedin-user" @click="toggleUserModal()">
+            <span class="logged-in-user-name">{{ usersFirstLetter(loggedInUser.fullname) }}</span>
+            <!-- <img 
               class="logged-in-user-avatar"
               :src="loggedInUser.imgUrl"
               @click="toggleUserModal()"
-            />
-            <div class="user-modal-opts" v-if="isUserModalOn" >
+            /> -->
+            <div class="user-modal-opts" v-if="isUserModalOn" v-click-outside="!toggleUserModal" @click="toggleUserModal()">
               <router-link @click="toggleUserModal" class="user-modal-links" :to="`/profile/${loggedInUser._id}`">Profile</router-link>
               <router-link @click="toggleUserModal" class="user-modal-links" to="/dashboard">Dashboard</router-link>
               <router-link @click="toggleUserModal,doLogout()" class="user-modal-links" to="/">Logout</router-link>
@@ -197,6 +196,9 @@ export default {
     loginSignup,
   },
   methods: {
+    usersFirstLetter(name){
+    return name[0]
+    },
     testSocket(order){
       console.log('order sovckert',order)
       alert('work')
