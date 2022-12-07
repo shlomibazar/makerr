@@ -1,65 +1,42 @@
 <template>
   <div class="user-info-container">
     <section class="user-info main-layout flex">
-      <div class="left side">
-        <div class="user-details">
+      <div class="user-name-avatar">
           <img class="user-image" :src="user.imgUrl" alt="" />
+
           <h4 class="user-fullname">{{ user.fullname }}</h4>
-          <hr />
+        </div>
+      <div class="left side">
+        <div class="user-details" v-if="this.currConnUser.isSeller">
           <div class="dashboard-memberdetails">
             <span class="dashboard-inboxrate"
               >Inbox response rate
-              <div class="w3-light-grey">
-                <div
-                  class="w3-green"
-                  style="height: 14px; width: 93%; border-radius: 50px; color: red"
-                >
-                  %93
-                </div>
+              <div class="skill-container">
+                <div class="skill p-72">72%</div>
               </div>
             </span>
             <span class="dashboard-inboxtime"
               >Inbox response time
-              <div class="w3-light-grey">
-                <div
-                  class="w3-green"
-                  style="height: 14px; width: 98%; border-radius: 50px"
-                >
-                  %98
-                </div>
+              <div class="skill-container">
+                <div class="skill p-98">98%</div>
               </div>
             </span>
             <span class="dashboard-orderrate"
               >Order response rate
-              <div class="w3-light-grey">
-                <div
-                  class="w3-green"
-                  style="height: 14px; width: 72%; border-radius: 50px"
-                >
-                  %72
-                </div>
+              <div class="skill-container">
+                <div class="skill p-86">86%</div>
               </div>
             </span>
             <span class="dashboard-delivertime"
               >Delivered on time
-              <div class="w3-light-grey">
-                <div
-                  class="w3-green"
-                  style="height: 14px; width: 87%; border-radius: 50px"
-                >
-                  %87
-                </div>
+              <div class="skill-container">
+                <div class="skill p-92">92%</div>
               </div>
             </span>
             <span class="dashboard-ordercomplete"
               >Order completion
-              <div class="w3-light-grey">
-                <div
-                  class="w3-green"
-                  style="height: 14px; width: 75%; border-radius: 50px"
-                >
-                  %75
-                </div>
+              <div class="skill-container">
+                <div class="skill p-81">81%</div>
               </div>
             </span>
           </div>
@@ -68,7 +45,13 @@
 
       <div class="orders-container">
         <div>
-          <button @click="toggleMode">{{ switchMode }}</button>
+          <div class="display-user-status" v-if="this.currConnUser.isSeller">
+            Your Gigs
+          </div>
+          <div class="display-user-status" v-else>Your Orders</div>
+
+          <button class="dashboard-switch-btn" @click="toggleMode">{{ switchMode }}</button>
+
           <ul v-for="order in ordersToShow">
             <div class="order">
               <div class="order-info">
@@ -92,11 +75,10 @@
                 </div>
               </div>
               <div class="status-container">
-                <hr />
-                <!-- <div v-if="!user.isSeller" class="status"> -->
-                <div v-if="(order.seller.sellerId !== this.user._id)" class="status">
+                
+                <div v-if="order.seller.sellerId !== this.user._id" class="status flex">
                   <h1 class="status-title">Order status:</h1>
-                  <h1 class="status-info">{{ order.status }}</h1>
+                  <button class="status-info">{{ order.status }}</button>
                 </div>
                 <div v-else class="status">
                   <h1 class="status-title">Order status:</h1>
@@ -125,17 +107,19 @@ export default {
   components: {},
   data() {
     return {
-      
       switchMode: "",
       // orders: null,
       user: null,
-      currConnUser: null
+      currConnUser: null,
     };
   },
   async created() {
     this.user = userService.getLoggedinUser();
-    this.currConnUser = userService.getLoggedinUser()
-    this.$store.dispatch({type:'loadOrders'})
+    this.currConnUser = userService.getLoggedinUser();
+    // this.orders = await orderService.query();
+    this.$store.dispatch({ type: "loadOrders" });
+    // console.log("orders", this.orders);
+    // this.filterdOrders();
     this.user.isSeller
       ? (this.switchMode = "Switch to buyer")
       : (this.switchMode = "Switch to seller");
@@ -177,30 +161,33 @@ export default {
       } else if (updatedOrder.status === "approved") {
         updatedOrder.status = "completed";
       }
-      this.$store.dispatch({type:'addOrder',newOrder:updatedOrder})
-
+      this.$store.dispatch({ type: "addOrder", newOrder: updatedOrder });
+      // orderService.save(updatedOrder);
+      // this.orders = await orderService.query();
+      // orderService.update()
     },
   },
+
   computed: {
     sellerImg() {
       return `${order.seller.sellerImg}`;
     },
-    orders(){
-    return this.$store.getters.orders
+    orders() {
+      return this.$store.getters.orders;
     },
-    ordersToShow(){
-      console.log('ordersToshow')
-      var currConnUserId = this.user._id
-        return this.currConnUser.isSeller ? 
-        this.orders.filter(
-          (order) => order.seller.sellerId === currConnUserId
-        ) :  this.orders.filter(
-          (order) => order.buyer.userId === currConnUserId
-        ) 
+    ordersToShow() {
+      console.log("ordersToshow");
+      var currConnUserId = this.user._id;
+      return this.currConnUser.isSeller
+        ? this.orders.filter((order) => order.seller.sellerId === currConnUserId)
+        : this.orders.filter((order) => order.buyer.userId === currConnUserId);
     },
-    currUser(){
-      console.log('run user')
-      return this.currConnUser
+    currUser() {
+      console.log("run user");
+      return this.currConnUser;
+    },
+    date(){
+      return new Date(order.createdAt).toLocaleDateString('he-IL', {timeZone:'Asia/Jerusalem'})
     }
   },
   unmounted() {},
