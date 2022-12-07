@@ -60,12 +60,12 @@ header {
             cursor: pointer;
         }
         .user-modal-opts{
-            // position: absolute;
             .user-modal-links{
                 background-color: rgb(215, 215, 215);
+                color: black;
                 &:hover{
-                    background-color: rgb(99, 99, 99);
-                    color: white;
+                    background-color: transparent;
+                    color: #1dbf73;
                 }
             }
             .user-logout-btn{
@@ -332,15 +332,15 @@ margin-left: 20px;
     }
 }
 .header-wrapper{
-&.main-container{
-&.fullWidthContainer{
-background-color: transparent;
-a{
-color: #f7fffb;
-}
-&.white_BG{
-a{
-color: #404145;
+    &.main-container{
+    &.fullWidthContainer{
+        background-color: transparent;
+    a{
+        color: #f7fffb;
+    }
+    &.white_BG{
+    a{
+         color: #404145;
 }
 .join-btn{
     border:1px solid #1aac68;

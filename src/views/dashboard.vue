@@ -1,74 +1,109 @@
 <template>
-    <div class="user-info-container">
+  <div class="user-info-container">
     <section class="user-info main-layout flex">
       <div class="left side">
         <div class="user-details">
-          <img class="user-image" alt="" /><!---->
+          <img class="user-image" :src="user.imgUrl" alt="" />
+          <h4 class="user-fullname">{{ user.fullname }}</h4>
           <hr />
-          <div class="member-Since">
-            <div class="member">
-              <svg
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-vubbuv"
-                focusable="false"
-                aria-hidden="true"
-                viewBox="0 0 24 24"
-                data-testid="PersonIcon"
-              >
-                <path
-                  d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
-                ></path>
-              </svg>
-              <h4 class="since">Member since</h4>
-            </div>
-            <h4 class="date">May 2021</h4>
+          <div class="dashboard-memberdetails">
+            <span class="dashboard-inboxrate"
+              >Inbox response rate
+              <div class="w3-light-grey">
+                <div
+                  class="w3-green"
+                  style="height: 14px; width: 19%; border-radius: 50px; color: red"
+                >
+                  %19
+                </div>
+              </div>
+            </span>
+            <span class="dashboard-inboxtime"
+              >Inbox response time
+              <div class="w3-light-grey">
+                <div
+                  class="w3-green"
+                  style="height: 14px; width: 39%; border-radius: 50px"
+                >
+                  %39
+                </div>
+              </div>
+            </span>
+            <span class="dashboard-orderrate"
+              >Order response rate
+              <div class="w3-light-grey">
+                <div
+                  class="w3-green"
+                  style="height: 14px; width: 72%; border-radius: 50px"
+                >
+                  %72
+                </div>
+              </div>
+            </span>
+            <span class="dashboard-delivertime"
+              >Delivered on time
+              <div class="w3-light-grey">
+                <div
+                  class="w3-green"
+                  style="height: 14px; width: 35%; border-radius: 50px"
+                >
+                  %35
+                </div>
+              </div>
+            </span>
+            <span class="dashboard-ordercomplete"
+              >Order completion
+              <div class="w3-light-grey">
+                <div
+                  class="w3-green"
+                  style="height: 14px; width: 45%; border-radius: 50px"
+                >
+                  %45
+                </div>
+              </div>
+            </span>
           </div>
         </div>
       </div>
+
       <div class="orders-container">
         <div>
-          <button @click="toggleMode"> {{switchMode}}</button> 
+          <button @click="toggleMode">{{ switchMode }}</button>
           <ul v-for="order in orders">
-          <div class="order">
-            <div class="order-info">
-              <img
-                class="gig-img"
-                :src=order.gig.image
-                alt=""
-              />
-              <div class="seller">
-                <img
-                  class="seller-img"
-                  :src=order.seller.sellerImg
-                  
-                  alt=""
-                />
-                <div class="name">{{ order.seller.sellerName }}</div>
+            <div class="order">
+              <div class="order-info">
+                <img class="gig-img" :src="order.gig.image" alt="" />
+                <div class="seller">
+                  <img class="seller-img" :src="order.seller.sellerImg" alt="" />
+                  <div class="name">{{ order.seller.sellerName }}</div>
+                </div>
+                <div class="price-info">
+                  <p class="title"><strong>Price</strong></p>
+                  <p class="info">${{ order.price }}</p>
+                </div>
+                <div class="days-info">
+                  <p class="title"><strong>Delivery Time</strong></p>
+                  <p class="info">{{ order._id }}</p>
+                </div>
+                <div class="issued">
+                  <p class="title"><strong>Issued At</strong></p>
+                  <p class="info">{{ order.createdAt }}</p>
+                </div>
               </div>
-              <div class="price-info">
-                <p class="title">Price</p>
-                <p class="info">${{order.price}}</p>
-              </div>
-              <div class="days-info">
-                <p class="title">Delivery Time</p>
-                <p class="info">{{order._id}}</p>
-              </div>
-              <div class="issued">
-                <p class="title">Issued At</p>
-                <p class="info">{{order.createdAt}}</p>
-              </div>
-            </div>
-            <div class="status-container">
-              <hr />
-              <div v-if="!user.isSeller" class="status">
-                <h1 class="status-title">Order status:</h1>
-                <h1 class="status-info">{{ order.status }}</h1>
-              </div>
-              <div v-else  class="status">
-                <h1 class="status-title">Order status:</h1>
-                <button class="status-info" @click="changeStatus(order._id)">{{ order.status }}</button>
+              <div class="status-container">
+                <hr />
+                <div v-if="!user.isSeller" class="status">
+                  <h1 class="status-title">Order status:</h1>
+                  <h1 class="status-info">{{ order.status }}</h1>
+                </div>
+                <div v-else class="status">
+                  <h1 class="status-title">Order status:</h1>
+                  <button class="status-info" @click="changeStatus(order._id)">
+                    {{ order.status }}
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
           </ul>
         </div>
       </div>
@@ -88,10 +123,10 @@ export default {
   components: {},
   data() {
     return {
-      i:0,
-      switchMode:'',
+      i: 0,
+      switchMode: "",
       orders: null,
-      user:null
+      user: null,
     };
   },
   async created() {
@@ -99,7 +134,9 @@ export default {
     this.orders = await orderService.query();
     console.log("orders", this.orders);
     this.filterdOrders();
-    this.user.isSeller ? this.switchMode="Switch to buyer" : this.switchMode="Switch to seller"
+    this.user.isSeller
+      ? (this.switchMode = "Switch to buyer")
+      : (this.switchMode = "Switch to seller");
   },
   methods: {
     filterdOrders() {
@@ -108,50 +145,47 @@ export default {
       console.log("currConnUserId", currConnUserId);
 
       if (!currConnUser.isSeller) {
-        this.orders = this.orders.filter((order) =>
-          order.buyer.userId === currConnUserId
+        this.orders = this.orders.filter(
+          (order) => order.buyer.userId === currConnUserId
         );
       } else {
-        this.orders = this.orders.filter((order) =>
-          order.seller.sellerId === currConnUserId
+        this.orders = this.orders.filter(
+          (order) => order.seller.sellerId === currConnUserId
         );
       }
     },
-    toggleMode(){
-      
+    toggleMode() {
       var currConnUser = userService.getLoggedinUser();
-      currConnUser.isSeller = !currConnUser.isSeller
+      currConnUser.isSeller = !currConnUser.isSeller;
 
-      console.log('currConnUser',currConnUser)
-      userService.saveLocalUser(currConnUser)
-      
-      currConnUser.isSeller ? this.switchMode="Switch to buyer" : this.switchMode="Switch to seller"
+      console.log("currConnUser", currConnUser);
+      userService.saveLocalUser(currConnUser);
+
+      currConnUser.isSeller
+        ? (this.switchMode = "Switch to buyer")
+        : (this.switchMode = "Switch to seller");
       // this.create()
-      this.$router.go()
+      this.$router.go();
       // this.$route.go()
-
-      
-
-      
     },
 
-
-   async changeStatus(orderId){
-      let updatedOrder = JSON.parse(JSON.stringify(this.orders.find(order => order._id === orderId)) )
-      console.log('updatedOrder front ',updatedOrder)
-      if(updatedOrder.status === 'pending'){
-        updatedOrder.status = 'approved'
-
-      }else if(updatedOrder.status === 'approved'){
-        updatedOrder.status = 'completed'
+    async changeStatus(orderId) {
+      let updatedOrder = JSON.parse(
+        JSON.stringify(this.orders.find((order) => order._id === orderId))
+      );
+      console.log("updatedOrder front ", updatedOrder);
+      if (updatedOrder.status === "pending") {
+        updatedOrder.status = "approved";
+      } else if (updatedOrder.status === "approved") {
+        updatedOrder.status = "completed";
       }
-      orderService.save(updatedOrder)
+      orderService.save(updatedOrder);
       // this.orders = await orderService.query();
-        // orderService.update()
-    }
+      // orderService.update()
+    },
   },
   computed: {
-    sellerImg(){
+    sellerImg() {
       return `${order.seller.sellerImg}`;
     },
   },
