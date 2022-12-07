@@ -13,7 +13,6 @@ import orderList from './cmps/order-list.vue'
 import dashboard from './views/dashboard.vue'
 import profile from './views/profile.vue'
 
-
 const routes = [
   {
     path: '/',
@@ -76,7 +75,7 @@ const routes = [
     component: dashboard
   },
   {
-    path: '/profile',
+    path: '/profile/:id',
     name: 'profile',
     component: profile
   },

@@ -34,6 +34,7 @@ window.cs = gigService
 
 
 async function query(filterBy = { txt: '', price: 0 }) {
+    console.log('filterBy in gig service query',filterBy)
     return httpService.get(STORAGE_KEY, filterBy)
 
     // var gigs = await storageService.query(STORAGE_KEY)
@@ -64,7 +65,7 @@ async function save(gig) {
 
     } else {
         // Later, owner is set by the backend
-        gig.owner = userService.getLoggedinUser()
+        // gig.owner = userService.getLoggedinUser()
         // savedGig = await storageService.post(STORAGE_KEY, gig)
         savedGig = await httpService.post('gig', gig)
     }
@@ -105,7 +106,7 @@ function getEmptyGig(){
         daysToMake: 9,
         labels: ["graphics & design"],
         owner: {
-            id: "",
+            _id: "",
             fullname: "",
             rate: 3,
             level: 3,

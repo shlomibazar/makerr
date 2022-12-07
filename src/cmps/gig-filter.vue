@@ -20,7 +20,7 @@
       <!-- BUDGET MODAL -->
       <div class="dropdown">
         <button class="filter-button" @click="budgetModal()">Budget</button>
-        <div class="budget-modal-container" v-if="isBudgetModal">
+        <div class="budget-modal-container" v-if="isBudgetModal" v-click-outside="budgetModal">
           <div class="minMax flex">
             <div class="flex column">
               <label for="minPrice">MIN.</label>
@@ -45,7 +45,7 @@
       <!-- DELIVERY TIME MODAL -->
       <div class="dropdown">
         <button class="filter-button" @click="deliveryTimeModal()">Delivery Time</button>
-        <div class="delivery-time-modal" v-if="this.isDeliveryModal">
+        <div class="delivery-time-modal" v-if="this.isDeliveryModal" v-click-outside="deliveryTimeModal">
           <section class="delivery-time-radio flex">
             <!-- <div>
 

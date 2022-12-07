@@ -1,6 +1,4 @@
 <template>
-
-
   <section class="container home text-center">
     <!-- <section class="content-container"> -->
     <section class="hero flex fullWidthContainer">
@@ -143,8 +141,6 @@
 </template>
 
 <script>
-
-
 import { VueperSlides, VueperSlide } from 'vueperslides'
 import 'vueperslides/dist/vueperslides.css'
 
@@ -217,7 +213,6 @@ export default {
       ],
       APIData: [],
       searchInfo: '',
-
       sliderBreakpoints: {
         600: {
           visibleSlides: 2, slideMultiple: 2
@@ -238,7 +233,6 @@ export default {
   created() {
   },
   methods: {
-
     setLabel(labelTxt) {
       this.$router.push({ path: '/gig', query: { label: labelTxt } })
     },
@@ -251,8 +245,5 @@ export default {
     VueperSlides,
     VueperSlide,
   },
-
-
-
 }
 </script>

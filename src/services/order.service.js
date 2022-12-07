@@ -27,7 +27,7 @@ window.cs = orderService
 async function query(filterBy = { txt: '' }) {
     return httpService.get(STORAGE_KEY, filterBy)
 
-    var orders = await storageService.query(STORAGE_KEY)
+    // var orders = await storageService.query(STORAGE_KEY)
     if (filterBy.txt) {
         const regex = new RegExp(filterBy.txt, 'i')
         orders = orders.filter(order => regex.test(order.vendor) || regex.test(order.description))
@@ -50,11 +50,12 @@ async function remove(orderId) {
 async function save(order) {
     var savedOrder
     if (order._id) {
+        console.log('order updarte front with id ',order)
         // savedOrder = await storageService.put(STORAGE_KEY, order)
         savedOrder = await httpService.put(`order/${order._id}`, order)
         
     } else {
-        console.log('orderrrr',order)
+        console.log('orderrrr save',order)
         // Later, owner is set by the backend
         order.owner = userService.getLoggedinUser()
         // savedOrder = await storageService.post(STORAGE_KEY, order)

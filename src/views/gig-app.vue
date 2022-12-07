@@ -1,7 +1,7 @@
 <template>
   <div class="container home main-container">
     <section class="lable-container-list full fullWidthContainer flex">
-      <section class="sub-header-labels main-container gig-list">
+      <section class="sub-header-labels-gig-list main-container gig-list">
         <h4 v-for="label in labels" :key="label" @click="setLabelToQuery(label)">
           {{ label }}
         </h4>
@@ -22,6 +22,32 @@
         @filteredDel="setFilterByDel"
       />
     </section>
+<!-- <div class="flex " style="gap:32px" v-if="!gigsSkelton"> -->
+<div class="flex " style="gap:32px" v-if="!gigs">
+
+  <div class="flex column" style="gap:15px">
+    <Skeletor height="190" width="326"/>
+    <Skeletor circle size="50"/>
+    <Skeletor height="45" width="326"/>
+  </div>
+  <div class="flex column" style="gap:15px">
+    <Skeletor height="190" width="326"/>
+    <Skeletor circle size="50"/>
+    <Skeletor height="45" width="326"/>
+  </div>
+  <div class="flex column" style="gap:15px">
+    <Skeletor height="190" width="326"/>
+    <Skeletor circle size="50"/>
+    <Skeletor height="45" width="326"/>
+  </div>
+  <div class="flex column" style="gap:15px">
+    <Skeletor height="190" width="326"/>
+    <Skeletor circle size="50"/>
+    <Skeletor height="45" width="326"/>
+  </div>
+
+</div>
+
     <gig-list @removeGig="removeGig" v-if="gigs" :gigs="gigs" />
 
     <!-- @filteredLabel="setFilterByLabel" -->
@@ -48,10 +74,13 @@ import {
 import gigList from "../cmps/gig-list.vue";
 import gigFilter from "../cmps/gig-filter.vue";
 import _ from "lodash";
+// import VueSkeletonLoader from 'skeleton-loader-vue';
+
 
 export default {
   data() {
     return {
+      gigsSkelton:false,
       labels: [
         "graphics & design",
         "digital marketing",
@@ -81,6 +110,10 @@ export default {
   created() {
     if (!this.$route.query.title || !this.$route.query.label) {
       this.$store.dispatch({ type: "loadGigs" });
+      setTimeout(() => {
+        this.gigsSkelton = true
+      }, 1000); 
+
     }
     this.debounceHandler = _.debounce(this.setFilterByTxt, 500);
     this.debounceHandler = _.debounce(this.setFilterByLabel, 500);
@@ -131,16 +164,16 @@ export default {
       // console.log('helllo',this.scrollPosition)
       this.scrollPosition = window.scrollY;
       if (this.scrollPosition > 190) {
-        console.log("runing");
+        // console.log("runing");
         this.elFilter.classList.add("change-position");
         this.elFilter.classList.add("fullWidthContainer");
       }
       if (this.scrollPosition < 100) {
-        console.log("runing");
+        // console.log("runing");
         this.elFilter.classList.remove("change-position");
         this.elFilter.classList.remove("fullWidthContainer");
       }
-      console.log("this in update scroll", this.scrollPosition);
+      // console.log("this in update scroll", this.scrollPosition);
     },
 
     getLabels() {
@@ -148,7 +181,7 @@ export default {
     },
     loadGigs() {
       const filterBy = JSON.parse(JSON.stringify(this.filterBy));
-      // console.log("🚀 ~ file: gig-app.vue ~ line 68 ~ loadGigs ~ filterBy", filterBy)
+      console.log("🚀 ~ file: gig-app.vue ~ line 68 ~ loadGigs ~ filterBy", filterBy)
       const sortBy = JSON.parse(JSON.stringify(this.sortBy));
       this.$store.dispatch({ type: "loadGigs", filterBy, sortBy });
     },
@@ -251,6 +284,7 @@ export default {
   components: {
     gigList,
     gigFilter,
+    //  VueSkeletonLoader ,
   },
   unmounted() {
     window.removeEventListener("scroll", this.updateScroll);
