@@ -25,7 +25,7 @@ window.cs = orderService
 // }
 
 async function query(filterBy = { txt: '' }) {
-    // return httpService.get(STORAGE_KEY, filterBy)
+    return httpService.get(STORAGE_KEY, filterBy)
 
     var orders = await storageService.query(STORAGE_KEY)
     if (filterBy.txt) {
@@ -39,26 +39,26 @@ async function query(filterBy = { txt: '' }) {
 
 }
 function getById(orderId) {
-    return storageService.get(STORAGE_KEY, orderId)
-    // return httpService.get(`order/${orderId}`)
+    // return storageService.get(STORAGE_KEY, orderId)
+    return httpService.get(`order/${orderId}`)
 }
 
 async function remove(orderId) {
-    await storageService.remove(STORAGE_KEY, orderId)
-    // return httpService.delete(`order/${orderId}`)
+    // await storageService.remove(STORAGE_KEY, orderId)
+    return httpService.delete(`order/${orderId}`)
 }
 async function save(order) {
     var savedOrder
     if (order._id) {
-        savedOrder = await storageService.put(STORAGE_KEY, order)
-        // savedOrder = await httpService.put(`order/${order._id}`, order)
+        // savedOrder = await storageService.put(STORAGE_KEY, order)
+        savedOrder = await httpService.put(`order/${order._id}`, order)
         
     } else {
         console.log('orderrrr',order)
         // Later, owner is set by the backend
         order.owner = userService.getLoggedinUser()
-        savedOrder = await storageService.post(STORAGE_KEY, order)
-        // savedOrder = await httpService.post('order', order)
+        // savedOrder = await storageService.post(STORAGE_KEY, order)
+        savedOrder = await httpService.post('order', order)
     }
     return savedOrder
 }

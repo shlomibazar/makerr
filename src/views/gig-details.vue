@@ -239,7 +239,7 @@
 </template>
 <script>
 // import chatVue from "./chat.vue"
-import { gigService } from "../services/gig.service.local.js";
+import { gigService } from "../services/gig.service.js";
 import { getActionRemoveGig, getActionUpdateGig } from "../store/gig.store";
 import { VueperSlides, VueperSlide } from "vueperslides";
 import "vueperslides/dist/vueperslides.css";

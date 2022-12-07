@@ -9,7 +9,7 @@
 
 <script>
 // import chatVue from "./chat.vue"
-import { gigService } from "../services/gig.service.local.js";
+import { gigService } from "../services/gig.service.js";
 import { router } from "../router.js";
 
 export default {

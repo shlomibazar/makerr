@@ -85,9 +85,11 @@
 
 <script>
 import { router } from "../router";
-import { gigService } from "../services/gig.service.local.js";
+import { gigService } from "../services/gig.service.js";
 import { utilService } from "../services/util.service";
 import { userService } from "../services/user.service";
+import {orderService} from "../services/order.service"
+
 
 export default {
   data() {
@@ -97,8 +99,6 @@ export default {
   },
   created() {
     this.loadGig();
-    console.log("this.$route.params", this.$route.params);
-    console.log("purchase gig ID:", this.gig);
   },
   computed: {
     gigPreview() {
@@ -106,26 +106,14 @@ export default {
     },
   },
 
-  //       {
-  //           "_id": "o1225",
-  //           "createdAt": new Date(),
-  //           "buyer": "mini-user",
-  //           "seller": "mini-user",
-  //           "gig": {
-  //             "_id": "i101",
-  //             "name": "Design Logo",
-  //             "price": 20
-
-  //        :IMAGE:GIG.IMAGE   },
-  //           "status": "pending"
-  //         }
-
   methods: {
     orderGig() {
       const user = userService.getLoggedinUser();
+      console.log("Order to user", user._id);
+
       const orderToAdd = {
         buyer: {
-          userId: user.id,
+          userId: user._id,
           userImg: user.imgUrl,
           userName: user.fullname,
         },
@@ -144,20 +132,13 @@ export default {
         },
         status: "pending",
       };
-      console.log("Order to add ", orderToAdd);
+      orderService.save(orderToAdd)
       router.push(`/dashboard`);
-      // router.push(`/order-list/${this.gig._id}`)
-      //  const gigSeller = userService.getById(this.gig.owner.id);
-      //   gigSeller.seller.orders.push(orderToAdd);
-      //   console.log('Gig Seller ', gigSeller);
-      //   console.log('Order to add ', orderToAdd);
     },
     loadGig() {
       const id = this.$route.params.gigId;
-      //   console.log("iddddddd", id);
       gigService.getById(id).then((gig) => {
         this.gig = gig;
-        console.log("loadGig_purchase");
       });
     },
   },

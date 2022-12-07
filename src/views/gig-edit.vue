@@ -20,7 +20,7 @@
 </template>
   
 <script>
-import { gigService } from '../services/gig.service.local'
+import { gigService } from '../services/gig.service.js'
 
 export default {
     name: 'gig-edit',
