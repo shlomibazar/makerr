@@ -134,9 +134,11 @@
   
 </template>
 <script>
+import { socketService } from "../services/socket.service";
 import loginSignup from "../views/login-signup.vue";
 export default {
   created() {
+    socketService.on('send to seller', this.testSocket)
     this.$watch(
       () => this.$route,
       () => {
@@ -195,6 +197,10 @@ export default {
     loginSignup,
   },
   methods: {
+    testSocket(order){
+      console.log('order sovckert',order)
+      alert('work')
+    },
     logOutUser() {
       this.$emit("userLogOut");
     },

@@ -1,3 +1,4 @@
+import { Socket } from 'socket.io-client'
 import { gigService } from '../services/gig.service.js'
 
 export function getActionRemoveGig(gigId) {
@@ -78,6 +79,7 @@ export const gigStore = {
             try {
                 gig = await gigService.save(gig)
                 context.commit(getActionAddGig(gig))
+                
                 return gig
             } catch (err) {
                 console.log('gigStore: Error in addGig', err)

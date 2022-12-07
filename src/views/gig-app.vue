@@ -96,6 +96,9 @@ export default {
       this.$store.dispatch({ type: "loadGigs" });
 
     }
+    if (this.$route.query.title) {
+      this.$store.dispatch({ type: "loadGigs", filterBy: {txt: this.$route.query.title, status:'',labels:null, price:0} });
+    }
     // this.debounceHandler = _.debounce(this.setFilterByTxt, 500);
     // this.debounceHandler = _.debounce(this.setFilterByLabel, 500);
     // console.log('this.$route.params', this.$route.query)
