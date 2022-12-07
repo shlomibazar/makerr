@@ -61,6 +61,22 @@ header {
         }
         .user-modal-opts{
             // position: absolute;
+            .user-modal-links{
+                background-color: rgb(215, 215, 215);
+                &:hover{
+                    background-color: rgb(99, 99, 99);
+                    color: white;
+                }
+            }
+            .user-logout-btn{
+                background-color: rgb(215, 215, 215);
+                border-radius: 6px;
+                font-size: 18px;
+                color: black;
+                margin: 2px;
+                cursor:pointer;
+                text-align: center;
+            }
             a{
             background-color: #f0f0f08e;
             border-radius: 6px;

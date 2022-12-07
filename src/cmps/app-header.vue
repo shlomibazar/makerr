@@ -48,9 +48,9 @@
             <span class="logged-in-user-name">{{ loggedInUser.fullname }}</span>
              <Transition>
             <div class="user-modal-opts" v-if="isUserModalOn">
-              <router-link @click="toggleUserModal" to="`/profile`">Profile</router-link>
-              <router-link @click="toggleUserModal" to="/dashboard">Dashboard</router-link>
-              <button      @click="toggleUserModal,doLogout()" class="user-logout-btn" >Logout222</button>
+              <router-link @click="toggleUserModal" class="user-modal-links" :to="`/profile/${loggedInUser._id}`">Profile</router-link>
+              <router-link @click="toggleUserModal" class="user-modal-links" to="/dashboard">Dashboard</router-link>
+              <router-link @click="toggleUserModal,doLogout()" class="user-modal-links" to="/">Logout</router-link>
             </div>
             </Transition>
   </section>
@@ -117,9 +117,9 @@
               @click="toggleUserModal()"
             />
             <div class="user-modal-opts" v-if="isUserModalOn" >
-              <router-link @click="toggleUserModal" class="user-modal-links" to="`/profile`">Profile</router-link>
+              <router-link @click="toggleUserModal" class="user-modal-links" :to="`/profile/${loggedInUser._id}`">Profile</router-link>
               <router-link @click="toggleUserModal" class="user-modal-links" to="/dashboard">Dashboard</router-link>
-              <button      @click="toggleUserModal,doLogout()" class="user-logout-btn" >Logout222</button>
+              <router-link @click="toggleUserModal,doLogout()" class="user-modal-links" to="/">Logout</router-link>
             </div>
          </section>
       </nav>

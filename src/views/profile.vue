@@ -2,7 +2,7 @@
   <div class="profile-main-container">
     <div class="leftside-mini-profile">
       <div class="profile-user-avatar">
-        <!-- <img :src="user.imgUrl" /> -->
+        <img :src="user.imgUrl" />
       </div>
       <div class="profile-user-details" v-if="user">
         <span class="profile-user-details-from"
