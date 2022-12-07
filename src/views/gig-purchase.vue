@@ -3,13 +3,16 @@
   <!-- <center><h1>Purchase Page!</h1></center> -->
   <div class="main-purchase-page-ctn flex" v-if="gig">
     <div class="purchase-left-sidebar flex">
-      {{ this.gig.title }}
-      <img class="purchase-left-sidebar-avatar" :src="gigPreview" />
+
       <h1>Order Details:</h1>
-      <p>{{ this.gig.owner.id }}</p>
-      <p>{{ this.gig.owner.rate }}</p>
-      <p>{{ this.gig.owner.fullname }}</p>
-      <p>{{ this.gig.owner.loc }}</p>
+      {{ this.gig.title }}
+      <h1>Seller Details:</h1>
+      <img class="purchase-left-sidebar-avatar" :src="gigPreview" />
+      <p><strong>Seller </strong>{{ this.gig.owner.fullname }}</p>
+      <p><strong>Joined </strong>{{ this.gig.owner.memberSince }}</p>
+      <p><strong>From </strong>{{ this.gig.owner.loc }}</p>
+      <p><strong>Seller Rate </strong>{{ this.gig.owner.rate }}</p>
+      <p><strong>Average response time </strong> {{ this.gig.owner.avgResponceTime }}</p>
     </div>
 
     <div class="gig-purchase-right-container flex">

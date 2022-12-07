@@ -1,6 +1,6 @@
 <template>
   <div class="login-modal">
-    <h1>Sign up to Makerr</h1>
+    <h1>Sign in to Makerr</h1>
     <!-- <p class="mute">user1 or admin, pass:123 </p> -->
 
     <form @submit.prevent="signinSignup">
@@ -34,7 +34,8 @@
         v-model="loginCred.password"
         placeholder="Password"
       />
-      <img-uploader @uploaded="onUploaded"></img-uploader>
+      <!-- <img-uploader @uploaded="onUploaded"></img-uploader> -->
+      
       <button class="login-modal-btn">Continue</button>
     </form>
   </div>
