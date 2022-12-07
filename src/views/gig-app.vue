@@ -23,9 +23,17 @@
       />
     </section>
 <!-- <div class="flex " style="gap:32px" v-if="!gigsSkelton"> -->
-<div class="flex " style="gap:32px" v-if="!gigs">
+  <gig-list @removeGig="removeGig" v-if="!isLoading" :gigs="gigs" />
+<div class="flex column" style="gap:32px" v-else>
 
-  <div class="flex column" style="gap:15px">
+  <section class="flex">
+
+    <div class="flex column" style="gap:15px">
+      <Skeletor height="190" width="326"/>
+      <Skeletor circle size="50"/>
+      <Skeletor height="45" width="326"/>
+    </div>
+    <div class="flex column" style="gap:15px">
     <Skeletor height="190" width="326"/>
     <Skeletor circle size="50"/>
     <Skeletor height="45" width="326"/>
@@ -40,15 +48,32 @@
     <Skeletor circle size="50"/>
     <Skeletor height="45" width="326"/>
   </div>
-  <div class="flex column" style="gap:15px">
-    <Skeletor height="190" width="326"/>
-    <Skeletor circle size="50"/>
-    <Skeletor height="45" width="326"/>
-  </div>
+</section>
+<section class="flex">
+
+<div class="flex column" style="gap:15px">
+  <Skeletor height="190" width="326"/>
+  <Skeletor circle size="50"/>
+  <Skeletor height="45" width="326"/>
+</div>
+<div class="flex column" style="gap:15px">
+<Skeletor height="190" width="326"/>
+<Skeletor circle size="50"/>
+<Skeletor height="45" width="326"/>
+</div>
+<div class="flex column" style="gap:15px">
+<Skeletor height="190" width="326"/>
+<Skeletor circle size="50"/>
+<Skeletor height="45" width="326"/>
+</div>
+<div class="flex column" style="gap:15px">
+<Skeletor height="190" width="326"/>
+<Skeletor circle size="50"/>
+<Skeletor height="45" width="326"/>
+</div>
+</section>
 
 </div>
-
-    <gig-list @removeGig="removeGig" v-if="gigs" :gigs="gigs" />
 
     <!-- @filteredLabel="setFilterByLabel" -->
     <!-- @filteredStatus="setFilterByStatus" -->
@@ -110,17 +135,17 @@ export default {
   created() {
     if (!this.$route.query.title || !this.$route.query.label) {
       this.$store.dispatch({ type: "loadGigs" });
-      setTimeout(() => {
-        this.gigsSkelton = true
-      }, 1000); 
 
     }
+    // this.setFilterByTxt(this.$route.query.title);
     this.debounceHandler = _.debounce(this.setFilterByTxt, 500);
     this.debounceHandler = _.debounce(this.setFilterByLabel, 500);
     // console.log('this.$route.params', this.$route.query)
     this.previousParams = this.$route.query;
     if (this.$route.query.title) {
+      console.log('this.$route.query.title',this.$route.query.title)
       this.setFilterByTxt(this.$route.query.title);
+      
     }
     if (this.$route.query.label) {
       this.displayLabel = this.$route.query.label;
@@ -262,7 +287,7 @@ export default {
       return this.$store.getters.loggedinUser;
     },
     gigs() {
-      return this.$store.getters.gigs;
+        return this.$store.getters.gigs;
     },
     labels() {
       return this.labels;
@@ -271,6 +296,9 @@ export default {
       this.toParams = this.$route.query;
       return this.toParams;
     },
+    isLoading(){
+      return this.$store.getters.isLoading
+    }
     // updatePositionFixed() {
     //   console.log('hi scroll',this.scrollPosition)
     //   // console.log('y',window.scrollY)
