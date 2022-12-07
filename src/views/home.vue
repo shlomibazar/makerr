@@ -60,7 +60,7 @@
             </div>
           </div>
 
-          <div class="animate-fade hero-moon" style="opacity: 0;">
+          <!-- <div class="animate-fade hero-moon" style="opacity: 0;">
             <div class="main-container seller-name">
               <p>Moon,
                 <b>Marketing Expert</b>
@@ -86,7 +86,7 @@
                 <b>Video Editor</b>
               </p>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
 

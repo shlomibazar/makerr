@@ -2,10 +2,9 @@
   <div class="addgig-main-container">
     <section v-if="gigToEdit">
       <div class="addgig-forms-container">
-
+        <span class="gig-image-title">Gig Name</span>
         <form @submit.prevent="saveGig" class="form">
           <div class="form-control">
-            <label for="txt" class="form-label">Gig Name</label>
             <input
               required
               v-model="gigToEdit.title"
@@ -15,39 +14,35 @@
               placeholder="Insert gig name here..."
             />
           </div>
-
-          <div class="form-control">
-            <label for="inStock" class="form-label">Gig Price</label>
-
-            <input
-              required
-              v-model.number="gigToEdit.price"
-              id="inStock"
-              type="number"
-              class="form-input"
-              placeholder="$"
-            />
-          </div>
-
-          <div class="form-control">
-            <label for="inStock" class="form-label">Gig Description</label>
-
-            <input
-              required
-              v-model.number="gigToEdit.desc"
-              id="inStock"
-              type="text"
-              class="form-input"
-              placeholder="Describe your gig.."
-            />
-          </div>
         </form>
+
+        <span class="gig-image-title">Gig Price</span>
+        
+        <div class="addgig-price-ctn">
+          <form @submit.prevent="saveGig" class="form">
+            <div class="form-control">
+              <input
+                required
+                v-model.number="gigToEdit.price"
+                id="inStock"
+                type="number"
+                class="form-input"
+                placeholder="$"
+              />
+            </div>
+          </form>
+        </div>
+
         <span class="gig-image-title">Gig Image</span>
-        <img class="gig-add-img-picture" @click="(toggleUploader = !toggleUploader)" src="https://freeiconshop.com/wp-content/uploads/edd/image-outline-filled.png"/>
+        <img
+          class="gig-add-img-picture"
+          @click="toggleUploader = !toggleUploader"
+          src="https://freeiconshop.com/wp-content/uploads/edd/image-outline-filled.png"
+        />
         <img-uploader v-if="toggleUploader" @uploaded="onUploaded"></img-uploader>
         <div class="addgig-buttons">
-            <button @click="saveGig" class="btn btn-info">Create a new gig</button>
-            <!-- <button @click="goBack" class="btn btn-danger-text">go back</button> -->
+          <button @click="saveGig" class="btn btn-info">Create a new gig</button>
+          <!-- <button @click="goBack" class="btn btn-danger-text">go back</button> -->
         </div>
       </div>
     </section>
