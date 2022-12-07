@@ -12,9 +12,9 @@
               <div class="w3-light-grey">
                 <div
                   class="w3-green"
-                  style="height: 14px; width: 19%; border-radius: 50px; color: red"
+                  style="height: 14px; width: 93%; border-radius: 50px; color: red"
                 >
-                  %19
+                  %93
                 </div>
               </div>
             </span>
@@ -23,9 +23,9 @@
               <div class="w3-light-grey">
                 <div
                   class="w3-green"
-                  style="height: 14px; width: 39%; border-radius: 50px"
+                  style="height: 14px; width: 98%; border-radius: 50px"
                 >
-                  %39
+                  %98
                 </div>
               </div>
             </span>
@@ -45,9 +45,9 @@
               <div class="w3-light-grey">
                 <div
                   class="w3-green"
-                  style="height: 14px; width: 35%; border-radius: 50px"
+                  style="height: 14px; width: 87%; border-radius: 50px"
                 >
-                  %35
+                  %87
                 </div>
               </div>
             </span>
@@ -56,9 +56,9 @@
               <div class="w3-light-grey">
                 <div
                   class="w3-green"
-                  style="height: 14px; width: 45%; border-radius: 50px"
+                  style="height: 14px; width: 75%; border-radius: 50px"
                 >
-                  %45
+                  %75
                 </div>
               </div>
             </span>
@@ -83,7 +83,8 @@
                 </div>
                 <div class="days-info">
                   <p class="title"><strong>Delivery Time</strong></p>
-                  <p class="info">{{ order._id }}</p>
+                  <p class="info">3 days</p>
+                  <!-- <p class="info">{{ order.deliveryTime }}</p> -->
                 </div>
                 <div class="issued">
                   <p class="title"><strong>Issued At</strong></p>
