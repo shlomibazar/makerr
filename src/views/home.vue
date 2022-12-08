@@ -51,42 +51,17 @@
       <div class="hero-image">
         <div class="hero-backgrounds">
           <div class="hero-img">
-            <div class="animate-fade hero-andrea" style="opacity: 1;">
+            
+            <div class="animate-fade" :class="heroBackgroundClass">
               <div class="main-container seller-name">
-                <p>Andrea,
-                  <b>Fashion Designer</b>
+                <Transition>
+                <p class="animate-fade-text" :class="textDisplayClass">{{heroName}},
+                  <b class="animate-fade-text">{{heroTitle}}</b> 
                 </p>
+                </Transition>
               </div>
             </div>
           </div>
-
-          <!-- <div class="animate-fade hero-moon" style="opacity: 0;">
-            <div class="main-container seller-name">
-              <p>Moon,
-                <b>Marketing Expert</b>
-              </p>
-            </div>
-          </div> -->
-          <!-- <div class="animate-fade hero-ritika" style="opacity: 0;">
-            <div class="main-container seller-name">
-              <p>Rikita,
-                <b>Shoemaker and Designer</b>
-              </p>
-            </div>
-          </div> -->
-          <!-- <div class="animate-fade hero-zach" style="opacity: 0;">
-            <div class="main-container seller-name">
-              <p>Zach, <b>Bar Owner</b>
-              </p>
-            </div>
-          </div> -->
-          <!-- <div class="animate-fade hero-gabrielle ac" style="opacity: 0;">
-            <div class="main-container seller-name">
-              <p>Gabrielle,
-                <b>Video Editor</b>
-              </p>
-            </div>
-          </div> -->
         </div>
       </div>
 
@@ -98,7 +73,7 @@
       <h1 class="flex popular-title">Popular professional services</h1>
 
       <vueper-slides class="homepage-slider" fixed-height="345px" :visible-slides="5" :slide-ratio="1 / 4"
-        slide-multiple :gap="3" :dragging-distance="200" :touchable="false" :breakpoints=sliderBreakpoints>
+        slide-multiple :gap="3" :dragging-distance="200" :touchable="false" :breakpoints="sliderBreakpoints">
         <vueper-slide v-for="(slide, i) in slides" :key="i" :image="slide.image" :title="slide.title"
           :content="slide.content" @click="setLabel(slide.label)" />
 
@@ -119,6 +94,22 @@ export default {
   name: 'home',
   data() {
     return {
+      textDisplayClass:"",
+      heroName: null,
+      heroTitle: null,
+      heroCounter:0,
+      heroBackgroundClass:null,
+      heroInfo:[{
+        heroBackgroundClass:"hero-andrea", name:"Andrea", title:"Fashion Designer"
+      }, {
+        heroBackgroundClass:"hero-moon", name:"Moon", title:"Marketing Expert"
+      }, {
+        heroBackgroundClass:"hero-gabrielle", name:"Gabrielle", title:"Shoemaker & Designer"
+      }, {
+        heroBackgroundClass:"hero-zach", name:"Zach", title:"Bar Owner"
+      }, {
+        heroBackgroundClass:"hero-ritika", name:"Ritika", title:"Video Editor"
+      }],
       slides: [
         {
           title: 'Build your brand',
@@ -202,9 +193,26 @@ export default {
   computed: {
   },
   created() {
-    
+    this.setHeroInterval()
   },
   methods: {
+    setHeroInterval() {
+      this.heroBackgroundClass = this.heroInfo[this.heroCounter].heroBackgroundClass
+      console.log(this.heroBackgroundClass, this.heroCounter)
+      this.textDisplayClass ="none"
+      setTimeout(() => {
+        this.textDisplayClass ="block"
+        var correctingCounter
+      this.heroCounter===0?correctingCounter=4:correctingCounter=this.heroCounter-1
+      this.heroName = this.heroInfo[correctingCounter].name
+      this.heroTitle= this.heroInfo[correctingCounter].title
+      }, 700);
+      setTimeout(() => {
+      this.setHeroInterval()
+      }, 8000);
+      this.heroCounter++
+      this.heroCounter===5?this.heroCounter=0:this.heroCounter
+    },
     setLabel(labelTxt) {
       this.$router.push({ path: '/gig', query: { label: labelTxt } })
     },

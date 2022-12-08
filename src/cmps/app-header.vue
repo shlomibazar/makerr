@@ -88,16 +88,16 @@
                 >Logout</router-link
               >
             </div>
-          </Transition>
-        </section>
+            </Transition>
+  </section>
+       
       </nav>
     </header>
   </section>
   <Transition>
     <section
       v-if="isInHome && scrollPosition > 200"
-      class="sub-header-labels homePage main-container fullWidthContainer"
-    >
+      class="sub-header-labels homePage main-container fullWidthContainer">
       <section class="fixed-lables main-container">
         <h4 v-for="label in labelsSub" :key="label" @click="setLabelToQuery(label)">
           {{ label }}
@@ -273,6 +273,9 @@ export default {
     toggleUserModal() {
       this.isUserModalOn = !this.isUserModalOn;
     },
+    signModalCloseEmpty() {
+      this.isSignModalOpened = !this.isSignModalOpened;
+    },
     toggleSignInModal(logOrSign) {
       logOrSign ? (this.loginOrSignUp = "signup") : (this.loginOrSignUp = "login");
       // this.loginOrSignUp = logOrSign
@@ -299,7 +302,10 @@ export default {
       const pathToRoute = this.$route.path.split("/");
       this.$router.push({ path: "/gig", query: { title: this.searchInfo } });
     },
-    setLoginUser() {},
+    setLoginUser() { },
+    onClickOutside(value) {
+      value=false
+    }
   },
   computed: {
     loggedInUser() {

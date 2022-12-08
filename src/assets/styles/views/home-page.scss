@@ -315,7 +315,6 @@ body {
 }
 
 .seller-name {
-    
     position: relative;
     color: white;
     align-items: end;
@@ -327,10 +326,32 @@ body {
     // padding: 0 32px;
     width: 100%;
 }
-
-
+.none{
+   opacity: 0;
+}
+.block{
+   opacity: 1;
+}
 .animate-fade {
-    transition: all .7s ease-in-out;
+    transition: all 1s ease-in-out;
+      height: 100vh;
+//   background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/3999/Tilt-Shift_-_Cityscene.jpg);
+//   background-size: 110% 110%;
+//   background-position: center center;
+  animation: shrink 10s infinite alternate;
+}
+@keyframes shrink {
+  0% {
+    background-size: 105% 105%;
+  }
+  100% {
+    background-size: 100% 100%;
+  }
+}
+    
+
+.animate-fade-text {
+    transition: opacity 1s;
 }
 
 .hero-backgrounds .hero-img .hero-andrea {

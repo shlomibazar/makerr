@@ -1,27 +1,30 @@
-<template>
-  <div class="login-modal">
-    <h1>Sign in to Makerr</h1>
+<template >
+  <div v-if="loginOrSignUp === `signup`" class="login-modal"   >
+    <h1>Join Makerr</h1>
     <!-- <p class="mute">user1 or admin, pass:123 </p> -->
-
-    <form @submit.prevent="signinSignup">
+    <form  @submit.prevent="signinSignup" >
       <input
-        v-if="loginOrSignUp === `signup`"
         type="text"
         v-model="signupCred.fullname"
         placeholder="Your full name"
       />
       <input
-        v-if="loginOrSignUp === `signup`"
         type="text"
         v-model="signupCred.username"
         placeholder="Username"
       />
       <input
-        v-if="loginOrSignUp === `signup`"
         type="password"
         v-model="signupCred.password"
         placeholder="Password"
       />
+      <!-- <img-uploader @uploaded="onUploaded"></img-uploader> -->
+      <button class="login-modal-btn">Signup</button>
+    </form>
+    </div>
+      <div v-if="loginOrSignUp === `login`" class="login-modal" >
+    <h1>Login to Makerr</h1>
+      <form  @submit.prevent="signinSignup">
       <input
         v-if="loginOrSignUp === `login`"
         type="text"
@@ -29,14 +32,11 @@
         placeholder="Username"
       />
       <input
-        v-if="loginOrSignUp === `login`"
         type="password"
         v-model="loginCred.password"
         placeholder="Password"
       />
-      <!-- <img-uploader @uploaded="onUploaded"></img-uploader> -->
-      
-      <button class="login-modal-btn">Continue</button>
+      <button class="login-modal-btn">Login</button>
     </form>
   </div>
 </template>
