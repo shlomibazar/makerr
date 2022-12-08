@@ -221,7 +221,8 @@ header {
 .sub-header-labels{
     border: 1px solid #E4E5E7;
     height: 41px;
-   display: flex;
+    display: flex;
+    gap: 40px;
    align-items: center;
    &.gig-details{
 }   border:none;

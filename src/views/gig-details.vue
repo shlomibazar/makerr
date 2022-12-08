@@ -155,8 +155,11 @@
                 </h5>
               </div>
               <section class="review-helpful-selector">
-                <span>Helpful? </span><span> 👍 Yes </span><span> 👎 No </span>
+                <span>Helpful? </span>
+                <span class="review-like-btn" @click="likeReview" :class="{ 'review-like-active': isLikeReview }"> 👍 Yes </span>
+                <span class="review-dislike-btn" @click="disLikeReview" :class="{ 'review-dislike-active': isDisLikeReview }"> 👎 No </span>
               </section>
+              <span class="gig-like-title" v-if="isLikeReview">You found this gig helpful!</span>
             </section>
           </div>
         </h4>
@@ -252,6 +255,8 @@ export default {
   data() {
     return {
       gig: null,
+      isLikeReview: false,
+      isDisLikeReview: false,
       isModalToggled: false,
       isCheckOutModal: false,
       labels: [
@@ -272,10 +277,12 @@ export default {
     // this.updateMsgs()
   },
   methods: {
-    // checkOutModal() {
-    //   this.isCheckOutModal = !this.isCheckOutModal;
-    //   console.log("isCheckOutModal", isCheckOutModal);
-    // },
+    disLikeReview(){
+      this.isDisLikeReview = !this.isDisLikeReview
+    },
+    likeReview(){
+      this.isLikeReview = !this.isLikeReview
+    },
     checkOutModal() {
       this.$router.push(`/order/${this.gig._id}`);
     },
