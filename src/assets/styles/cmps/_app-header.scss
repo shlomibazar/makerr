@@ -66,9 +66,13 @@ header {
         //     width: 50px;
             
         // }
+        .logged-in-user-name{
+            position:absolute;
+            text-align: center;
+        }
         .user-modal-opts{
             position: relative;
-            top: 50px;
+            top: 70px;
             margin-left: 150px;
             .usermodal-link{
                 color: rgb(72, 72, 72);

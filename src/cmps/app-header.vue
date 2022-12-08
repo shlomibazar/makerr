@@ -136,9 +136,7 @@
           >Join</a
         >
         <section v-if="loggedInUser" class="loggedin-user" @click="toggleUserModal()">
-          <span class="logged-in-user-name">{{
-            usersFirstLetter(loggedInUser.fullname)
-          }}</span>
+          <span class="logged-in-user-name">{{usersFirstLetter(loggedInUser.fullname)}}</span>
 
           <div
             class="user-modal-opts"
