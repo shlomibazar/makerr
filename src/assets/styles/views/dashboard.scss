@@ -26,10 +26,12 @@
         border-radius: 2px;
         padding: 10px;
         .user-image{
-
+            border: 3px solid rgba(0, 0, 0, 0.412);
+            border-radius: 50%;
+            margin-bottom: 2px;
             height: 80px;
         }
-}
+    }
     .user-info {
         display: flex;
         padding-top: 100px;
@@ -44,6 +46,7 @@
                 font-size: 25px;
                 font-weight: bold;
                 display: flex;
+                margin-bottom: 10px;
             }
             .dashboard-switch-btn{
                 background-color: #1dbf73;
@@ -88,6 +91,10 @@
                     margin-top: 10px;
                     align-items: center;
                     justify-content: space-between;
+                }
+                .status-info-buyer{
+                    background-color: transparent;
+                    color: rgb(25, 23, 23);
                 }
                 .status-info{
                     background-color: #1dbf73;

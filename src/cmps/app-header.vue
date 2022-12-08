@@ -69,35 +69,20 @@
               v-if="isUserModalOn"
               v-click-outside="toggleUserModal"
             >
-              <router-link
-                @click="toggleUserModal"
-                class="user-modal-links"
-                :to="`/profile/${loggedInUser._id}`"
-                >Profile</router-link
-              >
-              <router-link
-                @click="toggleUserModal"
-                class="user-modal-links"
-                to="/dashboard"
-                >Dashboard</router-link
-              >
-              <router-link
-                @click="toggleUserModal, doLogout()"
-                class="user-modal-links"
-                to="/"
-                >Logout</router-link
-              >
+            <div class="usermodal-link" @click="moveToProfile(loggedInUser._id)">Profile</div>
+            <div class="usermodal-link" @click="moveToDashboard">Dashboard</div>
+            <div class="usermodal-link" @click="toggleUserModal, doLogout()">Logout</div>
             </div>
-            </Transition>
-  </section>
-       
+          </Transition>
+        </section>
       </nav>
     </header>
   </section>
   <Transition>
     <section
       v-if="isInHome && scrollPosition > 200"
-      class="sub-header-labels homePage main-container fullWidthContainer">
+      class="sub-header-labels homePage main-container fullWidthContainer"
+    >
       <section class="fixed-lables main-container">
         <h4 v-for="label in labelsSub" :key="label" @click="setLabelToQuery(label)">
           {{ label }}
@@ -161,6 +146,17 @@
             v-click-outside="!toggleUserModal"
             @click="toggleUserModal()"
           >
+            <div class="usermodal-link" @click="moveToProfile(loggedInUser._id)">Profile</div>
+            <div class="usermodal-link" @click="moveToDashboard">Dashboard</div>
+            <div class="usermodal-link" @click="toggleUserModal, doLogout()">Logout</div>
+          </div>
+
+          <!-- <div
+            class="user-modal-opts"
+            v-if="isUserModalOn"
+            v-click-outside="!toggleUserModal"
+            @click="toggleUserModal()"
+          >
             <router-link
               @click="toggleUserModal"
               class="user-modal-links"
@@ -176,7 +172,7 @@
               to="/"
               >Logout</router-link
             >
-          </div>
+          </div> -->
         </section>
       </nav>
     </header>
@@ -193,6 +189,7 @@
   </Transition>
 </template>
 <script>
+import { eventBus, showSuccessMsg } from "../services/event-bus.service";
 import { socketService } from "../services/socket.service";
 import loginSignup from "../views/login-signup.vue";
 export default {
@@ -211,9 +208,6 @@ export default {
     window.addEventListener("scroll", this.updateScroll);
 
     this.loggedinUser = this.setLoginUser;
-    // this.loggedInUser()
-    // console.log(this.loggedInUser)
-    // this.isInHomePage()
   },
   destroyed() {
     window.removeEventListener("scroll", this.updateScroll);
@@ -256,12 +250,22 @@ export default {
     loginSignup,
   },
   methods: {
+    moveToProfile(userId){
+      this.$router.push(`/profile/${userId}`);
+      this.isUserModalOn = false;
+    },
+    moveToDashboard(){
+      this.$router.push("/dashboard");
+      this.isUserModalOn = false;
+    },
     usersFirstLetter(name) {
       return name[0];
     },
     testSocket(order) {
       console.log("order sovckert", order);
-      alert("work");
+
+      showSuccessMsg(`Hi, your order has been ${order.status}`);
+      // alert("work");
     },
     logOutUser() {
       this.$emit("userLogOut");
@@ -302,10 +306,10 @@ export default {
       const pathToRoute = this.$route.path.split("/");
       this.$router.push({ path: "/gig", query: { title: this.searchInfo } });
     },
-    setLoginUser() { },
+    setLoginUser() {},
     onClickOutside(value) {
-      value=false
-    }
+      value = false;
+    },
   },
   computed: {
     loggedInUser() {

@@ -1,5 +1,6 @@
 <template>
   <div v-show="alive" class="alert" :class="alertClass">
+    <img src="https://cdn-icons-png.flaticon.com/512/1827/1827301.png" alt="">
     {{ msg?.txt }}
   </div>
 </template>
@@ -12,7 +13,7 @@ export default {
   created() {
     eventBus.on(SHOW_MSG, (msg) => {
       this.msg = msg
-      var delay = msg.delay || 2000
+      var delay = msg.delay || 3000
       this.alive = true
       window.scrollTo({top: 0, behavior: 'smooth'});
       setTimeout(() => {

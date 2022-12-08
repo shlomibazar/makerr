@@ -5,6 +5,7 @@
           <img class="user-image" :src="user.imgUrl" alt="" />
 
           <h4 class="user-fullname">{{ user.fullname }}</h4>
+          
         </div>
       <div class="left side">
         <div class="user-details" v-if="this.currConnUser.isSeller">
@@ -50,7 +51,7 @@
           </div>
           <div class="display-user-status" v-else>Your Orders</div>
 
-          <button class="dashboard-switch-btn" @click="toggleMode">{{ switchMode }}</button>
+          <button v-if="user.isSeller" class="dashboard-switch-btn" @click="toggleMode">{{ switchMode }}</button>
 
           <ul v-for="order in ordersToShow">
             <div class="order">
@@ -78,7 +79,7 @@
                 
                 <div v-if="order.seller.sellerId !== this.user._id" class="status flex">
                   <h1 class="status-title">Order status:</h1>
-                  <button class="status-info">{{ order.status }}</button>
+                  <button class="status-info-buyer">{{ order.status }}</button>
                 </div>
                 <div v-else class="status">
                   <h1 class="status-title">Order status:</h1>
