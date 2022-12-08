@@ -41,7 +41,7 @@
         <!-- mini user - user.img + user.name
             gig.title -->
         <section class="card-main-footer flex row"><span class="card-mid-footer-star" style="font-size:150%;color:#FFBE5B;">&starf;</span>
-        <span class="user-rating">{{ userRating(gig)}}</span><span  class="ratingProject">(169)</span>
+        <span class="user-rating">{{ userRating(gig)}}</span><span  class="ratingProject">{{ getRandomIntInclusive(5, 120)}} </span>
         
         </section>
         <!-- <p><span class="fw-bold">In stock:</span> {{ gig.inStock }}</p> -->
@@ -65,6 +65,7 @@
 <script>
 import customCard from "./custom-card.vue";
 import { VueperSlides, VueperSlide } from "vueperslides";
+import {  } from '../services/util.service.js'
 import "vueperslides/dist/vueperslides.css";
 
 export default {
@@ -100,7 +101,12 @@ export default {
       var gigLevel = `${gig.owner.rate}` || `5.0`;
       // console.log(gig,gigLevel)
       return gigLevel
-    }
+    },
+    getRandomIntInclusive(min, max) {
+    min = Math.ceil(min)
+    max = Math.floor(max)
+    return `(${Math.floor(Math.random() * (max - min + 1)) + min})` //The maximum is inclusive and the minimum is inclusive 
+}
   },
   computed: {
    

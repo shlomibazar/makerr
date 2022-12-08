@@ -52,7 +52,7 @@
         <div class="hero-backgrounds">
           <div class="hero-img">
             
-            <div class="animate-fade" :class="heroBackgroundClass">
+            <div class="animate-fade" :class="[heroBackgroundClass,zoom]">
               <div class="main-container seller-name">
                 <Transition>
                 <p class="animate-fade-text" :class="textDisplayClass">{{heroName}},
@@ -94,6 +94,7 @@ export default {
   name: 'home',
   data() {
     return {
+      zoom:"",
       textDisplayClass:"",
       heroName: null,
       heroTitle: null,
@@ -197,15 +198,21 @@ export default {
   },
   methods: {
     setHeroInterval() {
+      this.zoom=""
       this.heroBackgroundClass = this.heroInfo[this.heroCounter].heroBackgroundClass
       console.log(this.heroBackgroundClass, this.heroCounter)
-      this.textDisplayClass ="none"
+      
       setTimeout(() => {
+        this.textDisplayClass = "none"
+      }, 6500);
+      setTimeout(() => {
+        this.zoom="zoom-in"
         this.textDisplayClass ="block"
         var correctingCounter
       this.heroCounter===0?correctingCounter=4:correctingCounter=this.heroCounter-1
       this.heroName = this.heroInfo[correctingCounter].name
-      this.heroTitle= this.heroInfo[correctingCounter].title
+        this.heroTitle = this.heroInfo[correctingCounter].title
+      
       }, 700);
       setTimeout(() => {
       this.setHeroInterval()

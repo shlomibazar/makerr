@@ -193,6 +193,7 @@ header {
         
     }
     .join-btn:hover{
+        cursor: pointer;
         background-color: #19A463;
         border-color: #19A463;
          &.not-sticky{
@@ -266,7 +267,8 @@ margin-left: 20px;
     font-family: 'Work Sans', sans-serif;
     letter-spacing: 0.2px;
     font-weight: 600;
-    // margin-left: 20px;    
+    // margin-left: 20px; 
+    cursor: pointer;   
 }
 .join-btn:hover{
         color: #ffffff;
@@ -335,6 +337,7 @@ margin-left: 20px;
     height: 20px;
     background-color: transparent;
     color: white;
+    cursor: pointer;
     font-family: 'Work Sans', sans-serif;
     font-weight: bold;
     font-size: 15.5px;
