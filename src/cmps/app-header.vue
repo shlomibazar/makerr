@@ -53,16 +53,14 @@
               <router-link @click="toggleUserModal,doLogout()" class="user-modal-links" to="/">Logout</router-link>
             </div>
             </Transition>
-  </section>
-       
+        </section> 
       </nav>
     </header>
   </section>
   <Transition>
   <section
       v-if="isInHome && scrollPosition > 200"
-      class="sub-header-labels homePage main-container fullWidthContainer"
-    >
+      class="sub-header-labels homePage main-container fullWidthContainer">
       <section class="fixed-lables main-container">
         <h4 v-for="label in labelsSub" :key="label" @click="setLabelToQuery(label)">
           {{ label }}
@@ -115,7 +113,7 @@
               :src="loggedInUser.imgUrl"
               @click="toggleUserModal()"
             /> -->
-            <div class="user-modal-opts" v-if="isUserModalOn" v-click-outside="!toggleUserModal" @click="toggleUserModal()">
+           <div class="user-modal-opts" v-if="isUserModalOn" v-click-outside="toggleUserModal">
               <router-link @click="toggleUserModal" class="user-modal-links" :to="`/profile/${loggedInUser._id}`">Profile</router-link>
               <router-link @click="toggleUserModal" class="user-modal-links" to="/dashboard">Dashboard</router-link>
               <router-link @click="toggleUserModal,doLogout()" class="user-modal-links" to="/">Logout</router-link>
@@ -126,8 +124,8 @@
   </section>
   <Transition>
   <div v-if="this.isSignModalOpened" class="show-login-modal" >
-            <!-- <login-signup :loginOrSignUp="loginOrSignUp" v-click-outside="toggleSignInModal" /> -->
-            <login-signup :loginOrSignUp="loginOrSignUp" @closeModal="toggleSignInModal" v-click-outside="toggleSignInModal"/>
+            <!-- <login-signup :loginOrSignUp="loginOrSignUp"  /> -->
+            <login-signup :loginOrSignUp="loginOrSignUp" @closeModal="toggleSignInModal" />
     </div>
 </Transition>
   
@@ -196,6 +194,9 @@ export default {
     loginSignup,
   },
   methods: {
+    closeModalEmpty() {
+      this.isSignModalOpened=false
+    },
     usersFirstLetter(name){
     return name[0]
     },
@@ -212,6 +213,9 @@ export default {
     },
     toggleUserModal() {
       this.isUserModalOn = !this.isUserModalOn;
+    },
+    signModalCloseEmpty() {
+      this.isSignModalOpened = !this.isSignModalOpened;
     },
     toggleSignInModal(logOrSign) {
       logOrSign ? (this.loginOrSignUp = "signup") : (this.loginOrSignUp = "login");
@@ -239,7 +243,10 @@ export default {
       const pathToRoute = this.$route.path.split("/");
       this.$router.push({ path: "/gig", query: { title: this.searchInfo } });
     },
-    setLoginUser() {},
+    setLoginUser() { },
+    onClickOutside(value) {
+      value=false
+    }
   },
   computed: {
     loggedInUser() {
