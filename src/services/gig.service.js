@@ -92,9 +92,9 @@ function getEmptyGig(){
     return {
         image: "https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/3171448/original/a41a38f3733bb97279a49d1449f7337dece50693.jpg",
         images: [
-            "https://res.cloudinary.com/djyj6l7de/image/upload/v1670054167/gigs%20images/gig%201/f672898aa2f4756e249b9c2edb27d3339860de8d_bgjfwr.webp",
-            "https://res.cloudinary.com/djyj6l7de/image/upload/v1670054167/gigs%20images/gig%201/design-a-professional-business-flyer-or-poster_frbudj.jpg",
             "https://res.cloudinary.com/djyj6l7de/image/upload/v1670054167/gigs%20images/gig%201/final_logo_dnmfrp.webp",
+            "https://res.cloudinary.com/djyj6l7de/image/upload/v1670054167/gigs%20images/gig%201/design-a-professional-business-flyer-or-poster_frbudj.jpg",
+            "https://res.cloudinary.com/djyj6l7de/image/upload/v1670054167/gigs%20images/gig%201/f672898aa2f4756e249b9c2edb27d3339860de8d_bgjfwr.webp",
             "https://res.cloudinary.com/djyj6l7de/image/upload/v1670054167/gigs%20images/gig%201/design-a-professional-business-flyer-or-poster_1_vq55mr.jpg",
             "https://res.cloudinary.com/djyj6l7de/image/upload/v1670054167/gigs%20images/gig%201/final_logo1_emcful.webp",
         ],

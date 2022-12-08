@@ -92,6 +92,7 @@ import { gigService } from "../services/gig.service.js";
 import { utilService } from "../services/util.service";
 import { userService } from "../services/user.service";
 import {orderService} from "../services/order.service"
+import { socketService } from '../services/socket.service'
 
 
 export default {
@@ -138,6 +139,7 @@ export default {
       };
       console.log('orderToAdd',orderToAdd)
       orderService.save(orderToAdd)
+      socketService.emit('user ordered',{txt:'Someone just ordered from you'})
       router.push(`/dashboard`);
     },
     loadGig() {

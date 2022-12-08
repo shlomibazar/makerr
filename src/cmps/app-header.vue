@@ -136,7 +136,9 @@
           >Join</a
         >
         <section v-if="loggedInUser" class="loggedin-user" @click="toggleUserModal()">
-          <span class="logged-in-user-name">{{usersFirstLetter(loggedInUser.fullname)}}</span>
+          <span class="logged-in-user-name">{{
+            usersFirstLetter(loggedInUser.fullname)
+          }}</span>
 
           <div
             class="user-modal-opts"
@@ -193,6 +195,7 @@ import loginSignup from "../views/login-signup.vue";
 export default {
   created() {
     socketService.on("send to seller", this.testSocket);
+    socketService.on("a new order", this.newOrderSocket);
     this.$watch(
       () => this.$route,
       () => {
@@ -251,6 +254,10 @@ export default {
     moveToProfile(userId){
       this.$router.push(`/profile/${userId}`);
       this.isUserModalOn = false;
+    },
+    newOrderSocket(msg){
+      console.log('msg', msg);
+      showSuccessMsg(`Hi,  ${msg.txt}`);
     },
     moveToDashboard(){
       this.$router.push("/dashboard");
