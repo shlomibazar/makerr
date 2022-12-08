@@ -142,19 +142,14 @@ export default {
       }
     },
     toggleMode() {
-      // var currConnUser = userService.getLoggedinUser();
-      // this.currConnUser = JSON.parse(JSON.stringify(this.currConnUser))
+
       this.currConnUser.isSeller = !this.currConnUser.isSeller;
       console.log("this.currConnUser", this.currConnUser);
-      // userService.saveLocalUser(currConnUser);
 
       this.currConnUser.isSeller
         ? (this.switchMode = "Switch to buyer")
         : (this.switchMode = "Switch to seller");
-      // this.create()
-      // this.ordersToShow
-      // this.$router.go();
-      // this.$route.go()
+
     },
 
     async changeStatus(orderId) {
