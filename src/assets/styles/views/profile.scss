@@ -15,13 +15,29 @@
         border-radius: 2px;
         border-width: 1px;
     }
-    .addgig-section{
-        img{
-            position:absolute;
-            height: 70px;
-            top: 250px;
+    .addgig-section-card{
+        background-color: #fff;
+        width: 232px;
+        min-height: 260px;
+        padding-bottom: 8px;
+        position: relative;
+        float: right;
+        border: 1px solid #e5e5e5;
+        box-sizing: border-box;
+        right: 437px;
+        top: -200px;
+        .addgig-icon{
             cursor: pointer;
-            margin-left: 50px;
+            background-color: #78cdd2;
+            color: #fff;
+            font-size: 48px;
+            font-weight: 400;
+            width: 66px;
+            height: 66px;
+            border-radius: 50%;
+            display: block;
+            margin: 80px auto 20px;
+            line-height: 69px;
         }
     }
     .profile-user-details{
@@ -38,11 +54,11 @@
         display: flex;
         position: absolute;
         top: 150px;
-        left: 1000px;
+        left: 850px;
         background-color: white;
         padding: 10px;
         height: 80px;
-        width: 550px;
+        width: 702px;
         border-color: rgba(0, 0, 0, 0.122);
         border-style: solid;
         border-radius: 2px;

@@ -18,14 +18,12 @@
     </div>
     <div class="rightside-gigs-profile">
       <div class="profile-gigs-nav">
-        <button>Active Gigs</button>
-        <button>Paused Gigs</button>
+        <button>ACTIVE GIGS</button>
+        <button>DRAFTS</button>
       </div>
-      <div class="addgig-section">
-        <img
-          @click="addGigPage()"
-          src="https://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/sign-add-icon.png"
-        />
+      <div class="addgig-section-card">
+        <span class="addgig-icon" @click="addGigPage()">+</span>
+        <!-- <img @click="addGigPage()"src="https://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/sign-add-icon.png"/> -->
       </div>
     </div>
   </div>
