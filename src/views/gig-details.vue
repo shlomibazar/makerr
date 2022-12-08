@@ -64,6 +64,7 @@
         <vueper-slide v-for="(slide, i) in gig.images" :key="i" :image="slide">
         </vueper-slide>
       </vueper-slides>
+<div class = "bot-details-slider">
 
       <vueper-slides
         class="no-shadow thumbnails"
@@ -84,6 +85,8 @@
         >
         </vueper-slide>
       </vueper-slides>
+    </div>
+
       <h3 class="about-gig-title">About This Gig</h3>
       <p>{{ gig.description }}</p>
 

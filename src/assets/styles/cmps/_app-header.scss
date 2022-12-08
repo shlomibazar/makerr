@@ -66,13 +66,16 @@ header {
         //     width: 50px;
             
         // }
+        .logged-in-user-name{
+            position:absolute;
+            
+        }
         .user-modal-opts{
             position: relative;
-            top: 50px;
+            top: 70px;
             margin-left: 150px;
-            .user-modal-links{
-                background-color: rgb(215, 215, 215);
-                color: black;
+            .usermodal-link{
+                color: rgb(72, 72, 72);
                 &:hover{
                     background-color: transparent;
                     color: #1dbf73;

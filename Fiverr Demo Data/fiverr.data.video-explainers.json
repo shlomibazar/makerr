@@ -2,17 +2,30 @@
     "gig": [
         {
             "image": "https://fiverr-res.cloudinary.com/video/upload/t_gig_cards_web/lrceizjt7bnvlvkd8dbo.png",
+            "images":"https://res.cloudinary.com/djyj6l7de/image/upload/v1670490887/gigs%20images/video%20explainer%201/be-your-animated-whiteboard-explainer-video-script-writer_vn1oab.jpg",
             "title": "I will create a sales whiteboard video",
             "description": "Kindly contact me for orders above 90 seconds.\nWhat does my package include?\nMotion whiteboard video\nScriptwriting (Additional $50 per 150 words)\nVoice over; Male & Female(English and German)\nBackground music & imagery\nHD Video\nColored whiteboard\nCommercial Rights (Additional $20)\nBroadcast Rights (Additional $50)\nNote: Voice-over is available in German, US English, and UK English.\n.\n.\n.\nBitte kontaktieren Sie mich für Bestellungen über 90 Sekunden.\nWas beinhaltet mein Paket?\nMotion Whiteboard Video\nDrehbuchschreiben (Zusätzliche €50 pro 150 Wörter)\nVoice-over; Männlich & Weiblich (Englisch und Deutsch)\nHintergrundmusik und Bilder\nHD-Video\nFarbiges Whiteboard\nKommerzielle Rechte (Zusätzliche €20)\nÜbertragungsrechte (Zusätzliche €50)\nHinweis: Voice-Over ist in Deutsch, US-Englisch und UK-Englisch verfügbar.",
-            "price": "₪269.48",
-            "daysToMake": "3 Days Delivery",
+            "price": 269,
+            "daysToMake": 3,
+            "labels": [
+                "video & animation"
+            ],
+            "owner":{
+                "rate": 4.6,
+                "level": 4,
+                "isOnline": true,
+                "clients": [
+                    "https://res.cloudinary.com/djyj6l7de/image/upload/v1670100586/logos/61b89893fa68023dce57574e_b1sxxt.webp",
+                    "https://res.cloudinary.com/djyj6l7de/image/upload/v1670488697/logos/61fa48788655950e8707ed44_pdhmko.webp"
+                ],
             "fullname": "allesanimation",
             "imgUrl": "https://fiverr-res.cloudinary.com/t_profile_original,q_auto,f_auto/attachments/profile/photo/ba950f423b857c85340d9e0f22e57bce-1624271979495/ce05a5ca-dcd2-406a-8a20-e41bcb0a429c.jpg",
             "loc": "Germany",
             "memberSince": "Jun 2021",
             "avgResponceTime": "1 hour",
             "lastDelivery": "about 23 hours",
-            "about": "Welcome! My name is Gregoria. I am an experienced Marketer that loves to spice up whatever you bring to the table. With many years of marketing, and over 8 years of Video Advertising, I will help your enterprise get a high level of Attraction, Interaction, and of course, Sales; through Animation. I and my team work FULL TIME on Fiverr to guarantee quick, and excellent Animation videos.",
+            "about": "Welcome! My name is Gregoria. I am an experienced Marketer that loves to spice up whatever you bring to the table. With many years of marketing, and over 8 years of Video Advertising, I will help your enterprise get a high level of Attraction, Interaction, and of course, Sales; through Animation. I and my team work FULL TIME on Fiverr to guarantee quick, and excellent Animation videos."
+        },
             "reviewers": [
                 {
                     "name": "kommissark",

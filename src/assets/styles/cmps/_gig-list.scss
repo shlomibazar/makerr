@@ -363,6 +363,26 @@ box-shadow: none !important;
 
 }
 
+.bot-details-slider{
+  .vueperslides__arrow--next{
+  right:-35px;
+  }
+  .vueperslides__arrow--prev{
+    left:-35px;
+    }
+
+  .vueperslides__arrow svg {
+    vertical-align: middle;
+    stroke: currentColor;
+    fill: none;
+    width: 2.5em;
+    padding: 1em;
+    stroke-width: 1;
+    transition: .3s ease-in-out;
+    box-sizing: border-box;
+}
+}
+
 .details-slider {
 
   .vueperslides__arrow--prev,
@@ -383,6 +403,19 @@ box-shadow: none !important;
     transform: translateY(0%);
     opacity: 1;
     width: 48px;
+  }
+  .no-shadow{
+    .vueperslides__arrow
+    {
+      vertical-align: middle;
+      stroke: currentColor;
+      fill: none;
+      width: 2.5em !important;
+      padding: 1em;
+      stroke-width: 1;
+      transition: .3s ease-in-out;
+      box-sizing: border-box;
+    }
   }
 
   .vueperslides__arrow--next {
