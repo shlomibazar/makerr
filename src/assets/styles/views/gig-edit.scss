@@ -1,6 +1,6 @@
 .addgig-main-container{
     background-color: #f7f7f7;
-    height: 800px;
+    height: rem(800px);
     display: flex;
     width:100%;
     justify-content: center;
@@ -38,7 +38,7 @@
         border-radius: 5px;
         border-style: solid;
         border-color: rgba(0, 0, 0, 0.121);
-        border-width: 1px;
+        border-width: rem(1px);
         text-align: center;
 
         input{
@@ -97,7 +97,7 @@
         background-color: #1dbf73;
         
         color: white;
-        font-size: 16px;    
+        font-size: rem(16px);    
         text-transform: uppercase;
         border-radius: 6px;
         margin-left: 65px;

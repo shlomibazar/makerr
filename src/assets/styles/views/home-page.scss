@@ -1,7 +1,7 @@
 .hero-btn-conteiner {
-    margin-block: 12px;
+    margin-block: rem(12px);
     display: flex;
-    gap: 15px;
+    gap: rem(15px);
     align-items: center;
 }
 
@@ -29,8 +29,8 @@
         // background-color: rgb(141, 5, 5);
         color: black;
         width: fit-content;
-        height: 50px;
-        width: 50px;
+        height: rem(50px);
+        width: rem(50px);
         &:hover{
             cursor: pointer;
     }
@@ -103,7 +103,7 @@ body {
     height: 100%;
     width: 6.875rem;
     color: #fff;
-    font-size: 16px;
+    font-size: rem(16px);
     background-color: #1daf6b;
     border-radius: 0 .3125rem .3125rem 0;
     border: none;
@@ -116,11 +116,11 @@ body {
 
     &.not-sticky {
         background-color: rgb(0, 0, 0);
-        height: 42px;
-        width: 55px;
+        height: rem(42px);
+        width: rem(55px);
         margin: 0;
-        margin-right: -2px;
-        margin-top: -1.5px;
+        margin-right: rem(-2px);
+        margin-top: rem(-1.5px);
 
 
 
@@ -132,28 +132,28 @@ body {
 .search-input {
     display: flex;
     height: 3rem;
-    margin-bottom: 28px;
-    margin-top: 28px;
+    margin-bottom: rem(28px);
+    margin-top: rem(28px);
     
     &.not-sticky {
-        border: 1.7px solid rgb(215, 212, 212);
-        height: 42px;
-        width: 543px;
+        border: rem(1.7px) solid rgb(215, 212, 212);
+        height: rem(42px);
+        width: rem(543px);
         margin: 0;
-        margin-left: -180px;
+        margin-left: rem(-180px);
         border-radius: .3125rem .3125rem .3125rem .3125rem;
         // background-color: none;
 
     }
 
     input {
-        width: 515px;
+        width: rem(515px);
         border: none;
         &.not-sticky {
-            font-size: 16px;
+            font-size: rem(16px);
             font-family: "Work Sans";
             font-weight: 500;
-            padding-left: 16px;
+            padding-left: rem(16px);
         }
     }
 }
@@ -197,7 +197,7 @@ body {
 
 .hero-title {
     font-size: 3.0rem;
-    letter-spacing: 0.3px;
+    letter-spacing: rem(0.3px);
     line-height: 3.6rem;
     font-weight: 500;
     margin-bottom: 0;
@@ -215,12 +215,12 @@ body {
 
 .hero-button {
     background-color: transparent;
-    line-height: 22px;
+    line-height: rem(22px);
     font-weight: 600;
     color: #fff;
-    padding: 1px 12px 0;
-    border: 1px solid #fff;
-    border-radius: 40px;
+    padding: rem(1px) rem(12px) 0;
+    border: rem(1px) solid #fff;
+    border-radius: rem(40px);
     -webkit-transition: all .2s ease-in-out;
     -o-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out;
@@ -319,11 +319,9 @@ body {
     color: white;
     align-items: end;
     box-sizing: border-box;
-    bottom: 20px;
+    bottom: rem(20px);
     display: grid;
     justify-items: end;
-    // margin: 0;
-    // padding: 0 32px;
     width: 100%;
 }
 .none{
@@ -396,7 +394,7 @@ body {
 .trusted-by .trusted-by-wrapper {
     align-items: center;
     color: #c5c6c9;
-    gap: 45px;
+    gap: rem(45px);
     justify-content: center;
     margin: auto;
     padding: 0;
@@ -411,7 +409,7 @@ body {
 
 .trusted-by .trusted-by-wrapper .trusted-by-list {
     align-items: center;
-    gap: 45px;
+    gap: rem(45px);
 }
 
 .trusted-by .trusted-by-wrapper .trusted-by-list .trusted-by-icon {
@@ -425,19 +423,19 @@ body {
 .popular-services {
     box-sizing: border-box;
     margin: 0;
-    padding: 24px 24px 48px;
+    padding: rem(24px) rem(24px) rem(48px);
     width: 100%;
 }
 
 .popular-services .popular-services-title {
     color: #404145;
-    font-size: 32px;
+    font-size: rem(32px);
     line-height: 120%;
 }
 
 .popular-services .slick-slider {
     margin: auto;
-    max-width: 1436px;
+    max-width: rem(1436px);
 }
 
 .slick-slider {
@@ -457,16 +455,16 @@ body {
     background-color: #fff;
     background: #fff;
     border: 0;
-    border-radius: 28px;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .15);
-    font-size: 16px;
-    height: 48px;
+    border-radius: rem(28px);
+    box-shadow: 0 rem(2px) rem(5px) 0 rgba(0, 0, 0, .15);
+    font-size: rem(16px);
+    height: rem(48px);
     line-height: 100%;
-    margin-top: -24px;
+    margin-top: rem(-24px);
     position: absolute;
     text-align: center;
     top: 50%;
-    width: 48px;
+    width: rem(48px);
     z-index: 10;
 }
 
@@ -479,7 +477,7 @@ body {
     display: flex;
     justify-content: center;
     margin: auto;
-    padding-top: 10px;
+    padding-top: rem(10px);
 }
 
 
@@ -500,8 +498,8 @@ body {
 
 
 .popular-title{
-font-size: 32px ;
-padding-bottom: 24px;
+font-size: rem(32px) ;
+padding-bottom: rem(24px);
 color: #404145;
 }
 
@@ -509,34 +507,34 @@ color: #404145;
 ////FILTER DROPDOWN
 
 .minMax {
-    gap: 20px;
+    gap: rem(20px);
     justify-content: center;
-    padding-top: 10px;
-    padding-bottom: 20px;
-    font-size: 12px;
-    line-height: 24px;
+    padding-top: rem(10px);
+    padding-bottom: rem(20px);
+    font-size: rem(12px);
+    line-height: rem(24px);
     font-weight: 600;
     color: #95979d;
-    margin-bottom: 4px;
+    margin-bottom: rem(4px);
 
 }
 
 .inputPrice {
-    width: 120px;
-    height: 40px;
+    width: rem(120px);
+    height: rem(40px);
 
 }
 
 
 
 .apply-button {
-    width: 64px;
-    height: 30px;
+    width: rem(64px);
+    height: rem(30px);
     // background-color: #1dbf73;
-    padding: 4px 12px;
+    padding: rem(4px) rem(12px);
     color: #fff;
     background: #1dbf73;
-    border-radius: 4px;
+    border-radius: rem(4px);
 }
 
 
@@ -544,10 +542,10 @@ color: #404145;
     button {
         font-weight: 600;
         color: #222325;
-        min-width: 50px;
-        padding: 6px 12px;
-        border-radius: 4px;
-        border: 1px solid #dadbdd;
+        min-width: rem(50px);
+        padding: rem(6px) rem(12px);
+        border-radius: rem(4px);
+        border: rem(1px) solid #dadbdd;
         background-color: white;
         margin-left: 0;
 

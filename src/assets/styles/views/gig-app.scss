@@ -1,29 +1,29 @@
 
 .sub-header-labels-gig-list{
     &.gig-list{
-    width: 1400px;
-    // border-top: 1px solid gray;
+    width: rem(1400px);
+    // border-top: 1rem(px) solid gray;
     }
     
-   height: 41px;
+   height: rem(41px);
    display: flex;
    align-items: center;
    justify-content: space-between;
    h4{
     color: #717173;
     font-family: 'Work Sans', sans-serif;
-    font-size: 16px;
+    font-size: rem(16px);
     font-weight: 400;
     text-transform:capitalize;
-    letter-spacing: 0.01px;
+    letter-spacing: rem(0.01px);
     cursor: pointer;
     
    }
 }
 .lable-container-list{
     justify-content: space-around;
-    border-bottom: 1px solid #E4E5E7;
-     border-top: 1px solid #E4E5E7;
+    border-bottom: rem(1px) solid #E4E5E7;
+     border-top: rem(1px) solid #E4E5E7;
 }
 .filter{
     transition: background-color 0.3s,box-shadow 0.7s;
@@ -31,23 +31,23 @@
 .change-position{
 position: fixed;
 background-color: white;
-height: 54px;
+height: rem(54px);
 z-index: 7;
 top:0;
-padding:6px 250px 0 250px;
-box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+padding:rem(6px) rem(250px) 0 rem(250px);
+box-shadow: rgba(0, 0, 0, 0.35) rem(0px) rem(5px) rem(15px);
 
 }
 .user-rating{
-    margin-top: 2px;
+    margin-top: rem(2px);
 }
 .ratingProject{
-    font-size: 13px;
-    margin-top: 3px;
+    font-size: rem(13px);
+    margin-top: rem(3px);
 }
 
 .catagory-header{
-    font-size: 32px;
+    font-size: rem(32px);
     color: #222325;
     padding-bottom: 0;
     text-transform: capitalize;
@@ -57,8 +57,8 @@ box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     display: inline-block;
     color: #95979d;
     text-align: left;
-    padding-right: 10px;
-    font-size: 16px;
+    padding-right: rem(10px);
+    font-size: rem(16px);
 }
 .checkout-cmp-btn{
     background-color: green;

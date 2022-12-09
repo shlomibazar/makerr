@@ -1,12 +1,12 @@
 
 .skeleton-conteiner{
-gap: 32px;
-margin-bottom: 34px;
+gap: rem(32px);
+margin-bottom: rem(34px);
 }
 
 .skeleton-card{
-    border: 1px solid #d8d9db;
-gap: 20px;
+    border: rem(1px) solid #d8d9db;
+gap: rem(20px);
 
 }
 .descrip{
