@@ -123,7 +123,14 @@
       </div>
       <nav class="flex nav-bar-links not-sticky">
         <section class="nav-links flex not-sticky">
-          <router-link class="nav-btn" to="/gig">Explore</router-link>
+          <!-- <router-link class="nav-btn" to="/gig">Explore</router-link> -->
+          <a
+          v-if="!loggedInUser"
+          class="nav-btn"
+          @click="clearFilter()"
+          >explore</a
+        >
+
           <router-link class="nav-btn" to="/gig">Become a Seller</router-link>
           <a v-if="!loggedInUser" class="nav-btn" @click="toggleSignInModal(false)"
             >Sign In</a
@@ -314,6 +321,11 @@ export default {
     setLoginUser() {},
     onClickOutside(value) {
       value = false;
+    },
+    clearFilter(){
+      console.log('hey i in clear filter')
+      this.$store.dispatch({ type: "loadGigs", filterBy: {txt: ''.title, budget:{},labels:null, price:0,buttonChoose: ""} });
+      this.$router.push({ path: "/gig" });
     },
   },
   computed: {
