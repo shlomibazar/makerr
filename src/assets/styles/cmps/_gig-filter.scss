@@ -87,5 +87,7 @@ justify-content: space-around;
     
 }
 .arrow-up svg{
-    transform: rotate(180deg);
+    transition:transform 0.5s;
+    transform: rotate(-180deg);
 }
+

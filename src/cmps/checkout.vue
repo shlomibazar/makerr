@@ -8,34 +8,10 @@
             <div class="PKFZREU">
                 <div class="flex flex-between flex-items-center">
                     <div class="F4HBtqu">Single order</div>
-                    <span class="flex flex-col">₪288.42</span>
+                    <span class="flex flex-col">{{gig.price}}</span>
                 </div>
             </div>
-            <div class="subscribe">
-                <div class="flex flex-between flex-items-center">
-                    <div class="F4HBtqu iZnzrBK">
-                        <div class="flex flex-col">
-                            <span>Subscribe to Save</span>
-                            <span>
-                                <span class="W3gA4pG tbody-7">
-                                    <b>Recommended For Social Media Marketing services</b>
-                                </span>
-                            </span>
-                        </div>
-                    </div>
-                    <span class="flex flex-col">
-                        <div>
-                            <span class="tbody-5 flex-start H_YLzK1">5%-10% OFF</span>
-                            <span class="tbody-7 flex-end">From 2nd order</span>
-                        </div>
-                    </span>
-                </div>
-            </div>
-            <ul class="vovnGzB text-normal eGIcTVJ m-t-20">
-                <li>Save time &amp; effort with automatic monthly orders</li>
-                <li>No commitment—<b>cancel anytime</b></li>
-                <li>Work long-term with your seller for best results</li>
-            </ul>
+
 
 
         </section>
@@ -46,9 +22,9 @@
                     <div class="flex flex-col">
                         <span class="m-b-8">
                             <span class="font-size-32">
-                            ₪288.42
-                        </span>
-                        <span class="text-normal tbody-6 m-l-8">for 1st order</span>
+                                ₪288.42
+                            </span>
+                            <span class="text-normal tbody-6 m-l-8">for 1st order</span>
                         </span>
                         <span class="tbody-6 text-normal">From 2nd order, pay
                             <b>₪274.00/month for 3 months</b>
@@ -57,9 +33,9 @@
                 </span>
             </div>
             <div class="tbody-6 CWqLIG3">
-                <ul class="flex gap-10 column" >
+                <ul class="flex gap-10 column">
                     <li class="flex flex-between Eootruk text-bold">1st order: Starts now
-                        <span >₪288.42</span>
+                        <span>₪288.42</span>
                     </li>
                     <li class="flex flex-between Eootruk">2nd order: 08 Jan 2023
                         <span>
@@ -106,22 +82,45 @@
                 </li>
             </ul>
         </div>
-        <button class ="checkout-cmp-btn" @click="">Checkout!</button>
+        <button class="checkout-cmp-btn" @click="">Checkout!</button>
     </div>
 </template>
 
-<style>
-.checkout-conteiner{
+
+<script>
+
+export default {
+    name: 'checkOut',
+    components: {},
+    data() {
+        return {};
+    },
+    props: {
+    gig:null,
+  },
+
+
+    created() { },
+    methods: {},
+    computed: {},
+    unmounted() { },
+};
+
+</script>
+
+<!-- <style>
+.checkout-conteiner {
     margin-left: 50px;
     width: 530px;
     height: 90vh;
 }
+
 .checkout-header {
     font-size: 16px;
     line-height: 24px;
 }
 
-.F4HBtqu{
+.F4HBtqu {
     color: #404145;
     font-weight: 600;
     padding: rem(12px) 0;
@@ -130,7 +129,7 @@
     /* &:hover{
         border: 1px solid ;
     } */
-    
+
 }
 
 .PKFZREU {
@@ -229,19 +228,20 @@
     padding-top: 24px;
 }
 
-.flex-between{
-justify-content: space-between;
+.flex-between {
+    justify-content: space-between;
 }
-.flex-col{
+
+.flex-col {
     flex-direction: column;
 
 }
 
-.gap-10{
-gap: 10px;
+.gap-10 {
+    gap: 10px;
 }
 
-.font-size-32{
-font-size: 32px;
+.font-size-32 {
+    font-size: 32px;
 }
-</style>
+</style> -->

@@ -165,9 +165,11 @@
       </div>
     </div>
     <!-- v-click-outside="checkOutModal()" -->
-    <div class="display-checkout-modal" v-if="this.isCheckOutModal" v-click-outside="checkOutModal">
-      <checkout/>
+    
+    <div class="display-checkout-modal" :class="{ 'modal-open': this.isCheckOutModal }" v-if="this.isCheckOutModal" v-click-outside="checkOutModal">
+      <checkout :gig="gig"/>
     </div>
+  
     <div class="checkout-container" :class="{ 'page-opacity': this.isCheckOutModal }">
       <div class="checkout-price">
         <span>${{ gig.price }}</span>
@@ -180,7 +182,7 @@
       </div>
       <div class="checkout-delivery flex">
         <img src="../assets/clock.png" />
-        <div>3 Days Delivery</div>
+        <div>{{gig.daysToMake}} Days Delivery</div>
       </div>
       <div class="checkout-header-list">What's Included</div>
       <div class="checkout-included">
@@ -196,7 +198,7 @@
               >
                 <path
                   d="M3.645 8.102.158 4.615a.536.536 0 0 1 0-.759l.759-.758c.21-.21.549-.21.758 0l2.35 2.349L9.054.416c.21-.21.55-.21.759 0l.758.758c.21.21.21.55 0 .759L4.403 8.102c-.209.21-.549.21-.758 0Z"
-                ></path></svg
+                ></path></svg>
             ></i>
             3 concepts included
           </li>
