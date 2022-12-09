@@ -3,7 +3,7 @@
     max-width: 1304px;
     padding: 30px;
     display: flex;
-    margin-top: 87px;
+    margin-top: 30px;
     .details-content{
         width: 712px;
         h1{
@@ -22,6 +22,7 @@
         font-size: 12px;
         gap: 8px;
         align-items: center;
+        font-weight: lighter;
         margin-bottom: 3px;
          .details-user-avatar{
           height: 30px;
@@ -37,16 +38,13 @@
              h2{
              font-size: 14px;
             //  padding-bottom: 7px;
-            margin-right: 5px;
+            margin-right: 10px;
              color: #404145;
              }
-            //  h3{
-            //     display: flex;
-            //     justify-content: center;
-            //     align-items: center;
-            //  padding-bottom: 8px;
-            //  color: #5b5c61;
-            //  }
+             h3{
+                font-weight: lighter;
+                color: #5b5c61;
+             }
             .br{
                 border-right: 8px solid gray;
                 height: 100%;
@@ -54,13 +52,7 @@
                 margin: 0 5px;
             }
              .stars{
-            // display: flex;
-            // justify-content: center;
-            // align-self: center;
             font-size: 18px;
-            // height: 50px;
-            // width:4rem;
-            // padding-bottom:15px ;
             .rating-stars{
                 // font-size: 18px;
                  letter-spacing: 2px;
@@ -143,8 +135,8 @@
     margin-left: 10rem;
     color: #404145;
     border: 1px solid #e4e5e7;
-    padding: 3em 3.5em;
-    font-family: Helvetica,sans-serif;
+    padding: 1.5em 0.5em;
+    font-family: Helvetica, sans-serif;
     height: fit-content;
 
     .checkout-price{
@@ -216,6 +208,9 @@
   
 }
 }
+.about-gig-title{
+    margin-bottom: 15px;
+}
 .about-seller {
     margin-top: 25px;
     display: flex;
@@ -267,9 +262,9 @@
     background-color: red;
 }
 .stars span {
-    font-size: large;
-    color: #ffbe5b;
-    font-weight: 700;
+    font-size: 20px;
+    color: #ffb33e;
+    font-weight: bold;
 }
 .extended-owner-details {
     display: flex;
@@ -329,10 +324,7 @@ padding: 45px 0 42px 0;
 .seller-reviews{
     margin-top: 30px;
 }
-.thumbnails {
-    // margin: auto;
-    // max-width: 500px;
-  }
+
   .thumbnails .vueperslide {
     box-sizing: border-box;
     border: 1px solid #fff;
