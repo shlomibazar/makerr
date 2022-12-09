@@ -180,7 +180,6 @@ export default {
     loadGigs() {
       const filterBy = JSON.parse(JSON.stringify(this.filterBy));
       console.log("🚀 ~ file: gig-app.vue ~ line 68 ~ loadGigs ~ filterBy", filterBy)
-      const sortBy = JSON.parse(JSON.stringify(this.sortBy));
       this.$store.dispatch({ type: "loadGigs", filterBy, sortBy });
     },
     async addGig() {

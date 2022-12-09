@@ -1,55 +1,60 @@
 <template>
-  <div class="addgig-main-container">
-    <section v-if="gigToEdit">
-      <div class="addgig-forms-container">
-        <span class="gig-image-title">Gig Name</span>
-        <form @submit.prevent="saveGig" class="form">
-          <div class="form-control">
-            <input
-              required
-              v-model="gigToEdit.title"
-              id="txt"
-              type="text"
-              class="form-input"
-              placeholder="Insert gig name here..."
-            />
-          </div>
-        </form>
 
-        <span class="gig-image-title">Gig Price</span>
-        
-        <div class="addgig-price-ctn">
-          <form @submit.prevent="saveGig" class="form">
-            <div class="form-control">
-              <input
-                required
-                v-model.number="gigToEdit.price"
-                id="inStock"
-                type="number"
-                class="form-input"
-                placeholder="$"
-              />
+  <div class="addgig-main-container fullWidthContainer">
+    <section v-if="gigToEdit" class=" main-container edit-container">
+      <div class="inner-edit-container flex">
+        <section class="addgig-forms-container ">
+          <section class="flex align-center ">
+            <span class="gig-image-title">Gig Name:</span>
+            <form @submit.prevent="saveGig" class="form">
+
+              <div class="form-control">
+
+                <input required v-model="gigToEdit.title" id="txt" type="text" class="form-input"
+                  placeholder="Insert gig name here..." />
+
+              </div>
+            </form>
+          </section>
+          <section class="flex align-center ">
+            <span class="gig-image-title">Gig Price:</span>
+
+            <div class="addgig-price-ctn">
+              <form @submit.prevent="saveGig" class="form">
+                <div class="form-control">
+                  <input required v-model.number="gigToEdit.price" id="inStock" type="number" class="form-input"
+                    placeholder="$" />
+                </div>
+              </form>
             </div>
-          </form>
-        </div>
+          </section>
+          <section class="flex ">
+          <span class="gig-image-title">Gig Image:</span>
+          <section class="img-uploading-container flex">
+          <!-- <img class="gig-add-img-picture" @click="toggleUploader = !toggleUploader" -->
+          <!-- src="https://freeiconshop.com/wp-content/uploads/edd/image-outline-filled.png" > -->
+          <img-uploader class="input-img-container"  @uploaded="onUploaded"></img-uploader>
+          </section>
+        </section>
+          <div class="addgig-buttons ">
 
-        <span class="gig-image-title">Gig Image</span>
-        <img
-          class="gig-add-img-picture"
-          @click="toggleUploader = !toggleUploader"
-          src="https://freeiconshop.com/wp-content/uploads/edd/image-outline-filled.png"
-        />
-        <img-uploader v-if="toggleUploader" @uploaded="onUploaded"></img-uploader>
-        <div class="addgig-buttons">
-          <button @click="saveGig" class="btn btn-info">Create a new gig</button>
-          <!-- <button @click="goBack" class="btn btn-danger-text">go back</button> -->
-        </div>
+            <button @click="saveGig" class="btn btn-info">Create a new gig</button>
+            <!-- <button @click="goBack" class="btn btn-danger-text">go back</button> -->
+          </div>
+        </section>
+        <section class="gig-list">
+          <gig-preview :gig="gigToEdit" :key="gigToEdit._id" class="card" />
+        </section>
       </div>
     </section>
+
   </div>
+  <checkout />
 </template>
 
 <script>
+import gigPreview from "../cmps/gig-preview.vue";
+import checkout from "../cmps/checkout.vue";
 import { gigService } from "../services/gig.service.js";
 import { userService } from "../services/user.service";
 import imgUploader from "../cmps/img-uploader.vue";
@@ -58,7 +63,7 @@ export default {
   name: "gig-edit",
   data() {
     return {
-      toggleUploader: false,
+      toggleUploader: true,
       gigToEdit: null,
     };
   },
@@ -69,12 +74,22 @@ export default {
         this.gigToEdit = gig;
         this.selectedLabels = gig.labels.map((label) => label.title);
       });
-    } else this.gigToEdit = gigService.getEmptyGig();
+    } else this.gigToEdit = gigService.getEmptyGig()
+    this.gigToEdit.images = [];
   },
   components: {
     imgUploader,
+    checkout,
+    gigPreview,
   },
+
   methods: {
+    onUploaded(imgUrl) {
+      this.gigToEdit.images.unshift(imgUrl)
+      console.log('this.gigToEdit.images', this.gigToEdit.images)
+      console.log('img', imgUrl)
+      console.log('arguments', arguments)
+    },
     goBack() {
       this.$router.push("/gig");
     },
