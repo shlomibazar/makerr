@@ -3,11 +3,11 @@
     flex-direction: row;
     .review-avatar-img{
     .avatar-img{
-        width: 48px;
-        height: 48px;
+        width: rem(48px);
+        height: rem(48px);
         border-radius: 50%;
         align-content: center;
-        margin-right: 16px;
+        margin-right: rem(16px);
     }
 }
 .review-right-info{
@@ -16,67 +16,65 @@
     .review-user-details{
     display: flex;
     flex-direction: row;
-    gap: 10px;
-    margin-bottom: 14px;
+    gap: rem(10px);
+    margin-bottom: rem(14px);
     h5{
         
         .reviewer-name{
             display: flex;
-        font-size: 15px;
+        font-size: rem(15px);
         align-items: center;
-        margin-bottom: 14px;
-        height: 16px;
+        margin-bottom: rem(14px);
+        height: rem(16px);
 
         }
         .reviewer-country{
         font-weight: lighter;
         display: flex;
-        font-size: 12px;
+        font-size: rem(12px);
         font-weight: 300;
-        margin-bottom: 20px;
+        margin-bottom: rem(20px);
         .reviewer-flag{
-            width: 20px;
-            height: 15px;
-            margin-right: 7px;
+            width: rem(20px);
+            height: rem(15px);
+            margin-right: rem(7px);
         }
         }
         .stars-and-published{
-         height: 21px;
+         height: rem(21px);
          display: flex;
          flex-direction: row;
          justify-content: center;
          align-items: center;
          .stars{
-          font-size: 21px;
-          letter-spacing: 1.2px;
+          font-size: rem(21px);
+          letter-spacing: rem(1.2px);
           color: #FFB33E;
           .rate-num{
-        font-size: 14px;
-        margin-left: 2px;
+        font-size: rem(14px);
+        margin-left: rem(2px);
          }
          }
          .rate-reviewedAt-border{
             height: 80%;
-            border-right: 1px solid rgb(235, 235, 235);
-            margin: 0 6px;
-            // margin-bottom: 12px;
-
+            border-right: rem(1px) solid rgb(235, 235, 235);
+            margin: 0 rem(6px);
          }
          .review-user-review{
          display: flex;
          align-items: center;
-         font-size: 14px;
+         font-size: rem(14px);
          font-weight:300;
-         padding-top:5px;
+         padding-top:rem(5px);
          }
         }
     
     }
 }
 .review-user-comment{
-    margin-bottom:16px ;
+    margin-bottom:rem(16px) ;
     h5{
-        font-size: 16px;
+        font-size: rem(16px);
         font-weight: 400;
     }
 }
@@ -90,10 +88,10 @@
         }
     }
     .review-helpful-selector{
-    font-size: 14px;
+    font-size: rem(14px);
     font-weight: 400;
     span{
-        margin-right:6px;
+        margin-right:rem(6px);
     }
     }
 }

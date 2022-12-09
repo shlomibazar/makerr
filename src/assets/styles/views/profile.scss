@@ -1,72 +1,72 @@
 .profile-main-container{
     background-color: #f7f7f7;
-    padding: 400px;
+    padding: rem(400px);
     text-align: center;
     .leftside-mini-profile{
         position: absolute;
-        top: 150px;
-        left: 350px;
+        top: rem(150px);
+        left: rem(350px);
         background-color: white;
-        padding: 10px;
-        height: 550px;
-        width: 410px;
+        padding: rem(10px);
+        height: rem(550px);
+        width: rem(410px);
         border-color: rgba(0, 0, 0, 0.122);
         border-style: solid;
-        border-radius: 2px;
-        border-width: 1px;
+        border-radius: rem(2px);
+        border-width: rem(1px);
     }
     .addgig-section-card{
         background-color: #fff;
-        width: 232px;
-        min-height: 260px;
-        padding-bottom: 8px;
+        width: rem(232px);
+        min-height: rem(260px);
+        padding-bottom: rem(8px);
         position: relative;
         float: right;
-        border: 1px solid #e5e5e5;
+        border: rem(1px) solid #e5e5e5;
         box-sizing: border-box;
-        right: 437px;
-        top: -200px;
+        right: rem(437px);
+        top: rem(-200px);
         .addgig-icon{
             cursor: pointer;
             background-color: #78cdd2;
             color: #fff;
-            font-size: 48px;
+            font-size: rem(48px);
             font-weight: 400;
-            width: 66px;
-            height: 66px;
+            width: rem(66px);
+            height: rem(66px);
             border-radius: 50%;
             display: block;
-            margin: 80px auto 20px;
-            line-height: 69px;
+            margin: rem(80px) auto rem(20px);
+            line-height: rem(69px);
         }
     }
     .profile-user-details{
         display: flex;
         flex-direction: column;
-        margin: 60px;
+        margin: rem(60px);
     }
     .profile-user-avatar img{
-        height: 150px;
-        width: 150px;
+        height: rem(150px);
+        width: rem(150px);
     }
     .rightside-gigs-profile{
         .profile-gigs-nav{
         display: flex;
         position: absolute;
-        top: 150px;
-        left: 850px;
+        top: rem(150px);
+        left: rem(850px);
         background-color: white;
-        padding: 10px;
-        height: 80px;
-        width: 702px;
+        padding: rem(10px);
+        height: rem(80px);
+        width: rem(702px);
         border-color: rgba(0, 0, 0, 0.122);
         border-style: solid;
-        border-radius: 2px;
-        border-width: 1px;
+        border-radius: rem(2px);
+        border-width: rem(1px);
             button{
                background-color: transparent; 
                color: rgba(0, 0, 0, 0.835);
-               font-size: 16px;
+               font-size: rem(16px);
             }
         }
     }

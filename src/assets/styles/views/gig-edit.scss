@@ -1,6 +1,6 @@
 .addgig-main-container{
     background-color: #f7f7f7;
-    height: 800px;
+    height: rem(800px);
     display: flex;
     justify-content: center;
 
@@ -8,48 +8,48 @@
         
     }
     .addgig-forms-container{
-        width: 1000px;
-        height: 600px;
-        margin-top: 50px;
+        width: rem(1000px);
+        height: rem(600px);
+        margin-top: rem(50px);
         background-color: #ffffff;
-        padding: 30px;
-        border-radius: 5px;
+        padding: rem(30px);
+        border-radius: rem(5px);
         border-style: solid;
         border-color: rgba(0, 0, 0, 0.121);
-        border-width: 1px;
+        border-width: rem(1px);
         text-align: center;
 
         input{
             position: relative;
-            border-radius: 8px;
-            padding: 10px;
-            height: 80px;
-            width: 600px;
-            margin-top: 10px;
-            margin-left: 180px;
+            border-radius: rem(8px);
+            padding: rem(10px);
+            height: rem(80px);
+            width: rem(600px);
+            margin-top: rem(10px);
+            margin-left: rem(180px);
             text-align: center;
             align-content: center;
         }
         .gig-add-img-picture{
-            height: 100px;
-            width: 100px;
+            height: rem(100px);
+            width: rem(100px);
             cursor: pointer;
   
         }
         .gig-image-title{
             display: flex;
             justify-content: left;
-            margin-left: 20px;
+            margin-left: rem(20px);
         }
     }
     .addgig-buttons button{
         background-color: #1dbf73;
         
         color: white;
-        font-size: 16px;    
+        font-size: rem(16px);    
         text-transform: uppercase;
-        border-radius: 6px;
-        margin-top: 30px;
+        border-radius: rem(6px);
+        margin-top: rem(30px);
      
         &:hover{
             background-color: #20d380;
