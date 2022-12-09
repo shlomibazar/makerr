@@ -254,6 +254,7 @@ box-shadow: none !important;
 }
 }
 .card-main-center {
+  overflow: hidden;
   height: 30%;
 
   //  border: 1px solid #D8D9DB;
@@ -364,11 +365,29 @@ box-shadow: none !important;
 }
 
 .bot-details-slider{
+
+  .vueperslides__arrow--next,
+  .vueperslides__arrow--prev{
+    background-color: #ffffff6e;
+    padding: 0;
+    margin: 0;
+    width: 20px;
+    height: 73px;
+
+  }
+
   .vueperslides__arrow--next{
-  right:-35px;
+  right:0px;
+  svg{
+    transform: translateX(-10px);
+  }
+  
   }
   .vueperslides__arrow--prev{
-    left:-35px;
+    left:0px;
+    svg{
+      transform: translateX(-10px);
+    }
     }
 
   .vueperslides__arrow svg {

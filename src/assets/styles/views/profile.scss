@@ -1,74 +1,120 @@
-.profile-main-container{
+// .container-section{
+.container-section{
     background-color: #f7f7f7;
-    padding: rem(400px);
+    border-top: 1px solid $borderClr;
+}
+.profile-main-container {
+    margin-top: 30px;
+    min-height: 80vh;
+    display: flex;
+    // background-color: #f7f7f7;
+    position: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    // padding: 400px;
     text-align: center;
-    .leftside-mini-profile{
-        position: absolute;
-        top: rem(150px);
-        left: rem(350px);
+
+    .left-side-mini-profile {
+        // position: absolute;
+        margin-right: 5%;
+        top: 150px;
+        // left: 350px;
         background-color: white;
-        padding: rem(10px);
-        height: rem(550px);
-        width: rem(410px);
+        padding: 10px;
+        height: 550px;
+        width: 20%;
         border-color: rgba(0, 0, 0, 0.122);
         border-style: solid;
-        border-radius: rem(2px);
-        border-width: rem(1px);
-    }
-    .addgig-section-card{
-        background-color: #fff;
-        width: rem(232px);
-        min-height: rem(260px);
-        padding-bottom: rem(8px);
-        position: relative;
-        float: right;
-        border: rem(1px) solid #e5e5e5;
-        box-sizing: border-box;
-        right: rem(437px);
-        top: rem(-200px);
-        .addgig-icon{
-            cursor: pointer;
-            background-color: #78cdd2;
-            color: #fff;
-            font-size: rem(48px);
-            font-weight: 400;
-            width: rem(66px);
-            height: rem(66px);
-            border-radius: 50%;
-            display: block;
-            margin: rem(80px) auto rem(20px);
-            line-height: rem(69px);
+        border-radius: 2px;
+        border-width: 1px;
+
+        .profile-user-details {
+            display: flex;
+            flex-direction: column;
+            // margin: 60px;
+        }
+
+        .profile-user-avatar img {
+            height: 150px;
+            // width: 150px;
         }
     }
-    .profile-user-details{
-        display: flex;
-        flex-direction: column;
-        margin: rem(60px);
-    }
-    .profile-user-avatar img{
-        height: rem(150px);
-        width: rem(150px);
-    }
-    .rightside-gigs-profile{
-        .profile-gigs-nav{
-        display: flex;
-        position: absolute;
-        top: rem(150px);
-        left: rem(850px);
-        background-color: white;
-        padding: rem(10px);
-        height: rem(80px);
-        width: rem(702px);
-        border-color: rgba(0, 0, 0, 0.122);
-        border-style: solid;
-        border-radius: rem(2px);
-        border-width: rem(1px);
-            button{
-               background-color: transparent; 
-               color: rgba(0, 0, 0, 0.835);
-               font-size: rem(16px);
+
+    .right-side-gigs-profile {
+        width: 75%;
+
+        .profile-gigs-nav {
+            margin-bottom: 20px;
+            display: flex;
+            // position: absolute;
+            // top: 150px;
+            // left: 850px;
+            background-color: white;
+            padding: 10px;
+            height: 80px;
+            width: 100%;
+            border-color: rgba(0, 0, 0, 0.122);
+            border-style: solid;
+            border-radius: 2px;
+            border-width: 1px;
+
+            button {
+                background-color: transparent;
+                color: rgba(0, 0, 0, 0.835);
+                font-size: 16px;
+            }
+        }
+
+        .gig-render {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(326px, 1fr));
+            // grid-gap: 20px;
+            gap: 33.3px;
+            justify-content: space-evenly;
+        }
+
+        .active-gigs-title {
+            align-items: center;
+            justify-content: center;
+        width: 50%;
+        height: 100%;
+        border-right: 1px solid $borderClr;
+        }
+
+        .addgig-section-card {
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            background-color: #fff;
+            width: 50%;
+            min-height: 40px;
+            padding-bottom: 8px;
+            // position: relative;
+            float: right;
+            // border: 1px solid #e5e5e5;
+            box-sizing: border-box;
+
+            // right: 437px;
+            // top: -200px;
+            .addgig-icon {
+                transform: translateY(15%);
+                cursor: pointer;
+                background-color: #78cdd2;
+                color: #fff;
+                justify-content: center;
+                align-items: center;
+                font-size: 48px;
+                font-weight: 400;
+                width: rem(40px);
+                height: rem(40px);
+                border-radius: 50%;
+                display: flex;
+                // margin: 80px auto 20px;
+                // line-height: 69px;
             }
         }
     }
 
 }
+
+// }

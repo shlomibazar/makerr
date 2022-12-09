@@ -86,3 +86,8 @@ justify-content: space-around;
         }
     
 }
+.arrow-up svg{
+    transition:transform 0.5s;
+    transform: rotate(-180deg);
+}
+

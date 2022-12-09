@@ -2,18 +2,40 @@
     background-color: #f7f7f7;
     height: rem(800px);
     display: flex;
+    width:100%;
     justify-content: center;
+    .inner-edit-container{
+        justify-content: space-between;
+    flex-direction: row;
+     padding-top: 3rem;
 
+    }
+    .img-uploading-container{
+        cursor: pointer;
+
+        margin-left: 5%;
+    position: relative;
+    width: rem(130px);
+    height: 50px;
+    padding: 0;
+    }
+    .edit-container{
+        // display: flex;
+    margin-top: rem(40px);
+    // justify-content: space-between;
+    }
+    
     .addgig-price-ctn{
         
     }
     .addgig-forms-container{
-        width: rem(1000px);
-        height: rem(600px);
-        margin-top: rem(50px);
+        width: 60%;
+        height: rem(382px);
+        // margin-top: 50px;
         background-color: #ffffff;
-        padding: rem(30px);
-        border-radius: rem(5px);
+        padding: 30px;
+        
+        border-radius: 5px;
         border-style: solid;
         border-color: rgba(0, 0, 0, 0.121);
         border-width: rem(1px);
@@ -21,25 +43,54 @@
 
         input{
             position: relative;
-            border-radius: rem(8px);
-            padding: rem(10px);
-            height: rem(80px);
-            width: rem(600px);
-            margin-top: rem(10px);
-            margin-left: rem(180px);
+            border-radius: 8px;
+            padding: 10px;
+            height: 40px;
+            width: 60%;
+            margin-top: 10px;
+            margin-left: 180px;
             text-align: center;
             align-content: center;
+            cursor: pointer;
+            
         }
         .gig-add-img-picture{
-            height: rem(100px);
-            width: rem(100px);
+            right: 0;
+            position: absolute;
+            height: 100%;
+            width: 50%;
             cursor: pointer;
+            z-index: 8;
   
+        }
+        .input-img-container{
+        border: 1px solid black;
+        border-radius: 5px;
+        position: absolute;
+        margin-top: 20px;
+        margin-left: 137px;
+        width: 100%;
+        height:60%;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        z-index: 10;
+        // color: transparent;
+        .input-img-button{
+            display: none !important;
+            background-color: transparent;
+            background-color: #1dbf73;
+            color: transparent;
+            }
+        }
+        .input-upload-img{
+        cursor: pointer;
         }
         .gig-image-title{
             display: flex;
             justify-content: left;
-            margin-left: rem(20px);
+            margin-left: 20px;
+            width: 20%;
         }
     }
     .addgig-buttons button{
@@ -48,8 +99,9 @@
         color: white;
         font-size: rem(16px);    
         text-transform: uppercase;
-        border-radius: rem(6px);
-        margin-top: rem(30px);
+        border-radius: 6px;
+        margin-left: 65px;
+        margin-top: 40px;
      
         &:hover{
             background-color: #20d380;

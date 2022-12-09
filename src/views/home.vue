@@ -200,7 +200,7 @@ export default {
     setHeroInterval() {
       this.zoom=""
       this.heroBackgroundClass = this.heroInfo[this.heroCounter].heroBackgroundClass
-      console.log(this.heroBackgroundClass, this.heroCounter)
+      // console.log(this.heroBackgroundClass, this.heroCounter)
       
       setTimeout(() => {
         this.textDisplayClass = "none"

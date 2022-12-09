@@ -71,9 +71,12 @@ header {
             
         }
         .user-modal-opts{
-            position: relative;
-            top: 70px;
-            margin-left: 150px;
+            position: fixed;
+            top: 50px;
+            align-content: center;
+            // margin-left: 150px;
+            
+            margin-right: 200px;
             .usermodal-link{
                 color: rgb(72, 72, 72);
                 &:hover{
@@ -221,7 +224,8 @@ header {
 .sub-header-labels{
     border: 1px solid #E4E5E7;
     height: 41px;
-   display: flex;
+    display: flex;
+    gap: 33px;
    align-items: center;
    &.gig-details{
 }   border:none;
