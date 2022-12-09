@@ -1,5 +1,5 @@
 <template>
-  <section class="lable-container-list full fullWidthContainer flex">
+  <section class="lable-container-list full fullWidthContainer flex" >
     <section class="sub-header-labels main-container gig-details">
       <h4 v-for="label in labels" :key="label" @click="setLabelToQuery(label)">
         {{ label }}
@@ -14,7 +14,6 @@
     <hr />
     <button>Join</button>
   </div>
-
   <!-- CHECKOUT MODAL -->
   <!-- <div class="checkout-modal" v-if="isCheckOutModal">
     <div class="order-options">
@@ -34,7 +33,7 @@
   </div> -->
 
   <section v-if="gig" class="gig-details-page">
-    <div class="details-content">
+    <div class="details-content" :class="{ 'page-opacity': this.isCheckOutModal }">
       <h1>{{ gig.title }}</h1>
       <div class="user-details-container flex">
         <img class="details-user-avatar" :src="userAvatar" />
@@ -165,7 +164,11 @@
         </h4>
       </div>
     </div>
-    <div class="checkout-container">
+    <!-- v-click-outside="checkOutModal()" -->
+    <div class="display-checkout-modal" v-if="this.isCheckOutModal" v-click-outside="checkOutModal">
+      <checkout/>
+    </div>
+    <div class="checkout-container" :class="{ 'page-opacity': this.isCheckOutModal }">
       <div class="checkout-price">
         <span>${{ gig.price }}</span>
       </div>
@@ -244,7 +247,7 @@
   </section>
 </template>
 <script>
-// import chatVue from "./chat.vue"
+import checkout from "../cmps/checkout.vue"
 import { gigService } from "../services/gig.service.js";
 import { getActionRemoveGig, getActionUpdateGig } from "../store/gig.store";
 import { VueperSlides, VueperSlide } from "vueperslides";
@@ -272,11 +275,15 @@ export default {
       ],
     };
   },
+    // <checkout />
   created() {
     this.loadGig();
     // this.updateMsgs()
   },
   methods: {
+    // toggleCheckOutModal(){
+    //   this.isCheckOutModal = !this.isCheckOutModal
+    // },
     disLikeReview(){
       this.isDisLikeReview = !this.isDisLikeReview
     },
@@ -284,8 +291,11 @@ export default {
       this.isLikeReview = !this.isLikeReview
     },
     checkOutModal() {
-      this.$router.push(`/order/${this.gig._id}`);
+      this.isCheckOutModal = !this.isCheckOutModal
     },
+    // checkOutModal() {
+    //   this.$router.push(`/order/${this.gig._id}`);
+    // },
     toggleModal() {
       this.isModalToggled = !this.isModalToggled;
     },
@@ -330,6 +340,7 @@ export default {
   components: {
     VueperSlides,
     VueperSlide,
+    checkout,
   },
 };
 </script>

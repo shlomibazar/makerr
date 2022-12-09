@@ -106,14 +106,15 @@
                 </li>
             </ul>
         </div>
+        <button class ="checkout-cmp-btn" @click="">Checkout!</button>
     </div>
 </template>
 
 <style>
 .checkout-conteiner{
     margin-left: 50px;
-width: 530px;
-height: 90vh;
+    width: 530px;
+    height: 90vh;
 }
 .checkout-header {
     font-size: 16px;

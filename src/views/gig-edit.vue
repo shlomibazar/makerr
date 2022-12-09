@@ -49,12 +49,10 @@
     </section>
 
   </div>
-  <checkout />
 </template>
 
 <script>
 import gigPreview from "../cmps/gig-preview.vue";
-import checkout from "../cmps/checkout.vue";
 import { gigService } from "../services/gig.service.js";
 import { userService } from "../services/user.service";
 import imgUploader from "../cmps/img-uploader.vue";
@@ -79,7 +77,6 @@ export default {
   },
   components: {
     imgUploader,
-    checkout,
     gigPreview,
   },
 
