@@ -135,7 +135,7 @@
     margin-left: 10rem;
     color: #404145;
     border: 1px solid #e4e5e7;
-    padding: 1.5em 0.5em;
+    padding: 1.5em 1.3em;
     font-family: Helvetica, sans-serif;
     height: fit-content;
 
@@ -198,6 +198,7 @@
             color: #fff;
             border: 2px solid white;
             border-radius: 5px;
+            margin: 0 auto;
             &:hover{
                 background-color: #119859;
                 cursor: pointer;
