@@ -139,7 +139,7 @@ export default {
       };
       console.log('orderToAdd',orderToAdd)
       orderService.save(orderToAdd)
-      socketService.emit('user ordered',{txt:'Someone just ordered from you'})
+      //socketService.emit('user ordered',{txt:'Someone just ordered from you'})
       router.push(`/dashboard`);
     },
     loadGig() {

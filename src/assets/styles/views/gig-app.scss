@@ -60,4 +60,9 @@ box-shadow: rgba(0, 0, 0, 0.35) rem(0px) rem(5px) rem(15px);
     padding-right: rem(10px);
     font-size: rem(16px);
 }
-
+.checkout-cmp-btn{
+    background-color: green;
+    &:hover{
+        cursor: pointer;
+    }
+}

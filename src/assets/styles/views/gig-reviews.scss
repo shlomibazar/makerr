@@ -71,15 +71,15 @@
     
     }
 }
+.gig-like-title{
+    font-size: 12px;
+}
 .review-user-comment{
     margin-bottom:rem(16px) ;
     h5{
         font-size: rem(16px);
         font-weight: 400;
     }
-}
-.review-helpful-selector{
-
 }
 
     .review-user-comment{
@@ -90,6 +90,17 @@
     .review-helpful-selector{
     font-size: rem(14px);
     font-weight: 400;
+    .review-like-btn:hover, .review-dislike-btn:hover{
+        cursor: pointer;
+    }
+    .review-like-active{
+        color: rgb(0, 107, 0);
+        font-weight: bold;
+    }
+    .review-dislike-active{
+        color: red;
+        font-weight: bold;
+    }
     span{
         margin-right:rem(6px);
     }

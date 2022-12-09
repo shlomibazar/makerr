@@ -84,7 +84,14 @@ export default {
 
   created() {
 
+  //  var origin=this.$route
+  //  console.log('example',this.$route)
 
+  //  this.$router.push({ path: "/gig" });
+
+  //  console.log('this.$route.fullpath=',this.$route.fullpath)
+  //  this.setFilterByTxt(this.$route.query.title)
+  //  console.log('example',example)
     if (!this.$route.query.title || !this.$route.query.label) {
       this.$store.dispatch({ type: "loadGigs" });
 
@@ -92,7 +99,9 @@ export default {
     if (this.$route.query.title) {
       this.$store.dispatch({ type: "loadGigs", filterBy: {txt: this.$route.query.title, status:'',labels:null, price:0} });
     }
-
+    // this.debounceHandler = _.debounce(this.setFilterByTxt, 500);
+    // this.debounceHandler = _.debounce(this.setFilterByLabel, 500);
+    // console.log('this.$route.params', this.$route.query)
     this.previousParams = "/gig"
     
     // if (this.$route.query.title) {
@@ -111,20 +120,21 @@ export default {
         console.log('toParams',toParams)
         console.log('previousParams',previousParams)
         if (this.$route.query) {
-          // console.log("this.$route.query", this.$route.query);
+          console.log("this.$route.query", this.$route.query);
           if (previousParams.label !== toParams.label) {
-            // console.log("toParams label", toParams.label);
+            console.log("toParams label", toParams.label);
             this.setFilterByLabel(toParams.label);
           }
           if (previousParams.title !== toParams.title) {
-            // console.log("toParams tttt", toParams.title);
+            console.log("toParams tttt", toParams.title);
             this.setFilterByTxt(toParams.title);
           }
         }
       }
     );
     window.addEventListener("scroll", this.updateScroll);
-
+    // this.$router.push(origin);
+    // this.isInHomePage()
   },
   mounted() {
     this.elFilter = this.$refs.filterEl;
@@ -141,18 +151,23 @@ export default {
 // },
   methods: {
     setLabelToQuery(labelTitle) {
+      // console.log('example', this.searchInfo)
       const pathToRoute = this.$route.path.split("/");
+      // console.log('pathToRoute', pathToRoute);
       this.displayLabel = labelTitle;
       this.$router.push({ path: "/gig", query: { label: labelTitle } });
     },
     updateScroll() {
-
+      // console.log('y',window.scrollY)
+      // console.log('helllo',this.scrollPosition)
       this.scrollPosition = window.scrollY;
       if (this.scrollPosition > 190) {
+        // console.log("runing");
         this.elFilter.classList.add("change-position");
         this.elFilter.classList.add("fullWidthContainer");
       }
       if (this.scrollPosition < 100) {
+        // console.log("runing");
         this.elFilter.classList.remove("change-position");
         this.elFilter.classList.remove("fullWidthContainer");
       }
@@ -165,7 +180,6 @@ export default {
     loadGigs() {
       const filterBy = JSON.parse(JSON.stringify(this.filterBy));
       console.log("🚀 ~ file: gig-app.vue ~ line 68 ~ loadGigs ~ filterBy", filterBy)
-      const sortBy = JSON.parse(JSON.stringify(this.sortBy));
       this.$store.dispatch({ type: "loadGigs", filterBy, sortBy });
     },
     async addGig() {

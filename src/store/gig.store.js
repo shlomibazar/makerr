@@ -107,13 +107,15 @@ export const gigStore = {
         // },
         loadGigs: async ({ commit }, { filterBy, sortBy,isLoading }) => {
             commit({type:'setIsLoading', isLoading: true})
+            console.log('sortBysssssssssssssssssssssss',sortBy)
+
             // console.log('hey i here')
             try {
                 // console.log('filterBy in gig store',filterBy)
                 if (!filterBy) filterBy = { txt: '', status: '', labels: null,price:0, }
                 if (!sortBy) sortBy = null
                 // const labels = gigService.getLabels()
-                // console.log('sortBysssssssssssssssssssssss',sortBy)
+                console.log('sortBysssssssssssssssssssssss',sortBy)
                 // commit({ type: 'setLabels', labels })
 
                 const gigs = await gigService.query(filterBy,sortBy)
