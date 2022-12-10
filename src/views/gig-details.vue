@@ -1,5 +1,5 @@
 <template>
-  <section class="lable-container-list full fullWidthContainer flex" >
+  <section class="lable-container-list full fullWidthContainer flex">
     <section class="sub-header-labels main-container gig-details">
       <h4 v-for="label in labels" :key="label" @click="setLabelToQuery(label)">
         {{ label }}
@@ -33,7 +33,7 @@
   </div> -->
 
   <section v-if="gig" class="gig-details-page">
-    <div class="details-content" >
+    <div class="details-content">
       <h1>{{ gig.title }}</h1>
       <div class="user-details-container flex">
         <img class="details-user-avatar" :src="userAvatar" />
@@ -63,28 +63,29 @@
         <vueper-slide v-for="(slide, i) in gig.images" :key="i" :image="slide">
         </vueper-slide>
       </vueper-slides>
-<div class = "bot-details-slider">
-
-      <vueper-slides
-        class="no-shadow thumbnails"
-        ref="vueperslides2"
-        @slide="$refs.vueperslides1.goToSlide($event.currentSlide.index, { emit: false })"
-        :visible-slides="4"
-        fixed-height="75px"
-        :bullets="false"
-        :touchable="false"
-        :gap="2.5"
-        :arrows="true"
-      >
-        <vueper-slide
-          v-for="(slide, i) in gig.images"
-          :key="i"
-          :image="slide"
-          @click.native="$refs.vueperslides2.goToSlide(i)"
+      <div class="bot-details-slider">
+        <vueper-slides
+          class="no-shadow thumbnails"
+          ref="vueperslides2"
+          @slide="
+            $refs.vueperslides1.goToSlide($event.currentSlide.index, { emit: false })
+          "
+          :visible-slides="4"
+          fixed-height="75px"
+          :bullets="false"
+          :touchable="false"
+          :gap="2.5"
+          :arrows="true"
         >
-        </vueper-slide>
-      </vueper-slides>
-    </div>
+          <vueper-slide
+            v-for="(slide, i) in gig.images"
+            :key="i"
+            :image="slide"
+            @click.native="$refs.vueperslides2.goToSlide(i)"
+          >
+          </vueper-slide>
+        </vueper-slides>
+      </div>
 
       <h3 class="about-gig-title">About This Gig</h3>
       <p>{{ gig.description }}</p>
@@ -125,11 +126,11 @@
 
       <div class="seller-reviews">
         <h1>{{ gig.reviewers.length }} Reviews</h1>
-        <h4 v-for="review in gig.reviewers" :key="review._id" :value="review.reviews">
+        <h4 v-for="review in gig.reviewers" :key="review._id"  :src="advanceCounder()" :value="review.reviews">
           <hr />
           <div class="review-container">
             <section class="review-avatar-img">
-              <img class="avatar-img" :src="userAvatar" />
+              <img class="avatar-img" :src="reviewersAvatar" />
             </section>
             <section class="review-right-info">
               <div class="review-user-details">
@@ -155,22 +156,40 @@
               </div>
               <section class="review-helpful-selector">
                 <span>Helpful? </span>
-                <span class="review-like-btn" @click="likeReview" :class="{ 'review-like-active': isLikeReview }"> 👍 Yes </span>
-                <span class="review-dislike-btn" @click="disLikeReview" :class="{ 'review-dislike-active': isDisLikeReview }"> 👎 No </span>
+                <span
+                  class="review-like-btn"
+                  @click="likeReview"
+                  :class="{ 'review-like-active': isLikeReview }"
+                >
+                  👍 Yes
+                </span>
+                <span
+                  class="review-dislike-btn"
+                  @click="disLikeReview"
+                  :class="{ 'review-dislike-active': isDisLikeReview }"
+                >
+                  👎 No
+                </span>
               </section>
-              <span class="gig-like-title" v-if="isLikeReview">You found this gig helpful!</span>
+              <span class="gig-like-title" v-if="isLikeReview"
+                >You found this gig helpful!</span
+              >
             </section>
           </div>
         </h4>
       </div>
     </div>
     <!-- v-click-outside="checkOutModal()" -->
-    
-    <div class="display-checkout-modal" v-if="this.isCheckOutModal" v-click-outside="checkOutModal">
-      <checkout :gig="gig"  :modalOpen="modalOpen"/>
+
+    <div
+      class="display-checkout-modal"
+      v-if="this.isCheckOutModal"
+      v-click-outside="checkOutModal"
+    >
+      <checkout :gig="gig" :modalOpen="modalOpen" />
     </div>
-  
-    <div class="checkout-container" >
+
+    <div class="checkout-container">
       <div class="checkout-price">
         <span>${{ gig.price }}</span>
       </div>
@@ -182,7 +201,7 @@
       </div>
       <div class="checkout-delivery flex">
         <img src="../assets/clock.png" />
-        <div>{{gig.daysToMake}} Days Delivery</div>
+        <div>{{ gig.daysToMake }} Days Delivery</div>
       </div>
       <div class="checkout-header-list">What's Included</div>
       <div class="checkout-included">
@@ -198,7 +217,8 @@
               >
                 <path
                   d="M3.645 8.102.158 4.615a.536.536 0 0 1 0-.759l.759-.758c.21-.21.549-.21.758 0l2.35 2.349L9.054.416c.21-.21.55-.21.759 0l.758.758c.21.21.21.55 0 .759L4.403 8.102c-.209.21-.549.21-.758 0Z"
-                ></path></svg>
+                ></path>
+              </svg>
             </i>
             3 concepts included
           </li>
@@ -249,7 +269,7 @@
   </section>
 </template>
 <script>
-import checkout from "../cmps/checkout.vue"
+import checkout from "../cmps/checkout.vue";
 import { gigService } from "../services/gig.service.js";
 import { getActionRemoveGig, getActionUpdateGig } from "../store/gig.store";
 import { VueperSlides, VueperSlide } from "vueperslides";
@@ -260,11 +280,12 @@ export default {
   data() {
     return {
       gig: null,
-      modalOpen:"",
+      modalOpen: "",
       isLikeReview: false,
       isDisLikeReview: false,
       isModalToggled: false,
       isCheckOutModal: false,
+      reviewImgCounter:0,
       labels: [
         "graphics & design",
         "digital marketing",
@@ -276,6 +297,13 @@ export default {
         "lifestyle",
         "trending",
       ],
+      imgs: [
+        "https://res.cloudinary.com/djyj6l7de/image/upload/v1670678323/review%20pic/c379aa91-8e48-453f-adbf-cf2ab5a2ba8d_f85qjo.webp",
+        "https://res.cloudinary.com/djyj6l7de/image/upload/v1670678323/review%20pic/1d8fa5f7-b34a-4f19-a55e-941a853fe2b2_qqpqnv.webp",
+        "https://res.cloudinary.com/djyj6l7de/image/upload/v1670678323/review%20pic/stepanadrian_ag4px7.webp",
+        "https://res.cloudinary.com/djyj6l7de/image/upload/v1670678323/review%20pic/JPEG_20210716_045808_7161494499008619166_zh6tkc.webp",
+        "https://res.cloudinary.com/djyj6l7de/image/upload/v1670678323/review%20pic/c6667c18-c48c-415f-8d6e-28fda9b62486_depjj6.webp",
+      ],
     };
   },
 
@@ -284,23 +312,28 @@ export default {
     // this.updateMsgs()
   },
   methods: {
-
-    disLikeReview(){
-      this.isDisLikeReview = !this.isDisLikeReview
+    advanceCounder() {
+      console.log(this.reviewImgCounter);
+      this.reviewImgCounter++;
+      this.reviewImgCounter === 5 ? (this.reviewImgCounter = 0) : this.reviewImgCounter;
+      console.log(this.reviewImgCounter);
     },
-    likeReview(){
-      this.isLikeReview = !this.isLikeReview
+    disLikeReview() {
+      this.isDisLikeReview = !this.isDisLikeReview;
+    },
+    likeReview() {
+      this.isLikeReview = !this.isLikeReview;
     },
     checkOutModal() {
-      this.isCheckOutModal = !this.isCheckOutModal
+      this.isCheckOutModal = !this.isCheckOutModal;
       if (this.isCheckOutModal) {
         setTimeout(() => {
-          this.modalOpen = "modal-open"
+          this.modalOpen = "modal-open";
         }, 10);
       }
-        if (!this.isCheckOutModal) {
+      if (!this.isCheckOutModal) {
         setTimeout(() => {
-          this.modalOpen = ""
+          this.modalOpen = "";
         }, 10);
       }
     },
@@ -336,6 +369,16 @@ export default {
       return `Level: ${this.gig.owner.level} Seller |⭐⭐⭐⭐⭐ 5 (169) 12 Orders in Queue`;
     },
     userAvatar() {
+      return `${this.gig.owner.imgUrl}`;
+    },
+    reviewersAvatar() {
+      
+      return `${this.imgs[this.reviewImgCounter]}`
+    },
+    userAvatar() {
+      // this.reviewImgCounter++;
+      // this.reviewImgCounter === 5 ? (this.reviewImgCounter = 0) : this.reviewImgCounter;
+
       return `${this.gig.owner.imgUrl}`;
     },
     gigPreview() {

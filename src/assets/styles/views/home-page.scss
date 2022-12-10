@@ -541,6 +541,7 @@ color: #404145;
 .dropdown {
     button {
         font-weight: 600;
+        font-size: 16px;
         color: #222325;
         min-width: rem(50px);
         padding: rem(6px) rem(12px);
@@ -549,6 +550,9 @@ color: #404145;
         background-color: white;
         margin-left: 0;
 
+    }
+    .filter-button{
+    // font-size: 16px;
     }
 }
 
