@@ -1,58 +1,55 @@
 <template>
-  <li class="gig-preview" >
+  <li class="gig-preview">
     <custom-card>
-      <template #card-header  >
+      <template #card-header>
 
 
-      <vueper-slides  box-shadow: none :touchable="false" fixed-height="194px"  class="preview-slider">
-        <vueper-slide
-        v-for="(slide, i) in gig.images"
-        :key="i"
-        :image="slide"
-        :content="slide.content"
-        @click="goToDetail"
-  
-        />
-      </vueper-slides>
+        <vueper-slides box-shadow: none :touchable="false" fixed-height="194px" class="preview-slider">
+          <vueper-slide v-for="(slide, i) in gig.images" :key="i" :image="slide" :content="slide.content"
+            @click="goToDetail" />
+        </vueper-slides>
 
       </template>
       <template #main>
         <section class="card-main-header">
-          <img class="card-seller-img" :src="gig.owner.imgUrl" >
+          <img class="card-seller-img" :src="gig.owner.imgUrl">
           <span class="card-seller-online" v-if="gig.owner.isOnline"></span>
 
           <section class="card-seller-name-rating flex column">
-            <span class="card-seller-name">{{gig.owner.fullname}}</span>
-            <span class="card-seller-level">{{userLevel(gig)}}</span>
+            <span class="card-seller-name">{{ gig.owner.fullname }}</span>
+            <span class="card-seller-level">{{ userLevel(gig) }}</span>
           </section>
           <section class="card-seller-clients">Clients</section>
           <section class="client-logo-wraper">
-          <img class="clients-logo" v-for="client in gig.owner.clients"  :src="client" >
+            <img class="clients-logo" v-for="client in gig.owner.clients" :src="client">
           </section>
-        <!-- <p><span class="fw-bold">Name:</span> {{ gig.fullname }}</p> -->
+          <!-- <p><span class="fw-bold">Name:</span> {{ gig.fullname }}</p> -->
 
-        <!-- <p><span class="fw-bold">In stock:</span> {{ gig.inStock }}</p> -->
-        <!-- <p><span class="fw-bold">Price:</span> ${{ gig.price }}</p> -->
+          <!-- <p><span class="fw-bold">In stock:</span> {{ gig.inStock }}</p> -->
+          <!-- <p><span class="fw-bold">Price:</span> ${{ gig.price }}</p> -->
         </section>
         <div class="card-main-header-gap"></div>
-        <section class="card-main-center" >
+        <section class="card-main-center">
           <h4 @click="goToDetail">{{ gig.title }}</h4>
         </section>
         <!-- mini user - user.img + user.name
             gig.title -->
-        <section class="card-main-footer flex row"><span class="card-mid-footer-star" style="font-size:150%;color:#FFBE5B;">&starf;</span>
-        <span class="user-rating">{{ userRating(gig)}}</span><span  class="ratingProject">{{ getRandomIntInclusive(5, 120)}} </span>
-        
+        <section class="card-main-footer flex row"><span class="card-mid-footer-star"
+            style="font-size:150%;color:#FFBE5B;">&starf;</span>
+          <span class="user-rating">{{ userRating(gig) }}</span><span class="ratingProject">{{ getRandomIntInclusive(5,
+              120)
+          }} </span>
+
         </section>
         <!-- <p><span class="fw-bold">In stock:</span> {{ gig.inStock }}</p> -->
         <!-- <p><span class="fw-bold">Price:</span> ${{ gig.price }}</p> -->
       </template>
       <template #footer class="card-footer flex">
-        <img class="card-fav-hart" src="../assets/imgbin_color-paper-grey-white-png.png"/>
+        <img class="card-fav-hart" src="../assets/imgbin_color-paper-grey-white-png.png" />
         <!-- add to favorite (heart sign) / price  -->
         <div class="btn-group">
           <span class="starting-at">STARTING AT</span>
-          <span class="card-gig-price">US${{gig.price}}</span>
+          <span class="card-gig-price">US${{ gig.price }}</span>
           <!-- {{this.decimelToLowerSize(gig.price)}} -->
           <!-- <button @click="goToEdit" class="btn btn-primary">edit</button> -->
           <!-- <button @click="goToDetail" class="btn btn-info">details</button> -->
@@ -65,7 +62,7 @@
 <script>
 import customCard from "./custom-card.vue";
 import { VueperSlides, VueperSlide } from "vueperslides";
-import {  } from '../services/util.service.js'
+import { } from '../services/util.service.js'
 import "vueperslides/dist/vueperslides.css";
 
 export default {
@@ -90,10 +87,10 @@ export default {
     },
     decimelToLowerSize(price) {
       console.log(arguments)
-      return `<span class="dollar_sign">$</span><span class="dollars"><?= $part[0] ?></span>.<span class="cents"><?= $part[1] ?></span>`   
+      return `<span class="dollar_sign">$</span><span class="dollars"><?= $part[0] ?></span>.<span class="cents"><?= $part[1] ?></span>`
     },
     userLevel(gig) {
-      var userLevel= gig.owner.level||1
+      var userLevel = gig.owner.level || 1
       return `Level ${userLevel} Seller`
     },
     userRating(gig) {
@@ -103,13 +100,15 @@ export default {
       return gigLevel
     },
     getRandomIntInclusive(min, max) {
-    min = Math.ceil(min)
-    max = Math.floor(max)
-    return `(${Math.floor(Math.random() * (max - min + 1)) + min})` //The maximum is inclusive and the minimum is inclusive 
-}
+      min = Math.ceil(min)
+      max = Math.floor(max)
+      return `(${Math.floor(Math.random() * (max - min + 1)) + min})` //The maximum is inclusive and the minimum is inclusive 
+    }
+
+
   },
   computed: {
-   
+
   },
 };
 </script>
