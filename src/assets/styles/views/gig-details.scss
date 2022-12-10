@@ -93,7 +93,7 @@
             padding: rem(10px);
             display: flex;
             align-items: center;
-            border-top:rem(1px) solid #D8D9DB;
+            border-top:rem(1px) solid #EFEFF0;
             
         }
         h2{
@@ -219,7 +219,26 @@
 }
 .about-gig-title{
     margin-bottom: 15px;
+    
 }
+.pre-class{
+        width: 100%;
+        font-size: 15px;
+        color: rgb(98,100,106);
+        font-weight: 500;
+        // text-overflow: clip;
+        // white-space: normal;
+        // border: 1px solid black;
+        // overflow: auto;
+        // text-overflow: ellipsis " [..]";
+        overflow-wrap: break-word;
+        // height: max-content;
+        // background-color: #000;
+        // white-space: initial;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-bottom: 20px;
+    }
 .about-seller {
     margin-top: rem(25px);
     display: flex;
@@ -230,23 +249,35 @@
     .btn-contact {
         width: 8.166rem;
         height: 2.5rem;
-        margin: rem(20px) 0 0;
+        margin: rem(5px) 0 0;
         padding: rem(12px) rem(24px);
         font-size: rem(14px);
         color: #62646a;
         font-weight: bolder;
         border: rem(1px) solid #62646a;
+
         &:hover{
             color: white;
-            background-color: rgb(66, 66, 66);
+            background-color: rgb(95, 93, 93);
         }
     }
 }
 .owner-details {
-    align-items: center;
+    // border: 1px solid black;
+    flex-direction: column;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
     font-size: rem(14px);
     line-height: rem(21px);
     margin-bottom: rem(30px);
+    margin-left: rem(25px);
+    .owner-fullname{
+     color:  rgb(98,100,106);
+     font-size: 16px;
+     font-weight: 600;
+    }
 }
 
 .order-features {
@@ -272,10 +303,21 @@
     flex-direction: row;
     background-color: red;
 }
-.stars span {
+.stars{
     font-size: 20px;
     color: #ffb33e;
     font-weight: bold;
+    margin-left: rem(-6px);
+    // margin-left: 0;
+   
+}
+ .rate-number{
+     font-size: 15px;
+}
+.revew-counter{
+    color:  rgb(98,100,106);
+    font-size: 15px;
+    font-weight: 300;
 }
 .extended-owner-details {
     display: flex;
@@ -300,7 +342,7 @@
         word-wrap: break-word;
         word-break: break-all;
         overflow-wrap: break-word;
-        margin-top: 0;
+        margin-top: rem(15px);
         margin-bottom: 0;
         padding: 0;
         font-size: rem(16px);
@@ -332,8 +374,15 @@ padding: rem(45px) 0 rem(42px) 0;
     padding: 0;
     margin: 0;
 }
+.gig-like-title{
+    color: #b8bac0;
+    // font-size: 18px;
+}
 .seller-reviews{
     margin-top: rem(30px);
+}
+.reviews-title{
+    font-size: 16px;
 }
   .thumbnails .vueperslide {
     box-sizing: border-box;

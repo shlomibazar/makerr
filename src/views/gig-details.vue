@@ -88,14 +88,15 @@
       </div>
 
       <h3 class="about-gig-title">About This Gig</h3>
-      <p>{{ gig.description }}</p>
+      <pre class="pre-class">{{ gig.description }}</pre>
 
       <h3>About The Seller</h3>
       <div class="about-seller">
         <img class="details-user-avatar-about" :src="userAvatar" />
         <div class="owner-details">
+          
           <div class="owner-fullname">{{ gig.owner.fullname }}</div>
-          <div class="stars"><span>★★★★★ 4.9</span> (456)</div>
+          <div class="stars"><span>★★★★★ </span><span class="rate-number">4.9</span><span class="revew-counter"> (456)</span></div>
           <button
             class="el-button is-plain btn-contact"
             aria-disabled="false"
@@ -103,6 +104,7 @@
           >
             <span class="">Contact Me</span>
           </button>
+         
         </div>
       </div>
       <div class="extended-owner-details">
@@ -125,7 +127,7 @@
       </div>
 
       <div class="seller-reviews">
-        <h1>{{ gig.reviewers.length }} Reviews</h1>
+        <h2 class="reviews-title">{{ gig.reviewers.length }} Reviews</h2>
         <h4
           v-for="review in gig.reviewers"
           :key="review._id"
@@ -318,16 +320,18 @@ export default {
   },
   methods: {
     advanceCounder() {
-      console.log(this.reviewImgCounter);
+     
       this.reviewImgCounter++;
       this.reviewImgCounter === 5 ? (this.reviewImgCounter = 0) : this.reviewImgCounter;
-      console.log(this.reviewImgCounter);
     },
     disLikeReview() {
       this.isDisLikeReview = !this.isDisLikeReview;
+      this.isLikeReview?this.isLikeReview=false:this.isLikeReview
     },
     likeReview() {
       this.isLikeReview = !this.isLikeReview;
+      this.isDisLikeReview?this.isDisLikeReview=false:this.isDisLikeReview
+      
     },
     checkOutModal() {
       this.isCheckOutModal = !this.isCheckOutModal;
@@ -388,9 +392,10 @@ export default {
     gigPreview() {
       return `${this.gig.owner.imgUrl}`;
     },
-    gigReviewFlag() {
-      return "https://fiverr-dev-res.cloudinary.com/general_assets/flags/1f1fa-1f1f8.png";
-      // return `${this.gig.reviewers.flag}`;
+    gigReviewFlag() { 
+      var locarIndex=""
+      this.reviewImgCounter != 0 ? locarIndex = this.reviewImgCounter - 1 : locarIndex = this.gig.reviewers.length-1 
+      return `${this.gig.reviewers[locarIndex].flag}`;
     },
   },
   components: {
