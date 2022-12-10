@@ -1,5 +1,5 @@
 <template>
-  <section class="lable-container-list full fullWidthContainer flex" >
+  <section class="lable-container-list full fullWidthContainer flex">
     <section class="sub-header-labels main-container gig-details">
       <h4 v-for="label in labels" :key="label" @click="setLabelToQuery(label)">
         {{ label }}
@@ -33,7 +33,7 @@
   </div> -->
 
   <section v-if="gig" class="gig-details-page">
-    <div class="details-content" >
+    <div class="details-content">
       <h1>{{ gig.title }}</h1>
       <div class="user-details-container flex">
         <img class="details-user-avatar" :src="userAvatar" />
@@ -51,40 +51,21 @@
       <h3 class="repeat-buyesr-title">
         People keep coming back! logoflow has an exceptional number of repeat buyers.
       </h3>
-      <vueper-slides
-        class="details-slider"
-        ref="vueperslides1"
-        :touchable="false"
-        :autoplay="false"
-        :bullets="false"
-        @slide="$refs.vueperslides2.goToSlide($event.currentSlide.index, { emit: false })"
-        fixed-height="427px"
-      >
+      <vueper-slides class="details-slider" ref="vueperslides1" :touchable="false" :autoplay="false" :bullets="false"
+        @slide="$refs.vueperslides2.goToSlide($event.currentSlide.index, { emit: false })" fixed-height="427px">
         <vueper-slide v-for="(slide, i) in gig.images" :key="i" :image="slide">
         </vueper-slide>
       </vueper-slides>
-<div class = "bot-details-slider">
+      <div class="bot-details-slider">
 
-      <vueper-slides
-        class="no-shadow thumbnails"
-        ref="vueperslides2"
-        @slide="$refs.vueperslides1.goToSlide($event.currentSlide.index, { emit: false })"
-        :visible-slides="4"
-        fixed-height="75px"
-        :bullets="false"
-        :touchable="false"
-        :gap="2.5"
-        :arrows="true"
-      >
-        <vueper-slide
-          v-for="(slide, i) in gig.images"
-          :key="i"
-          :image="slide"
-          @click.native="$refs.vueperslides2.goToSlide(i)"
-        >
-        </vueper-slide>
-      </vueper-slides>
-    </div>
+        <vueper-slides class="no-shadow thumbnails" ref="vueperslides2"
+          @slide="$refs.vueperslides1.goToSlide($event.currentSlide.index, { emit: false })" :visible-slides="4"
+          fixed-height="75px" :bullets="false" :touchable="false" :gap="2.5" :arrows="true">
+          <vueper-slide v-for="(slide, i) in gig.images" :key="i" :image="slide"
+            @click.native="$refs.vueperslides2.goToSlide(i)">
+          </vueper-slide>
+        </vueper-slides>
+      </div>
 
       <h3 class="about-gig-title">About This Gig</h3>
       <p>{{ gig.description }}</p>
@@ -95,11 +76,7 @@
         <div class="owner-details">
           <div class="owner-fullname">{{ gig.owner.fullname }}</div>
           <div class="stars"><span>★★★★★ 4.9</span> (456)</div>
-          <button
-            class="el-button is-plain btn-contact"
-            aria-disabled="false"
-            type="button"
-          >
+          <button class="el-button is-plain btn-contact" aria-disabled="false" type="button">
             <span class="">Contact Me</span>
           </button>
         </div>
@@ -130,6 +107,7 @@
           <div class="review-container">
             <section class="review-avatar-img">
               <img class="avatar-img" :src="userAvatar" />
+              <!-- <img class="avatar-img" :src="userAvatar" /> -->
             </section>
             <section class="review-right-info">
               <div class="review-user-details">
@@ -155,8 +133,10 @@
               </div>
               <section class="review-helpful-selector">
                 <span>Helpful? </span>
-                <span class="review-like-btn" @click="likeReview" :class="{ 'review-like-active': isLikeReview }"> 👍 Yes </span>
-                <span class="review-dislike-btn" @click="disLikeReview" :class="{ 'review-dislike-active': isDisLikeReview }"> 👎 No </span>
+                <span class="review-like-btn" @click="likeReview" :class="{ 'review-like-active': isLikeReview }"> 👍
+                  Yes </span>
+                <span class="review-dislike-btn" @click="disLikeReview"
+                  :class="{ 'review-dislike-active': isDisLikeReview }"> 👎 No </span>
               </section>
               <span class="gig-like-title" v-if="isLikeReview">You found this gig helpful!</span>
             </section>
@@ -165,12 +145,12 @@
       </div>
     </div>
     <!-- v-click-outside="checkOutModal()" -->
-    
+
     <div class="display-checkout-modal" v-if="this.isCheckOutModal" v-click-outside="checkOutModal">
-      <checkout :gig="gig"  :modalOpen="modalOpen"/>
+      <checkout :gig="gig" :modalOpen="modalOpen" />
     </div>
-  
-    <div class="checkout-container" >
+
+    <div class="checkout-container">
       <div class="checkout-price">
         <span>${{ gig.price }}</span>
       </div>
@@ -182,23 +162,18 @@
       </div>
       <div class="checkout-delivery flex">
         <img src="../assets/clock.png" />
-        <div>{{gig.daysToMake}} Days Delivery</div>
+        <div>{{ gig.daysToMake }} Days Delivery</div>
       </div>
       <div class="checkout-header-list">What's Included</div>
       <div class="checkout-included">
         <ul class="order-features clean-list">
           <li>
             <i class="checkMark">
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 11 9"
-                xmins="http://www.w3.org/2000/svg"
-                fill="#1ea968"
-              >
+              <svg width="16" height="16" viewBox="0 0 11 9" xmins="http://www.w3.org/2000/svg" fill="#1ea968">
                 <path
-                  d="M3.645 8.102.158 4.615a.536.536 0 0 1 0-.759l.759-.758c.21-.21.549-.21.758 0l2.35 2.349L9.054.416c.21-.21.55-.21.759 0l.758.758c.21.21.21.55 0 .759L4.403 8.102c-.209.21-.549.21-.758 0Z"
-                ></path></svg>
+                  d="M3.645 8.102.158 4.615a.536.536 0 0 1 0-.759l.759-.758c.21-.21.549-.21.758 0l2.35 2.349L9.054.416c.21-.21.55-.21.759 0l.758.758c.21.21.21.55 0 .759L4.403 8.102c-.209.21-.549.21-.758 0Z">
+                </path>
+              </svg>
             </i>
             3 concepts included
           </li>
@@ -206,18 +181,12 @@
 
         <ul class="order-features clean-list">
           <li>
-            <i class="checkMark"
-              ><svg
-                width="16"
-                height="16"
-                viewBox="0 0 11 9"
-                xmins="http://www.w3.org/2000/svg"
-                fill="#1ea968"
-              >
+            <i class="checkMark"><svg width="16" height="16" viewBox="0 0 11 9" xmins="http://www.w3.org/2000/svg"
+                fill="#1ea968">
                 <path
-                  d="M3.645 8.102.158 4.615a.536.536 0 0 1 0-.759l.759-.758c.21-.21.549-.21.758 0l2.35 2.349L9.054.416c.21-.21.55-.21.759 0l.758.758c.21.21.21.55 0 .759L4.403 8.102c-.209.21-.549.21-.758 0Z"
-                ></path></svg
-            ></i>
+                  d="M3.645 8.102.158 4.615a.536.536 0 0 1 0-.759l.759-.758c.21-.21.549-.21.758 0l2.35 2.349L9.054.416c.21-.21.55-.21.759 0l.758.758c.21.21.21.55 0 .759L4.403 8.102c-.209.21-.549.21-.758 0Z">
+                </path>
+              </svg></i>
             Include 3D mockup
           </li>
         </ul>
@@ -225,17 +194,11 @@
         <ul class="order-features clean-list">
           <li>
             <i class="checkMark">
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 11 9"
-                xmins="http://www.w3.org/2000/svg"
-                fill="#1ea968"
-              >
+              <svg width="16" height="16" viewBox="0 0 11 9" xmins="http://www.w3.org/2000/svg" fill="#1ea968">
                 <path
-                  d="M3.645 8.102.158 4.615a.536.536 0 0 1 0-.759l.759-.758c.21-.21.549-.21.758 0l2.35 2.349L9.054.416c.21-.21.55-.21.759 0l.758.758c.21.21.21.55 0 .759L4.403 8.102c-.209.21-.549.21-.758 0Z"
-                ></path></svg
-            ></i>
+                  d="M3.645 8.102.158 4.615a.536.536 0 0 1 0-.759l.759-.758c.21-.21.549-.21.758 0l2.35 2.349L9.054.416c.21-.21.55-.21.759 0l.758.758c.21.21.21.55 0 .759L4.403 8.102c-.209.21-.549.21-.758 0Z">
+                </path>
+              </svg></i>
             Vector file
           </li>
         </ul>
@@ -260,11 +223,21 @@ export default {
   data() {
     return {
       gig: null,
-      modalOpen:"",
+      modalOpen: "",
       isLikeReview: false,
       isDisLikeReview: false,
       isModalToggled: false,
       isCheckOutModal: false,
+      imgArray:[
+      "https://res.cloudinary.com/djyj6l7de/image/upload/v1670678323/review%20pic/c379aa91-8e48-453f-adbf-cf2ab5a2ba8d_f85qjo.webp",
+      "https://res.cloudinary.com/djyj6l7de/image/upload/v1670678323/review%20pic/c379aa91-8e48-453f-adbf-cf2ab5a2ba8d_f85qjo.webp",
+      "https://res.cloudinary.com/djyj6l7de/image/upload/v1670678323/review%20pic/stepanadrian_ag4px7.webp",
+      "https://res.cloudinary.com/djyj6l7de/image/upload/v1670678323/review%20pic/JPEG_20210716_045808_7161494499008619166_zh6tkc.webp",
+      "https://res.cloudinary.com/djyj6l7de/image/upload/v1670678323/review%20pic/c6667c18-c48c-415f-8d6e-28fda9b62486_depjj6.webp",
+    "https://res.cloudinary.com/djyj6l7de/image/upload/v1670678323/review%20pic/c6667c18-c48c-415f-8d6e-28fda9b62486_depjj6.webp"
+    
+    ],
+    counter:-1,
       labels: [
         "graphics & design",
         "digital marketing",
@@ -285,10 +258,10 @@ export default {
   },
   methods: {
 
-    disLikeReview(){
+    disLikeReview() {
       this.isDisLikeReview = !this.isDisLikeReview
     },
-    likeReview(){
+    likeReview() {
       this.isLikeReview = !this.isLikeReview
     },
     checkOutModal() {
@@ -298,7 +271,7 @@ export default {
           this.modalOpen = "modal-open"
         }, 10);
       }
-        if (!this.isCheckOutModal) {
+      if (!this.isCheckOutModal) {
         setTimeout(() => {
           this.modalOpen = ""
         }, 10);
@@ -345,6 +318,10 @@ export default {
       return "https://fiverr-dev-res.cloudinary.com/general_assets/flags/1f1fa-1f1f8.png";
       // return `${this.gig.reviewers.flag}`;
     },
+    gigReviewimg(){
+      this.counter++
+    return imgArray[counter]
+    }
   },
   components: {
     VueperSlides,

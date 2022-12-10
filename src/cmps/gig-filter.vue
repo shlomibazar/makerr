@@ -87,18 +87,18 @@
 
             <div class="flex">
               <input class="radio-btn" type="radio" id="express" name="express" value="1" v-model="buttonChoose" />
-              <label class="radio-label" for="express">Express 24H</label><br />
+              <label class="radio-label fivepix" for="express">Express 24H</label><br />
             </div>
             <div class="flex">
-              <input type="radio" id="3days" name="express" value="3" v-model="buttonChoose" />
-              <label class="radio-label" for="3days">Up to 3 days</label><br />
+              <input class="radio-btn" type="radio" id="3days" name="express" value="3" v-model="buttonChoose" />
+              <label class="radio-label fivepix" for="3days">Up to 3 days</label><br />
             </div>
             <div class="flex">
-              <input type="radio" id="7days" name="express" value="7" v-model="buttonChoose" />
-                <label class="radio-label" for="7days">up to 7 days</label><br />
+              <input class="radio-btn" type="radio" id="7days" name="express" value="7" v-model="buttonChoose" />
+                <label class="radio-label" for="7days">Up to 7 days</label><br />
             </div>
             <div class="flex">
-              <input type="radio" id="anytime" name="express" value="999" v-model="buttonChoose" />
+              <input class="radio-btn" type="radio" id="anytime" name="express" value="999" v-model="buttonChoose" />
                 <label class="radio-label" for="anytime">Anytime</label><br />
             </div>
           </section>
