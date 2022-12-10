@@ -50,21 +50,15 @@ background-color: rgba(0, 0, 0, 0.39);
             
             .close-checkout-btn{
             font-size: 20px;
+                &:hover{
+                    cursor: pointer;
+                }
             }
             .order-title{
             font-size: 15px;
             }
         }
-    .F4HBtqu {
-            color: #404145;
-            font-weight: 600;
-            padding: rem(12px) 0;
-            border: 1px solid green;
-            /* &:hover{
-        border: 1px solid ;
-    } */
-        }
-    .PKFZREU {
+        .PKFZREU {
             -webkit-box-orient: vertical;
             -webkit-box-direction: normal;
             -webkit-box-pack: center;
@@ -85,17 +79,32 @@ background-color: rgba(0, 0, 0, 0.39);
             flex-direction: column;
             -webkit-justify-content: center;
             justify-content: center;
-            // margin-bottom: 12px;
             padding: 27px;
             width: 100%;
             margin: 0;
             outline: 0;
+            .gig-mini-info-basic{
+                position: relative;
+                bottom: 120px;
+                margin-left: 25px;
+                .info-basic-text{
+                    font-size: 13px;
+                    margin-left: 5px;
+                }
+            }
             .gig-mini-info{
-        margin-top: 3px;
-        border:1.5px solid rgb(51, 50, 50);
-        border-radius: 8px;
-        height: 195px;
-        width: 100%;
+                .F4HBtqu{
+                    font-weight: bold;
+                    font-size: 25px;
+                }
+                display: flex;
+                justify-content: space-between;
+                margin-top: 3px;
+                border:2.5px solid rgb(0, 0, 0);
+                border-radius: 8px;
+                height: 195px;
+                padding: 20px;
+                width: 100%;
     }
         }
     .asNFhyE {
@@ -198,3 +207,15 @@ background-color: rgba(0, 0, 0, 0.39);
         }
         }
     }
+.upgrade-order-ctn{
+    padding: 20px;
+    height: 92px;
+    width: 390px;
+    border-radius: 8px;
+    border: 1px solid rgba(53, 51, 51, 0.226);
+    .upgrade-title{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 5px;
+    }
+}

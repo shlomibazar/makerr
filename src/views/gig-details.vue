@@ -126,7 +126,12 @@
 
       <div class="seller-reviews">
         <h1>{{ gig.reviewers.length }} Reviews</h1>
-        <h4 v-for="review in gig.reviewers" :key="review._id"  :src="advanceCounder()" :value="review.reviews">
+        <h4
+          v-for="review in gig.reviewers"
+          :key="review._id"
+          :src="advanceCounder()"
+          :value="review.reviews"
+        >
           <hr />
           <div class="review-container">
             <section class="review-avatar-img">
@@ -285,7 +290,7 @@ export default {
       isDisLikeReview: false,
       isModalToggled: false,
       isCheckOutModal: false,
-      reviewImgCounter:0,
+      reviewImgCounter: 0,
       labels: [
         "graphics & design",
         "digital marketing",
@@ -372,8 +377,7 @@ export default {
       return `${this.gig.owner.imgUrl}`;
     },
     reviewersAvatar() {
-      
-      return `${this.imgs[this.reviewImgCounter]}`
+      return `${this.imgs[this.reviewImgCounter]}`;
     },
     userAvatar() {
       // this.reviewImgCounter++;
