@@ -119,7 +119,7 @@ export const gigStore = {
                 // commit({ type: 'setLabels', labels })
 
                 const gigs = await gigService.query(filterBy,sortBy)
-                // console.log('gigs',gigs)
+                console.log('gigs',gigs)
                 commit({ type: 'setGigs', gigs })
             } catch (err) {
                 console.log('Could not get gigs')

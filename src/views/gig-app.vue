@@ -88,7 +88,7 @@ export default {
     //  console.log('this.$route.fullpath=',this.$route.fullpath)
     //  this.setFilterByTxt(this.$route.query.title)
     //  console.log('example',example)
-    if (!this.$route.query.title || !this.$route.query.label) {
+    if (!this.$route.query.title && !this.$route.query.label) {
       this.$store.dispatch({ type: "loadGigs" })
 
     }
