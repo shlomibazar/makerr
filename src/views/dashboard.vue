@@ -47,7 +47,7 @@
       <div class="orders-container">
         <div>
           <div class="display-user-status" v-if="this.currConnUser.isSeller">
-            Your Gigs
+            Manage Orders 
           </div>
           <div class="display-user-status" v-else>Your Orders</div>
 
@@ -131,15 +131,23 @@ export default {
       var currConnUserId = currConnUser._id;
       console.log("currConnUserId", currConnUserId);
 
-      if (!currConnUser.isSeller) {
-        this.orders = this.orders.filter(
-          (order) => order.buyer.userId === currConnUserId
-        );
-      } else {
-        this.orders = this.orders.filter(
-          (order) => order.seller.sellerId === currConnUserId
-        );
+      if(currConnUser.isSeller){
+        console.log('i seller')
+            this.orders = this.orders.filter(
+            (order) => order.seller.sellerId === currConnUserId)
+      }else{
+               this.orders = this.orders.filter(
+           (order) => order.buyer.userId === currConnUserId)
       }
+      // if (!currConnUser.isSeller) {
+      //   this.orders = this.orders.filter(
+      //     (order) => order.buyer.userId === currConnUserId
+      //   );
+      // } else {
+      //   this.orders = this.orders.filter(
+      //     (order) => order.seller.sellerId === currConnUserId
+      //   );
+      // }
     },
     toggleMode() {
 

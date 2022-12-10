@@ -96,15 +96,7 @@ export const gigStore = {
                 throw err
             }
         },
-        // async loadGigs(context) {
-        //     try {
-        //         const gigs = await gigService.query()
-        //         context.commit({ type: 'setGigs', gigs })
-        //     } catch (err) {
-        //         console.log('gigStore: Error in loadGigs', err)
-        //         throw err
-        //     }
-        // },
+
         loadGigs: async ({ commit }, { filterBy, sortBy,isLoading }) => {
             commit({type:'setIsLoading', isLoading: true})
             console.log('sortBysssssssssssssssssssssss',sortBy)

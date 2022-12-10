@@ -18,7 +18,7 @@
         v-model="signupCred.password"
         placeholder="Password"
       />
-      <!-- <img-uploader @uploaded="onUploaded"></img-uploader> -->
+      <img-uploader @uploaded="onUploaded"></img-uploader>
       <button class="login-modal-btn">Signup</button>
     </form>
     </div>

@@ -1,23 +1,5 @@
 <template>
   <section class="gig-filter flex items-center filter-conteiner">
-    <!-- <label>
-      Min price:
-      <input type="range" @input="setFilterPrice" v-model.number="minPrice" min="0" max="1000" />
-      <span>{{ minPrice }}</span>
-    </label> -->
-
-    <!-- <div class="sort flex justify-between items-center m-2">
-      <p>Sort:</p>
-      <a class="sort-button" @click="setSort('rate')">Rate</a>
-      <a class="sort-button" @click="setSort('price')">Price</a>
-      <a class="sort-button" @click="setSort('createdAt')">Date</a>
-      
-    </div> -->
-
-    <!-- <div>
-
-      <input type="text" placeholder="search" v-model="filter.txt" @input="setFilterTxt" />
-    </div> -->
 
     <div class="flex">
       <!-- BUDGET MODAL -->

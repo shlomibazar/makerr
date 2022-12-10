@@ -75,11 +75,7 @@ export default {
       console.log('this.gigs', x)
       console.log('filteredGigs', this.filteredGigs)
       this.gigs = this.gigs.find(gig => gig.owner.id === this.userId)
-      // console.log('this.userId',this.userId)
-      // console.log('this.gigs', this.gigs)
-      // console.log('getters', await this.$store.getters.gigs)
-      //   this.$store.dispatch({ type: "loadGigs"  });
-      // this.$store.getters.
+
     },
     loadgigs() {
       console.log('hey')

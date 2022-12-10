@@ -9,7 +9,7 @@
     </section>
     <h1 class="catagory-header">{{ displayLabel }}</h1>
     <h2 class="catagory-subheader">
-      Find the perfect {{freelance}} services for your business
+      Find the perfect {{subtitle}} services for your business
     </h2>
     <section class="filter" ref="filterEl">
       <!-- <section v-if="isInHome" class="header-wrapper main-container fullWidthContainer sticky"
@@ -53,7 +53,7 @@ export default {
   data() {
     return {
       gigsSkelton: false,
-      freelance:"freelance",
+      subtitle:"freelance",
       labels: [
         "graphics & design",
         "digital marketing",
@@ -82,33 +82,21 @@ export default {
 
   created() {
 
-    //  var origin=this.$route
-    //  console.log('example',this.$route)
-
-    //  this.$router.push({ path: "/gig" });
-
-    //  console.log('this.$route.fullpath=',this.$route.fullpath)
-    //  this.setFilterByTxt(this.$route.query.title)
-    //  console.log('example',example)
     if (!this.$route.query.title && !this.$route.query.label) {
       this.$store.dispatch({ type: "loadGigs" })
-
     }
     if (this.$route.query.title) {
       this.$store.dispatch({ type: "loadGigs", filterBy: { txt: this.$route.query.title, status: '', labels: null, price: 0 } });
     }
-
     this.previousParams = "/gig"
 
-    // if (this.$route.query.title) {
-    //   this.setFilterByTxt(this.$route.query.title);
-
-    // }
     if (this.$route.query.label) {
       this.displayLabel = this.$route.query.label;
-      this.freelance= this.$route.query.label;
+      this.subtitle= this.$route.query.label;
       this.setFilterByLabel(this.$route.query.label);
     }
+
+    
 
     this.$watch(
       () => this.$route.query,
@@ -116,42 +104,42 @@ export default {
       (toParams, previousParams) => {
         if (!this.$route.query.label && !this.$route.query.title) {
           this.displayLabel = "All"
-          this.freelance ="freelance"
+          this.subtitle ="freelance"
         }
         if (this.$route.query) {
-          // console.log("this.$route.query", this.$route.query);
           if (previousParams.label !== toParams.label) {
-            // console.log("toParams label", toParams.label);
             this.setFilterByLabel(toParams.label);
           }
           if (previousParams.title !== toParams.title) {
-            // console.log("toParams tttt", toParams.title);
             this.setFilterByTxt(toParams.title);
           }
         }
       }
     );
+
+
+
+
+    
+
+
+
+
+
+
+
     window.addEventListener("scroll", this.updateScroll);
 
   },
   mounted() {
     this.elFilter = this.$refs.filterEl;
   },
-  // watch:{
-  //   '$route.query':{
-  //     handler(val){
-  //       const q = this.$route.query
-  //       console.log('val',val)
-  //       console.log('q',q)
-  //             this.setFilterByTxt(q);
-  //           },immediate:true,
-  //   }
-  // },
+
   methods: {
     setLabelToQuery(labelTitle) {
       const pathToRoute = this.$route.path.split("/");
       this.displayLabel = labelTitle;
-      this.freelance = labelTitle;
+      this.subtitle = labelTitle;
       this.$router.push({ path: "/gig", query: { label: labelTitle } });
     },
     updateScroll() {
@@ -165,7 +153,6 @@ export default {
         this.elFilter.classList.remove("change-position");
         this.elFilter.classList.remove("fullWidthContainer");
       }
-      // console.log("this in update scroll", this.scrollPosition);
     },
 
     getLabels() {
@@ -182,7 +169,6 @@ export default {
         showSuccessMsg("Gig added");
         this.gigToAdd = gigService.getEmptyGig();
       } catch (err) {
-        // console.log(err)
         showErrorMsg("Cannot add gig");
       }
     },
@@ -254,21 +240,13 @@ export default {
     isLoading() {
       return this.$store.getters.isLoading
     }
-    // updatePositionFixed() {
-    //   console.log('hi scroll',this.scrollPosition)
-    //   // console.log('y',window.scrollY)
-    //   // console.log('helllo',this.scrollPosition)
-    //   // { 'change-position': scrollPosition > 20 }
-    //   return  'change-position'
-    //   // console.log('this',this.scrollPosition)
-    // },
+
   },
 
   components: {
     gigList,
     gigFilter,
     skeleton,
-    //  VueSkeletonLoader ,
   },
   unmounted() {
     window.removeEventListener("scroll", this.updateScroll);
