@@ -1,28 +1,38 @@
 
 <template>
-    <div class="checkout-conteiner">
-        <h1 class="checkout-header">Order options</h1>
+    <section class="full-width-dimmer">
+        
+    
+    <div class="checkout-conteiner" :class="modalOpen">
+        
+        <section class="checkout-header">
+            <h1 class="order-title">Order options</h1>
+            <h1 class="close-checkout-btn">X</h1>
+
+        </section>
         <hr>
-        <section>
-            <h1>How often do you need this order?</h1>
+        
+           
             <div class="PKFZREU">
-                <div class="flex flex-between flex-items-center">
+                <div class="flex flex-between flex-items-center gig-mini-info">
                     <div class="F4HBtqu">Single order</div>
-                    <span class="flex flex-col">{{gig.price}}</span>
+                    <span class="flex flex-col">${{gig.price}}</span>
                 </div>
             </div>
 
 
 
-        </section>
-
+        
+        <section class="order-total-wrapper">
+            
+        
         <div class="ii7ZaAL">
             <div class="CddSubE">
                 <span class="text-display-2">
                     <div class="flex flex-col">
                         <span class="m-b-8">
                             <span class="font-size-32">
-                                ₪288.42
+                                ${{gig.price}}
                             </span>
                             <span class="text-normal tbody-6 m-l-8">for 1st order</span>
                         </span>
@@ -66,7 +76,7 @@
                                 d="M8 0C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8zm0 14c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6z">
                             </path>
                             <path d="M9 4H7v5h5V7H9V4z"></path>
-                        </svg></span><span class="m-l-12">14-day delivery</span></li>
+                        </svg></span><span class="m-l-12">{{gig.daysToMake}}-day delivery</span></li>
                 <li class="flex flex-items-center _7vsKc2B"><span class="nFghBOe Al0CMyF" aria-hidden="true"
                         style="width: 16px; height: 16px;"><svg width="16" height="16" viewBox="0 0 16 16"
                             xmlns="http://www.w3.org/2000/svg">
@@ -82,8 +92,15 @@
                 </li>
             </ul>
         </div>
-        <button class="checkout-cmp-btn" @click="">Checkout!</button>
+        </section>
+        <section class="botom-btn-section">
+        <button class="checkout-cmp-btn" @click="">Continue (${{gig.price}})</button>
+        <div class="botom-section-txt">You won't be charged yet</div>
+        </section>
+        
     </div>
+    </section>
+    
 </template>
 
 
@@ -96,7 +113,8 @@ export default {
         return {};
     },
     props: {
-    gig:null,
+        gig: null,
+        modalOpen:"",
   },
 
 

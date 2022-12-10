@@ -33,7 +33,7 @@
   </div> -->
 
   <section v-if="gig" class="gig-details-page">
-    <div class="details-content" :class="{ 'page-opacity': this.isCheckOutModal }">
+    <div class="details-content" >
       <h1>{{ gig.title }}</h1>
       <div class="user-details-container flex">
         <img class="details-user-avatar" :src="userAvatar" />
@@ -166,11 +166,11 @@
     </div>
     <!-- v-click-outside="checkOutModal()" -->
     
-    <div class="display-checkout-modal" :class="{ 'modal-open': this.isCheckOutModal }" v-if="this.isCheckOutModal" v-click-outside="checkOutModal">
-      <checkout :gig="gig"/>
+    <div class="display-checkout-modal" v-if="this.isCheckOutModal" v-click-outside="checkOutModal">
+      <checkout :gig="gig"  :modalOpen="modalOpen"/>
     </div>
   
-    <div class="checkout-container" :class="{ 'page-opacity': this.isCheckOutModal }">
+    <div class="checkout-container" >
       <div class="checkout-price">
         <span>${{ gig.price }}</span>
       </div>
@@ -260,6 +260,7 @@ export default {
   data() {
     return {
       gig: null,
+      modalOpen:"",
       isLikeReview: false,
       isDisLikeReview: false,
       isModalToggled: false,
@@ -277,15 +278,13 @@ export default {
       ],
     };
   },
-    // <checkout />
+
   created() {
     this.loadGig();
     // this.updateMsgs()
   },
   methods: {
-    // toggleCheckOutModal(){
-    //   this.isCheckOutModal = !this.isCheckOutModal
-    // },
+
     disLikeReview(){
       this.isDisLikeReview = !this.isDisLikeReview
     },
@@ -294,6 +293,16 @@ export default {
     },
     checkOutModal() {
       this.isCheckOutModal = !this.isCheckOutModal
+      if (this.isCheckOutModal) {
+        setTimeout(() => {
+          this.modalOpen = "modal-open"
+        }, 10);
+      }
+        if (!this.isCheckOutModal) {
+        setTimeout(() => {
+          this.modalOpen = ""
+        }, 10);
+      }
     },
     // checkOutModal() {
     //   this.$router.push(`/order/${this.gig._id}`);
@@ -309,9 +318,7 @@ export default {
       });
     },
     setLabelToQuery(labelTitle) {
-      // console.log('example', this.searchInfo)
       const pathToRoute = this.$route.path.split("/");
-      // console.log('pathToRoute', pathToRoute);
       this.displayLabel = labelTitle;
       this.$router.push({ path: "/gig", query: { label: labelTitle } });
     },
