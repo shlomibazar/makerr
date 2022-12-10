@@ -125,10 +125,9 @@
         <section class="nav-links flex not-sticky">
           <!-- <router-link class="nav-btn" to="/gig">Explore</router-link> -->
           <a
-          v-if="!loggedInUser"
           class="nav-btn"
           @click="clearFilter()"
-          >explore</a
+          >Explore</a
         >
 
           <router-link class="nav-btn" to="/gig">Become a Seller</router-link>

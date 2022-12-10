@@ -39,15 +39,15 @@
           <div class="minMax flex">
             <div class="flex column">
               <label for="minPrice">MIN.</label>
-              <!-- <input type="number" id="minPrice" name="minPrice" min="0" class="inputPrice" v-bind:budget.minPrice="value" placeholder="Any              $"/> -->
-              <input type="number" id="minPrice" name="minPrice" min="0" class="inputPrice" v-model="budget.minPrice"
-                placeholder="Any              $" />
+              <!-- <input type="text" id="minPrice" name="minPrice" min="0" class="inputPrice" v-bind:budget.minPrice="value" placeholder="Any              $"/> -->
+              <input type="text" id="minPrice" name="minPrice" min="0" class="inputPrice" v-model="budget.minPrice "
+                placeholder="Any             $" />
             </div>
             <div class="flex column">
               <label for="maxPrice">MAX.</label>
-              <!-- <input type="number" id="maxPrice" name="maxPrice" min="0" class="inputPrice" v-bind:budget.maxPrice="value" placeholder="Any              $"/> -->
-              <input type="number" id="maxPrice" name="maxPrice" min="0" class="inputPrice" v-model="budget.maxPrice"
-                placeholder="Any              $" />
+              <!-- <input type="text" id="maxPrice" name="maxPrice" min="0" class="inputPrice" v-bind:budget.maxPrice="value" placeholder="Any              $"/> -->
+              <input type="text" id="maxPrice" name="maxPrice" min="0" class="inputPrice" v-model="budget.maxPrice"
+                placeholder="Any             $" />
             </div>
           </div>
           <div>
@@ -140,8 +140,8 @@ export default {
       selected: "",
       buttonChoose: "",
       budget: {
-        minPrice: "Any",
-        maxPrice: "Any",
+        minPrice: "",
+        maxPrice: "",
       },
     };
   },
@@ -177,11 +177,17 @@ export default {
     setFilterBudget() {
       console.log("this.budgetttttttttttttt", this.budget);
 
-      if (!this.budget.minPrice || typeof this.budget.minPrice === "string") {
+      // if (!this.budget.minPrice || typeof this.budget.minPrice === "string") {
+      if (!this.budget.minPrice ) {
         this.budget.minPrice = 0;
+      }else{
+      this.budget.minPrice = +(this.budget.minPrice)
       }
-      if (!this.budget.maxPrice || typeof this.budget.maxPrice === "string") {
+      // if (!this.budget.maxPrice || typeof this.budget.maxPrice === "string") {
+      if (!this.budget.maxPrice ) {
         this.budget.maxPrice = 9999;
+      }else{
+        this.budget.maxPrice = +(this.budget.maxPrice)
       }
       this.isBudgetModal = false;
       this.$emit("filteredBudget", this.budget);

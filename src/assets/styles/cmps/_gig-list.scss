@@ -456,21 +456,30 @@ box-shadow: none !important;
     border-radius: 50%;
     font-size: 4px;
     opacity: 1;
-    top: 70px;
+    top: 75px;
     border: 1px solid #B5BCD0;
   }
 
   .vueperslides__arrow--next {
-    // right: -12px;
+    right: -1px;
     border-radius: 15px 0px 0px 15px;
-    transform: translateX(+120%);
+    transform: translateX(+126%);
+    svg{
+      transform: translateX(-4px);
+    }
 
   }
 
   .vueperslides__arrow--prev {
+    left: -1px;
     border-radius: 0px 15px 15px 0px;
     // left: -12px;
-    transform: translateX(-120%);
+    transform: translateX(-124%);
+   
+      svg{
+        transform: translateX(4px) !important ;
+      
+    }
   }
   //grandfather of arrows
   .vueperslides__inner {
