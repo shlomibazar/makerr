@@ -15,18 +15,14 @@
       <!-- <section v-if="isInHome" class="header-wrapper main-container fullWidthContainer sticky"
     :class="{ change_color: scrollPosition > 1 }"> -->
 
-      <gig-filter
-        @filteredTxt="debounceHandler"
-        @filteredBudget="setFilterByBudget"
-        @sorted="setSortBy"
-        @filteredDel="setFilterByDel"
-      />
+      <gig-filter @filteredTxt="debounceHandler" @filteredBudget="setFilterByBudget" @sorted="setSortBy"
+        @filteredDel="setFilterByDel" />
     </section>
-<!-- <div class="flex " style="gap:32px" v-if="!gigsSkelton"> -->
-  <gig-list @removeGig="removeGig" v-if="!isLoading" :gigs="gigs" />
+    <!-- <div class="flex " style="gap:32px" v-if="!gigsSkelton"> -->
+    <gig-list @removeGig="removeGig" v-if="!isLoading" :gigs="gigs" />
 
 
-<skeleton v-else/>
+    <skeleton v-else />
 
     <!-- <hr />
     <form @submit.prevent="addGig()">
@@ -55,7 +51,7 @@ import skeleton from "./skeleton.vue";
 export default {
   data() {
     return {
-      gigsSkelton:false,
+      gigsSkelton: false,
       labels: [
         "graphics & design",
         "digital marketing",
@@ -84,20 +80,27 @@ export default {
 
   created() {
 
+    //  var origin=this.$route
+    //  console.log('example',this.$route)
 
+    //  this.$router.push({ path: "/gig" });
+
+    //  console.log('this.$route.fullpath=',this.$route.fullpath)
+    //  this.setFilterByTxt(this.$route.query.title)
+    //  console.log('example',example)
     if (!this.$route.query.title || !this.$route.query.label) {
-      this.$store.dispatch({ type: "loadGigs" });
+      this.$store.dispatch({ type: "loadGigs" })
 
     }
     if (this.$route.query.title) {
-      this.$store.dispatch({ type: "loadGigs", filterBy: {txt: this.$route.query.title, status:'',labels:null, price:0} });
+      this.$store.dispatch({ type: "loadGigs", filterBy: { txt: this.$route.query.title, status: '', labels: null, price: 0 } });
     }
 
     this.previousParams = "/gig"
-    
+
     // if (this.$route.query.title) {
     //   this.setFilterByTxt(this.$route.query.title);
-      
+
     // }
     if (this.$route.query.label) {
       this.displayLabel = this.$route.query.label;
@@ -108,8 +111,12 @@ export default {
       () => this.$route.query,
 
       (toParams, previousParams) => {
-        console.log('toParams',toParams)
-        console.log('previousParams',previousParams)
+        console.log('toParams', toParams)
+        console.log('previousParams', previousParams)
+        if (!this.$route.query.label && !this.$route.query.title) {
+          console.log('hey no queryyy')
+          this.displayLabel = "All"
+        }
         if (this.$route.query) {
           // console.log("this.$route.query", this.$route.query);
           if (previousParams.label !== toParams.label) {
@@ -129,16 +136,16 @@ export default {
   mounted() {
     this.elFilter = this.$refs.filterEl;
   },
-// watch:{
-//   '$route.query':{
-//     handler(val){
-//       const q = this.$route.query
-//       console.log('val',val)
-//       console.log('q',q)
-//             this.setFilterByTxt(q);
-//           },immediate:true,
-//   }
-// },
+  // watch:{
+  //   '$route.query':{
+  //     handler(val){
+  //       const q = this.$route.query
+  //       console.log('val',val)
+  //       console.log('q',q)
+  //             this.setFilterByTxt(q);
+  //           },immediate:true,
+  //   }
+  // },
   methods: {
     setLabelToQuery(labelTitle) {
       const pathToRoute = this.$route.path.split("/");
@@ -211,7 +218,7 @@ export default {
       console.log("Gig msgs:", gig.msgs);
     },
     setFilterByTxt(txt) {
-      console.log("hey i in set filter by text",txt);
+      console.log("hey i in set filter by text", txt);
       this.filterBy.txt = txt;
       this.loadGigs();
     },
@@ -245,7 +252,7 @@ export default {
       return this.$store.getters.loggedinUser;
     },
     gigs() {
-        return this.$store.getters.gigs;
+      return this.$store.getters.gigs;
     },
     labels() {
       return this.labels;
@@ -254,7 +261,7 @@ export default {
       this.toParams = this.$route.query;
       return this.toParams;
     },
-    isLoading(){
+    isLoading() {
       return this.$store.getters.isLoading
     }
     // updatePositionFixed() {
