@@ -9,7 +9,7 @@
     </section>
     <h1 class="catagory-header">{{ displayLabel }}</h1>
     <h2 class="catagory-subheader">
-      Find the perfect freelance services for your business
+      Find the perfect {{freelance}} services for your business
     </h2>
     <section class="filter" ref="filterEl">
       <!-- <section v-if="isInHome" class="header-wrapper main-container fullWidthContainer sticky"
@@ -17,6 +17,7 @@
 
       <gig-filter @filteredTxt="debounceHandler" @filteredBudget="setFilterByBudget" @sorted="setSortBy"
         @filteredDel="setFilterByDel" />
+        <h1 class="gigs-quantity">{{ gigs.length *8 }} services available</h1>
     </section>
     <!-- <div class="flex " style="gap:32px" v-if="!gigsSkelton"> -->
     <gig-list @removeGig="removeGig" v-if="!isLoading" :gigs="gigs" />
@@ -52,6 +53,7 @@ export default {
   data() {
     return {
       gigsSkelton: false,
+      freelance:"freelance",
       labels: [
         "graphics & design",
         "digital marketing",
@@ -104,6 +106,7 @@ export default {
     // }
     if (this.$route.query.label) {
       this.displayLabel = this.$route.query.label;
+      this.freelance= this.$route.query.label;
       this.setFilterByLabel(this.$route.query.label);
     }
 
@@ -111,11 +114,9 @@ export default {
       () => this.$route.query,
 
       (toParams, previousParams) => {
-        console.log('toParams', toParams)
-        console.log('previousParams', previousParams)
         if (!this.$route.query.label && !this.$route.query.title) {
-          console.log('hey no queryyy')
           this.displayLabel = "All"
+          this.freelance ="freelance"
         }
         if (this.$route.query) {
           // console.log("this.$route.query", this.$route.query);
@@ -150,6 +151,7 @@ export default {
     setLabelToQuery(labelTitle) {
       const pathToRoute = this.$route.path.split("/");
       this.displayLabel = labelTitle;
+      this.freelance = labelTitle;
       this.$router.push({ path: "/gig", query: { label: labelTitle } });
     },
     updateScroll() {
@@ -171,7 +173,6 @@ export default {
     },
     loadGigs() {
       const filterBy = JSON.parse(JSON.stringify(this.filterBy));
-      console.log("🚀 ~ file: gig-app.vue ~ line 68 ~ loadGigs ~ filterBy", filterBy)
       const sortBy = JSON.parse(JSON.stringify(this.sortBy));
       this.$store.dispatch({ type: "loadGigs", filterBy, sortBy });
     },
@@ -190,7 +191,6 @@ export default {
         await this.$store.dispatch(getActionRemoveGig(gigId));
         showSuccessMsg("Gig removed");
       } catch (err) {
-        console.log(err);
         showErrorMsg("Cannot remove gig");
       }
     },
@@ -201,7 +201,6 @@ export default {
         await this.$store.dispatch(getActionUpdateGig(gig));
         showSuccessMsg("Gig updated");
       } catch (err) {
-        console.log(err);
         showErrorMsg("Cannot update gig");
       }
     },
@@ -210,22 +209,15 @@ export default {
         await this.$store.dispatch(getActionAddGigMsg(gigId));
         showSuccessMsg("Gig msg added");
       } catch (err) {
-        console.log(err);
         showErrorMsg("Cannot add gig msg");
       }
     },
-    printGigToConsole(gig) {
-      console.log("Gig msgs:", gig.msgs);
-    },
     setFilterByTxt(txt) {
-      console.log("hey i in set filter by text", txt);
       this.filterBy.txt = txt;
       this.loadGigs();
     },
     setFilterByDel(delTime) {
       this.filterBy.delTime = delTime;
-      console.log("hey i in set filter by del");
-      console.log("delTime", delTime);
       this.loadGigs();
     },
     setFilterByStatus(status) {
@@ -234,12 +226,10 @@ export default {
     },
     setFilterByLabel(labels) {
       this.filterBy.label = labels;
-      console.log("this.filterBy.labels", this.filterBy.labels);
       this.loadGigs();
     },
     setFilterByBudget(budget) {
       this.filterBy.budget = budget;
-      console.log("this.filterBy.budget", this.filterBy.budget);
       this.loadGigs();
     },
     setSortBy(sortBy) {

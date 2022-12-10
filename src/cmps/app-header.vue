@@ -124,17 +124,10 @@
       <nav class="flex nav-bar-links not-sticky">
         <section class="nav-links flex not-sticky">
           <!-- <router-link class="nav-btn" to="/gig">Explore</router-link> -->
-          <a
-          v-if="!loggedInUser"
-          class="nav-btn"
-          @click="clearFilter()"
-          >explore</a
-        >
-
+          <a class="nav-btn" @click="clearFilter()">Explore</a>
           <router-link class="nav-btn" to="/gig">Become a Seller</router-link>
           <a v-if="!loggedInUser" class="nav-btn" @click="toggleSignInModal(false)"
-            >Sign In</a
-          >
+            >Sign In</a>
         </section>
         <a
           v-if="!loggedInUser"
