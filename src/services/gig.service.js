@@ -90,6 +90,7 @@ function getEmptyReview() {
 }
 function getEmptyGig(){
     return {
+
         image: "https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/3171448/original/a41a38f3733bb97279a49d1449f7337dece50693.jpg",
         images: [
             "https://res.cloudinary.com/djyj6l7de/image/upload/v1670054167/gigs%20images/gig%201/final_logo_dnmfrp.webp",
@@ -182,6 +183,11 @@ function getEmptyGig(){
         ]
     }
 }
+
+
+
+
+
 // gigs = 
 //     [
 //       {
