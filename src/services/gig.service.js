@@ -91,13 +91,12 @@ function getEmptyReview() {
 function getEmptyGig(){
     return {
 
-        image: "https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/3171448/original/a41a38f3733bb97279a49d1449f7337dece50693.jpg",
+        image: "https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/103152154/original/b89645456b7f6906afa872771737e980b6f57cfb.jpg",
         images: [
-            "https://res.cloudinary.com/djyj6l7de/image/upload/v1670054167/gigs%20images/gig%201/final_logo_dnmfrp.webp",
-            "https://res.cloudinary.com/djyj6l7de/image/upload/v1670054167/gigs%20images/gig%201/design-a-professional-business-flyer-or-poster_frbudj.jpg",
-            "https://res.cloudinary.com/djyj6l7de/image/upload/v1670054167/gigs%20images/gig%201/f672898aa2f4756e249b9c2edb27d3339860de8d_bgjfwr.webp",
-            "https://res.cloudinary.com/djyj6l7de/image/upload/v1670054167/gigs%20images/gig%201/design-a-professional-business-flyer-or-poster_1_vq55mr.jpg",
-            "https://res.cloudinary.com/djyj6l7de/image/upload/v1670054167/gigs%20images/gig%201/final_logo1_emcful.webp",
+            "https://res.cloudinary.com/djyj6l7de/image/upload/v1670665565/gigs%20images/2logo/14b2092c5fa6b50f36a0c97615b7b29779b23a5b_fjznlo.webp",
+            "https://res.cloudinary.com/djyj6l7de/image/upload/v1670665565/gigs%20images/2logo/c87fdb57cbf5e835350b4aadc99e7efc32b5566b_inuqje.webp",
+            "https://res.cloudinary.com/djyj6l7de/image/upload/v1670665565/gigs%20images/2logo/op11_visojx.jpg",
+            "https://res.cloudinary.com/djyj6l7de/image/upload/v1670665565/gigs%20images/2logo/53376177c6b6579947e3f93951a0e22316e17f7d_ofk0hr.jpg",
         ],
         title: "",
         category: "Graphics & Design",
@@ -105,7 +104,7 @@ function getEmptyGig(){
         description: "Hi there ! Thanks for stopping by !!\nA Team of Talented Graphic Designer with 8+ years of experience in Graphic Industry, expertise as Logo Maker, You'll get creative & AWESOME logo design for your business.\nMy portfolio : https://www.fiverr.com/users/design_desk/portfolio/NjFiYjE4NmMwZTgwMDUwMDAxZTMzMjJh\n★ Why Us? ★\nTalented Logo Maker Team\nFully custom made, creative, original, UNIQUE and AWESOME designs\nProfessional customer support 24/7\nHigh Quality work\n100% money back policy if not satisfied\n★ WHAT DO YOU GET? ★\n✔ Highly Professional, UNIQUE & High Quality designs\n✔ UNLIMITED revisions until u r 100% satisfied\n✔ Fast turn around time 24 to 48 hours only.\n✔ 100% original & unique vector design from Adobe Illustrator\n✔ Vector Source Files (scalable without any quality loss) (AI, EPS, PDF) for the final design ✔ PROFESSIONAL Communication & Outstanding Customer Support ✔ Guaranteed High Quality work\nIf you have any question,\nFeel free to★ Contact Me! ★I'll be happy to help !\nLet's get started!\n-Your Logo Maker",
         price: '',
         daysToMake: 9,
-        labels: ["graphics & design"],
+        labels: ["graphics & design","Logo"],
         owner: {
             _id: "",
             fullname: "",
@@ -183,6 +182,101 @@ function getEmptyGig(){
         ]
     }
 }
+// function getEmptyGig(){
+//     return {
+
+//         image: "https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/3171448/original/a41a38f3733bb97279a49d1449f7337dece50693.jpg",
+//         images: [
+//             "https://res.cloudinary.com/djyj6l7de/image/upload/v1670054167/gigs%20images/gig%201/final_logo_dnmfrp.webp",
+//             "https://res.cloudinary.com/djyj6l7de/image/upload/v1670054167/gigs%20images/gig%201/design-a-professional-business-flyer-or-poster_frbudj.jpg",
+//             "https://res.cloudinary.com/djyj6l7de/image/upload/v1670054167/gigs%20images/gig%201/f672898aa2f4756e249b9c2edb27d3339860de8d_bgjfwr.webp",
+//             "https://res.cloudinary.com/djyj6l7de/image/upload/v1670054167/gigs%20images/gig%201/design-a-professional-business-flyer-or-poster_1_vq55mr.jpg",
+//             "https://res.cloudinary.com/djyj6l7de/image/upload/v1670054167/gigs%20images/gig%201/final_logo1_emcful.webp",
+//         ],
+//         title: "",
+//         category: "Graphics & Design",
+//         subCategory: "Logo Design",
+//         description: "Hi there ! Thanks for stopping by !!\nA Team of Talented Graphic Designer with 8+ years of experience in Graphic Industry, expertise as Logo Maker, You'll get creative & AWESOME logo design for your business.\nMy portfolio : https://www.fiverr.com/users/design_desk/portfolio/NjFiYjE4NmMwZTgwMDUwMDAxZTMzMjJh\n★ Why Us? ★\nTalented Logo Maker Team\nFully custom made, creative, original, UNIQUE and AWESOME designs\nProfessional customer support 24/7\nHigh Quality work\n100% money back policy if not satisfied\n★ WHAT DO YOU GET? ★\n✔ Highly Professional, UNIQUE & High Quality designs\n✔ UNLIMITED revisions until u r 100% satisfied\n✔ Fast turn around time 24 to 48 hours only.\n✔ 100% original & unique vector design from Adobe Illustrator\n✔ Vector Source Files (scalable without any quality loss) (AI, EPS, PDF) for the final design ✔ PROFESSIONAL Communication & Outstanding Customer Support ✔ Guaranteed High Quality work\nIf you have any question,\nFeel free to★ Contact Me! ★I'll be happy to help !\nLet's get started!\n-Your Logo Maker",
+//         price: '',
+//         daysToMake: 9,
+//         labels: ["graphics & design","Logo"],
+//         owner: {
+//             _id: "",
+//             fullname: "",
+//             rate: 3,
+//             level: 3,
+//             isOnline: false,
+//             clients: 
+//             ["https://res.cloudinary.com/djyj6l7de/image/upload/v1670100587/logos/logo3_tuit0t.png",
+//             "https://res.cloudinary.com/djyj6l7de/image/upload/v1670100586/logos/61a87e99f3085f4291c4b980_cn1wzl.webp",
+//             ],
+//             imgUrl: "https://fiverr-res.cloudinary.com/t_profile_original,q_auto,f_auto/attachments/profile/photo/044fb5914a845a4eb59fc2b69f7f7b32-1634120039750/4dbc2acb-7322-4cd0-9afb-e5190e8e8a0d.jpg",
+//             loc: "India",
+//             memberSince: "Jun 2014",
+//             avgResponceTime: "2 hours",
+//             about: "Hello! My name is VD. I am a connoisseur of art and music. I love being around nature and my pets. I have a team of professional graphic designers with an experience of 8+ years. We specialize in logo designing. We're available exclusively on fiverr to rock your world with our designing skills. Come and experience it for yourself!",
+//         },
+
+//         lastDelivery: "about 3 hours",
+//         reviewers: [
+//             {
+//                 name: "airbornesnow",
+//                 country: "United States",
+//                 flag: "https://fiverr-dev-res.cloudinary.com/general_assets/flags/1f1fa-1f1f8.png",
+//                 review: "The seller's communication was EXCELLENT and the service was exactly as described. When I wanted revisions, they did not hesitate to provide me with alterations of the design. Although they were nice and kind when I asked for the revisions, all the revisions were half a**ed and sloppy. Even when I provided a concept drawing for them to TRACE, the results were still not what I expected. Buyers BEWARE: The seller's communication is excellent, friendly, and VERY kind. However, if you ask for any revisions, the revisions you will receive will be sloppy and half-a**ed.",
+//                 reviewedAt: "Published 4 days ago"
+//             },
+//             {
+//                 name: "jacobmnb",
+//                 country: "United Kingdom",
+//                 flag: "https://fiverr-dev-res.cloudinary.com/general_assets/flags/1f1ec-1f1e7.png",
+//                 review: "I thought this service was amazing, I bought the basic option just hoping for a basic logo, but the seller went above my expectations and provided me with a bunch of concepts that were better than I could have imagined, for £7.90 I think this service is a must-buy for anyone needing a professional-looking logo and not wanting to spend a huge amount",
+//                 reviewedAt: "Published 2 months ago"
+//             },
+//             {
+//                 name: "ashtonpeckham",
+//                 country: "United States",
+//                 flag: "https://fiverr-dev-res.cloudinary.com/general_assets/flags/1f1fa-1f1f8.png",
+//                 review: "The seller was very responsive. We had revisions after the initial designs were delivered and the seller made them very quickly. The logo we selected is perfect for our current needs. Recommend including your vision in the initial request so you don't end up with ideas that you don't like. There were only 2 real contenders because the Fiverr site wouldn't allow me to attach my hand drawn idea. The paperclip icon was essentially rendered inactive, even after several attempts. This is no fault of the designers; i should have been even more descriptive with my request when I was unable to attach files.",
+//                 reviewedAt: "Published 1 week ago"
+//             },
+//             {
+//                 name: "borowski10",
+//                 country: "United States",
+//                 flag: "https://fiverr-dev-res.cloudinary.com/general_assets/flags/1f1fa-1f1f8.png",
+//                 review: "Ultimately, I am very happy with the final logo I received. However, the seller's communication could have been better. There were a few times I asked for specific revisions and I was sent the same thing or something else that I didn't ask for. It took about 2 weeks for me to finally get what I was looking for. In the end, I got what I paid for and I am grateful for the service!",
+//                 reviewedAt: "Published 2 days ago"
+//             },
+//             {
+//                 name: "fowlplay_uk",
+//                 country: "United Kingdom",
+//                 flag: "https://fiverr-dev-res.cloudinary.com/general_assets/flags/1f1ec-1f1e7.png",
+//                 review: "VD was great. I had a very specific design in mind already that I needed recreating professionally and they did not disappoint. Even when I started to get picky with the design, nothing I requested was ever too much trouble. We went through many revisions to get it to exactly how I wanted it and every interaction we had was effortless. This is the first project I'd commissioned so wasn't really sure on the correct etiquette, yet VD made things so easy for me. Can't recommend these guys enough for that",
+//                 reviewedAt: "Published 2 months ago"
+//             }
+//         ],
+//         tags: [
+//             {
+//                 name: "minimalist"
+//             },
+//             {
+//                 name: "flat"
+//             },
+//             {
+//                 name: "logo design"
+//             },
+//             {
+//                 name: "modern"
+//             },
+//             {
+//                 name: "unique"
+//             },
+//             {
+//                 name: "logo maker"
+//             }
+//         ]
+//     }
+// }
 
 
 
