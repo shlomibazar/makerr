@@ -167,7 +167,7 @@
     <!-- v-click-outside="checkOutModal()" -->
     
     <div class="display-checkout-modal" v-if="this.isCheckOutModal" v-click-outside="checkOutModal">
-      <checkout :gig="gig"  :modalOpen="modalOpen"/>
+      <checkout :gig="gig" :modalOpen="modalOpen"/>
     </div>
   
     <div class="checkout-container" >
