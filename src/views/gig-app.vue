@@ -96,7 +96,10 @@ export default {
       this.setFilterByLabel(this.$route.query.label);
     }
 
+
+
     
+    ////////////////////frontend///////////////////////
 
     this.$watch(
       () => this.$route.query,
@@ -117,10 +120,13 @@ export default {
       }
     );
 
+    ////////////////////frontend///////////////////////
 
 
 
     
+
+
 
 
 

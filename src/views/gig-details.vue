@@ -51,38 +51,17 @@
       <h3 class="repeat-buyesr-title">
         People keep coming back! logoflow has an exceptional number of repeat buyers.
       </h3>
-      <vueper-slides
-        class="details-slider"
-        ref="vueperslides1"
-        :touchable="false"
-        :autoplay="false"
-        :bullets="false"
-        @slide="$refs.vueperslides2.goToSlide($event.currentSlide.index, { emit: false })"
-        fixed-height="427px"
-      >
+      <vueper-slides class="details-slider" ref="vueperslides1" :touchable="false" :autoplay="false" :bullets="false"
+        @slide="$refs.vueperslides2.goToSlide($event.currentSlide.index, { emit: false })" fixed-height="427px">
         <vueper-slide v-for="(slide, i) in gig.images" :key="i" :image="slide">
         </vueper-slide>
       </vueper-slides>
       <div class="bot-details-slider">
-        <vueper-slides
-          class="no-shadow thumbnails"
-          ref="vueperslides2"
-          @slide="
-            $refs.vueperslides1.goToSlide($event.currentSlide.index, { emit: false })
-          "
-          :visible-slides="4"
-          fixed-height="75px"
-          :bullets="false"
-          :touchable="false"
-          :gap="2.5"
-          :arrows="true"
-        >
-          <vueper-slide
-            v-for="(slide, i) in gig.images"
-            :key="i"
-            :image="slide"
-            @click.native="$refs.vueperslides2.goToSlide(i)"
-          >
+        <vueper-slides class="no-shadow thumbnails" ref="vueperslides2" @slide="
+          $refs.vueperslides1.goToSlide($event.currentSlide.index, { emit: false })
+        " :visible-slides="4" fixed-height="75px" :bullets="false" :touchable="false" :gap="2.5" :arrows="true">
+          <vueper-slide v-for="(slide, i) in gig.images" :key="i" :image="slide"
+            @click.native="$refs.vueperslides2.goToSlide(i)">
           </vueper-slide>
         </vueper-slides>
       </div>
@@ -96,11 +75,7 @@
         <div class="owner-details">
           <div class="owner-fullname">{{ gig.owner.fullname }}</div>
           <div class="stars"><span>★★★★★ 4.9</span> (456)</div>
-          <button
-            class="el-button is-plain btn-contact"
-            aria-disabled="false"
-            type="button"
-          >
+          <button class="el-button is-plain btn-contact" aria-disabled="false" type="button">
             <span class="">Contact Me</span>
           </button>
         </div>
@@ -126,12 +101,7 @@
 
       <div class="seller-reviews">
         <h1>{{ gig.reviewers.length }} Reviews</h1>
-        <h4
-          v-for="review in gig.reviewers"
-          :key="review._id"
-          :src="advanceCounder()"
-          :value="review.reviews"
-        >
+        <h4 v-for="review in gig.reviewers" :key="review._id" :src="advanceCounder()" :value="review.reviews">
           <hr />
           <div class="review-container">
             <section class="review-avatar-img">
@@ -161,24 +131,15 @@
               </div>
               <section class="review-helpful-selector">
                 <span>Helpful? </span>
-                <span
-                  class="review-like-btn"
-                  @click="likeReview"
-                  :class="{ 'review-like-active': isLikeReview }"
-                >
+                <span class="review-like-btn" @click="likeReview" :class="{ 'review-like-active': isLikeReview }">
                   👍 Yes
                 </span>
-                <span
-                  class="review-dislike-btn"
-                  @click="disLikeReview"
-                  :class="{ 'review-dislike-active': isDisLikeReview }"
-                >
+                <span class="review-dislike-btn" @click="disLikeReview"
+                  :class="{ 'review-dislike-active': isDisLikeReview }">
                   👎 No
                 </span>
               </section>
-              <span class="gig-like-title" v-if="isLikeReview"
-                >You found this gig helpful!</span
-              >
+              <span class="gig-like-title" v-if="isLikeReview">You found this gig helpful!</span>
             </section>
           </div>
         </h4>
@@ -186,11 +147,7 @@
     </div>
     <!-- v-click-outside="checkOutModal()" -->
 
-    <div
-      class="display-checkout-modal"
-      v-if="this.isCheckOutModal"
-      v-click-outside="checkOutModal"
-    >
+    <div class="display-checkout-modal" v-if="this.isCheckOutModal" v-click-outside="checkOutModal">
       <checkout :gig="gig" :modalOpen="modalOpen" />
     </div>
 
@@ -213,16 +170,10 @@
         <ul class="order-features clean-list">
           <li>
             <i class="checkMark">
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 11 9"
-                xmins="http://www.w3.org/2000/svg"
-                fill="#1ea968"
-              >
+              <svg width="16" height="16" viewBox="0 0 11 9" xmins="http://www.w3.org/2000/svg" fill="#1ea968">
                 <path
-                  d="M3.645 8.102.158 4.615a.536.536 0 0 1 0-.759l.759-.758c.21-.21.549-.21.758 0l2.35 2.349L9.054.416c.21-.21.55-.21.759 0l.758.758c.21.21.21.55 0 .759L4.403 8.102c-.209.21-.549.21-.758 0Z"
-                ></path>
+                  d="M3.645 8.102.158 4.615a.536.536 0 0 1 0-.759l.759-.758c.21-.21.549-.21.758 0l2.35 2.349L9.054.416c.21-.21.55-.21.759 0l.758.758c.21.21.21.55 0 .759L4.403 8.102c-.209.21-.549.21-.758 0Z">
+                </path>
               </svg>
             </i>
             3 concepts included
@@ -231,18 +182,12 @@
 
         <ul class="order-features clean-list">
           <li>
-            <i class="checkMark"
-              ><svg
-                width="16"
-                height="16"
-                viewBox="0 0 11 9"
-                xmins="http://www.w3.org/2000/svg"
-                fill="#1ea968"
-              >
+            <i class="checkMark"><svg width="16" height="16" viewBox="0 0 11 9" xmins="http://www.w3.org/2000/svg"
+                fill="#1ea968">
                 <path
-                  d="M3.645 8.102.158 4.615a.536.536 0 0 1 0-.759l.759-.758c.21-.21.549-.21.758 0l2.35 2.349L9.054.416c.21-.21.55-.21.759 0l.758.758c.21.21.21.55 0 .759L4.403 8.102c-.209.21-.549.21-.758 0Z"
-                ></path></svg
-            ></i>
+                  d="M3.645 8.102.158 4.615a.536.536 0 0 1 0-.759l.759-.758c.21-.21.549-.21.758 0l2.35 2.349L9.054.416c.21-.21.55-.21.759 0l.758.758c.21.21.21.55 0 .759L4.403 8.102c-.209.21-.549.21-.758 0Z">
+                </path>
+              </svg></i>
             Include 3D mockup
           </li>
         </ul>
@@ -250,17 +195,11 @@
         <ul class="order-features clean-list">
           <li>
             <i class="checkMark">
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 11 9"
-                xmins="http://www.w3.org/2000/svg"
-                fill="#1ea968"
-              >
+              <svg width="16" height="16" viewBox="0 0 11 9" xmins="http://www.w3.org/2000/svg" fill="#1ea968">
                 <path
-                  d="M3.645 8.102.158 4.615a.536.536 0 0 1 0-.759l.759-.758c.21-.21.549-.21.758 0l2.35 2.349L9.054.416c.21-.21.55-.21.759 0l.758.758c.21.21.21.55 0 .759L4.403 8.102c-.209.21-.549.21-.758 0Z"
-                ></path></svg
-            ></i>
+                  d="M3.645 8.102.158 4.615a.536.536 0 0 1 0-.759l.759-.758c.21-.21.549-.21.758 0l2.35 2.349L9.054.416c.21-.21.55-.21.759 0l.758.758c.21.21.21.55 0 .759L4.403 8.102c-.209.21-.549.21-.758 0Z">
+                </path>
+              </svg></i>
             Vector file
           </li>
         </ul>
