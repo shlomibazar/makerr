@@ -57,10 +57,9 @@
         </vueper-slide>
       </vueper-slides>
       <div class="bot-details-slider">
-
-        <vueper-slides class="no-shadow thumbnails" ref="vueperslides2"
-          @slide="$refs.vueperslides1.goToSlide($event.currentSlide.index, { emit: false })" :visible-slides="4"
-          fixed-height="75px" :bullets="false" :touchable="false" :gap="2.5" :arrows="true">
+        <vueper-slides class="no-shadow thumbnails" ref="vueperslides2" @slide="
+          $refs.vueperslides1.goToSlide($event.currentSlide.index, { emit: false })
+        " :visible-slides="4" fixed-height="75px" :bullets="false" :touchable="false" :gap="2.5" :arrows="true">
           <vueper-slide v-for="(slide, i) in gig.images" :key="i" :image="slide"
             @click.native="$refs.vueperslides2.goToSlide(i)">
           </vueper-slide>
@@ -68,17 +67,23 @@
       </div>
 
       <h3 class="about-gig-title">About This Gig</h3>
-      <p>{{ gig.description }}</p>
+      <pre class="pre-class">{{ gig.description }}</pre>
 
       <h3>About The Seller</h3>
       <div class="about-seller">
         <img class="details-user-avatar-about" :src="userAvatar" />
         <div class="owner-details">
+          
           <div class="owner-fullname">{{ gig.owner.fullname }}</div>
-          <div class="stars"><span>★★★★★ 4.9</span> (456)</div>
-          <button class="el-button is-plain btn-contact" aria-disabled="false" type="button">
+          <div class="stars"><span>★★★★★ </span><span class="rate-number">4.9</span><span class="revew-counter"> (456)</span></div>
+          <button
+            class="el-button is-plain btn-contact"
+            aria-disabled="false"
+            type="button"
+          >
             <span class="">Contact Me</span>
           </button>
+         
         </div>
       </div>
       <div class="extended-owner-details">
@@ -102,12 +107,16 @@
 
       <div class="seller-reviews">
         <h1>{{ gig.reviewers.length }} Reviews</h1>
-        <h4 v-for="review in gig.reviewers" :key="review._id" :value="review.reviews">
+        <h4
+          v-for="review in gig.reviewers"
+          :key="review._id"
+          :src="advanceCounder()"
+          :value="review.reviews"
+        >
           <hr />
           <div class="review-container">
             <section class="review-avatar-img">
-              <img class="avatar-img" :src="userAvatar" />
-              <!-- <img class="avatar-img" :src="userAvatar" /> -->
+              <img class="avatar-img" :src="reviewersAvatar" />
             </section>
             <section class="review-right-info">
               <div class="review-user-details">
@@ -133,10 +142,13 @@
               </div>
               <section class="review-helpful-selector">
                 <span>Helpful? </span>
-                <span class="review-like-btn" @click="likeReview" :class="{ 'review-like-active': isLikeReview }"> 👍
-                  Yes </span>
+                <span class="review-like-btn" @click="likeReview" :class="{ 'review-like-active': isLikeReview }">
+                  👍 Yes
+                </span>
                 <span class="review-dislike-btn" @click="disLikeReview"
-                  :class="{ 'review-dislike-active': isDisLikeReview }"> 👎 No </span>
+                  :class="{ 'review-dislike-active': isDisLikeReview }">
+                  👎 No
+                </span>
               </section>
               <span class="gig-like-title" v-if="isLikeReview">You found this gig helpful!</span>
             </section>
@@ -147,7 +159,7 @@
     <!-- v-click-outside="checkOutModal()" -->
 
     <div class="display-checkout-modal" v-if="this.isCheckOutModal" v-click-outside="checkOutModal">
-      <checkout :gig="gig" :modalOpen="modalOpen"/>
+      <checkout :gig="gig" :modalOpen="modalOpen" />
     </div>
 
     <div class="checkout-container">
@@ -212,7 +224,7 @@
   </section>
 </template>
 <script>
-import checkout from "../cmps/checkout.vue"
+import checkout from "../cmps/checkout.vue";
 import { gigService } from "../services/gig.service.js";
 import { getActionRemoveGig, getActionUpdateGig } from "../store/gig.store";
 import { VueperSlides, VueperSlide } from "vueperslides";
@@ -228,16 +240,7 @@ export default {
       isDisLikeReview: false,
       isModalToggled: false,
       isCheckOutModal: false,
-      imgArray:[
-      "https://res.cloudinary.com/djyj6l7de/image/upload/v1670678323/review%20pic/c379aa91-8e48-453f-adbf-cf2ab5a2ba8d_f85qjo.webp",
-      "https://res.cloudinary.com/djyj6l7de/image/upload/v1670678323/review%20pic/c379aa91-8e48-453f-adbf-cf2ab5a2ba8d_f85qjo.webp",
-      "https://res.cloudinary.com/djyj6l7de/image/upload/v1670678323/review%20pic/stepanadrian_ag4px7.webp",
-      "https://res.cloudinary.com/djyj6l7de/image/upload/v1670678323/review%20pic/JPEG_20210716_045808_7161494499008619166_zh6tkc.webp",
-      "https://res.cloudinary.com/djyj6l7de/image/upload/v1670678323/review%20pic/c6667c18-c48c-415f-8d6e-28fda9b62486_depjj6.webp",
-    "https://res.cloudinary.com/djyj6l7de/image/upload/v1670678323/review%20pic/c6667c18-c48c-415f-8d6e-28fda9b62486_depjj6.webp"
-    
-    ],
-    counter:-1,
+      reviewImgCounter: 0,
       labels: [
         "graphics & design",
         "digital marketing",
@@ -249,6 +252,13 @@ export default {
         "lifestyle",
         "trending",
       ],
+      imgs: [
+        "https://res.cloudinary.com/djyj6l7de/image/upload/v1670678323/review%20pic/c379aa91-8e48-453f-adbf-cf2ab5a2ba8d_f85qjo.webp",
+        "https://res.cloudinary.com/djyj6l7de/image/upload/v1670678323/review%20pic/1d8fa5f7-b34a-4f19-a55e-941a853fe2b2_qqpqnv.webp",
+        "https://res.cloudinary.com/djyj6l7de/image/upload/v1670678323/review%20pic/stepanadrian_ag4px7.webp",
+        "https://res.cloudinary.com/djyj6l7de/image/upload/v1670678323/review%20pic/JPEG_20210716_045808_7161494499008619166_zh6tkc.webp",
+        "https://res.cloudinary.com/djyj6l7de/image/upload/v1670678323/review%20pic/c6667c18-c48c-415f-8d6e-28fda9b62486_depjj6.webp",
+      ],
     };
   },
 
@@ -257,23 +267,30 @@ export default {
     // this.updateMsgs()
   },
   methods: {
-
+    advanceCounder() {
+     
+      this.reviewImgCounter++;
+      this.reviewImgCounter === 5 ? (this.reviewImgCounter = 0) : this.reviewImgCounter;
+    },
     disLikeReview() {
-      this.isDisLikeReview = !this.isDisLikeReview
+      this.isDisLikeReview = !this.isDisLikeReview;
+      this.isLikeReview?this.isLikeReview=false:this.isLikeReview
     },
     likeReview() {
-      this.isLikeReview = !this.isLikeReview
+      this.isLikeReview = !this.isLikeReview;
+      this.isDisLikeReview?this.isDisLikeReview=false:this.isDisLikeReview
+      
     },
     checkOutModal() {
-      this.isCheckOutModal = !this.isCheckOutModal
+      this.isCheckOutModal = !this.isCheckOutModal;
       if (this.isCheckOutModal) {
         setTimeout(() => {
-          this.modalOpen = "modal-open"
+          this.modalOpen = "modal-open";
         }, 10);
       }
       if (!this.isCheckOutModal) {
         setTimeout(() => {
-          this.modalOpen = ""
+          this.modalOpen = "";
         }, 10);
       }
     },
@@ -311,17 +328,23 @@ export default {
     userAvatar() {
       return `${this.gig.owner.imgUrl}`;
     },
+    reviewersAvatar() {
+      return `${this.imgs[this.reviewImgCounter]}`;
+    },
+    userAvatar() {
+      // this.reviewImgCounter++;
+      // this.reviewImgCounter === 5 ? (this.reviewImgCounter = 0) : this.reviewImgCounter;
+
+      return `${this.gig.owner.imgUrl}`;
+    },
     gigPreview() {
       return `${this.gig.owner.imgUrl}`;
     },
-    gigReviewFlag() {
-      return "https://fiverr-dev-res.cloudinary.com/general_assets/flags/1f1fa-1f1f8.png";
-      // return `${this.gig.reviewers.flag}`;
+    gigReviewFlag() { 
+      var locarIndex=""
+      this.reviewImgCounter != 0 ? locarIndex = this.reviewImgCounter - 1 : locarIndex = this.gig.reviewers.length-1 
+      return `${this.gig.reviewers[locarIndex].flag}`;
     },
-    gigReviewimg(){
-      this.counter++
-    return imgArray[counter]
-    }
   },
   components: {
     VueperSlides,
