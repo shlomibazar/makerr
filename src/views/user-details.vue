@@ -49,6 +49,9 @@ export default {
     userId() {
       return this.$route.params.id
     },
+    test() {
+      return this.$route.params.id
+    },
   },
 }
 </script>

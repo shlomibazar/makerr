@@ -44,7 +44,7 @@
           <div class="stars">
             <span class="rating-stars">★★★★★</span>
             <span class="rating-avg">4.9</span>
-            <a1 class="rating-amount">(456)</a1>
+            <span class="rating-amount">(456)</span>
           </div>
         </section>
       </div>
@@ -108,9 +108,9 @@
       <div class="seller-reviews">
         <h1>{{ gig.reviewers.length }} Reviews</h1>
         <h4
-          v-for="review in gig.reviewers"
+          v-for="(review,index) in gig.reviewers"
           :key="review._id"
-          :src="advanceCounder()"
+          :src="imgStuff"
           :value="review.reviews"
         >
           <hr />
@@ -124,7 +124,7 @@
                   <section class="reviewer-name">{{ review.name }}</section>
                   <!-- </div> -->
                   <div class="reviewer-country">
-                    <img class="reviewer-flag" :src="gigReviewFlag" />
+                    <img class="reviewer-flag" :src="gig.reviewers[index].flag" />
                     {{ review.country }}
                   </div>
                   <section class="stars-and-published">
@@ -226,10 +226,8 @@
 <script>
 import checkout from "../cmps/checkout.vue";
 import { gigService } from "../services/gig.service.js";
-import { getActionRemoveGig, getActionUpdateGig } from "../store/gig.store";
 import { VueperSlides, VueperSlide } from "vueperslides";
 import "vueperslides/dist/vueperslides.css";
-import { router } from "../router.js";
 
 export default {
   data() {
@@ -240,7 +238,7 @@ export default {
       isDisLikeReview: false,
       isModalToggled: false,
       isCheckOutModal: false,
-      reviewImgCounter: 0,
+      reviewImgCounter: -1,
       labels: [
         "graphics & design",
         "digital marketing",
@@ -267,11 +265,14 @@ export default {
     // this.updateMsgs()
   },
   methods: {
-    advanceCounder() {
-     
-      this.reviewImgCounter++;
-      this.reviewImgCounter === 5 ? (this.reviewImgCounter = 0) : this.reviewImgCounter;
+    test(index){
+      console.log('this.imgs[index]',this.imgs[index])
+ return `${this.imgs[index]}`  
     },
+    // advanceCounder() {
+    //   this.reviewImgCounter++;
+    //   this.reviewImgCounter === 5 ? (this.reviewImgCounter = 0) : this.reviewImgCounter;
+    // },
     disLikeReview() {
       this.isDisLikeReview = !this.isDisLikeReview;
       this.isLikeReview?this.isLikeReview=false:this.isLikeReview
@@ -305,6 +306,7 @@ export default {
       gigService.getById(id).then((gig) => {
         this.gig = gig;
         console.log("loadGig");
+        console.log('this.gig',this.gig)
       });
     },
     setLabelToQuery(labelTitle) {
@@ -313,12 +315,11 @@ export default {
       this.$router.push({ path: "/gig", query: { label: labelTitle } });
     },
   },
-  watch: {
-    "$route.params.gigId"(id) {
-      console.log("Changed to", id);
-    },
-  },
   computed: {
+    imgStuff(){
+      this.reviewImgCounter++
+      return this.imgs[this.reviewImgCounter]
+    },
     userDetails() {
       return `${this.gig.owner.fullname}`;
     },
@@ -330,6 +331,9 @@ export default {
     },
     reviewersAvatar() {
       return `${this.imgs[this.reviewImgCounter]}`;
+    },
+    advanceCounder(){
+      return this.imgs[this.reviewImgCounter]
     },
     userAvatar() {
       // this.reviewImgCounter++;
