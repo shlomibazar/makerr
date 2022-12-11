@@ -120,6 +120,7 @@ body {
     }
 
     &.not-sticky {
+        
         background-color: rgb(0, 0, 0);
         height: rem(42px);
         width: rem(55px);
@@ -139,8 +140,10 @@ body {
     height: 3rem;
     margin-bottom: rem(28px);
     margin-top: rem(28px);
+
     
     &.not-sticky {
+
         border: rem(1.7px) solid rgb(215, 212, 212);
         height: rem(42px);
         width: rem(543px);
