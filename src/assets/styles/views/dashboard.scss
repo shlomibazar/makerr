@@ -17,7 +17,7 @@
     border-radius: 2px;
     margin-top: 150px;
     width: 300px;
-    height: fit-content;
+    height: 242px;
     padding: 32px;
     color: #3C4340;
     border: 2px solid rgb(235, 232, 232);
@@ -71,7 +71,7 @@
     .user-name-avatar{
         text-align: center;
         position:absolute;
-        margin-top: rem(-5px);
+        margin-top: rem(5px);
         height: fit-content;
         width: 15.8%;
         background-color: #fff;
@@ -172,6 +172,7 @@
                         font-size: 1rem;
                         font-family: work-sans;
                         color: #abaeb6;
+                        margin-bottom: 10px;
                     }
                     
                    .seller {

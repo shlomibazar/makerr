@@ -20,7 +20,7 @@
           <hr />
           <div class="prodress-data">
             <div class="earned">
-              Earned in July<span>{{ earned }}</span>
+              Earned in July<span>$100</span>
             </div>
             <div class="response">Response time<span>2Hrs</span></div>
           </div>
@@ -55,7 +55,7 @@
                 </div>
                 <div class="issued">
                   <p class="title"><strong>Issued At</strong></p>
-                  <p class="info">{{ order.createdAt }}</p>
+                  <p class="info">{{ dateFormat(order.createdAt) }}</p>
                 </div>
               </div>
               <div class="status-container">
@@ -158,6 +158,10 @@ export default {
       // this.orders = await orderService.query();
       // orderService.update()
     },
+    dateFormat(date){
+      // return  new Date(date).toLocaleDateString('he-IL', {timeZone:'Asia/Jerusalem'})
+      return  new Date(date).toLocaleString()
+    }
   },
 
   computed: {
@@ -181,6 +185,7 @@ export default {
     date(){
       return new Date(order.createdAt).toLocaleDateString('he-IL', {timeZone:'Asia/Jerusalem'})
     }
+
   },
   unmounted() {},
 };
