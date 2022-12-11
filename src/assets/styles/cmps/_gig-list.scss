@@ -261,16 +261,14 @@ box-shadow: none !important;
   >h4 {
     text-align: start;
     // font-weight: 500;
-    font-weight: lighter;
+    font-weight: 200;
+    color: #222325;
     padding: 0.1rem 0.73rem;
     line-height: 21px;
     letter-spacing: 0.01px;
-
-    // font-size: 1rem;
-    // font-family:"work-sans", sans-serif;
-    font-family: 'Work Sans', sans-serif;
     font-size: 16px;
   }
+  
 }
 .card-main-footer {
   height: 28%;
@@ -304,6 +302,7 @@ box-shadow: none !important;
 
 
 .homepage-slider {
+  
   .vueperslide--visible{
     border-radius: 5px;
     }
@@ -324,6 +323,10 @@ box-shadow: none !important;
     transform: translateY(0%);
     opacity: 1;
     width: 48px;
+    svg{
+      color: #555555 !important;
+      stroke-width: 3px !important;
+     }
   }
 
   .vueperslides__arrow--next {
@@ -365,6 +368,17 @@ box-shadow: none !important;
 }
 
 .bot-details-slider{
+  .vueperslide{
+    margin-right: 4px !important;
+  
+  }
+
+  .vueperslide vueperslide--active{
+  margin-right: 0px !important;
+  }
+.vueperslide vueperslide--visible{
+  margin-right: 0px !important;
+}
 
   .vueperslides__arrow--next,
   .vueperslides__arrow--prev{
@@ -373,6 +387,10 @@ box-shadow: none !important;
     margin: 0;
     width: 20px;
     height: 73px;
+    svg{
+      color: #555555 !important;
+      stroke-width: 3px !important;
+     }
 
   }
 
@@ -422,6 +440,10 @@ box-shadow: none !important;
     transform: translateY(0%);
     opacity: 1;
     width: 48px;
+    svg{
+     color: #555555;
+     stroke-width: 3px;
+    }
   }
   .no-shadow{
     .vueperslides__arrow
@@ -439,6 +461,7 @@ box-shadow: none !important;
 
   .vueperslides__arrow--next {
     right: -30px;
+
   }
 
   .vueperslides__arrow--prev {
@@ -466,6 +489,7 @@ box-shadow: none !important;
     transform: translateX(+126%);
     svg{
       transform: translateX(-4px);
+      
     }
 
   }

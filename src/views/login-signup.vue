@@ -18,12 +18,12 @@
         v-model="signupCred.password"
         placeholder="Password"
       />
-      <!-- <img-uploader @uploaded="onUploaded"></img-uploader> -->
+      <img-uploader @uploaded="onUploaded"></img-uploader>
       <button class="login-modal-btn">Signup</button>
     </form>
     </div>
       <div v-if="loginOrSignUp === `login`" class="login-modal" >
-    <h1>Login to Makerr</h1>
+    <h1>Login to Makerr<span class="login-greendot">•</span></h1>
       <form  @submit.prevent="signinSignup">
       <input
         v-if="loginOrSignUp === `login`"

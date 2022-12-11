@@ -140,7 +140,7 @@
     .checkout-container{
     position: sticky;
     top: rem(20px);
-    margin-left: 10rem;
+    margin-left: 7rem;
     color: #404145;
     border: 1px solid #e4e5e7;
     padding: 1.5em 1.3em;
@@ -216,6 +216,19 @@
     }
   
 }
+}
+.highly-responsive-ctn{
+    position:absolute;
+    color: #404145;
+    border: 1px solid #dadbdd;
+    width: 380px;
+    font-family: Helvetica, sans-serif;
+    margin-top: 80px;
+    padding: 20px 24px;
+    height: 80px;
+    .GP8C4WD, .Uswnvgv{
+        font-size: 13px;
+    }
 }
 .about-gig-title{
     margin-bottom: 15px;
@@ -473,7 +486,7 @@ hr{
     .gig-details-page{
         // background-color: tomato;
         flex-direction: column;
-        max-width: rem(400px);
+        max-width: rem(800px);
     }
     .checkout-container{
         display: flex;

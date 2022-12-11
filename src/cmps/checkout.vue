@@ -10,7 +10,7 @@
       <div class="PKFZREU">
         <div class="gig-mini-info">
           <div class="F4HBtqu">Basic</div>
-          <span class="flex flex-col">${{ gig.price }}</span>
+          <span class="gig-mini-info-price">${{ gig.price }}</span>
         </div>
         <span class="gig-mini-info-basic">
           <strong>BASIC</strong> <span class="info-basic-text">{{ gig.title }} </span>
@@ -25,7 +25,6 @@
         </div>
         <div class="upgrade-price">${{ gig.price }}</div>
       </div>
-      <div class="hara" v-if="checked">das</div>
 
       <section class="order-total-wrapper">
         <div class="ii7ZaAL">
@@ -101,7 +100,7 @@
         </div>
       </section>
       <section class="botom-btn-section">
-        <button class="checkout-cmp-btn" @click="orderGig()">Continue (${{ gig.price }})</button>
+        <button class="checkout-cmp-btn" @click="orderGig()">Submit Order (${{ gig.price }})</button>
         <div class="botom-section-txt">You won't be charged yet</div>
       </section>
     </div>

@@ -27,7 +27,8 @@ box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0
         align-items: center;
         cursor: pointer;
         color: white;
-         background-color: #1DBF73;
+        background-color: #1DBF73;
+        margin-right: -10px;
         &:hover{
            
             transition: .3s;
