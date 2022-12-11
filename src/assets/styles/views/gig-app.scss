@@ -36,7 +36,11 @@ z-index: 7;
 top:0;
 padding:rem(6px) rem(250px) 0 rem(250px);
 box-shadow: rgba(0, 0, 0, 0.35) rem(0px) rem(5px) rem(15px);
-
+height: 70px;
+display: flex;
+// justify-content: space-between;
+align-items: center;
+padding-top: 0;
 }
 .user-rating{
     margin-top: rem(2px);
