@@ -12,28 +12,15 @@
       Find the perfect {{subtitle}} services for your business
     </h2>
     <section class="filter" ref="filterEl">
-      <!-- <section v-if="isInHome" class="header-wrapper main-container fullWidthContainer sticky"
-    :class="{ change_color: scrollPosition > 1 }"> -->
-
       <gig-filter @filteredTxt="debounceHandler" @filteredBudget="setFilterByBudget" @sorted="setSortBy"
         @filteredDel="setFilterByDel" />
-        <h1 class="gigs-quantity">{{ gigs.length *8 }} services available</h1>
+       
     </section>
-    <!-- <div class="flex " style="gap:32px" v-if="!gigsSkelton"> -->
+     <h1 v-if="gigs.length" class="gigs-quantity">{{ gigs.length *8 }} services available</h1>
     <gig-list @removeGig="removeGig" v-if="!isLoading" :gigs="gigs" />
-
-
     <skeleton v-else />
-
-    <!-- <hr />
-    <form @submit.prevent="addGig()">
-      <h2>Add gig</h2>
-      <input type="text" v-model="gigToAdd.name" />
-      <button>Save</button>
-    </form> -->
   </div>
 </template>
-
 <script>
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service";
 import { gigService } from "../services/gig.service.js";
@@ -46,8 +33,6 @@ import gigList from "../cmps/gig-list.vue";
 import gigFilter from "../cmps/gig-filter.vue";
 import _ from "lodash";
 import skeleton from "./skeleton.vue";
-// import VueSkeletonLoader from 'skeleton-loader-vue';
-
 
 export default {
   data() {
@@ -79,9 +64,7 @@ export default {
       sortBy: {},
     };
   },
-
   created() {
-
     if (!this.$route.query.title && !this.$route.query.label) {
       this.$store.dispatch({ type: "loadGigs" })
     }
@@ -95,15 +78,8 @@ export default {
       this.subtitle= this.$route.query.label;
       this.setFilterByLabel(this.$route.query.label);
     }
-
-
-
-    
-    ////////////////////frontend///////////////////////
-
     this.$watch(
       () => this.$route.query,
-
       (toParams, previousParams) => {
         if (!this.$route.query.label && !this.$route.query.title) {
           this.displayLabel = "All"
@@ -119,28 +95,11 @@ export default {
         }
       }
     );
-
-    ////////////////////frontend///////////////////////
-
-
-
-    
-
-
-
-
-
-
-
-
-
     window.addEventListener("scroll", this.updateScroll);
-
   },
   mounted() {
     this.elFilter = this.$refs.filterEl;
   },
-
   methods: {
     setLabelToQuery(labelTitle) {
       const pathToRoute = this.$route.path.split("/");
@@ -151,16 +110,15 @@ export default {
     updateScroll() {
 
       this.scrollPosition = window.scrollY;
-      if (this.scrollPosition > 190) {
+      if (this.scrollPosition > 250) {
         this.elFilter.classList.add("change-position");
         this.elFilter.classList.add("fullWidthContainer");
       }
-      if (this.scrollPosition < 100) {
+      if (this.scrollPosition < 210) {
         this.elFilter.classList.remove("change-position");
         this.elFilter.classList.remove("fullWidthContainer");
       }
     },
-
     getLabels() {
       return this.label;
     },
@@ -246,9 +204,7 @@ export default {
     isLoading() {
       return this.$store.getters.isLoading
     }
-
   },
-
   components: {
     gigList,
     gigFilter,

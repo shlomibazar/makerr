@@ -272,7 +272,7 @@ export default {
     testSocket(order) {
       console.log("order sovckert", order);
 
-      showSuccessMsg(`Hi, your order has been ${order.status}`);
+      showSuccessMsg(`Your order has been ${order.status}`);
       // alert("work");
     },
     logOutUser() {
