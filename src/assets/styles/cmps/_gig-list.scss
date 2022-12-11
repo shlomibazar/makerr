@@ -368,17 +368,20 @@ box-shadow: none !important;
 }
 
 .bot-details-slider{
+  margin-top: 5px;
   .vueperslide{
     margin-right: 4px !important;
-  
   }
 
-  .vueperslide vueperslide--active{
+
+.vueperslide--visible{
   margin-right: 0px !important;
-  }
-.vueperslide vueperslide--visible{
-  margin-right: 0px !important;
+  opacity: 0.3 !important;
 }
+.vueperslide--active{
+  margin-right: 0px !important;
+  opacity: 1 !important;
+  }
 
   .vueperslides__arrow--next,
   .vueperslides__arrow--prev{
@@ -386,7 +389,7 @@ box-shadow: none !important;
     padding: 0;
     margin: 0;
     width: 20px;
-    height: 73px;
+    height: 75px;
     svg{
       color: #555555 !important;
       stroke-width: 3px !important;
