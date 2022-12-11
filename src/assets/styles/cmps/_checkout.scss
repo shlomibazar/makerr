@@ -97,6 +97,9 @@ background-color: rgba(0, 0, 0, 0.39);
                     font-weight: bold;
                     font-size: 25px;
                 }
+                .gig-mini-info-price{
+                    margin-top: 6px;
+                }
                 display: flex;
                 justify-content: space-between;
                 margin-top: 3px;
@@ -182,6 +185,9 @@ background-color: rgba(0, 0, 0, 0.39);
             border-top: 1px solid $borderClr;
             width: 90%;
             // margin:auto;
+        }
+        span{
+            margin-right: 15px;
         }
         .botom-btn-section{
             border-top: 1px solid $borderClr;
