@@ -21,8 +21,13 @@
 }
 
 .sort-button {
+    width: 120px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
+    .sort-title{
+    font-size: rem(16px);
+    }
     a{
         display: flex;
         align-items: center;
@@ -525,7 +530,10 @@ color: #404145;
 
 }
 
-
+.filter-buttons-container{
+width: 268px;
+justify-content: space-between;
+}
 
 .apply-button {
     width: rem(64px);

@@ -246,6 +246,7 @@ function getEmptyGig() {
                 flag: "https://fiverr-dev-res.cloudinary.com/general_assets/flags/1f1fa-1f1f8.png",
                 review: "Thank you SO MUCH to the seller. He was so patient and willing to work and correct as many times as we needed as some things got miscommunicated and he easily fixed them. Thank you!!!",
                 reviewedAt: "Published 3 days ago"
+                img:" "
             },
             {
                 name: "raymondyslas",
