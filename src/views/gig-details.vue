@@ -25,14 +25,11 @@
           <h1 class="br"></h1>
           <div class="stars">
             <span class="rating-stars">★★★★★</span>
-            <span class="rating-avg">4.9</span>
-            <a1 class="rating-amount">(456)</a1>
+            <span class="rating-avg">4.9 </span>
+            <span class="rating-amount">(456)</span>
           </div>
         </section>
       </div>
-      <h3 class="repeat-buyesr-title">
-        People keep coming back! logoflow has an exceptional number of repeat buyers.
-      </h3>
       <vueper-slides class="details-slider" ref="vueperslides1" :touchable="false" :autoplay="false" :bullets="false"
         @slide="$refs.vueperslides2.goToSlide($event.currentSlide.index, { emit: false })" fixed-height="427px">
         <vueper-slide v-for="(slide, i) in gig.images" :key="i" :image="slide">
@@ -114,7 +111,7 @@
                 </h5>
               </div>
               <section class="review-helpful-selector">
-                <span>Helpful? </span>
+                <strong>Helpful? </strong>
                 <span class="review-like-btn" @click="likeReview" :class="{ 'review-like-active': isLikeReview }">
                   <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                     <path

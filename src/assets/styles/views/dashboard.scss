@@ -15,7 +15,7 @@
     text-align: left;
     line-height: 14px;
     border-radius: 2px;
-    margin-top: 150px;
+    margin-top: 300px;
     width: 300px;
     height: 242px;
     padding: 32px;
@@ -67,29 +67,40 @@
     height: fit-content;
     // margin-top: rem(40px);
     font-family: Helvetica,sans-serif;
+    .user-from, .user-since{
+        justify-content: space-between;
+        padding-right: 30px;
+        padding-left: 30px;
+        margin-bottom: 15px;
+    }
 
     .user-name-avatar{
         text-align: center;
         position:absolute;
-        margin-top: rem(5px);
+        margin-top: rem(-2px);
         height: fit-content;
         width: 15.8%;
         background-color: #fff;
         border: rem(2px) solid rgb(235,232,232);
         border-radius: rem(2px);
         padding: rem(10px);
+        color: #62646A;
+        h4{
+            margin-bottom: rem(15px);
+        }
         .user-image{
             border: rem(3px) solid rgba(0, 0, 0, 0.412);
             border-radius: 50%;
-            margin-bottom: rem(2px);
-            height: rem(80px);
+            margin-bottom: rem(15px);
+            height: rem(120px);
         }
+    
     }
     .user-info {
         display: flex;
         padding-top: rem(100px);
         justify-content: space-between;
-        line-height: rem(15px);
+    
         min-height: 100vh;
         .orders-container {
             margin-top: rem(-60px);
@@ -101,12 +112,15 @@
                 display: flex;
                 margin-bottom: rem(10px);
             }
+            .dashboard-controls{
+                justify-content: space-between;
+                margin-bottom: 10px;
+            }
             .dashboard-switch-btn{
                 background-color: #1dbf73;
                 font-size: rem(14px);
                 font-weight: bold;
                 border-radius: rem(3px);
-                margin-left: rem(865px);
                 cursor: pointer;
                 &:hover{
                     background-color: #22d17f;

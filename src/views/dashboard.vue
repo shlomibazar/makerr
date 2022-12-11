@@ -3,10 +3,17 @@
     <section class="user-info main-layout flex">
       <div class="user-name-avatar">
           <img class="user-image" :src="user.imgUrl" alt="" />
-
           <h4 class="user-fullname">{{ user.fullname }}</h4>
-          
+        <div class="flex user-from">
+        
+          <span class="user-fullname">From </span>
+          <strong>Israel </strong>
         </div>
+        <div class="flex user-since">
+          <span class="user-fullname">Member Since</span>
+          <strong>Mar 2021</strong>
+        </div>
+      </div>
       <div class="left side">
         <div class="progress-container" v-if="this.currConnUser.isSeller">
           <div class="progress">
@@ -20,22 +27,24 @@
           <hr />
           <div class="prodress-data">
             <div class="earned">
-              Earned in July<span>$100</span>
+              Earned in July<span>${{sum}}</span>
             </div>
-            <div class="response">Response time<span>2Hrs</span></div>
+            <div class="earned">Total Orders <span>{{totalOrders}}</span></div>
+            <!-- <div class="response">Response time<span>2Hrs</span></div> -->
           </div>
         </div>
       </div>
 
       <div class="orders-container">
         <div>
+        <div class="flex dashboard-controls">
           <div class="display-user-status" v-if="this.currConnUser.isSeller">
             Manage Orders 
           </div>
           <div class="display-user-status" v-else>Your Orders</div>
-
           <button v-if="user.isSeller" class="dashboard-switch-btn" @click="toggleMode">{{ switchMode }}</button>
 
+        </div>
           <ul v-for="order in ordersToShow">
             <div class="order">
               <div class="order-info">
@@ -46,7 +55,7 @@
                 </div>
                 <div class="price-info">
                   <p class="title"><strong>Price</strong></p>
-                  <p class="info">${{ order.price }}</p>
+                  <p class="info">${{ order.price }} {{earned()}}</p>
                 </div>
                 <div class="days-info">
                   <p class="title"><strong>Delivery Time</strong></p>
@@ -92,6 +101,9 @@ export default {
   data() {
     return {
       switchMode: "",
+      sum: 0,
+      totalOrders: 0,
+      isFirst: true,
       // orders: null,
       user: null,
       currConnUser: null,
@@ -158,6 +170,18 @@ export default {
       // this.orders = await orderService.query();
       // orderService.update()
     },
+    earned(){
+      if(this.isFirst){
+        var orders = this.ordersToShow
+        this.totalOrders = orders.length
+        var x = orders.forEach(order => {
+          // console.log('order', order.price);
+          this.sum = this.sum + order.price;
+        })
+      }
+        this.isFirst = false
+        // console.log('Earned function', x);
+    },
     dateFormat(date){
       // return  new Date(date).toLocaleDateString('he-IL', {timeZone:'Asia/Jerusalem'})
       return  new Date(date).toLocaleString()
@@ -165,6 +189,7 @@ export default {
   },
 
   computed: {
+   
     sellerImg() {
       return `${order.seller.sellerImg}`;
     },

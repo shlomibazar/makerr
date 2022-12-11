@@ -157,6 +157,9 @@ body {
     input {
         width: rem(515px);
         border: none;
+        font-size: 16px;
+        font-weight: 200;
+        outline: none;
         &.not-sticky {
             font-size: rem(16px);
             font-family: "Work Sans";
@@ -555,7 +558,7 @@ justify-content: space-between;
         font-size: 16px;
         color: #222325;
         min-width: rem(50px);
-        padding: rem(6px) rem(12px);
+        // padding: rem(6px) rem(12px);
         border-radius: rem(4px);
         border: rem(1px) solid #dadbdd;
         background-color: white;

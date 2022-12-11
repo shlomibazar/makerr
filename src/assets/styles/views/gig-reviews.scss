@@ -78,14 +78,10 @@
     margin-bottom:rem(16px) ;
     h5{
         font-size: rem(16px);
-        font-weight: 400;
+        word-wrap: break-word;
+        color: #404145;
+        font-weight: 300;
     }
-}
-
-    .review-user-comment{
-        h5{
-
-        }
     }
     .review-helpful-selector{
     font-size: rem(14px);

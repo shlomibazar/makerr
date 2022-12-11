@@ -73,7 +73,7 @@ export default {
         this.selectedLabels = gig.labels.map((label) => label.title);
       });
     } else this.gigToEdit = gigService.getEmptyGig()
-    this.gigToEdit.images = [];
+    // this.gigToEdit.images = [];
   },
   components: {
     imgUploader,

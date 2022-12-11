@@ -93,10 +93,12 @@ function getEmptyGig(){
 
         image: "https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/103152154/original/b89645456b7f6906afa872771737e980b6f57cfb.jpg",
         images: [
-            "https://res.cloudinary.com/djyj6l7de/image/upload/v1670665565/gigs%20images/2logo/14b2092c5fa6b50f36a0c97615b7b29779b23a5b_fjznlo.webp",
-            "https://res.cloudinary.com/djyj6l7de/image/upload/v1670665565/gigs%20images/2logo/c87fdb57cbf5e835350b4aadc99e7efc32b5566b_inuqje.webp",
-            "https://res.cloudinary.com/djyj6l7de/image/upload/v1670665565/gigs%20images/2logo/op11_visojx.jpg",
-            "https://res.cloudinary.com/djyj6l7de/image/upload/v1670665565/gigs%20images/2logo/53376177c6b6579947e3f93951a0e22316e17f7d_ofk0hr.jpg",
+            "https://res.cloudinary.com/djyj6l7de/image/upload/v1670777341/gigs%20images/giggg/6232379ad1f4e38d095a17a42c27a410fde6baa7_rpsd6j.webp",
+            "https://res.cloudinary.com/djyj6l7de/image/upload/v1670777341/gigs%20images/giggg/430cf61d2bcbed8edfa7d1cadfccd408249a1dc8_b9vvbg.webp",
+            "https://res.cloudinary.com/djyj6l7de/image/upload/v1670777341/gigs%20images/giggg/3b88b7b39e02a8d9b145a60c5cd60a64adfdf785_xkqfbd.webp",
+            "https://res.cloudinary.com/djyj6l7de/image/upload/v1670777341/gigs%20images/giggg/Asset_2_l0ilxj_vmo8sv.jpg",
+            "https://res.cloudinary.com/djyj6l7de/image/upload/v1670777341/gigs%20images/giggg/Asset_1_spxdst_avmwf8.jpg",
+            "https://res.cloudinary.com/djyj6l7de/image/upload/v1670777342/gigs%20images/giggg/design-professional-3d-logo-for-your-business_idhd9v.jpg",
         ],
         title: "",
         category: "Graphics & Design",

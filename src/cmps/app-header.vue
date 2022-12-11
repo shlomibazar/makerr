@@ -140,9 +140,11 @@
           >Join</a
         >
         <section v-if="loggedInUser" class="loggedin-user" @click="toggleUserModal()">
-          <span class="logged-in-user-name">{{
-            usersFirstLetter(loggedInUser.fullname)
-          }}</span>
+          <span  >
+            <img :src="loggedInUser.imgUrl" alt="" class="loggedin-user flex">
+            <!-- {{loggedInUser.imgUrl}} -->
+
+          </span>
 
           <div
             class="user-modal-opts"
