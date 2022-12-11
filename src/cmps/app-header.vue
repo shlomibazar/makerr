@@ -60,9 +60,14 @@
               :src="loggedInUser.imgUrl"
               @click="toggleUserModal()"
             /> -->
-          <span class="logged-in-user-name">{{
+          <!-- <span class="logged-in-user-name">{{
             usersFirstLetter(loggedInUser.fullname)
-          }}</span>
+          }}</span> -->
+          <span  >
+            <img :src="loggedInUser.imgUrl" alt="" class="loggedin-user flex">
+            <!-- {{loggedInUser.imgUrl}} -->
+
+          </span>
           <Transition>
             <div
               class="user-modal-opts"
