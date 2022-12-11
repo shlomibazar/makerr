@@ -28,7 +28,7 @@ box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0
         cursor: pointer;
         color: white;
         background-color: #1DBF73;
-        margin-right: -10px;
+        margin-right:0px;
         &:hover{
            
             transition: .3s;
@@ -36,12 +36,13 @@ box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0
     }
 }
 .budget-modal-container{
+    
     width: 300px;
     height: 169px;
 }
 .filter-approve {
     border-top: 1px solid rgb(228, 226, 226);
-    width: 279px;
+    // width: 279px;
     height: 63px;
     display: flex;
     margin-top: 10px;
@@ -80,7 +81,7 @@ margin-left: 5px;
 
 }
 .clear-button{
-       margin-left: 0;
+       margin-left: 7px;
         font-weight: 500;
         color: #222325;
         min-width: 50px;
