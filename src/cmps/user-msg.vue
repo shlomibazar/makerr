@@ -1,7 +1,11 @@
 <template>
   <div v-show="alive" class="alert" :class="alertClass">
-    <img src="https://cdn-icons-png.flaticon.com/512/1827/1827301.png" alt="">
-    {{ msg?.txt }}
+    <h1>Hello,</h1>
+    <h4>{{ msg?.txt }}</h4>
+    <div class="my-btn">
+    <div class="my-btn-border"></div>
+      <img src="http://www.clker.com/cliparts/b/B/T/D/i/H/bell-icon-white.svg.hi.png" alt="">
+  </div>
   </div>
 </template>
 

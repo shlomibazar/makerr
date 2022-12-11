@@ -23,7 +23,7 @@
     </form>
     </div>
       <div v-if="loginOrSignUp === `login`" class="login-modal" >
-    <h1>Login to Makerr<span class="login-greendot">•</span></h1>
+      <h1>Login to <span class="maker-txt">Makerr</span><span class="login-greendot">•</span></h1>
       <form  @submit.prevent="signinSignup">
       <input
         v-if="loginOrSignUp === `login`"
