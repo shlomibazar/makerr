@@ -138,14 +138,15 @@
         // justify-content: space-around;
     }
     .checkout-container{
-    position: sticky;
-    top: rem(20px);
-    margin-left: 7rem;
-    color: #404145;
-    border: 1px solid #e4e5e7;
-    padding: 1.5em 1.3em;
-    font-family: Helvetica, sans-serif;
-    height: fit-content;
+        position: sticky;
+        top: rem(20px);
+        margin-left: 7rem;
+        color: #404145;
+        border: 1px solid #e4e5e7;
+        padding: 1.5em 1.3em;
+        font-family: Helvetica, sans-serif;
+        height: fit-content;
+        
 
     .checkout-price{
         font-size: rem(24px);
@@ -165,6 +166,7 @@
         height: 4rem;
         color: #62646a;
         line-height: rem(19.6px);
+        width: 414px;
     }
     .checkout-delivery{
         display: flex;

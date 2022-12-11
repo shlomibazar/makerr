@@ -114,7 +114,7 @@
                 </h5>
               </div>
               <section class="review-helpful-selector">
-                <span>Helpful? </span>
+                <strong>Helpful? </strong>
                 <span class="review-like-btn" @click="likeReview" :class="{ 'review-like-active': isLikeReview }">
                   <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                     <path
