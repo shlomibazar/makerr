@@ -8,38 +8,21 @@
           
         </div>
       <div class="left side">
-        <div class="user-details" v-if="this.currConnUser.isSeller">
-          <div class="dashboard-memberdetails">
-            <span class="dashboard-inboxrate"
-              >Inbox response rate
-              <div class="skill-container">
-                <div class="skill p-72">72%</div>
-              </div>
-            </span>
-            <span class="dashboard-inboxtime"
-              >Inbox response time
-              <div class="skill-container">
-                <div class="skill p-98">98%</div>
-              </div>
-            </span>
-            <span class="dashboard-orderrate"
-              >Order response rate
-              <div class="skill-container">
-                <div class="skill p-86">86%</div>
-              </div>
-            </span>
-            <span class="dashboard-delivertime"
-              >Delivered on time
-              <div class="skill-container">
-                <div class="skill p-92">92%</div>
-              </div>
-            </span>
-            <span class="dashboard-ordercomplete"
-              >Order completion
-              <div class="skill-container">
-                <div class="skill p-81">81%</div>
-              </div>
-            </span>
+        <div class="progress-container" v-if="this.currConnUser.isSeller">
+          <div class="progress">
+            <!-- <div>Response Rate <el-progress percentage="98" color="#1DBF73" /></div> -->
+            <span class="rate">Response rate </span>
+            <el-progress percentage="98" color="#1DBF73" /> <span>Delivered on time</span>
+            <el-progress percentage="85" color="#1DBF73" />
+            <span>Order completion</span>
+            <el-progress percentage="100" color="#1DBF73" />
+          </div>
+          <hr />
+          <div class="prodress-data">
+            <div class="earned">
+              Earned in July<span>{{ earned }}</span>
+            </div>
+            <div class="response">Response time<span>2Hrs</span></div>
           </div>
         </div>
       </div>
