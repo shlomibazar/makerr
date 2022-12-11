@@ -31,7 +31,7 @@
         gap: rem(8px);
         align-items: center;
         font-weight: lighter;
-        margin-bottom: 3px;
+        margin-bottom: 18px;
          .details-user-avatar{
           height: rem(30px);
           width: rem(30px);
@@ -79,6 +79,7 @@
                 // align-items: center;
                 color: #6c6c6c;
                 font-size:rem(14px);
+                font-weight: 200;
                 // padding-bottom:5rem(px) ;
                 }
                }
@@ -154,10 +155,12 @@
         float: right;
     }
     .checkout-title{
+        display: flex;
         font-size: 1.1rem;
         font-weight: 700;
         width: 17.85rem;
-        height: 5rem;
+        height: 2.5rem;
+        align-items: center;
     }
     .checkout-subtitle{
         font-family: Helvetica,sans-serif;
@@ -223,7 +226,7 @@
     position:absolute;
     color: #404145;
     border: 1px solid #dadbdd;
-    width: 380px;
+    width: 410px;
     font-family: Helvetica, sans-serif;
     margin-top: 80px;
     padding: 20px 24px;

@@ -81,16 +81,11 @@
       </div>
     </div>
     <div class="sort-button">
-<<<<<<< HEAD
-      Sort by<b>
-        <a class="rate-word" @click="setSort('rate')">Rate</a>
-=======
       <div class="sort-title"> 
         Sort by 
       </div>
       <b>
         <a @click="setSort('rate')">Rate</a>
->>>>>>> 0e45d5f4fadaef145c4fe8bf60ca983085ded922
       </b>
     </div>
   </section>
