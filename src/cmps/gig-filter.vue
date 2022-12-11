@@ -1,7 +1,7 @@
 <template>
   <section class="gig-filter flex items-center filter-conteiner">
 
-    <div class="flex">
+    <div class="flex filter-buttons-container" >
       <!-- BUDGET MODAL -->
       <div class="dropdown">
         <button class="filter-button" @click="budgetModal()">
@@ -95,7 +95,9 @@
       </div>
     </div>
     <div class="sort-button">
-      Sort By:
+      <div class="sort-title"> 
+        Sort by 
+      </div>
       <b>
         <a @click="setSort('rate')">Rate</a>
       </b>
