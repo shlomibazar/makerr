@@ -220,9 +220,18 @@ export default {
     ordersToShow() {
       console.log("ordersToshow");
       var currConnUserId = this.user._id;
-      return this.currConnUser.isSeller
-        ? this.orders.filter((order) => order.seller.sellerId === currConnUserId)
-        : this.orders.filter((order) => order.buyer.userId === currConnUserId);
+      // return this.currConnUser.isSeller
+      //   ? this.orders.filter((order) => order.seller.sellerId === currConnUserId)
+      //   : this.orders.filter((order) => order.buyer.userId === currConnUserId);
+      if(this.currConnUser.isSeller){
+       var filteredOrders =  this.orders.filter((order) => order.seller.sellerId === currConnUserId)
+        var reversedOrders = filteredOrders.reverse()
+      }
+      else {
+        var filteredOrders = this.orders.filter((order) => order.buyer.userId === currConnUserId) 
+         var reversedOrders = filteredOrders.reverse()
+      }
+      return reversedOrders
     },
     currUser() {
       console.log("run user");
