@@ -21,24 +21,27 @@
 }
 
 .sort-button {
-    width: 120px;
+    cursor: pointer;
+    width: 100px;
+    // margin-left: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-top:6px;
+    
     .sort-title{
     font-size: rem(16px);
     }
     a{
-        display: flex;
+        // display: flex;
         align-items: center;
         // background-color: rgb(141, 5, 5);
         color: black;
         width: fit-content;
+        // margin-left: 1px;
         height: rem(50px);
         width: rem(50px);
-        &:hover{
-            cursor: pointer;
-    }
+        cursor: pointer;
     }
 }
 
@@ -538,6 +541,7 @@ color: #404145;
 
 .filter-buttons-container{
 width: 268px;
+margin-top: 0.65%;
 justify-content: space-between;
 }
 
@@ -553,7 +557,9 @@ justify-content: space-between;
 
 
 .dropdown {
+    
     button {
+        cursor: pointer;
         font-weight: 600;
         font-size: 16px;
         color: #222325;
@@ -566,6 +572,7 @@ justify-content: space-between;
 
     }
     .filter-button{
+        display: flex;
     // font-size: 16px;
     }
 }

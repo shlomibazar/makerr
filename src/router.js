@@ -82,9 +82,14 @@ const routes = [
 ]
 
 
+
+
 export const router = createRouter({
   routes,
-  history: createWebHashHistory()
+  history: createWebHashHistory(),
   // base: process.env.BASE_URL,
+  scrollBehavior() {
+    document.getElementById('app').scrollIntoView({ behavior: 'smooth' });
+  }
 })
 

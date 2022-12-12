@@ -37,18 +37,25 @@ top:0;
 padding:rem(6px) rem(250px) 0 rem(250px);
 box-shadow: rgba(0, 0, 0, 0.35) rem(0px) rem(5px) rem(15px);
 height: 70px;
-display: flex;
-// justify-content: space-between;
+// display: flex;
+// justify-content: center;
 align-items: center;
-padding-top: 0;
+
+padding-top: 2px;
 }
 .user-rating{
-    margin-top: rem(2px);
+    // margin-top: rem(0px);
     font-weight: bold;
 }
 .ratingProject{
-    font-size: rem(13px);
+    font-size: rem(14px);
     margin-top: rem(3px);
+  margin-left: 2px;
+  margin-bottom: 4px;
+//   font-size: 26px;
+  font-weight: 400;
+  color: #B5BCD0;
+
 }
 
 .catagory-header{

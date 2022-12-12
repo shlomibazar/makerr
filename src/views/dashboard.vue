@@ -38,10 +38,11 @@
       <div class="orders-container">
         <div>
         <div class="flex dashboard-controls">
-          <div class="display-user-status" v-if="this.currConnUser.isSeller">
+          <div class="display-user-status flex" v-if="this.currConnUser.isSeller">
             Manage Orders 
           </div>
           <div class="display-user-status" v-else>Your Orders</div>
+
           <button v-if="user.isSeller" class="dashboard-switch-btn" @click="toggleMode">{{ switchMode }}</button>
 
         </div>
@@ -50,8 +51,11 @@
               <div class="order-info">
                 <img class="gig-img" :src="order.gig.image" alt="" />
                 <div class="seller">
-                  <img class="seller-img" :src="order.seller.sellerImg" alt="" />
-                  <div class="name">{{ order.seller.sellerName }}</div>
+                  <!-- <img v-if="currConnUser.isSeller" class="seller-img" :src="order.seller.sellerImg" alt="" /> -->
+                  <img v-if="currConnUser.isSeller" class="seller-img" :src="order.buyer.userImg" alt="" />
+                  <img v-else class="seller-img" :src="order.seller.sellerImg" alt="" />
+                  <div v-if="currConnUser.isSeller" class="name">{{ order.buyer.userName }}</div>
+                  <div v-else class="name">{{ order.seller.sellerName }}</div>
                 </div>
                 <div class="price-info">
                   <p class="title"><strong>Price</strong></p>
@@ -71,12 +75,12 @@
                 
                 <div v-if="order.seller.sellerId !== this.user._id" class="status flex">
                   <h1 class="status-title">Order status:</h1>
-                  <button class="status-info-buyer">{{ order.status }}</button>
+                  <button class="status-info-buyer" :class="statusColor">{{ status(order) }}</button>
                 </div>
                 <div v-else class="status">
                   <h1 class="status-title">Order status:</h1>
-                  <button class="status-info" @click="changeStatus(order._id)">
-                    {{ order.status }}
+                  <button class="status-info" :class="statusColorBuyer" @click="changeStatus(order._id)">
+                    {{ status(order) }}
                   </button>
                 </div>
               </div>
@@ -102,6 +106,8 @@ export default {
     return {
       switchMode: "",
       sum: 0,
+      statusColor:"",
+      statusColorBuyer:"",
       totalOrders: 0,
       isFirst: true,
       // orders: null,
@@ -144,6 +150,7 @@ export default {
       //   );
       // }
     },
+    
     toggleMode() {
 
       this.currConnUser.isSeller = !this.currConnUser.isSeller;
@@ -185,11 +192,17 @@ export default {
     dateFormat(date){
       // return  new Date(date).toLocaleDateString('he-IL', {timeZone:'Asia/Jerusalem'})
       return  new Date(date).toLocaleString()
+    },
+    status(order){
+      // console.log(order.status)
+    order.status==="pending"? this.statusColor="yellow":this.statusColor
+    order.status==="approved"? this.statusColor="blue":this.statusColor
+    order.status==="completed"? this.statusColor="green":this.statusColor
+      return order.status
     }
   },
 
   computed: {
-   
     sellerImg() {
       return `${order.seller.sellerImg}`;
     },

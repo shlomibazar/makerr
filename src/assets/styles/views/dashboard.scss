@@ -99,6 +99,7 @@
         display: flex;
         padding-top: rem(100px);
         justify-content: space-between;
+        
     
         min-height: 100vh;
         .orders-container {
@@ -108,11 +109,13 @@
                 color: rgba(0, 0, 0, 0.591);
                 font-size: rem(25px);
                 font-weight: bold;
+                align-items: center;
                 display: flex;
-                margin-bottom: rem(10px);
+                // margin-bottom: rem(10px);
             }
             .dashboard-controls{
                 justify-content: space-between;
+                align-items: center;
                 margin-bottom: 10px;
             }
             .dashboard-switch-btn{
@@ -160,7 +163,16 @@
                 }
                 .status-info-buyer{
                     background-color: transparent;
-                    color: rgb(25, 23, 23);
+                    color: rgb(85, 78, 78);
+                    &.green{
+                    background-color: #1fd07e;
+                    }
+                    &.blue{
+                    background-color: rgb(25, 25, 194);
+                    }
+                    &.yellow{
+                    background-color: rgb(235, 235, 7);
+                    }
                 }
                 .status-info{
                     background-color: #1dbf73;
@@ -169,21 +181,32 @@
                     font-size: rem(14px);
                     font-weight: bold;
                     border-radius: rem(3px);
+                      &.green{
+                    background-color: #1fd07e;
+                    }
+                    &.blue{
+                    background-color: rgb(25, 25, 194);
+                    }
+                    &.yellow{
+                    background-color: rgb(235, 235, 7);
+                    }
                 }
                 .order-info {
                     display: flex;
                     flex-direction: row;
                     width: 100%;
+                    font-family: 'Work-Sans';
+
                     justify-content: space-between;
                     align-items: center;
                     .info {
                         font-size: 1rem;
-                        font-family: work-sans;
+                        font-family: 'Work-Sans';
                     }
 
                     .title {
                         font-size: 1rem;
-                        font-family: work-sans;
+                        font-family: 'Work-Sans';
                         color: #abaeb6;
                         margin-bottom: 10px;
                     }

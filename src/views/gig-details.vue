@@ -140,8 +140,8 @@
     </div>
     <!-- v-click-outside="checkOutModal()" -->
 
-    <div class="display-checkout-modal" v-if="this.isCheckOutModal" v-click-outside="checkOutModal">
-      <checkout :gig="gig" :modalOpen="modalOpen" />
+    <div class="display-checkout-modal" v-if="this.isCheckOutModal" >
+      <checkout :gig="gig" :modalOpen="modalOpen" :isCheckOutModal="isCheckOutModal" @closeModal="checkOutModal" />
     </div>
 
     <div class="checkout-container">
@@ -294,11 +294,11 @@ export default {
           this.modalOpen = "modal-open";
         }, 10);
       }
-      if (!this.isCheckOutModal) {
-        setTimeout(() => {
-          this.modalOpen = "";
-        }, 10);
-      }
+      // if (!this.isCheckOutModal) {
+      //   setTimeout(() => {
+      //     this.modalOpen = "";
+      //   }, 10);
+      // }
     },
     // checkOutModal() {
     //   this.$router.push(`/order/${this.gig._id}`);

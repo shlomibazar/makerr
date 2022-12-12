@@ -122,6 +122,7 @@ export default {
       }
     },
     onUploaded(imgUrl) {
+      console.log(imgUrl);
       this.signupCred.imgUrl = imgUrl;
     },
   },
