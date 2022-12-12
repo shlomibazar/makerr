@@ -19,10 +19,10 @@
           <div class="progress">
             <!-- <div>Response Rate <el-progress percentage="98" color="#1DBF73" /></div> -->
             <span class="rate">Response rate </span>
-            <el-progress percentage="98" color="#1DBF73" /> <span>Delivered on time</span>
-            <el-progress percentage="85" color="#1DBF73" />
+            <el-progress class="percentage" percentage="98" color="#1DBF73" /> <span>Delivered on time</span>
+            <el-progress class="percentage" percentage="85" color="#1DBF73" />
             <span>Order completion</span>
-            <el-progress percentage="100" color="#1DBF73" />
+            <el-progress class="percentage" percentage="100" color="#1DBF73" />
           </div>
           <hr />
           <div class="prodress-data">
