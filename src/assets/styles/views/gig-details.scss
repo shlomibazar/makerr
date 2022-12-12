@@ -395,7 +395,8 @@ padding: rem(45px) 0 rem(42px) 0;
 }
 .gig-like-title{
     color: #b8bac0;
-    // font-size: 18px;
+    font-size: 12px;
+    font-weight: 500;
 }
 .seller-reviews{
     margin-top: rem(30px);
@@ -488,11 +489,10 @@ hr{
     }
 }
 /* MOBILE */ 
-@media (max-width: rem(569px)) {
+@media (max-width: rem(780px)) {
     .gig-details-page{
-        // background-color: tomato;
+        width: rem(860px);
         flex-direction: column;
-        max-width: rem(800px);
     }
     .checkout-container{
         display: flex;

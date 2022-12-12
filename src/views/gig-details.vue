@@ -110,7 +110,7 @@
                   <!-- <br /><br /><br /> -->
                 </h5>
               </div>
-              <section class="review-helpful-selector">
+              <section class="review-helpful-selector flex">
                 <strong>Helpful? </strong>
                 <span class="review-like-btn" @click="likeReview" :class="{ 'review-like-active': isLikeReview }">
                   <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
@@ -131,8 +131,8 @@
                     <span> No</span>
                   </span>
                 </span>
+                <span class="gig-like-title flex" v-if="isLikeReview">You found this review helpful.</span>
               </section>
-              <span class="gig-like-title" v-if="isLikeReview">You found this review helpful.</span>
             </section>
           </div>
         </h4>
