@@ -71,12 +71,12 @@
                 
                 <div v-if="order.seller.sellerId !== this.user._id" class="status flex">
                   <h1 class="status-title">Order status:</h1>
-                  <button class="status-info-buyer">{{ order.status }}</button>
+                  <button class="status-info-buyer" :class="statusColor">{{ status(order) }}</button>
                 </div>
                 <div v-else class="status">
                   <h1 class="status-title">Order status:</h1>
-                  <button class="status-info" @click="changeStatus(order._id)">
-                    {{ order.status }}
+                  <button class="status-info" :class="statusColorBuyer" @click="changeStatus(order._id)">
+                    {{ status(order) }}
                   </button>
                 </div>
               </div>
@@ -102,6 +102,8 @@ export default {
     return {
       switchMode: "",
       sum: 0,
+      statusColor:"",
+      statusColorBuyer:"",
       totalOrders: 0,
       isFirst: true,
       // orders: null,
@@ -144,6 +146,7 @@ export default {
       //   );
       // }
     },
+    
     toggleMode() {
 
       this.currConnUser.isSeller = !this.currConnUser.isSeller;
@@ -185,11 +188,17 @@ export default {
     dateFormat(date){
       // return  new Date(date).toLocaleDateString('he-IL', {timeZone:'Asia/Jerusalem'})
       return  new Date(date).toLocaleString()
+    },
+    status(order){
+      // console.log(order.status)
+    order.status==="pending"? this.statusColor="yellow":this.statusColor
+    order.status==="approved"? this.statusColor="blue":this.statusColor
+    order.status==="completed"? this.statusColor="green":this.statusColor
+      return order.status
     }
   },
 
   computed: {
-   
     sellerImg() {
       return `${order.seller.sellerImg}`;
     },

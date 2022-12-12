@@ -161,7 +161,16 @@
                 }
                 .status-info-buyer{
                     background-color: transparent;
-                    color: rgb(25, 23, 23);
+                    color: rgb(85, 78, 78);
+                    &.green{
+                    background-color: #1fd07e;
+                    }
+                    &.blue{
+                    background-color: rgb(25, 25, 194);
+                    }
+                    &.yellow{
+                    background-color: rgb(235, 235, 7);
+                    }
                 }
                 .status-info{
                     background-color: #1dbf73;
@@ -170,6 +179,15 @@
                     font-size: rem(14px);
                     font-weight: bold;
                     border-radius: rem(3px);
+                      &.green{
+                    background-color: #1fd07e;
+                    }
+                    &.blue{
+                    background-color: rgb(25, 25, 194);
+                    }
+                    &.yellow{
+                    background-color: rgb(235, 235, 7);
+                    }
                 }
                 .order-info {
                     display: flex;

@@ -3,7 +3,10 @@
     <div class="checkout-conteiner" :class="modalOpen">
       <section class="checkout-header">
         <h1 class="order-title">Order options</h1>
-        <h1 class="close-checkout-btn" @click="modalOpen=false">X</h1>
+       
+        <button class="close-checkout-btn" @click="closeModal" style="width: 32px; height: 32px;">
+        <svg width="18" height="18" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg" >
+        <path d="m8.485 7 4.487-4.487.926-.925a.35.35 0 0 0 0-.495l-.99-.99a.35.35 0 0 0-.495 0L7 5.515 1.588.102a.35.35 0 0 0-.495 0l-.99.99a.35.35 0 0 0 0 .495L5.514 7 .102 12.413a.35.35 0 0 0 0 .495l.99.99a.35.35 0 0 0 .495 0L7 8.485l4.487 4.487.926.926a.35.35 0 0 0 .495 0l.99-.99a.35.35 0 0 0 0-.495L8.485 7Z"></path></svg></button>
       </section>
       <hr />
 
@@ -120,10 +123,15 @@ export default {
   props: {
     gig: null,
     modalOpen: "",
+    isCheckOutModal:"",
   },
 
   created() {},
   methods: {
+    closeModal(){
+      this.$emit("closeModal")
+
+    },
     orderGig() {
       const user = userService.getLoggedinUser();
       console.log("Order to user", user._id);

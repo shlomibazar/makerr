@@ -50,6 +50,7 @@ background-color: rgba(0, 0, 0, 0.39);
             
             .close-checkout-btn{
             font-size: 20px;
+            background-color: transparent;
                 &:hover{
                     cursor: pointer;
                 }
@@ -183,7 +184,7 @@ background-color: rgba(0, 0, 0, 0.39);
         }
         .order-total-wrapper{
             border-top: 1px solid $borderClr;
-            width: 90%;
+            width: 376px;;
             // margin:auto;
         }
         span{
@@ -216,7 +217,7 @@ background-color: rgba(0, 0, 0, 0.39);
 .upgrade-order-ctn{
     padding: 20px;
     height: 92px;
-    width: 390px;
+    width: 376px;
     border-radius: 8px;
     border: 1px solid rgba(53, 51, 51, 0.226);
     .upgrade-title{
