@@ -154,7 +154,7 @@ export default {
           image: this.gig.images[0],
           price: this.gig.price,
           name: this.gig.title,
-          deliveryTime: this.gig.deliveryTime,
+          deliveryTime: this.gig.daysToMake,
         },
         status: "pending",
       };

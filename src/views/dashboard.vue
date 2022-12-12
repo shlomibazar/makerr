@@ -64,7 +64,7 @@
                 </div>
                 <div class="days-info">
                   <p class="title"><strong>Delivery Time</strong></p>
-                  <p class="info">3 days</p>
+                  <p class="info">{{order.gig.deliveryTime}} days</p>
                   <!-- <p class="info">{{ order.deliveryTime }}</p> -->
                 </div>
                 <div class="issued">
