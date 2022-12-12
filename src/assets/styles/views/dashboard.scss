@@ -152,6 +152,7 @@
                 border-radius: rem(2px);
                 padding: rem(10px);
                 align-items: center;
+                margin-bottom: 30px;
                 .status-container{
                     margin-top: rem(6px);
                     border-top: rem(1px) solid rgb(235,232,232);
@@ -180,13 +181,22 @@
                     background-color: transparent;
                     color: rgb(85, 78, 78);
                     &.green{
-                    background-color: #1fd07e;
+                        background-color: #1fd07e;
+                        color: white;
+                        font-weight: bold;
+                        text-transform: uppercase;
                     }
                     &.blue{
-                    background-color: rgb(25, 25, 194);
+                        background-color: rgb(25, 25, 194);
+                        color: white;
+                        font-weight: bold;
+                        text-transform: uppercase;
                     }
                     &.yellow{
-                    background-color: rgb(235, 235, 7);
+                        background-color: rgb(235, 148, 7);
+                        color: white;
+                        font-weight: bold;
+                        text-transform: uppercase;
                     }
                 }
                 .status-info{
@@ -197,13 +207,22 @@
                     font-weight: bold;
                     border-radius: rem(3px);
                       &.green{
-                    background-color: #1fd07e;
+                        background-color: #1fd07e;
+                        color: white;
+                        font-weight: bold;
+                        text-transform: uppercase;
                     }
                     &.blue{
-                    background-color: rgb(25, 25, 194);
+                        background-color: rgb(25, 25, 194);
+                        color: white;
+                        font-weight: bold;
+                        text-transform: uppercase;
                     }
                     &.yellow{
-                    background-color: rgb(235, 235, 7);
+                        background-color: rgb(235, 148, 7);
+                        color: white;
+                        font-weight: bold;
+                        text-transform: uppercase;
                     }
                 }
                 .order-info {
@@ -255,6 +274,7 @@
                         width: 17%;
                         object-fit: cover;
                         border-radius: rem(4px);
+                        margin-bottom: 5px;
                     }
                 }
             }
@@ -314,4 +334,103 @@
 }
 .p-92 {
     width: 92%;
+}
+
+/* MEDIA QUERIES */
+/* TABLET */ 
+// @media (min-width: rem(570px)) and (max-width: rem(1199px)){
+
+// }
+/* MOBILE */ 
+@media (max-width: rem(780px)) {
+    .main-layout {
+        max-width: 200.5rem;
+        flex-direction: column;
+    }
+
+    .user-info-container .user-info .orders-container .order {
+        height: fit-content;
+        background-color: #fff;
+        border: 0.125rem solid rgb(235, 232, 232);
+        margin-top: 1.0625rem;
+        border-radius: 0.125rem;
+        padding: 0.625rem;
+        align-items: center;
+        margin-bottom: 30px;
+        width: 350px;
+    }
+    .user-info-container .user-info .orders-container .display-user-status {
+        color: rgba(0, 0, 0, 0.591);
+        font-size: rem(14px);
+        font-weight: bold;
+        align-items: center;
+        display: flex;
+    }
+    .user-info-container .user-info .orders-container .dashboard-controls {
+        justify-content: space-around;
+        position: absolute;
+        top: 40px;
+        display: flex;
+        align-items: center;
+        /* flex-wrap: nowrap; */
+        flex-direction: column;
+        margin-bottom: 10px;
+    }
+    .user-info-container .user-info .orders-container {
+        margin-top: 60px;
+    }
+    .progress-container {
+        font-size: 16px;
+        font-family: "Work Sans", sans-serif;
+        text-align: left;
+        line-height: 14px;
+        border-radius: 2px;
+        margin-top: 300px;
+        width: 335px;
+        height: 242px;
+        padding: 26px;
+        color: #3C4340;
+        border: 2px solid rgb(235, 232, 232);
+        background-color: rgb(255, 255, 255);
+    }
+    .user-info-container .user-name-avatar {
+        text-align: center;
+        position: absolute;
+        margin-top: -0.125rem;
+        height: fit-content;
+        width: 335px;
+        background-color: #fff;
+        border: 0.125rem solid rgb(235, 232, 232);
+        border-radius: 0.125rem;
+        color: #62646A;
+    }
+    .user-info-container .user-info .orders-container .order .order-info .info {
+        font-size: rem(12px);
+        font-family: "Work Sans", sans-serif;
+    }
+    .user-info-container .user-info .orders-container .order .order-info .title {
+        font-size: rem(12px);
+        font-family: "Work Sans", sans-serif;
+        color: #abaeb6;
+        margin-bottom: 10px;
+    }
+    .user-info-container .user-info .orders-container .order .order-info .seller .seller-img {
+        height: rem(40px);
+        width: rem(40px);
+        margin: auto;
+        border-radius: 50%;
+    }
+    .user-info-container .user-info .orders-container .order .order-info .gig-img {
+        height: rem(70px);
+        height: 20%;
+        width: 20%;
+        object-fit: cover;
+        border-radius: 0.25rem;
+    }
+}
+/* DESKTOP */ 
+@media (min-width: rem(1200px)) {
+    .user-info-container .user-info .orders-container {
+        width: 75%;
+    }
 }

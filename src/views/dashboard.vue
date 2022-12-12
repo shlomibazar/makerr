@@ -14,8 +14,9 @@
           <strong>Mar 2021</strong>
         </div>
       </div>
-      <div class="left side">
-        <div class="progress-container" v-if="this.currConnUser.isSeller">
+      <!-- v-if="this.currConnUser.isSeller" -->
+      <div class="left-side"> 
+        <div class="progress-container">
           <div class="progress">
             <!-- <div>Response Rate <el-progress percentage="98" color="#1DBF73" /></div> -->
             <span class="rate">Response rate </span>
@@ -176,9 +177,9 @@ export default {
       );
       console.log("updatedOrder front ", updatedOrder);
       if (updatedOrder.status === "pending") {
-        updatedOrder.status = "approved";
+        updatedOrder.status = "Approved";
       } else if (updatedOrder.status === "approved") {
-        updatedOrder.status = "completed";
+        updatedOrder.status = "Completed";
       }
       this.$store.dispatch({ type: "addOrder", newOrder: updatedOrder });
       // orderService.save(updatedOrder);
