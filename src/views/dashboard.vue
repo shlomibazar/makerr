@@ -121,6 +121,12 @@ export default {
         "https://res.cloudinary.com/djyj6l7de/image/upload/v1670678323/review%20pic/JPEG_20210716_045808_7161494499008619166_zh6tkc.webp",
         "https://res.cloudinary.com/djyj6l7de/image/upload/v1670678323/review%20pic/c6667c18-c48c-415f-8d6e-28fda9b62486_depjj6.webp",
       ],
+      gigImgs:[
+    "",
+    "",
+    "",
+    "",
+    ],
     };
   },
   async created() {

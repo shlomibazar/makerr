@@ -110,11 +110,11 @@ function getEmptyGig(){
         owner: {
             _id: "",
             fullname: "",
-            rate: 3,
+            rate: 4.9,
             level: 3,
             isOnline: false,
             clients: 
-            ["https://res.cloudinary.com/djyj6l7de/image/upload/v1670100587/logos/logo3_tuit0t.png",
+            ["https://res.cloudinary.com/djyj6l7de/image/upload/v1670488697/logos/61af70a627e74f049f1361d3_jxpiag.webp",
             "https://res.cloudinary.com/djyj6l7de/image/upload/v1670100586/logos/61a87e99f3085f4291c4b980_cn1wzl.webp",
             ],
             imgUrl: "https://fiverr-res.cloudinary.com/t_profile_original,q_auto,f_auto/attachments/profile/photo/044fb5914a845a4eb59fc2b69f7f7b32-1634120039750/4dbc2acb-7322-4cd0-9afb-e5190e8e8a0d.jpg",
