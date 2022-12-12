@@ -52,10 +52,15 @@
               <div class="order-info">
                 <img class="gig-img" :src="order.gig.image" alt="" />
                 <!-- <img class="gig-img" :src="imgs[idx] || order.gig.image" alt="" /> -->
-                <div class="seller">
-                  <!-- <img v-if="currConnUser.isSeller" class="seller-img" :src="order.seller.sellerImg" alt="" /> -->
+                <!-- <div class="seller">
                   <img v-if="currConnUser.isSeller" class="seller-img" :src="imgs[idx] || order.buyer.userImg" alt="" />
                   <img v-else class="seller-img" :src="imgs[idx] ||order.seller.sellerImg" alt="" />
+                  <div v-if="currConnUser.isSeller" class="name">{{ order.buyer.userName }}</div>
+                  <div v-else class="name">{{ order.seller.sellerName }}</div>
+                </div> -->
+                <div class="seller">
+                  <img v-if="currConnUser.isSeller" class="seller-img" :src="order.buyer.userImg" alt="" />
+                  <img v-else class="seller-img" :src="order.seller.sellerImg" alt="" />
                   <div v-if="currConnUser.isSeller" class="name">{{ order.buyer.userName }}</div>
                   <div v-else class="name">{{ order.seller.sellerName }}</div>
                 </div>
