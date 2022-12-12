@@ -14,9 +14,8 @@
           <strong>Mar 2021</strong>
         </div>
       </div>
-      <!-- v-if="this.currConnUser.isSeller" -->
-      <div class="left-side"> 
-        <div class="progress-container">
+      <div class="left side">
+        <div class="progress-container" v-if="this.currConnUser.isSeller">
           <div class="progress">
             <!-- <div>Response Rate <el-progress percentage="98" color="#1DBF73" /></div> -->
             <span class="rate">Response rate </span>
@@ -52,13 +51,8 @@
               <div class="order-info">
                 <img class="gig-img" :src="order.gig.image" alt="" />
                 <!-- <img class="gig-img" :src="imgs[idx] || order.gig.image" alt="" /> -->
-                <!-- <div class="seller">
-                  <img v-if="currConnUser.isSeller" class="seller-img" :src="imgs[idx] || order.buyer.userImg" alt="" />
-                  <img v-else class="seller-img" :src="imgs[idx] ||order.seller.sellerImg" alt="" />
-                  <div v-if="currConnUser.isSeller" class="name">{{ order.buyer.userName }}</div>
-                  <div v-else class="name">{{ order.seller.sellerName }}</div>
-                </div> -->
                 <div class="seller">
+                  <!-- <img v-if="currConnUser.isSeller" class="seller-img" :src="order.seller.sellerImg" alt="" /> -->
                   <img v-if="currConnUser.isSeller" class="seller-img" :src="order.buyer.userImg" alt="" />
                   <img v-else class="seller-img" :src="order.seller.sellerImg" alt="" />
                   <div v-if="currConnUser.isSeller" class="name">{{ order.buyer.userName }}</div>
@@ -82,12 +76,12 @@
                 
                 <div v-if="order.seller.sellerId !== this.user._id" class="status flex">
                   <h1 class="status-title">Order status:</h1>
-                  <button class="status-info-buyer" :class="statusColor">{{ status(order) }}</button>
+                  <button class="status-info-buyer" :class="updateColor(order.status)">{{ order.status }}</button>
                 </div>
                 <div v-else class="status">
                   <h1 class="status-title">Order status:</h1>
-                  <button class="status-info" :class="statusColorBuyer" @click="changeStatus(order._id)">
-                    {{ status(order) }}
+                  <button class="status-info" :class="updateColor(order.status)" @click="changeStatus(order._id)">
+                    {{ order.status }}
                   </button>
                 </div>
               </div>
@@ -103,6 +97,7 @@
 import { create } from "lodash";
 import { RouterLink } from "vue-router";
 import { orderService } from "../services/order.service";
+import { socketService } from "../services/socket.service";
 // import {userService} from "../services/user.service.js"
 
 import { userService } from "../services/user.service.js";
@@ -113,8 +108,6 @@ export default {
     return {
       switchMode: "",
       sum: 0,
-      statusColor:"",
-      statusColorBuyer:"",
       totalOrders: 0,
       isFirst: true,
       // orders: null,
@@ -127,15 +120,11 @@ export default {
         "https://res.cloudinary.com/djyj6l7de/image/upload/v1670678323/review%20pic/JPEG_20210716_045808_7161494499008619166_zh6tkc.webp",
         "https://res.cloudinary.com/djyj6l7de/image/upload/v1670678323/review%20pic/c6667c18-c48c-415f-8d6e-28fda9b62486_depjj6.webp",
       ],
-      gigImgs:[
-    "",
-    "",
-    "",
-    "",
-    ],
     };
   },
   async created() {
+    //status update
+    socketService.on("status update", this.statusStuff);
     this.user = userService.getLoggedinUser();
     this.currConnUser = userService.getLoggedinUser();
     // this.orders = await orderService.query();
@@ -147,6 +136,23 @@ export default {
       : (this.switchMode = "Switch to seller");
   },
   methods: {
+    updateColor(orderStatus){
+      let color = 'yellow'
+    if(orderStatus==="approved")color ='blue'
+    else if(orderStatus==='completed') color = 'green'
+    return color
+    },
+    statusStuff(status){
+      console.log('status',status)
+      console.log('status.orderId',status.orderId)
+      let updatedOrder = this.orders.find((order) => order._id === status.orderId)
+      updatedOrder = {...updatedOrder}
+    
+      updatedOrder.status = status.status
+      console.log('updatedOrder',updatedOrder)
+      // this.status(updatedOrder)
+      this.$store.commit({ type: 'addOrder', newOrder: updatedOrder })
+    },
     filterdOrders() {
       var currConnUser = userService.getLoggedinUser();
       var currConnUserId = currConnUser._id;
@@ -187,12 +193,14 @@ export default {
         JSON.stringify(this.orders.find((order) => order._id === orderId))
       );
       console.log("updatedOrder front ", updatedOrder);
-      if (updatedOrder.status === "pending") {
-        updatedOrder.status = "Approved";
-      } else if (updatedOrder.status === "approved") {
-        updatedOrder.status = "Completed";
+    const status = updatedOrder.status.toLowerCase()
+      if (status === "pending") {
+        updatedOrder.status = "approved";
+      } else if (status === "approved") {
+        updatedOrder.status = "completed";
       }
       this.$store.dispatch({ type: "addOrder", newOrder: updatedOrder });
+      socketService.emit('changeStatus',{ status:updatedOrder.status, orderId})
       // orderService.save(updatedOrder);
       // this.orders = await orderService.query();
       // orderService.update()
@@ -213,13 +221,7 @@ export default {
       // return  new Date(date).toLocaleDateString('he-IL', {timeZone:'Asia/Jerusalem'})
       return  new Date(date).toLocaleString()
     },
-    status(order){
-      // console.log(order.status)
-    order.status==="pending"? this.statusColor="yellow":this.statusColor
-    order.status==="approved"? this.statusColor="blue":this.statusColor
-    order.status==="completed"? this.statusColor="green":this.statusColor
-      return order.status
-    }
+    
   },
 
   computed: {
@@ -257,3 +259,5 @@ export default {
   unmounted() {},
 };
 </script>
+
+

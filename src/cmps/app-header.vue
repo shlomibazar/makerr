@@ -275,6 +275,7 @@ export default {
       console.log("order sovckert", order);
 
       showSuccessMsg(`Your order has been ${order.status}`);
+      
       // alert("work");
     },
     logOutUser() {
