@@ -46,14 +46,15 @@
           <button v-if="user.isSeller" class="dashboard-switch-btn" @click="toggleMode">{{ switchMode }}</button>
 
         </div>
-          <ul v-for="order in ordersToShow">
+          <ul v-for="(order,idx) in ordersToShow">
             <div class="order">
               <div class="order-info">
                 <img class="gig-img" :src="order.gig.image" alt="" />
+                <!-- <img class="gig-img" :src="imgs[idx] || order.gig.image" alt="" /> -->
                 <div class="seller">
                   <!-- <img v-if="currConnUser.isSeller" class="seller-img" :src="order.seller.sellerImg" alt="" /> -->
-                  <img v-if="currConnUser.isSeller" class="seller-img" :src="order.buyer.userImg" alt="" />
-                  <img v-else class="seller-img" :src="order.seller.sellerImg" alt="" />
+                  <img v-if="currConnUser.isSeller" class="seller-img" :src="imgs[idx] || order.buyer.userImg" alt="" />
+                  <img v-else class="seller-img" :src="imgs[idx] ||order.seller.sellerImg" alt="" />
                   <div v-if="currConnUser.isSeller" class="name">{{ order.buyer.userName }}</div>
                   <div v-else class="name">{{ order.seller.sellerName }}</div>
                 </div>
@@ -113,6 +114,13 @@ export default {
       // orders: null,
       user: null,
       currConnUser: null,
+      imgs: [
+        "https://res.cloudinary.com/djyj6l7de/image/upload/v1670678323/review%20pic/c379aa91-8e48-453f-adbf-cf2ab5a2ba8d_f85qjo.webp",
+        "https://res.cloudinary.com/djyj6l7de/image/upload/v1670678323/review%20pic/1d8fa5f7-b34a-4f19-a55e-941a853fe2b2_qqpqnv.webp",
+        "https://res.cloudinary.com/djyj6l7de/image/upload/v1670678323/review%20pic/stepanadrian_ag4px7.webp",
+        "https://res.cloudinary.com/djyj6l7de/image/upload/v1670678323/review%20pic/JPEG_20210716_045808_7161494499008619166_zh6tkc.webp",
+        "https://res.cloudinary.com/djyj6l7de/image/upload/v1670678323/review%20pic/c6667c18-c48c-415f-8d6e-28fda9b62486_depjj6.webp",
+      ],
     };
   },
   async created() {
