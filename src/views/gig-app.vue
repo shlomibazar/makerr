@@ -16,7 +16,7 @@
         @filteredDel="setFilterByDel" />
        
     </section>
-     <h1 v-if="gigs.length" class="gigs-quantity">{{ gigs.length *8 }} services available</h1>
+     <h1 v-if="gigs.length" class="gigs-quantity">{{ gigs.length }} services available</h1>
     <gig-list @removeGig="removeGig" v-if="!isLoading" :gigs="gigs" />
     <skeleton v-else />
   </div>
